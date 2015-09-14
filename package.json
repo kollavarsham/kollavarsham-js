@@ -1,9 +1,12 @@
 {
   "name": "kollavarsham",
-  "version": "0.0.0",
+  "version": "0.5.0",
   "description": "Convert Gregorian date to Kollavarsham date and vice versa",
   "homepage": "http://kollavarsham.org",
-  "repository": "kollavarsham/kollavarsham",
+  "repository": {
+    "type": "git",
+    "url": "kollavarsham/kollavarsham-js"
+  },
   "author": {
     "name": "The Kollavarsham Team",
     "email": "info@kollavarsham.org",
@@ -57,5 +60,10 @@
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "license": "MIT"
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://kollavarsham.org/LICENSE.txt"
+    }
+  ]
 }
