@@ -1,6 +1,6 @@
 # [kollavarsham](http://kollavarsham.org/)
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url] [![Code Climate][codeclimate-img]][[codeclimate-url] [![Code Climate Coverage][codeclimate-cov-img]][codeclimate-cov-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url] [![Code Climate][codeclimate-img]][codeclimate-url] [![Code Climate Coverage][codeclimate-cov-img]][codeclimate-cov-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 
 > Convert Gregorian date to Kollavarsham date and vice versa
 
