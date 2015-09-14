@@ -1,8 +1,10 @@
-import assert from 'assert';
+import {expect} from 'chai';
 import kollavarsham from '../lib';
 
 describe('kollavarsham', function () {
-  it('should have unit test!', function () {
-    assert(true, 'we expected this package author to add actual unit tests.');
+
+  it('should be defined', function () {
+    expect(kollavarsham).to.exist;
   });
+
 });
