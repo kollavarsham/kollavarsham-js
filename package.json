@@ -44,6 +44,7 @@
     "karkitakam"
   ],
   "devDependencies": {
+    "babel": "^5.8.23",
     "babel-core": "^5.5.0",
     "chai": "^3.2.0",
     "gulp": "^3.6.0",
