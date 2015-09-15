@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import {JulianDate, KollavarshamDate} from '../lib/date';
+import {JulianDate, KollavarshamDate} from '../../lib/date.js';
 
 describe('date', function () {
 
