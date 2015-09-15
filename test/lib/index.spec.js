@@ -133,8 +133,8 @@ describe('Kollavarsham', function () {
   });
 
   describe('default settings', function () {
-    var kollavarsham = new Kollavarsham();
-    var settings = kollavarsham.getSettings();
+    kollavarsham = new Kollavarsham();
+    const settings = kollavarsham.getSettings();
 
     it('should return default settings', function () {
 
@@ -148,7 +148,7 @@ describe('Kollavarsham', function () {
   });
 
   describe('setSystem', function () {
-    var kollavarsham = new Kollavarsham();
+    kollavarsham = new Kollavarsham();
     kollavarsham.setSystem('DUMMY SYSTEM');
 
     it('should set the system', function () {
@@ -160,7 +160,7 @@ describe('Kollavarsham', function () {
   });
 
   describe('setLatitude', function () {
-    var kollavarsham = new Kollavarsham();
+    kollavarsham = new Kollavarsham();
     kollavarsham.setLatitude('DUMMY Latitude');
 
     it('should set the latitude', function () {
@@ -172,7 +172,7 @@ describe('Kollavarsham', function () {
   });
 
   describe('setLongitude', function () {
-    var kollavarsham = new Kollavarsham();
+    kollavarsham = new Kollavarsham();
     kollavarsham.setLongitude('DUMMY Longitude');
 
     it('should set the longitude', function () {
@@ -184,7 +184,7 @@ describe('Kollavarsham', function () {
   });
 
   describe('setOutput', function () {
-    var kollavarsham = new Kollavarsham();
+    kollavarsham = new Kollavarsham();
     kollavarsham.setOutput('DUMMY OUTPUT');
 
     it('should set the output', function () {
@@ -197,7 +197,7 @@ describe('Kollavarsham', function () {
   });
 
   describe('toGregorianDate', function () {
-    var kollavarsham = new Kollavarsham();
+    kollavarsham = new Kollavarsham();
 
     it('should throw appropriate exception', function () {
 
@@ -210,14 +210,14 @@ describe('Kollavarsham', function () {
   });
 
   describe('toGregorianDateFromSaka 01', function () {
-    var kollavarsham = new Kollavarsham();
-    var hinduDate = {
+    kollavarsham = new Kollavarsham();
+    const hinduDate = {
       yearSaka : 1937,
       masaNum  : 4,
       paksa    : 'Krsnapaksa',
       tithiDay : 12
     };
-    var date = kollavarsham.toGregorianDateFromSaka(hinduDate);
+    date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     it('should return a valid date', function () {
 
@@ -234,14 +234,14 @@ describe('Kollavarsham', function () {
   });
 
   describe('toGregorianDateFromSaka 02', function () {
-    var kollavarsham = new Kollavarsham();
-    var hinduDate = {
+    kollavarsham = new Kollavarsham();
+    const hinduDate = {
       yearSaka : 1937,
       masaNum  : 4,
       paksa    : 'Suklapaksa',
       tithiDay : 12
     };
-    var date = kollavarsham.toGregorianDateFromSaka(hinduDate);
+    date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     it('should return a valid date', function () {
 
@@ -258,14 +258,14 @@ describe('Kollavarsham', function () {
   });
 
   describe('toGregorianDateFromSaka 03', function () {
-    var kollavarsham = new Kollavarsham();
-    var hinduDate = {
+    kollavarsham = new Kollavarsham();
+    const hinduDate = {
       yearSaka : 1437,
       masaNum  : 4,
       paksa    : 'Suklapaksa',
       tithiDay : 12
     };
-    var date = kollavarsham.toGregorianDateFromSaka(hinduDate);
+    date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     it('should return a valid Julian Date', function () {
 

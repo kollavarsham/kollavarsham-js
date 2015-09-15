@@ -60,11 +60,13 @@ describe('Calendar', function () {
       expect(Calendar.gregorianDateToJulianDay(new Date(1997, Calendar.months.December, 30))).to.equal(2450812.5);
       expect(Calendar.gregorianDateToJulianDay(new Date(-1, Calendar.months.January, 31))).to.equal(1720722.5);
       expect(Calendar.gregorianDateToJulianDay(new Date(-4, Calendar.months.October, 31))).to.equal(1719900.5);
+
       // Special case for setting dates from years 0 - 99 AD
-      var dateFrom7AD = new Date(7, Calendar.months.January, 1);
+      const dateFrom7AD = new Date(7, Calendar.months.January, 1);
       dateFrom7AD.setFullYear(7);
       expect(Calendar.gregorianDateToJulianDay(dateFrom7AD)).to.equal(1723614.5);
-      var dateFrom0AD = new Date(0, Calendar.months.January, 1);
+
+      const dateFrom0AD = new Date(0, Calendar.months.January, 1);
       dateFrom0AD.setFullYear(0);
       expect(Calendar.gregorianDateToJulianDay(dateFrom0AD)).to.equal(1721057.5);
 
@@ -136,8 +138,10 @@ describe('Calendar', function () {
       expect(cmpDates(Calendar.julianDayToGregorianDate(2361220.5), new Date(1752, Calendar.months.September, 13))).to.be.true;
       expect(cmpDates(Calendar.julianDayToGregorianDate(2361221.5), new Date(1752, Calendar.months.September, 14))).to.be.true;
       expect(cmpDates(Calendar.julianDayToGregorianDate(2361222.5), new Date(1752, Calendar.months.September, 15))).to.be.true;
-      var dateFrom1AD = new Date(1, Calendar.months.February, 2);
+
+      const dateFrom1AD = new Date(1, Calendar.months.February, 2);
       dateFrom1AD.setFullYear(1);
+
       expect(cmpDates(Calendar.julianDayToGregorianDate(1721457.5), dateFrom1AD)).to.be.true;
       expect(cmpDates(Calendar.julianDayToGregorianDate(2456656.5), new Date(2013, Calendar.months.December, 30))).to.be.true;
       expect(cmpDates(Calendar.julianDayToGregorianDate(2456657.5), new Date(2013, Calendar.months.December, 31))).to.be.true;
