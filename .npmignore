@@ -1,0 +1,13 @@
+coverage/
+dist/
+doc/
+lib/
+themes/
+.babelrc
+.codeclimate.yml
+.editorconfig
+.eslintrc
+.gitattributes
+.gitignore
+.travis.yml
+gulpfile.js
