@@ -14,6 +14,9 @@ var isparta = require('isparta');
 // when they're loaded
 require('babel-core/register');
 
+// Grunt is used for yuidoc doc generation and for deployment to GH pages
+require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp
+
 gulp.task('static', function () {
   return gulp.src('**/*.js')
     .pipe(excludeGitignore())
@@ -65,5 +68,16 @@ gulp.task('babel', function () {
     .pipe(gulp.dest('dist'));
 });
 
+
+gulp.task('yuidoc', ['prepublish'], function (cb) {
+  gulp.run('grunt-yuidoc');
+  cb();
+});
+
+gulp.task('deployDoc', ['yuidoc'], function () {
+  gulp.run('grunt-buildcontrol:pages');
+});
+
 gulp.task('prepublish', ['nsp', 'babel']);
+
 gulp.task('default', ['static', 'test', 'coveralls']);
