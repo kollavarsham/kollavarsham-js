@@ -66,5 +66,8 @@
       "type": "MIT",
       "url": "http://kollavarsham.org/LICENSE.txt"
     }
-  ]
+  ],
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
 }
