@@ -5,17 +5,23 @@ import {JulianDate} from '../../lib/date.js';
 
 describe('Kollavarsham', function () {
 
+  let kollavarsham;
+  let date;
+  let malayalamDate;
+
   it('should be defined', function () {
     expect(Kollavarsham).to.exist;
   });
 
   describe('fromGregorianDate end to end integration 01', function () {
-    var kollavarsham = new Kollavarsham();
-    var date = new Date(1979, 4, 22);
-    var malayalamDate = kollavarsham.fromGregorianDate(date);
+
+    beforeEach(function () {
+      kollavarsham = new Kollavarsham();
+      date = new Date(1979, 4, 22);
+      malayalamDate = kollavarsham.fromGregorianDate(date);
+    });
 
     it('should return a valid malayalam date', function () {
-
       expect(malayalamDate.year).to.equal(1154);
       expect(malayalamDate.month).to.equal(1);
       expect(malayalamDate.day).to.equal(8);
@@ -47,9 +53,12 @@ describe('Kollavarsham', function () {
   });
 
   describe('fromGregorianDate end to end integration 02', function () {
-    var kollavarsham = new Kollavarsham();
-    var date = new Date(1983, 8, 7);
-    var malayalamDate = kollavarsham.fromGregorianDate(date);
+
+    beforeEach(function () {
+      kollavarsham = new Kollavarsham();
+      date = new Date(1983, 8, 7);
+      malayalamDate = kollavarsham.fromGregorianDate(date);
+    });
 
     it('should return a valid malayalam date', function () {
 
@@ -84,9 +93,12 @@ describe('Kollavarsham', function () {
   });
 
   describe('fromGregorianDate end to end integration 03', function () {
-    var kollavarsham = new Kollavarsham();
-    var date = new Date(1983, 8, 21);
-    var malayalamDate = kollavarsham.fromGregorianDate(date);
+
+    beforeEach(function () {
+      kollavarsham = new Kollavarsham();
+      date = new Date(1983, 8, 21);
+      malayalamDate = kollavarsham.fromGregorianDate(date);
+    });
 
     it('should return a valid malayalam date', function () {
 
