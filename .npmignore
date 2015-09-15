@@ -6,6 +6,7 @@ themes/
 .babelrc
 .codeclimate.yml
 .editorconfig
+.eslintignore
 .eslintrc
 .gitattributes
 .gitignore

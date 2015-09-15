@@ -1,0 +1,5 @@
+themes/
+node_modules/
+coverage/
+doc/
+dist/
