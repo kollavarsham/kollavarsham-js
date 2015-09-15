@@ -1,5 +1,10 @@
+sudo: false
 language: node_js
 node_js:
   - '0.10'
   - '0.12'
   - 'iojs'
+before_install:
+- npm install -g codeclimate-test-reporter
+after_success:
+- codeclimate-test-reporter < ./coverage/lcov.info
