@@ -4,6 +4,7 @@ node_js:
   - '0.10'
   - '0.12'
   - 'iojs'
+  - '4.0'
 before_install:
 - npm install -g codeclimate-test-reporter
 after_success:
