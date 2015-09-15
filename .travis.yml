@@ -6,7 +6,42 @@ node_js:
   - 'iojs'
   - '4.0'
 before_install:
-  - npm install -g codeclimate-test-reporter grunt-cli
+  - npm install -g grunt-cli codeclimate-test-reporter
+before_script:
+  # Extract the deploy key from secure variables for pushing the YUI documentation
+  - echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
+  - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - git config --global user.email "info@kollavarsham.org"
+  - git config --global user.name "The Kollavarsham Team"
 after_success:
-  - codeclimate-test-reporter < ./coverage/lcov.info
-  - gulp deployDoc
+  # If build is successful, push the documentation from this build to the gh-pages (run only on one job)
+  # and generate test coverage and push it to code climate
+  - if [ "$TRAVIS_NODE_VERSION" = "4.0" ]; then ./deploy.sh; fi
+env:
+  global:
+  # SSH key. Encoded. See https://gist.github.com/floydpink/4631240
+  - secure: d4VXk/n/DR7CvmpY+iLv2k/d2tACWX3uOHRDxlhDOlrrb7EYU6hU/14TbdBwxd9RS/DiCiUNE9O4VP1QU6fIlz70wbmz1XowgzzBgdxXJf7BfK6all+jM+Py3wHZPUVqj9zFQphS4dpGY/WwOj69JP+xvHe2jq938R82avaKcgw=
+  - secure: l7PiE0HLCA7V9/4AyVsoTWOJwMDHgOLNrX9YlD7KsVGC4T1VAU2+iPV6/18hJOz0MST0gXRJng7JB/x/rSvozaq1DOH0ZwpWfYPOcqr9I2cqIqilNU5MRmWmH4nylqCktqyG3SF2r7vIxX59C39BSnOd5BeBbhl4i27DkWC67qY=
+  - secure: RrWh5WTXPWJZSwPhj9pPLxLBIfHhnrx12QrnJx3Vd+xCpQHJk/6nDLajagtNhHoxnSYZSvwY8Fvnly7YAx+p0VKbRt20Vn8s82u4woF0/0RLP8nCvGMO3Wd6VfoAS2Yw+oRSUKX4Vf+uZec09NP77wkda0OmeAOkusvds6deNaE=
+  - secure: UIe7+n/kY919o8HG77KL4V6psG3sNSTAdK8G3SGPdIjRhcH+9IhPspnFhtLCEihhfSPztx5r/w6YGJ9/H8bV7KT6K6nB7QGvJ4BbOZ3qNaO7pLJHoZ86uD5n+LsXsTJ+SleT1SQH0YeyA2D56eEYCwvfhX9KgiPH+46qI+Tlxb0=
+  - secure: kK2bbd2hzrBZpyXLTZUvzylOe08tVl9dK4pEn+fd0pYagxu5lETWet9Hhb71Uc2GQw/UpzdNVsdx7h6wTzwOQZIhzl+Datpg9jT7aj/IK9NCOp4WVnAxxpMm/XXFi4w/J3dCWofKXazt67u8MIrYOoICniG5n4DbBfpLOfQYRSM=
+  - secure: AxCS6aHKAaKwa/oe0NDEml1agcIftgGeNnpPOXbr4n1VomClcKlWoqZiv25HNsD94qveM7c2CBbVC0uo4HWs5BjXQKHMtI0dC8Vuf6JDi5zk5WM0ASGkBhwQXPGpgdbsWezfsmxUki0T5AhTPTgcVsk7t3OE5cqyozidxUkCjaw=
+  - secure: lEEPJoLHOHbQA++lafWd11Yn4Ad7H+d88ydWuwbkLbkSLVyj2SqyUDClHqcfaCkyTLgBN52Z8WA+ex25yqlmbygJ1yP0g0b6TmnGxPA8aohHHc5/SrIhlk9FckQ6MOcpfdVp4OwWtm8rJqknDiglDXn9mvaEhW58olFBSdwbDF4=
+  - secure: mOQPZFQPISM8CQyzLLst8PqKzjd4VZS2ovQ2EoNultXCuhflcI6czpM6AapzXU/dboqaG5CEdaR4eQhYeh3IaYTjrpADMmEyksoZIjtV3GcWhAt33XM/p09RzVN5SX8FprhiAQXnmMpfKYjC68EzD5kQaz6Iusz0OGncP/lhS5s=
+  - secure: H4XKomBwSYGP+Z07A+Yh/iiIadUBcOPIISHrJ/JcitOBgMjRXtddg2SkuvLDV1IciJZtpEO8YTJk4v6duwNc7tfu+/eDc3wOW9rixSMw3zsMIn1M3F+IDroGEbAhQZOYHIm3KZiJTV1n6JuaO8iLJQr48wgJNtiF9dA4/TxJ2S8=
+  - secure: VPUMMsCltBNGReP/YeqZAPCmixsHG83lQJVeo/pVCJgaXCGFwVTBWiM0m1/uugjovBhNgRZJPoW9wRRHF5g530hcs8XSGEfc5WzsOyS+oKtc93Yny1StxIYqKTfXcX7RgveuMZ0ULa/GjtmuxPV9DhH9+MgtEttPgBZBm4wtG/0=
+  - secure: BqWNI3aY5zdd0oEH+6bSLQpMU0Uh+OgiAxuoBCV1n4OiuYxagyia0Bwo524co/F9P3rkN2quhke4aUw0MgaEzj7F6wNhd5AjRHOtpwPIfCFPB5BJnBI5Xcpz3YcaKykCKEuW2zYZZQeAe8tV85vV/NdPpmRSs7Nfe8qlYsLrArI=
+  - secure: BnMHVQLPjQxzpuWPYSjdcU+MAZD5+QigKjB64cIFqUxiP5U2XIa+CMBEMlGy+hG0RvTfkEY0x5CLRvBWdDClYa2fbnl2nfX4w6Lho7dxt06rU1b5LXJRnTwIwfqApaCrwjF+fC5w4wdxdOCUcejuqXmDL9cOSKktqF1Mzsr2xe0=
+  - secure: Vv1sltpsKOXgtUFH9R9TmiBzqFoFSwftcsNlRDDve0f9ojLBXZSttIvmy1+K/iqG5enjLkUTqRFVejrkF6yhXNvGWenfrPzPdKMsHbtB60OKFOX0r8mx9IqpkHu8vvOBOamX1jbxLcP1067RJ/5xNqthYnZC+QuJEpKKOGzsyH0=
+  - secure: C6C2BZxhfprsfxjoVUuO7PuWjAmWvKM1yonQYT8D21Ow1ijE6AVoVQTohsrMSxRbjTbadyAUisxDC6GyHxZJEo7mwDPqfQ1RC6+FMESSjILdnZoNYCHm0s8rZvKmbWYoC2iyUgSmOF41SKwTifHnvizOeUqighfYfb8io3/ITRw=
+  - secure: FZt7D0G6EZPXhjkubzUlR+fqEE23v5Lps01+FM/h4xePesuOfjQkxC45F/cmsLboDoAn3ivOyyFZ6GRuGH0KhDR36MkXtvkj0wIM25FrOcGY3UHbEYW7bAuoDpYaW+sk/hTsI7PbmCQsLFz4UBgdGBWvFDeev/SPblRAo/U1oSo=
+  - secure: AeAauEJ6C4dd2+KF7PIr+FNd39Rd4g14TQ1VRNPp+c3x9bwrBZqJcj1SxgZBLa9KVzgR23ggYJtqsUwOYjxZiOifkTxugcBWjB2WtcdvKysK8XUzfYAInj6eBvS8DxKhhF+KOgh+H2jR3zorGW/spICD9QMzn9eZAkU7OYGiAS0=
+  - secure: dFGuqxkhmFwUCTb+y4jkhYLcl1dQSdEPMKs+EyfvBudrRS2VVo3kJ/rar83LllnUA51vCMxgZiqcz4DFYMcAjtMDsZlocz3OrYICFAiDNzj/ZRSki9pXkgPWTDbU01IMIwxbiA+OY4N1gwzqp3mcfOjZh+6zDj6djA7IA42s7y0=
+  - secure: MiNq7SF0OYG7u5MjBYW+uB4x79t8+Ox7T15CgQmsS3zUVAAy+EuedpCoBUmd4NEbCFCDahry/Te1ehbayCaKd076nz4PoHh48EbAekixEUCXU2Xl/1dpwoGR/dcOghdMu+0ucUSIl8RGx1xgAINNECw/sUDXYRbUQrDHKa9JcIY=
+  - secure: gwXM/r7RV/nQWAr/KNUrAkbO4ky4ZeIsdhSt+u2uuAkXOrtb0JrGbZSurX4c+lI42bBywQ1iMOOO13oW7iDu1b8wK9lzZhMb2C5bCfj7WuKtDTfyit5Xcggiyo7PYF1XdLt/T4T3GIX3S1AlHXgR7ag65xUQib7dsyJbldgh//Y=
+  - secure: jpxxW76BsknwtEjI5y3V8ZRgJ1kHApbHDUTl1FLUloKIEAW4256Adx8FQcH8WtIRhXYlgFlJBtG/FlKDScCoaJdY71l9z90rXzwFhu4eKJ1AG7CQQl7al7X0c4N+7X8WHmBFACSlZzh7ATpEfyWTQEdM9ZtKAYeywJCIOOOD3kw=
+  - secure: KQoujIlItQjPQ739eGIO/spPU2KRH7xHByejlSjdwG9zihQTiD/pNtxnQTizL/2JH9Prru7LDa0Z8HQxrQXctxjB69Xzaw119f51NnQDgKc3DqyP9gNnkmADByqT70Wk2opo66yJTg2M21rA6HuKsx8k4Dmv+jeOd4ssGnKbjTk=
+  - secure: Ylqc/d4MXJDoEVEYBRMF5mWNwy3j/DVRrt86Mz+SSSXhzugtjcmAiWjk0UWwZWUPSPQl0gsQOfZeFixdnN8iLu/j4M+HwzD/vi4mPt4h47sXmntY4SYcVAiaiSE4hAf0nA8u7Ra7Y09PEUxOJP9EhfdScQWHhwtBVId+omRmg78=
+  - secure: Az0DUg0Jyf7uz/Fw0nzHV2zzA1NCH1VEZg3xiT0epve6Hk3t4JtqypORvCNIgmVoxcqLB0TFdalVrglQ+hi/ZAIV3o8XXDWRkNyVO8u3FgMjdpRkbHAQo8TYXHhGYXtOWBKjhTxbmiT2+t+AKjTHoBJyPuGeo8Gpt0pSk10l2hs=

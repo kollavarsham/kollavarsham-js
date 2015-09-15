@@ -7,8 +7,6 @@
  */
 
 module.exports = function (grunt) {
-  // Show elapsed time at the end
-  require('time-grunt')(grunt);
   // Load all grunt tasks
   require('load-grunt-tasks')(grunt);
 
@@ -38,7 +36,7 @@ module.exports = function (grunt) {
       },
       pages   : {
         options : {
-          remote : 'git@github.com:kollavarsham/kollavarsham-nodejs.git',
+          remote : 'git@github.com:kollavarsham/kollavarsham-js.git',
           branch : 'gh-pages'
         }
       }
