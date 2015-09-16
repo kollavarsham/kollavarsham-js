@@ -1,6 +1,7 @@
 coverage/
 doc/
 themes/
+.publish/
 .babelrc
 .codeclimate.yml
 .editorconfig

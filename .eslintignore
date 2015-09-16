@@ -3,4 +3,5 @@ node_modules/
 coverage/
 doc/
 dist/
+.publish/
 Gruntfile.js

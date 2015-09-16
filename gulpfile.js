@@ -16,7 +16,9 @@ var ghPages = require('gulp-gh-pages');
 require('babel-core/register');
 
 // Grunt is used for yuidoc doc generation and for deployment to GH pages
-require('gulp-grunt')(gulp); // add all the gruntfile tasks to gulp
+var gulpGrunt = require('gulp-grunt');
+gulpGrunt(gulp); // add all the gruntfile tasks to gulp
+var gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
 
 gulp.task('static', function () {
   return gulp.src('**/*.js')
@@ -71,8 +73,9 @@ gulp.task('babel', function () {
 
 
 gulp.task('yuidoc', ['prepublish'], function (cb) {
-  gulp.start('grunt-yuidoc');
-  cb();
+  gulpGruntTasks['grunt-yuidoc'](function () {
+    cb();
+  });
 });
 
 gulp.task('deployDoc', ['yuidoc'], function () {
