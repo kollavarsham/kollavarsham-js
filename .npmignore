@@ -1,7 +1,5 @@
 coverage/
-dist/
 doc/
-lib/
 themes/
 .babelrc
 .codeclimate.yml

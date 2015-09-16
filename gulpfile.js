@@ -9,6 +9,7 @@ var plumber = require('gulp-plumber');
 var coveralls = require('gulp-coveralls');
 var babel = require('gulp-babel');
 var isparta = require('isparta');
+var ghPages = require('gulp-gh-pages');
 
 // Initialize the babel transpiler so ES2015 files gets compiled
 // when they're loaded
@@ -70,12 +71,15 @@ gulp.task('babel', function () {
 
 
 gulp.task('yuidoc', ['prepublish'], function (cb) {
-  gulp.run('grunt-yuidoc');
+  gulp.start('grunt-yuidoc');
   cb();
 });
 
 gulp.task('deployDoc', ['yuidoc'], function () {
-  gulp.run('grunt-buildcontrol:pages');
+  return gulp.src('./doc/**/*')
+    .pipe(ghPages({
+      remoteUrl : 'git@github.com:kollavarsham/kollavarsham-js.git'
+    }));
 });
 
 gulp.task('prepublish', ['nsp', 'babel']);
