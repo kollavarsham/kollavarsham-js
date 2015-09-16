@@ -205,24 +205,6 @@ describe('Kollavarsham', function () {
 
   });
 
-  describe('setOutput', function () {
-
-    beforeEach(function () {
-
-      kollavarsham = new Kollavarsham();
-      kollavarsham.setOutput('DUMMY OUTPUT');
-
-    });
-
-    it('should set the output', function () {
-
-      expect(kollavarsham.getSettings().output).to.equal('DUMMY OUTPUT');
-
-    });
-
-
-  });
-
   describe('toGregorianDate', function () {
 
     beforeEach(function () {

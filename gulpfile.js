@@ -1,5 +1,6 @@
 var path = require('path');
 var gulp = require('gulp');
+var del = require('del');
 var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
 var mocha = require('gulp-mocha');
@@ -19,6 +20,14 @@ require('babel-core/register');
 var gulpGrunt = require('gulp-grunt');
 gulpGrunt(gulp); // add all the gruntfile tasks to gulp
 var gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
+
+gulp.task('clean:dist', function () {
+  return del.sync(['dist/**']);
+});
+
+gulp.task('clean:doc', function () {
+  return del.sync(['doc/**']);
+});
 
 gulp.task('static', function () {
   return gulp.src('**/*.js')
@@ -72,7 +81,7 @@ gulp.task('babel', function () {
 });
 
 
-gulp.task('yuidoc', ['prepublish', 'coveralls'], function (cb) {
+gulp.task('yuidoc', ['clean:doc', 'prepublish', 'coveralls'], function (cb) {
   gulpGruntTasks['grunt-yuidoc'](function () {
     cb();
   });
@@ -85,6 +94,6 @@ gulp.task('deployDoc', ['yuidoc'], function () {
     }));
 });
 
-gulp.task('prepublish', ['nsp', 'babel']);
+gulp.task('prepublish', ['clean:dist', 'nsp', 'babel']);
 
 gulp.task('default', ['static', 'test']);
