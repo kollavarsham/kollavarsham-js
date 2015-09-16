@@ -56,7 +56,7 @@ gulp.task('test', ['pre-test'], function (cb) {
     });
 });
 
-gulp.task('coveralls', ['test'], function () {
+gulp.task('coveralls', function () {
   if (!process.env.CI) {
     return;
   }

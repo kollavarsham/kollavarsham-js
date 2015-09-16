@@ -26,20 +26,6 @@ module.exports = function (grunt) {
           helpers  : ['themes/kollavarsham/helpers/helpers.js']
         }
       }
-    },
-    buildcontrol : {
-      options : {
-        dir     : 'doc',
-        commit  : true,
-        push    : true,
-        message : 'Built %sourceName% API documentation from commit %sourceCommit% on branch master'
-      },
-      pages   : {
-        options : {
-          remote : 'git@github.com:kollavarsham/kollavarsham-js.git',
-          branch : 'gh-pages'
-        }
-      }
     }
   });
 
