@@ -72,7 +72,7 @@ gulp.task('babel', function () {
 });
 
 
-gulp.task('yuidoc', ['prepublish'], function (cb) {
+gulp.task('yuidoc', ['prepublish', 'coveralls'], function (cb) {
   gulpGruntTasks['grunt-yuidoc'](function () {
     cb();
   });
@@ -87,4 +87,4 @@ gulp.task('deployDoc', ['yuidoc'], function () {
 
 gulp.task('prepublish', ['nsp', 'babel']);
 
-gulp.task('default', ['static', 'test', 'coveralls']);
+gulp.task('default', ['static', 'test']);
