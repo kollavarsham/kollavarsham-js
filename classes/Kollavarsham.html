@@ -94,7 +94,7 @@
 
 <div class="box intro">
     <p>The Kollavarsham class implements all the public APIs of the library.</p>
-<p>Create a new instance of this class, passing in the relevant options and call methods on this instance.</p>
+<p>Create a new instance of this class, passing in the relevant options and call methods on the instance.</p>
 
 </div>
 
@@ -165,7 +165,7 @@
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
 
                                 <div class="param-description">
-                                    <p>Sets the latitude for the location for the conversions</p>
+                                    <p>Sets the latitude for the location for the conversions. Defaults to Ujjain, Madhya Pradesh</p>
 
                                 </div>
 
@@ -176,18 +176,7 @@
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
 
                                 <div class="param-description">
-                                    <p>Sets the longitude for the location for the conversions</p>
-
-                                </div>
-
-                            </li>
-                            <li class="param">
-                                    <code class="param-name optional">[outputformat=&#x27;verbose&#x27;]</code>
-                                    <span class="type">String</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-
-                                <div class="param-description">
-                                    <p>Set to 'list' or 'verbose' for the output</p>
+                                    <p>Sets the longitude for the location for the conversions. Default to Ujjain, Madhya Pradesh</p>
 
                                 </div>
 
@@ -203,20 +192,19 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var Kollavarsham = require('kollavarsham');
+                <pre class="code prettyprint"><code>const Kollavarsham = require('kollavarsham');
 
-var options = {
+const options = {
  system: 'SuryaSiddhanta',
  latitude: 10,
- longitude: 76.2,
- outputFormat: 'verbose'
+ longitude: 76.2
 };
 
-var kollavarsham = new Kollavarsham(options);
+const kollavarsham = new Kollavarsham(options);
 
-var todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
+let todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
 
-var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
+let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implemented yet
 </code></pre>
 
             </div>
@@ -257,10 +245,6 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
 
                             </li>
                             <li class="index-item method">
-                                <a href="#method_setOutput">setOutput</a>
-
-                            </li>
-                            <li class="index-item method">
                                 <a href="#method_setSystem">setSystem</a>
 
                             </li>
@@ -275,14 +259,14 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
                     <h3>Properties</h3>
 
                     <ul class="index-list properties">
-                            <li class="index-item property private">
-                                <a href="#property__settings">_settings</a>
-
-                            </li>
                             <li class="index-item property">
                                 <a href="#property_kollavarshamDate">kollavarshamDate</a>
 
                                     <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_settings">settings</a>
+
                             </li>
                     </ul>
                 </div>
@@ -317,7 +301,7 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l132"><code>lib&#x2F;index.js:132</code></a>
+        <a href="../files/lib_index.js.html#l138"><code>lib&#x2F;index.js:138</code></a>
         </p>
 
 
@@ -358,6 +342,17 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
         </div>
 
 
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>const Kollavarsham = require('Kollavarsham');
+const kollavarsham = new Kollavarsham();
+let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));
+</code></pre>
+
+            </div>
+        </div>
 </div>
 <div id="method_getSettings" class="method item">
     <h3 class="name"><code>getSettings</code></h3>
@@ -365,7 +360,7 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
         <span class="paren">()</span>
 
         <span class="returns-inline">
-            <span class="type">Object</span>
+            <span class="type">System, latitude, longitude</span>
         </span>
 
 
@@ -377,7 +372,7 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l65"><code>lib&#x2F;index.js:65</code></a>
+        <a href="../files/lib_index.js.html#l61"><code>lib&#x2F;index.js:61</code></a>
         </p>
 
 
@@ -394,13 +389,32 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                        <span class="type">Object</span>:
-                    <p>The current snapshot of the settings/configuration</p>
+                        <span class="type">System, latitude, longitude</span>:
+                    <p>}</p>
 
             </div>
         </div>
 
 
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>const Kollavarsham = require('kollavarsham');
+
+const options = {
+ system: 'InPancasiddhantika',
+ latitude: 10,
+ longitude: 76.2
+};
+
+const kollavarsham = new Kollavarsham(options);
+
+let currentSettings = kollavarsham.getSettings();
+</code></pre>
+
+            </div>
+        </div>
 </div>
 <div id="method_setLatitude" class="method item">
     <h3 class="name"><code>setLatitude</code></h3>
@@ -423,7 +437,7 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l92"><code>lib&#x2F;index.js:92</code></a>
+        <a href="../files/lib_index.js.html#l104"><code>lib&#x2F;index.js:104</code></a>
         </p>
 
 
@@ -431,7 +445,8 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
     </div>
 
     <div class="description">
-        <p>Sets the latitude for the location that will be used as the basis for the conversion</p>
+        <p>Sets the latitude for the location that will be used as the basis for the conversion.
+The value of the latitude parameter should be within -90 to +90</p>
 
     </div>
 
@@ -441,7 +456,7 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
             <ul class="params-list">
                 <li class="param">
                         <code class="param-name">latitude</code>
-                        <span class="type">Object</span>
+                        <span class="type">Number</span>
 
 
                     <div class="param-description">
@@ -458,8 +473,8 @@ var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var Kollavarsham = require('Kollavarsham');
-var kollavarsham = new Kolavarsham({});
+                <pre class="code prettyprint"><code>const Kollavarsham = require('Kollavarsham');
+const kollavarsham = new Kollavarsham();
 kollavarsham.setLatitude(8.5);
 </code></pre>
 
@@ -487,7 +502,7 @@ kollavarsham.setLatitude(8.5);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l107"><code>lib&#x2F;index.js:107</code></a>
+        <a href="../files/lib_index.js.html#l121"><code>lib&#x2F;index.js:121</code></a>
         </p>
 
 
@@ -495,7 +510,8 @@ kollavarsham.setLatitude(8.5);
     </div>
 
     <div class="description">
-        <p>Sets the longitude for the location that will be used as the basis of the conversion</p>
+        <p>Sets the longitude for the location that will be used as the basis of the conversion
+The value of the latitude parameter should be within -180 to +180</p>
 
     </div>
 
@@ -505,7 +521,7 @@ kollavarsham.setLatitude(8.5);
             <ul class="params-list">
                 <li class="param">
                         <code class="param-name">longitude</code>
-                        <span class="type">Object</span>
+                        <span class="type">Number</span>
 
 
                     <div class="param-description">
@@ -522,67 +538,13 @@ kollavarsham.setLatitude(8.5);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var Kollavarsham = require('Kollavarsham');
-var kollavarsham = new Kolavarsham({});
+                <pre class="code prettyprint"><code>const Kollavarsham = require('Kollavarsham');
+const kollavarsham = new Kollavarsham();
 kollavarsham.setLongitude(77.0);
 </code></pre>
 
             </div>
         </div>
-</div>
-<div id="method_setOutput" class="method item">
-    <h3 class="name"><code>setOutput</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code>output</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/lib_index.js.html#l123"><code>lib&#x2F;index.js:123</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Sets the output to be as 'list' or 'verbose'</p>
-
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name">output</code>
-                        <span class="type">String</span>
-
-
-                    <div class="param-description">
-                        <p>Valid values are 'verbose' (default) and 'list'</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-
-
 </div>
 <div id="method_setSystem" class="method item">
     <h3 class="name"><code>setSystem</code></h3>
@@ -605,7 +567,7 @@ kollavarsham.setLongitude(77.0);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l74"><code>lib&#x2F;index.js:74</code></a>
+        <a href="../files/lib_index.js.html#l85"><code>lib&#x2F;index.js:85</code></a>
         </p>
 
 
@@ -640,8 +602,8 @@ kollavarsham.setLongitude(77.0);
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var Kollavarsham = require('Kollavarsham');
-var kollavarsham = new Kolavarsham({});
+                <pre class="code prettyprint"><code>const Kollavarsham = require('Kollavarsham');
+const kollavarsham = new Kollavarsham();
 kollavarsham.setSystem('InPancasiddhantika');
 kollavarsham.setInputDate(new Date(2014, 2, 14));
 kollavarsham.convert();
@@ -674,7 +636,7 @@ kollavarsham.convert();
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l144"><code>lib&#x2F;index.js:144</code></a>
+        <a href="../files/lib_index.js.html#l157"><code>lib&#x2F;index.js:157</code></a>
         </p>
 
 
@@ -722,7 +684,7 @@ This method Will return <a href="../classes/JulianDate.html" class="crosslink">J
 
             <div class="throws-description">
                         <span class="type">Error</span>:
-                    <p>When the API is implemented, will convert {date}</p>
+                    <p>When the API is implemented, will convert <date></p>
 
             </div>
         </div>
@@ -733,32 +695,6 @@ This method Will return <a href="../classes/JulianDate.html" class="crosslink">J
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
-<div id="property__settings" class="property item private">
-    <h3 class="name"><code>_settings</code></h3>
-    <span class="type">Object</span>
-
-
-        <span class="flag private">private</span>
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/lib_index.js.html#l51"><code>lib&#x2F;index.js:51</code></a>
-        </p>
-
-
-    </div>
-
-    <div class="description">
-        <p>Holds the settings state of the Kollavarsham instance. To access a snapshot use the <a href="../classes/Kollavarsham.html#method_getSettings" class="crosslink">getSettings</a> method</p>
-
-    </div>
-
-
-
-</div>
 <div id="property_kollavarshamDate" class="property item">
     <h3 class="name"><code>kollavarshamDate</code></h3>
     <span class="type"><a href="../classes/KollavarshamDate.html" class="crosslink">KollavarshamDate</a></span>
@@ -771,7 +707,7 @@ This method Will return <a href="../classes/JulianDate.html" class="crosslink">J
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l167"><code>lib&#x2F;index.js:167</code></a>
+        <a href="../files/lib_index.js.html#l181"><code>lib&#x2F;index.js:181</code></a>
         </p>
 
 
@@ -789,15 +725,40 @@ to <a href="../classes/Kollavarsham.html#method_toGregorianDate" class="crosslin
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>var Kollavarsham = require('kollavarsham');
-var KollavarshamDate = require('kollavarsham').kollavarshamDate;
+                <pre class="code prettyprint"><code>const Kollavarsham = require('kollavarsham');
+const KollavarshamDate = require('kollavarsham').kollavarshamDate;
 
-var myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
-var myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
+let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
+let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
 </code></pre>
 
             </div>
         </div>
+
+</div>
+<div id="property_settings" class="property item">
+    <h3 class="name"><code>settings</code></h3>
+    <span class="type">System, latitude, longitude</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_index.js.html#l49"><code>lib&#x2F;index.js:49</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>Holds the settings state of the Kollavarsham instance. To access a snapshot use the <a href="../classes/Kollavarsham.html#method_getSettings" class="crosslink">getSettings</a> method</p>
+
+    </div>
+
+
 
 </div>
             </div>
@@ -814,7 +775,7 @@ var myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toG
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Wed, 16 Sep 2015 15:00:26 GMT</span>
+  <span class="last-modified">Last Updated: Wed, 16 Sep 2015 16:36:37 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

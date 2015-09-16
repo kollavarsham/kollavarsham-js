@@ -14,7 +14,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "date",
             "name": "date",
-            "description": "Defines the KollavarshamDate and JulianDate classes"
+            "description": "Defines the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} and {{#crossLink \"JulianDate\"}}{{/crossLink}} classes"
         },
         {
             "displayName": "kollavarsham",
