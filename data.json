@@ -80,7 +80,7 @@
             "namespace": "",
             "file": "lib/date.js",
             "line": 26,
-            "description": "Serves as the base class for both the {{#crossLink \"JulianDate\"}}{{/crossLink}} and\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} classes.\n\n ** INTERNAL/PRIVATE **",
+            "description": "Serves as the base class for both the {{#crossLink \"JulianDate\"}}{{/crossLink}} and\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} classes.\n\n **INTERNAL/PRIVATE**",
             "access": "private",
             "tagname": ""
         },
@@ -96,7 +96,7 @@
             "namespace": "",
             "file": "lib/date.js",
             "line": 56,
-            "description": "Represents a Julian date's year, month and day\n\n ** INTERNAL/PRIVATE **"
+            "description": "Represents a Julian date's year, month and day\n\n **INTERNAL/PRIVATE**"
         },
         "KollavarshamDate": {
             "name": "KollavarshamDate",
