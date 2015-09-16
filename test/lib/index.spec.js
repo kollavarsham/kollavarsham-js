@@ -148,7 +148,6 @@ describe('Kollavarsham', function () {
       expect(settings.system).to.equal('SuryaSiddhanta');
       expect(settings.latitude).to.equal(23.2);
       expect(settings.longitude).to.equal(75.8);
-      expect(settings.outputformat).to.equal('verbose');
 
     });
 
