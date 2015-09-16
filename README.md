@@ -53,8 +53,8 @@ Check out the history at [GitHub Releases](https://github.com/kollavarsham/kolla
 ## License
 Copyright (c) 2014-2015 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
 
-[npm-image]: https://img.shields.io/npm/v/kollavarsham.svg
-[npm-url]: https://npmjs.org/package/kollavarsham
+[npm-image]: https://img.shields.io/npm/v/kollavarsham-js.svg
+[npm-url]: https://npmjs.org/package/kollavarsham-js
 [travis-image]: https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg
 [travis-url]: https://travis-ci.org/kollavarsham/kollavarsham-js
 [daviddm-image]: https://img.shields.io/david/kollavarsham/kollavarsham-js.svg
