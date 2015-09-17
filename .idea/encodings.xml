@@ -4,7 +4,6 @@
     <file url="file://$PROJECT_DIR$/.codeclimate.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.eslintignore" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.eslintrc" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/.npmignore" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.travis.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
@@ -15,7 +14,6 @@
     <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/planets/index.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/yuga.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lib/date.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/dates/baseDate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/dates/julianDate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/dates/kollavarshamDate.js" charset="UTF-8" />
@@ -29,7 +27,6 @@
     <file url="file://$PROJECT_DIR$/test/lib/calendar.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/celestial/index.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/celestial/planetarySystem/index.spec.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/test/lib/date.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/dates/julianDate.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/dates/kollavarshamDate.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/dates/sakaDate.spec.js" charset="UTF-8" />
