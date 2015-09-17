@@ -26,7 +26,7 @@ describe('Kollavarsham', function () {
     it('should return a valid malayalam date', function () {
       expect(malayalamDate.year).to.equal(1154);
       expect(malayalamDate.month).to.equal(10);
-      expect(malayalamDate.day).to.equal(8);
+      expect(malayalamDate.date).to.equal(8);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
       expect(malayalamDate.calendarData.YearKali).to.equal(5080);
       expect(malayalamDate.calendarData.YearSaka).to.equal(1901);
@@ -62,7 +62,7 @@ describe('Kollavarsham', function () {
     it('should return a valid malayalam date', function () {
       expect(malayalamDate.year).to.equal(1159);
       expect(malayalamDate.month).to.equal(1);
-      expect(malayalamDate.day).to.equal(22);
+      expect(malayalamDate.date).to.equal(22);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
       expect(malayalamDate.calendarData.YearKali).to.equal(5084);
       expect(malayalamDate.calendarData.YearSaka).to.equal(1905);
@@ -98,7 +98,7 @@ describe('Kollavarsham', function () {
     it('should return a valid malayalam date', function () {
       expect(malayalamDate.year).to.equal(1159);
       expect(malayalamDate.month).to.equal(2);
-      expect(malayalamDate.day).to.equal(5);
+      expect(malayalamDate.date).to.equal(5);
       expect(malayalamDate.calendarData.paksa).to.equal('Suklapaksa');
       expect(malayalamDate.calendarData.YearKali).to.equal(5084);
       expect(malayalamDate.calendarData.YearSaka).to.equal(1905);
@@ -247,7 +247,7 @@ describe('Kollavarsham', function () {
       expect(JulianDate.prototype.isPrototypeOf(date.gregorianDate)).to.be.true;
       expect(date.gregorianDate.year).to.equal(1515);
       expect(date.gregorianDate.month).to.equal(7);
-      expect(date.gregorianDate.day).to.equal(23);
+      expect(date.gregorianDate.date).to.equal(23);
 
       expect(date.julianDay).to.equal(2274615);
       expect(date.weekdayName).to.equal('Monday');

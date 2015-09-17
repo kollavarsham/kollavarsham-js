@@ -294,39 +294,39 @@ describe('Calendar', function () {
 
   });
 
-  describe('getSauraMasaMonthDay', function () {
+  describe('getSauraMasaAndSauraDivasa', function () {
 
     it('should return correct results', function () {
 
-      expect(calendar.getSauraMasaMonthDay(2299158.5, 0).month).to.equal(7);
-      expect(calendar.getSauraMasaMonthDay(2299159.5, 0).month).to.equal(7);
-      expect(calendar.getSauraMasaMonthDay(2299160.5, 0).month).to.equal(7);
-      expect(calendar.getSauraMasaMonthDay(2299161.5, 0).month).to.equal(7);
-      expect(calendar.getSauraMasaMonthDay(2361220.5, 0).month).to.equal(6);
-      expect(calendar.getSauraMasaMonthDay(2361221.5, 0).month).to.equal(6);
-      expect(calendar.getSauraMasaMonthDay(2361222.5, 0).month).to.equal(6);
-      expect(calendar.getSauraMasaMonthDay(1721457.5, 0).month).to.equal(11);
-      expect(calendar.getSauraMasaMonthDay(2456656.5, 0).month).to.equal(9);
-      expect(calendar.getSauraMasaMonthDay(2456657.5, 0).month).to.equal(9);
-      expect(calendar.getSauraMasaMonthDay(2455957.5, 0).month).to.equal(10);
-      expect(calendar.getSauraMasaMonthDay(2456351.5, 0).month).to.equal(11);
-      expect(calendar.getSauraMasaMonthDay(2455985.5, 0).month).to.equal(11);
-      expect(calendar.getSauraMasaMonthDay(2433313.5, 0).month).to.equal(10);
-      expect(calendar.getSauraMasaMonthDay(2299158.5, 0).day).to.equal(6);
-      expect(calendar.getSauraMasaMonthDay(2299159.5, 0).day).to.equal(7);
-      expect(calendar.getSauraMasaMonthDay(2299160.5, 0).day).to.equal(8);
-      expect(calendar.getSauraMasaMonthDay(2299161.5, 0).day).to.equal(9);
-      expect(calendar.getSauraMasaMonthDay(2361220.5, 0).day).to.equal(4);
-      expect(calendar.getSauraMasaMonthDay(2361221.5, 0).day).to.equal(5);
-      expect(calendar.getSauraMasaMonthDay(2361222.5, 0).day).to.equal(6);
-      expect(calendar.getSauraMasaMonthDay(1721457.5, 0).day).to.equal(27);
-      expect(calendar.getSauraMasaMonthDay(2456656.5, 0).day).to.equal(19);
-      expect(calendar.getSauraMasaMonthDay(2456657.5, 0).day).to.equal(20);
-      expect(calendar.getSauraMasaMonthDay(2455957.5, 0).day).to.equal(21);
-      expect(calendar.getSauraMasaMonthDay(2456351.5, 0).day).to.equal(20);
-      expect(calendar.getSauraMasaMonthDay(2455985.5, 0).day).to.equal(19);
-      expect(calendar.getSauraMasaMonthDay(2433313.5, 0).day).to.equal(23);
-      expect(calendar.getSauraMasaMonthDay(2313.5, 0).day).to.equal(31);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299158.5, 0).sauraMasa).to.equal(7);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299159.5, 0).sauraMasa).to.equal(7);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299160.5, 0).sauraMasa).to.equal(7);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299161.5, 0).sauraMasa).to.equal(7);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361220.5, 0).sauraMasa).to.equal(6);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361221.5, 0).sauraMasa).to.equal(6);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361222.5, 0).sauraMasa).to.equal(6);
+      expect(calendar.getSauraMasaAndSauraDivasa(1721457.5, 0).sauraMasa).to.equal(11);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456656.5, 0).sauraMasa).to.equal(9);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456657.5, 0).sauraMasa).to.equal(9);
+      expect(calendar.getSauraMasaAndSauraDivasa(2455957.5, 0).sauraMasa).to.equal(10);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456351.5, 0).sauraMasa).to.equal(11);
+      expect(calendar.getSauraMasaAndSauraDivasa(2455985.5, 0).sauraMasa).to.equal(11);
+      expect(calendar.getSauraMasaAndSauraDivasa(2433313.5, 0).sauraMasa).to.equal(10);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299158.5, 0).sauraDivasa).to.equal(6);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299159.5, 0).sauraDivasa).to.equal(7);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299160.5, 0).sauraDivasa).to.equal(8);
+      expect(calendar.getSauraMasaAndSauraDivasa(2299161.5, 0).sauraDivasa).to.equal(9);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361220.5, 0).sauraDivasa).to.equal(4);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361221.5, 0).sauraDivasa).to.equal(5);
+      expect(calendar.getSauraMasaAndSauraDivasa(2361222.5, 0).sauraDivasa).to.equal(6);
+      expect(calendar.getSauraMasaAndSauraDivasa(1721457.5, 0).sauraDivasa).to.equal(27);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456656.5, 0).sauraDivasa).to.equal(19);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456657.5, 0).sauraDivasa).to.equal(20);
+      expect(calendar.getSauraMasaAndSauraDivasa(2455957.5, 0).sauraDivasa).to.equal(21);
+      expect(calendar.getSauraMasaAndSauraDivasa(2456351.5, 0).sauraDivasa).to.equal(20);
+      expect(calendar.getSauraMasaAndSauraDivasa(2455985.5, 0).sauraDivasa).to.equal(19);
+      expect(calendar.getSauraMasaAndSauraDivasa(2433313.5, 0).sauraDivasa).to.equal(23);
+      expect(calendar.getSauraMasaAndSauraDivasa(2313.5, 0).sauraDivasa).to.equal(31);
 
     });
 

@@ -12,7 +12,7 @@ describe('KollavarshamDate', function () {
 
   describe('empty constructor', function () {
     it('should set up the date correctly', function () {
-      expect(date.day).to.equal(1);
+      expect(date.date).to.equal(1);
       expect(date.month).to.equal(1);
       expect(date.year).to.equal(1);
     });

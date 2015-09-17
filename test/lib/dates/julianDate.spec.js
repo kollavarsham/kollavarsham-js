@@ -14,7 +14,7 @@ describe('JulianDate', function () {
     it('should set up the date correctly', function () {
       expect(julianDate.year).to.equal(2013);
       expect(julianDate.month).to.equal(12);
-      expect(julianDate.day).to.equal(31);
+      expect(julianDate.date).to.equal(31);
     });
 
   });
@@ -34,7 +34,7 @@ describe('JulianDate', function () {
     it('should set up the date correctly', function () {
       expect(julianDate.year).to.equal(1);
       expect(julianDate.month).to.equal(1);
-      expect(julianDate.day).to.equal(1);
+      expect(julianDate.date).to.equal(1);
       expect(julianDate.toString()).to.equal('0001 01 01');
     });
   });
