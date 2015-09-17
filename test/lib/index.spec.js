@@ -2,6 +2,7 @@ import {expect} from 'chai';
 
 import Kollavarsham from '../../lib/index.js';
 import JulianDate from '../../lib/dates/julianDate.js';
+import SakaDate from '../../lib/dates/sakaDate.js';
 
 describe('Kollavarsham', function () {
 
@@ -222,7 +223,7 @@ describe('Kollavarsham', function () {
 
   });
 
-  describe('toGregorianDateFromSaka 01', function () {
+  describe('toGregorianDateFromSaka - with invalid Saka Date', function () {
 
     beforeEach(function () {
 
@@ -233,6 +234,25 @@ describe('Kollavarsham', function () {
         paksa    : 'Krsnapaksa',
         tithiDay : 12
       };
+
+    });
+
+    it('should throw appropriate exception', function () {
+
+      expect(function () {
+        kollavarsham.toGregorianDateFromSaka(hinduDate);
+      }).to.throw('Parameter sakaDate should be an instance of the \'SakaDate\' class');
+
+    });
+
+  });
+
+  describe('toGregorianDateFromSaka 01', function () {
+
+    beforeEach(function () {
+
+      kollavarsham = new Kollavarsham();
+      hinduDate = new SakaDate(1937, 4, 12, 'Krsnapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     });
@@ -256,12 +276,7 @@ describe('Kollavarsham', function () {
     beforeEach(function () {
 
       kollavarsham = new Kollavarsham();
-      hinduDate = {
-        yearSaka : 1937,
-        masaNum  : 4,
-        paksa    : 'Suklapaksa',
-        tithiDay : 12
-      };
+      hinduDate = new SakaDate(1937, 4, 12, 'Suklapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     });
@@ -285,12 +300,7 @@ describe('Kollavarsham', function () {
     beforeEach(function () {
 
       kollavarsham = new Kollavarsham();
-      hinduDate = {
-        yearSaka : 1437,
-        masaNum  : 4,
-        paksa    : 'Suklapaksa',
-        tithiDay : 12
-      };
+      hinduDate = new SakaDate(1437, 4, 12, 'Suklapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
 
     });
