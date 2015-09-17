@@ -9,36 +9,31 @@ YUI.add("yuidoc-meta", function(Y) {
     ],
     "modules": [
         "baseDate",
-        "indianDate",
         "julianDate",
         "kollavarsham",
-        "kollavarshamDate"
+        "kollavarshamDate",
+        "sakaDate"
     ],
     "allModules": [
         {
             "displayName": "baseDate",
-            "name": "baseDate",
-            "description": "Defines the {{#crossLink \"BaseDate\"}}{{/crossLink}} which is inherited by {{#crossLink \"JulianDate\"}}{{/crossLink}},\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} and {{#crossLink \"SakaDate\"}}{{/crossLink}} classes"
-        },
-        {
-            "displayName": "indianDate",
-            "name": "indianDate",
-            "description": "Defines the {{#crossLink \"SakaDate\"}}{{/crossLink}} class"
+            "name": "baseDate"
         },
         {
             "displayName": "julianDate",
-            "name": "julianDate",
-            "description": "Defines the {{#crossLink \"JulianDate\"}}{{/crossLink}} class"
+            "name": "julianDate"
         },
         {
             "displayName": "kollavarsham",
-            "name": "kollavarsham",
-            "description": "The main module that exposes all of the public API in the library"
+            "name": "kollavarsham"
         },
         {
             "displayName": "kollavarshamDate",
-            "name": "kollavarshamDate",
-            "description": "Defines the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} class"
+            "name": "kollavarshamDate"
+        },
+        {
+            "displayName": "sakaDate",
+            "name": "sakaDate"
         }
     ],
     "elements": []
