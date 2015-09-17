@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.codeclimate.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.eslintignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.eslintrc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.npmignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.travis.yml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/deploy.sh" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gulpfile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/calculations.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/celestial/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/planets/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/celestial/planetarySystem/yuga.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/date.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/dates/baseDate.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/dates/julianDate.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/dates/kollavarshamDate.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/dates/sakaDate.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/index.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/locations.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/mathHelper.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/.eslintrc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/calculations.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/calendar.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/celestial/index.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/celestial/planetarySystem/index.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/date.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/dates/julianDate.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/dates/kollavarshamDate.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/dates/sakaDate.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/index.spec.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/lib/mathHelper.spec.js" charset="UTF-8" />
+  </component>
+</project>
