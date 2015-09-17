@@ -35,4 +35,23 @@ describe('JulianDate', function () {
 
   });
 
+  describe('empty constructor', function () {
+
+    beforeEach(function () {
+
+      julianDate = new JulianDate(); // Not perhaps a valid Julian Date
+
+    });
+
+    it('should set up the date correctly', function () {
+
+      expect(julianDate.year).to.equal(1);
+      expect(julianDate.month).to.equal(1);
+      expect(julianDate.day).to.equal(1);
+      expect(julianDate.toString()).to.equal('0001 01 01');
+
+    });
+
+  });
+
 });
