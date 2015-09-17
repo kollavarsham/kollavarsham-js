@@ -365,6 +365,56 @@
             "module": "baseDate"
         },
         {
+            "file": "lib/dates/sakaDate.js",
+            "line": 34,
+            "description": "The gregorian date corresponding to this instance of SakaDate. Set separately after an instance is created",
+            "itemtype": "property",
+            "name": "gregorianDate",
+            "type": "{Date}",
+            "class": "SakaDate",
+            "module": "indianDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 42,
+            "description": "The `Julian Day` corresponding to this instance of SakaDate. Set separately after an instance is created\nJulian day is the continuous count of days since the beginning of the Julian Period used primarily by astronomers.\n_Source_: https://en.wikipedia.org/wiki/Julian_day",
+            "itemtype": "property",
+            "name": "julianDay",
+            "type": "{Number}",
+            "class": "SakaDate",
+            "module": "indianDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 52,
+            "description": "The `Ahargana` corresponding to this instance of SakaDate. Set separately after an instance is created\nIn Sanskrit `ahoratra` means one full day and `gana` means count.\nHence, the Ahargana on any given day stands for the number of lunar days that have elapsed starting from an epoch.\n_Source_: http://cs.annauniv.edu/insight/Reading%20Materials/astro/sharptime/ahargana.htm",
+            "itemtype": "property",
+            "name": "ahargana",
+            "type": "{Number}",
+            "class": "SakaDate",
+            "module": "indianDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 63,
+            "description": "The `Saura Masa` (Solar Calendar Month) for this instance of SakaDate. Set separately after an instance is created",
+            "itemtype": "property",
+            "name": "sauraMasaNumber",
+            "type": "{Number}",
+            "class": "SakaDate",
+            "module": "indianDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 71,
+            "description": "The `Saura Divasa` (Solar Calendar Day) for this instance of SakaDate. Set separately after an instance is created",
+            "itemtype": "property",
+            "name": "sauraDivasaNumber",
+            "type": "{Number}",
+            "class": "SakaDate",
+            "module": "indianDate"
+        },
+        {
             "file": "lib/index.js",
             "line": 50,
             "description": "Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink \"Kollavarsham/getSettings:method\"}}{{/crossLink}} method",
