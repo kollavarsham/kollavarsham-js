@@ -6,8 +6,8 @@
         "url": "http://kollavarsham.org"
     },
     "files": {
-        "lib\\dates\\baseDate.js": {
-            "name": "lib\\dates\\baseDate.js",
+        "lib/dates/baseDate.js": {
+            "name": "lib/dates/baseDate.js",
             "modules": {
                 "baseDate": 1
             },
@@ -19,8 +19,8 @@
             },
             "namespaces": {}
         },
-        "lib\\dates\\julianDate.js": {
-            "name": "lib\\dates\\julianDate.js",
+        "lib/dates/julianDate.js": {
+            "name": "lib/dates/julianDate.js",
             "modules": {
                 "julianDate": 1
             },
@@ -30,8 +30,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib\\dates\\kollavarshamDate.js": {
-            "name": "lib\\dates\\kollavarshamDate.js",
+        "lib/dates/kollavarshamDate.js": {
+            "name": "lib/dates/kollavarshamDate.js",
             "modules": {
                 "kollavarshamDate": 1
             },
@@ -41,8 +41,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib\\index.js": {
-            "name": "lib\\index.js",
+        "lib/index.js": {
+            "name": "lib/index.js",
             "modules": {
                 "kollavarsham": 1
             },
@@ -68,7 +68,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib\\dates\\baseDate.js",
+            "file": "lib/dates/baseDate.js",
             "line": 19,
             "description": "Defines the {{#crossLink \"BaseDate\"}}{{/crossLink}} which is inherited by {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} and {{#crossLink \"JulianDate\"}}{{/crossLink}} classes"
         },
@@ -82,7 +82,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib\\dates\\julianDate.js",
+            "file": "lib/dates/julianDate.js",
             "line": 16,
             "description": "Defines the {{#crossLink \"JulianDate\"}}{{/crossLink}} class"
         },
@@ -96,7 +96,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib\\dates\\kollavarshamDate.js",
+            "file": "lib/dates/kollavarshamDate.js",
             "line": 16,
             "description": "Defines the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} class"
         },
@@ -112,7 +112,7 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 18,
             "description": "The main module that exposes all of the public API in the library"
         }
@@ -128,7 +128,7 @@
             "extension_for": [],
             "module": "baseDate",
             "namespace": "",
-            "file": "lib\\dates\\baseDate.js",
+            "file": "lib/dates/baseDate.js",
             "line": 19,
             "description": "Serves as the base class for both the {{#crossLink \"JulianDate\"}}{{/crossLink}} and\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} classes.\n\n **INTERNAL/PRIVATE**",
             "is_constructor": 1,
@@ -160,7 +160,7 @@
             "extension_for": [],
             "module": "julianDate",
             "namespace": "",
-            "file": "lib\\dates\\julianDate.js",
+            "file": "lib/dates/julianDate.js",
             "line": 16,
             "description": "Represents a Julian date's year, month and day\n\n **INTERNAL/PRIVATE**",
             "is_constructor": 1,
@@ -199,7 +199,7 @@
             "extension_for": [],
             "module": "kollavarshamDate",
             "namespace": "",
-            "file": "lib\\dates\\kollavarshamDate.js",
+            "file": "lib/dates/kollavarshamDate.js",
             "line": 16,
             "description": "Represent's a Kollavarsham date's year, month and date",
             "is_constructor": 1,
@@ -238,7 +238,7 @@
             "extension_for": [],
             "module": "kollavarsham",
             "namespace": "",
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 18,
             "description": "The Kollavarsham class implements all the public APIs of the library.\n\nCreate a new instance of this class, passing in the relevant options and call methods on the instance.",
             "params": [
@@ -281,7 +281,7 @@
     "elements": {},
     "classitems": [
         {
-            "file": "lib\\dates\\baseDate.js",
+            "file": "lib/dates/baseDate.js",
             "line": 39,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
@@ -294,7 +294,7 @@
             "module": "baseDate"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 49,
             "description": "Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink \"Kollavarsham/getSettings:method\"}}{{/crossLink}} method",
             "itemtype": "property",
@@ -304,7 +304,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 61,
             "description": "Gets a snapshot of the current settings",
             "itemtype": "method",
@@ -320,7 +320,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 85,
             "description": "Sets the system to be either 'InPancasiddhantika' or 'SuryaSiddhanta'",
             "itemtype": "method",
@@ -339,7 +339,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 104,
             "description": "Sets the latitude for the location that will be used as the basis for the conversion.\nThe value of the latitude parameter should be within -90 to +90",
             "itemtype": "method",
@@ -358,7 +358,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 121,
             "description": "Sets the longitude for the location that will be used as the basis of the conversion\nThe value of the latitude parameter should be within -180 to +180",
             "itemtype": "method",
@@ -377,7 +377,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 138,
             "description": "Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration",
             "itemtype": "method",
@@ -400,7 +400,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 157,
             "description": "Converts a Kollavarsham date to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.\n\n **This API has not been implemented yet**",
             "itemtype": "method",
@@ -424,7 +424,7 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib\\index.js",
+            "file": "lib/index.js",
             "line": 181,
             "description": "Exports the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} class for referencing via `require`. This is the class\nthat is returned when converting {{#crossLink \"Kollavarsham/fromGregorianDate:method\"}}{{/crossLink}} and is passed in\nto {{#crossLink \"Kollavarsham/toGregorianDate:method\"}}{{/crossLink}}. See example below.",
             "itemtype": "property",
@@ -441,15 +441,15 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib\\index.js:61"
+            "line": " lib/index.js:61"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib\\index.js:138"
+            "line": " lib/index.js:138"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib\\index.js:157"
+            "line": " lib/index.js:157"
         }
     ]
 }
