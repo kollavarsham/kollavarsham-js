@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/index.js - kollavarsham</title>
+    <title>lib\index.js - kollavarsham</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -45,8 +45,10 @@
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/date.html">date</a></li>
+                                <li><a href="../modules/baseDate.html">baseDate</a></li>
+                                <li><a href="../modules/julianDate.html">julianDate</a></li>
                                 <li><a href="../modules/kollavarsham.html">kollavarsham</a></li>
+                                <li><a href="../modules/kollavarshamDate.html">kollavarshamDate</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,7 +81,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/index.js</h1>
+                    <div class="content"><h1 class="file-heading">File: lib\index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -98,7 +100,7 @@
 import util from &#x27;util&#x27;;
 
 import Calculations from &#x27;./calculations.js&#x27;;
-import {KollavarshamDate} from &#x27;./date.js&#x27;;
+import KollavarshamDate from &#x27;./dates/kollavarshamDate.js&#x27;;
 
 /**
  * The Kollavarsham class implements all the public APIs of the library.
@@ -294,7 +296,7 @@ export default Kollavarsham;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Wed, 16 Sep 2015 16:36:37 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 17 Sep 2015 14:13:56 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

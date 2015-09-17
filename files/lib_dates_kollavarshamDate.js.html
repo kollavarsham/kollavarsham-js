@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JulianDate - kollavarsham</title>
+    <title>lib\dates\kollavarshamDate.js - kollavarsham</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -81,191 +81,48 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1>JulianDate Class</h1>
-<div class="box meta">
-
-        <div class="extends">
-            Extends <a href="../classes/BaseDate.html" class="crosslink">BaseDate</a>
-        </div>
-
-        <div class="foundat">
-            Defined in: <a href="../files/lib_dates_julianDate.js.html#l16"><code>lib\dates\julianDate.js:16</code></a>
-        </div>
-
-            Module: <a href="../modules/julianDate.html">julianDate</a>
-
-</div>
-
-
-<div class="box intro">
-    <p>Represents a Julian date's year, month and day</p>
-<p><strong>INTERNAL/PRIVATE</strong></p>
-
-</div>
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-<div id="method_JulianDate" class="method item">
-    <h3 class="name"><code>JulianDate</code></h3>
-
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-                <li class="arg">
-                        <code class="optional">[year=1]</code>
-                </li>
-                <li class="arg">
-                        <code class="optional">[month=1]</code>
-                </li>
-                <li class="arg">
-                        <code class="optional">[day=1]</code>
-                </li>
-            </ul><span class="paren">)</span>
-        </div>
-
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/lib_dates_julianDate.js.html#l16"><code>lib\dates\julianDate.js:16</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-                <li class="param">
-                        <code class="param-name optional">[year=1]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-
-
-                    <div class="param-description">
-                        <p>Julian year</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name optional">[month=1]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-
-
-                    <div class="param-description">
-                        <p>Julian month</p>
-
-                    </div>
-
-                </li>
-                <li class="param">
-                        <code class="param-name optional">[day=1]</code>
-                        <span class="type">Number</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-
-
-                    <div class="param-description">
-                        <p>Julian day</p>
-
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-
-
-
-</div>
-    </div>
-
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
-
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods extends">
-                            <li class="index-item method inherited">
-                                <a href="#method_toString">toString</a>
-
-                            </li>
-                    </ul>
-                </div>
-
-
-
-        </div>
-
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-<div id="method_toString" class="method item inherited">
-    <h3 class="name"><code>toString</code></h3>
-
-        <span class="paren">()</span>
-
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-
-
-
-
-
-
-
-    <div class="meta">
-                <p>Inherited from
-                <a href="../classes/BaseDate.html#method_toString">BaseDate</a>:
-        <a href="../files/lib_dates_baseDate.js.html#l39"><code>lib\dates\baseDate.js:39</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>Converts the Date to a nicely formatted string with year, month and date</p>
-
-    </div>
-
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">String</span>:
-            </div>
-        </div>
-
-
-</div>
-            </div>
-
-
-
-    </div>
+                    <div class="content"><h1 class="file-heading">File: lib\dates\kollavarshamDate.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2015 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+
+/**
+ * Defines the {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} class
+ * @module kollavarshamDate
+ */
+
+import BaseDate from &#x27;./baseDate.js&#x27;;
+
+/**
+ * Represent&#x27;s a Kollavarsham date&#x27;s year, month and date
+ * @class KollavarshamDate
+ * @constructor
+ * @param [year=1] {Number} The Kollavarsham year
+ * @param [month=1] {Number} The Kollavarsham month
+ * @param [day=1] {Number} The Kollavarsham day
+ * @extends BaseDate
+ */
+class KollavarshamDate extends BaseDate {
+  constructor(year = 1, month = 1, day = 1) {
+    super(year, month, day);
+    this.gregorianDate = null;
+    this.julianDay = null;
+    this.weekdayName = null;
+    this.mlWeekdayName = null;
+    this.ahargana = null;
+  }
+}
+
+export default KollavarshamDate;
+
+    </pre>
 </div>
                     </div>
                 </div>
