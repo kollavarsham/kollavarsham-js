@@ -16,7 +16,7 @@ describe('Kollavarsham', function () {
     expect(Kollavarsham).to.exist;
   });
 
-  describe('fromGregorianDate end to end integration 01', function () {
+  describe('fromGregorianDate 01', function () {
 
     beforeEach(function () {
       kollavarsham = new Kollavarsham();
@@ -55,7 +55,7 @@ describe('Kollavarsham', function () {
 
   });
 
-  describe('fromGregorianDate end to end integration 02', function () {
+  describe('fromGregorianDate 02', function () {
 
     beforeEach(function () {
       kollavarsham = new Kollavarsham();
@@ -95,7 +95,7 @@ describe('Kollavarsham', function () {
 
   });
 
-  describe('fromGregorianDate end to end integration 03', function () {
+  describe('fromGregorianDate 03', function () {
 
     beforeEach(function () {
       kollavarsham = new Kollavarsham();

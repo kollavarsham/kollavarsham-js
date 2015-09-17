@@ -116,7 +116,7 @@ describe('Celestial', function () {
 
   });
 
-  describe('getTllong', function () {
+  describe('getTrueLunarLongitude', function () {
 
     it('should return correct results', function () {
 
@@ -139,7 +139,7 @@ describe('Celestial', function () {
 
   });
 
-  describe('getTslong', function () {
+  describe('getTrueSolarLongitude', function () {
 
     it('should return correct results', function () {
 
@@ -271,7 +271,7 @@ describe('Celestial', function () {
 
   });
 
-  describe('getElong', function () {
+  describe('getEclipticLongitude', function () {
 
     it('should return correct results', function () {
 

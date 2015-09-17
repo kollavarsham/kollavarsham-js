@@ -17,7 +17,6 @@ describe('PlanetarySystem', function () {
     });
 
     it('should set the YugaRotation values correctly', function () {
-
       expect(planets.star.YugaRotation).to.equal(1582237800);
       expect(planets.sun.YugaRotation).to.equal(4320000);
       expect(planets.moon.YugaRotation).to.equal(57753336);
@@ -28,13 +27,11 @@ describe('PlanetarySystem', function () {
       expect(planets.saturn.YugaRotation).to.equal(146564);
       expect(planets.candrocca.YugaRotation).to.equal(488219);
       expect(planets.rahu.YugaRotation).to.equal(-232226);
-
     });
 
   });
 
   describe('constructor with system as SuryaSiddhanta', function () {
-
     beforeEach(function () {
       planetarySystem = new PlanetarySystem('SuryaSiddhanta');
       planets = planetarySystem.planets;
@@ -42,7 +39,6 @@ describe('PlanetarySystem', function () {
     });
 
     it('should set up the planetary constants correctly', function () {
-
       expect(planets.star.YugaRotation).to.equal(1582237800);
       expect(planets.sun.YugaRotation).to.equal(4320000);
       expect(planets.moon.YugaRotation).to.equal(57753336);
@@ -114,13 +110,10 @@ describe('PlanetarySystem', function () {
       expect(yuga.Adhimasa).to.equal(1593336);
       expect(yuga.Tithi).to.equal(1603000080);
       expect(yuga.Ksayadina).to.equal(25082280);
-
     });
-
   });
 
   describe('constructor with system as InPancasiddhantika', function () {
-
     beforeEach(function () {
       planetarySystem = new PlanetarySystem('InPancasiddhantika');
       planets = planetarySystem.planets;
@@ -128,7 +121,6 @@ describe('PlanetarySystem', function () {
     });
 
     it('should set up the planetary constants correctly', function () {
-
       expect(planets.star.YugaRotation).to.equal(1582237828);
       expect(planets.sun.YugaRotation).to.equal(4320000);
       expect(planets.moon.YugaRotation).to.equal(57753336);
@@ -200,7 +192,6 @@ describe('PlanetarySystem', function () {
       expect(yuga.Adhimasa).to.equal(1593336);
       expect(yuga.Tithi).to.equal(1603000080);
       expect(yuga.Ksayadina).to.equal(25082252);
-
     });
 
   });

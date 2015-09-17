@@ -13,11 +13,11 @@ describe('Calendar', function () {
     outputformat : 'verbose'
   };
 
-  function cmpDates(date1, date2) {
+  const cmpDates = function (date1, date2) {
     return date1.getFullYear() === date2.getFullYear() &&
       date1.getMonth() === date2.getMonth() &&
       date1.getDate() === date2.getDate();
-  }
+  };
 
   beforeEach(function () {
     calendar = new Calendar(settings);
