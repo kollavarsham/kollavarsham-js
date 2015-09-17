@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import JulianDate from '../../../lib/dates/julianDate';
+import JulianDate from '../../../lib/dates/julianDate.js';
 
 describe('JulianDate', function () {
 
@@ -39,7 +39,7 @@ describe('JulianDate', function () {
 
     beforeEach(function () {
 
-      julianDate = new JulianDate(); // Not perhaps a valid Julian Date
+      julianDate = new JulianDate();
 
     });
 
