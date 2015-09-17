@@ -4,10 +4,12 @@ YUI.add("yuidoc-meta", function(Y) {
         "BaseDate",
         "JulianDate",
         "Kollavarsham",
-        "KollavarshamDate"
+        "KollavarshamDate",
+        "SakaDate"
     ],
     "modules": [
         "baseDate",
+        "indianDate",
         "julianDate",
         "kollavarsham",
         "kollavarshamDate"
@@ -16,7 +18,12 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "baseDate",
             "name": "baseDate",
-            "description": "Defines the {{#crossLink \"BaseDate\"}}{{/crossLink}} which is inherited by {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} and {{#crossLink \"JulianDate\"}}{{/crossLink}} classes"
+            "description": "Defines the {{#crossLink \"BaseDate\"}}{{/crossLink}} which is inherited by {{#crossLink \"JulianDate\"}}{{/crossLink}},\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} and {{#crossLink \"SakaDate\"}}{{/crossLink}} classes"
+        },
+        {
+            "displayName": "indianDate",
+            "name": "indianDate",
+            "description": "Defines the {{#crossLink \"SakaDate\"}}{{/crossLink}} class"
         },
         {
             "displayName": "julianDate",

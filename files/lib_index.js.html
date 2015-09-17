@@ -42,10 +42,12 @@
                                 <li><a href="../classes/JulianDate.html">JulianDate</a></li>
                                 <li><a href="../classes/Kollavarsham.html">Kollavarsham</a></li>
                                 <li><a href="../classes/KollavarshamDate.html">KollavarshamDate</a></li>
+                                <li><a href="../classes/SakaDate.html">SakaDate</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/baseDate.html">baseDate</a></li>
+                                <li><a href="../modules/indianDate.html">indianDate</a></li>
                                 <li><a href="../modules/julianDate.html">julianDate</a></li>
                                 <li><a href="../modules/kollavarsham.html">kollavarsham</a></li>
                                 <li><a href="../modules/kollavarshamDate.html">kollavarshamDate</a></li>
@@ -101,6 +103,7 @@ import util from &#x27;util&#x27;;
 
 import Calculations from &#x27;./calculations.js&#x27;;
 import KollavarshamDate from &#x27;./dates/kollavarshamDate.js&#x27;;
+import SakaDate from &#x27;./dates/sakaDate.js&#x27;;
 
 /**
  * The Kollavarsham class implements all the public APIs of the library.
@@ -242,7 +245,7 @@ class Kollavarsham {
   }
 
   /**
-   * Converts a Kollavarsham date to its equivalent Gregorian date, respecting the current configuration.
+   * Converts a Kollavarsham date (an instance of {{#crosslink &quot;KollavarshamDate&quot;}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
    * This method Will return {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} object for any date before 1st January 1583 AD and
    * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
    *
@@ -255,13 +258,30 @@ class Kollavarsham {
    * @throws {Error} When the API is implemented, will convert &lt;date&gt;
    */
   toGregorianDate(date) {
-    //TODO: Implement this function
+    //TODO: Implement this method
     throw new Error(util.format(&#x27;When the API is implemented, will convert %s&#x27;, date));
   }
 
-  toGregorianDateFromSaka(hinduDate) {
+  /**
+   * Converts a Saka date (an instance of {{#crosslink &quot;SakaDate&quot;}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
+   * This method Will return {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} object for any date before 1st January 1583 AD and
+   * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
+   *
+   * @method toGregorianDateFromSaka
+   * @for Kollavarsham
+   * @param sakaDate {SakaDate} The Saka date to be converted to Gregorian
+   * @returns {Date|JulianDate} Converted date
+   */
+  toGregorianDateFromSaka(sakaDate) {
+    // TODO: Remove this method??
+    // This is implemented specifically for the pancanga-nodejs cli (https://github.com/kollavarsham/pancanga-nodejs)
+    // Could be removed when toGregorian has been implemented based on this
+
+    if (!(sakaDate instanceof SakaDate)) {
+      throw new Error(&#x27;Parameter sakaDate should be an instance of the \&#x27;SakaDate\&#x27; class&#x27;);
+    }
     const calculations = new Calculations(this.settings);
-    return calculations.toGregorianFromSaka(this.settings, hinduDate);
+    return calculations.toGregorianFromSaka(sakaDate);
   }
 }
 
@@ -269,19 +289,36 @@ class Kollavarsham {
  * Exports the {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} class for referencing via &#x60;require&#x60;. This is the class
  * that is returned when converting {{#crossLink &quot;Kollavarsham/fromGregorianDate:method&quot;}}{{/crossLink}} and is passed in
  * to {{#crossLink &quot;Kollavarsham/toGregorianDate:method&quot;}}{{/crossLink}}. See example below.
- * @property kollavarshamDate
+ * @property KollavarshamDate
  * @type {KollavarshamDate}
  * @static
  * @example
  * &#x60;&#x60;&#x60;
  * const Kollavarsham = require(&#x27;kollavarsham&#x27;);
- * const KollavarshamDate = require(&#x27;kollavarsham&#x27;).kollavarshamDate;
+ * const KollavarshamDate = Kollavarsham.KollavarshamDate;
  *
  * let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
  * let myDateInGregorian = (new Kollavarsham({&#x27;system&#x27;: &#x27;InPancasiddhantika&#x27;})).toGregorianDate(myKollavarshamDate);
  * &#x60;&#x60;&#x60;
  */
-Kollavarsham.kollavarshamDate = KollavarshamDate;
+Kollavarsham.KollavarshamDate = KollavarshamDate;
+
+/**
+ * Exports the {{#crossLink &quot;SakaDate&quot;}}{{/crossLink}} class for referencing via &#x60;require&#x60;. This class&#x27;s instance needs to be passed in
+ * to {{#crossLink &quot;Kollavarsham/toGregorianDateFromSaka:method&quot;}}{{/crossLink}}. See example below.
+ * @property SakaDate
+ * @type {SakaDate}
+ * @static
+ * @example
+ * &#x60;&#x60;&#x60;
+ * const Kollavarsham = require(&#x27;kollavarsham&#x27;);
+ * const SakaDate = Kollavarsham.SakaDate;
+ *
+ * let sakaDate = new SakaDate(1905, 5, 14, &#x27;Suklapaksa&#x27;); // Create a new Saka Date representation
+ * let sakaDateInGregorian = (new Kollavarsham()).toGregorianDateFromSaka(sakaDate);
+ * &#x60;&#x60;&#x60;
+ */
+Kollavarsham.SakaDate = SakaDate;
 
 export default Kollavarsham;
 
@@ -296,7 +333,7 @@ export default Kollavarsham;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 17 Sep 2015 14:21:46 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 17 Sep 2015 18:13:14 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/dates/julianDate.js - kollavarsham</title>
+    <title>lib/dates/sakaDate.js - kollavarsham</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -83,7 +83,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/dates/julianDate.js</h1>
+                    <div class="content"><h1 class="file-heading">File: lib/dates/sakaDate.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -96,33 +96,45 @@
  */
 
 /**
- * Defines the {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} class
- * @module julianDate
+ * Defines the {{#crossLink &quot;SakaDate&quot;}}{{/crossLink}} class
+ * @module indianDate
  */
+
 
 import BaseDate from &#x27;./baseDate.js&#x27;;
 
 /**
- * Represents a Julian date&#x27;s year, month and day
- * &#x60;toGregorianDateFromSaka&#x60; method of the {{#crossLink &quot;Kollavarsham&quot;}}{{/crossLink}} class returns an instance of this type for dates
- * older than &#x60;1st January 1583 AD&#x60;
- *
- *  **INTERNAL/PRIVATE**
- *
- * @class JulianDate
+ * Represents an Saka date&#x27;s year, month and paksa and tithi
+ * @class SakaDate
  * @constructor
- * @param [year=1] {Number} Julian year
- * @param [month=1] {Number} Julian month
- * @param [day=1] {Number} Julian day
+ * @param [year=1] {Number} Saka Year
+ * @param [month=1] {Number} Saka Month
+ * @param [tithi=1] {Number}
+ * @param [paksa=&#x27;Suklapaksa&#x27;] {string} Valid values are &#x60;Suklapaksa&#x60; (default) or &#x27;Krsnapaksa&#x60;
  * @extends BaseDate
  */
-class JulianDate extends BaseDate {
-  constructor(year = 1, month = 1, day = 1) {
-    super(year, month, day);
+class SakaDate extends BaseDate {
+  constructor(year = 1, month = 1, tithi = 1, paksa = &#x27;Suklapaksa&#x27;) {
+    super(year, month, tithi);
+    this.paksa = paksa === &#x27;Krsnapaksa&#x27; ? paksa : &#x27;Suklapaksa&#x27;;
+
+    this.gregorianDate = null;
+    this.julianDay = null;
+    this.weekdayName = null;
+    this.mlWeekdayName = null;
+    this.ahargana = null;
+  }
+
+  get tithi() {
+    return this.day;
+  }
+
+  toString() {
+    return &#x60;${ super.toString() } ${this.paksa}&#x60;;
   }
 }
 
-export default JulianDate;
+export default SakaDate;
 
     </pre>
 </div>
