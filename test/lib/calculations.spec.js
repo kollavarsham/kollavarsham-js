@@ -38,8 +38,7 @@ describe('Calculations', function () {
       expect(sakaDate.paksa).to.equal('Krsnapaksa');
       expect(sakaDate.kaliYear).to.equal(5080);
       expect(sakaDate.vikramaYear).to.equal(2036);
-      expect(sakaDate.calendarData.tithiDay).to.equal(11);
-      expect(sakaDate.calendarData.ftithi).to.equal(0.7870052988803486);
+      expect(sakaDate.fractionalTithi).to.equal(0.7870052988803486);
       expect(sakaDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(23);
       expect(sakaDate.adhimasa).to.equal('');
@@ -64,8 +63,7 @@ describe('Calculations', function () {
       expect(sakaDate.paksa).to.equal('Krsnapaksa');
       expect(sakaDate.kaliYear).to.equal(5084);
       expect(sakaDate.vikramaYear).to.equal(2040);
-      expect(sakaDate.calendarData.tithiDay).to.equal(15);
-      expect(sakaDate.calendarData.ftithi).to.equal(0.8896846200537567);
+      expect(sakaDate.fractionalTithi).to.equal(0.8896846200537567);
       expect(sakaDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(48);
       expect(sakaDate.adhimasa).to.equal('');
@@ -90,8 +88,7 @@ describe('Calculations', function () {
       expect(sakaDate.paksa).to.equal('Suklapaksa');
       expect(sakaDate.kaliYear).to.equal(5084);
       expect(sakaDate.vikramaYear).to.equal(2040);
-      expect(sakaDate.calendarData.tithiDay).to.equal(14);
-      expect(sakaDate.calendarData.ftithi).to.equal(0.9732245662921084);
+      expect(sakaDate.fractionalTithi).to.equal(0.9732245662921084);
       expect(sakaDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(58);
       expect(sakaDate.adhimasa).to.equal('');
