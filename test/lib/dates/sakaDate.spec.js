@@ -42,4 +42,25 @@ describe('SakaDate', function () {
     });
   });
 
+  describe('naksatra', function () {
+    beforeEach(function () {
+      sakaDate = new SakaDate();
+      sakaDate.naksatra = {saka : 'U-asadha', enMalayalam : 'Uthradam', mlMalayalam : 'ഉത്രാടം'};
+    });
+
+    it('should have valid values for naksatra correctly', function () {
+      expect(sakaDate.naksatraName).to.equal('U-asadha');
+    });
+  });
+
+  describe('naksatra as null', function () {
+    beforeEach(function () {
+      sakaDate = new SakaDate();
+    });
+
+    it('should have valid values for naksatra correctly', function () {
+      expect(sakaDate.naksatraName).to.be.undefined;
+    });
+  });
+
 });

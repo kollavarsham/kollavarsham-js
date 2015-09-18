@@ -39,4 +39,14 @@ describe('JulianDate', function () {
     });
   });
 
+  describe('naksatra as null', function () {
+    beforeEach(function () {
+      julianDate = new JulianDate();
+    });
+
+    it('should have valid values for naksatra correctly', function () {
+      expect(julianDate.naksatraName).to.be.undefined;
+    });
+  });
+
 });

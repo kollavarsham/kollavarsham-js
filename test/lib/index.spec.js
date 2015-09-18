@@ -41,9 +41,8 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(23);
       expect(malayalamDate.calendarData.adhimasa).to.equal('');
       expect(malayalamDate.calendarData.masa).to.equal('Vaisakha  ');
-      expect(malayalamDate.calendarData.naksatra).to.equal('U-bhadrapada');
-      expect(malayalamDate.calendarData.malayalaNaksatra).to.equal('Uthrattathi');
-      expect(malayalamDate.calendarData.mlMalayalaNaksatra).to.equal('ഉത്രട്ടാതി');
+      expect(malayalamDate.naksatraName).to.equal('Uthrattathi');
+      expect(malayalamDate.mlNaksatraName).to.equal('ഉത്രട്ടാതി');
       expect(malayalamDate.julianDay).to.equal(2444016);
       expect(malayalamDate.weekdayName).to.equal('Tuesday');
       expect(malayalamDate.mlWeekdayName).to.equal('ചൊവ്വ');
@@ -76,9 +75,8 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(48);
       expect(malayalamDate.calendarData.adhimasa).to.equal('');
       expect(malayalamDate.calendarData.masa).to.equal('Sravana   ');
-      expect(malayalamDate.calendarData.naksatra).to.equal('P-phalguni');
-      expect(malayalamDate.calendarData.malayalaNaksatra).to.equal('Pooram');
-      expect(malayalamDate.calendarData.mlMalayalaNaksatra).to.equal('പൂരം');
+      expect(malayalamDate.naksatraName).to.equal('Pooram');
+      expect(malayalamDate.mlNaksatraName).to.equal('പൂരം');
       expect(malayalamDate.julianDay).to.equal(2445585);
       expect(malayalamDate.weekdayName).to.equal('Wednesday');
       expect(malayalamDate.mlWeekdayName).to.equal('ബുധൻ');
@@ -111,9 +109,8 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(58);
       expect(malayalamDate.calendarData.adhimasa).to.equal('');
       expect(malayalamDate.calendarData.masa).to.equal('Bhadrapada');
-      expect(malayalamDate.calendarData.naksatra).to.equal('P-bhadrapada');
-      expect(malayalamDate.calendarData.malayalaNaksatra).to.equal('Poororuttathi');
-      expect(malayalamDate.calendarData.mlMalayalaNaksatra).to.equal('പൂരുരുട്ടാതി');
+      expect(malayalamDate.naksatraName).to.equal('Poororuttathi');
+      expect(malayalamDate.mlNaksatraName).to.equal('പൂരുരുട്ടാതി');
       expect(malayalamDate.julianDay).to.equal(2445599);
       expect(malayalamDate.weekdayName).to.equal('Wednesday');
       expect(malayalamDate.mlWeekdayName).to.equal('ബുധൻ');

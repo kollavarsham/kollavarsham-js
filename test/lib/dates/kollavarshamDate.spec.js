@@ -24,6 +24,28 @@ describe('KollavarshamDate', function () {
     });
   });
 
+  describe('naksatra', function () {
+    beforeEach(function () {
+      date = new KollavarshamDate();
+      date.naksatra = {saka : 'U-asadha', enMalayalam : 'Uthradam', mlMalayalam : 'ഉത്രാടം'};
+    });
+
+    it('should have valid values for naksatra correctly', function () {
+      expect(date.naksatraName).to.equal('Uthradam');
+      expect(date.mlNaksatraName).to.equal('ഉത്രാടം');
+    });
+  });
+
+  describe('naksatra as null', function () {
+    beforeEach(function () {
+      date = new KollavarshamDate();
+    });
+
+    it('should have valid values for naksatra correctly', function () {
+      expect(date.naksatraName).to.be.undefined;
+      expect(date.mlNaksatraName).to.be.undefined;
+    });
+  });
 
 });
 

@@ -46,7 +46,7 @@ describe('Calculations', function () {
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(23);
       expect(sakaDate.calendarData.adhimasa).to.equal('');
       expect(sakaDate.calendarData.masa).to.equal('Vaisakha  ');
-      expect(sakaDate.calendarData.naksatra).to.equal('U-bhadrapada');
+      expect(sakaDate.naksatraName).to.equal('U-bhadrapada');
       expect(sakaDate.julianDay).to.equal(2444016);
       expect(sakaDate.ahargana).to.equal(1855550);
     });
@@ -74,7 +74,7 @@ describe('Calculations', function () {
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(48);
       expect(sakaDate.calendarData.adhimasa).to.equal('');
       expect(sakaDate.calendarData.masa).to.equal('Sravana   ');
-      expect(sakaDate.calendarData.naksatra).to.equal('P-phalguni');
+      expect(sakaDate.naksatraName).to.equal('P-phalguni');
       expect(sakaDate.julianDay).to.equal(2445585);
       expect(sakaDate.ahargana).to.equal(1857119);
     });
@@ -102,7 +102,7 @@ describe('Calculations', function () {
       expect(sakaDate.calendarData.sunriseTime.minute).to.equal(58);
       expect(sakaDate.calendarData.adhimasa).to.equal('');
       expect(sakaDate.calendarData.masa).to.equal('Bhadrapada');
-      expect(sakaDate.calendarData.naksatra).to.equal('P-bhadrapada');
+      expect(sakaDate.naksatraName).to.equal('P-bhadrapada');
       expect(sakaDate.julianDay).to.equal(2445599);
       expect(sakaDate.ahargana).to.equal(1857133);
     });
