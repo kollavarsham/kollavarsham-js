@@ -16,6 +16,7 @@ describe('SakaDate', function () {
       expect(sakaDate.month).to.equal(5);
       expect(sakaDate.tithi).to.equal(10);
       expect(sakaDate.paksa).to.equal('Krsnapaksa');
+      expect(sakaDate.vikramaYear).to.equal(2040);
     });
   });
 
@@ -36,6 +37,7 @@ describe('SakaDate', function () {
       expect(sakaDate.month).to.equal(1);
       expect(sakaDate.tithi).to.equal(1);
       expect(sakaDate.paksa).to.equal('Suklapaksa');
+      expect(sakaDate.vikramaYear).to.equal(136);
       expect(sakaDate.toString()).to.equal('0001 01 01 Suklapaksa');
     });
   });
