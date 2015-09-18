@@ -28,17 +28,13 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(10);
       expect(malayalamDate.date).to.equal(8);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
-      expect(malayalamDate.calendarData.masaNum).to.equal(1);
-      expect(malayalamDate.calendarData.sauraMasa).to.equal('Vrsa      ');
-      expect(malayalamDate.calendarData.malayalaMasa).to.equal('Idavam    ');
-      expect(malayalamDate.calendarData.mlMalayalaMasa).to.equal('ഇടവം');
-      expect(malayalamDate.calendarData.malayalaMasaNum).to.equal(9);
+      expect(malayalamDate.sauraMasaName).to.equal('Vrsa      ');
+      expect(malayalamDate.masaName).to.equal('Idavam    ');
+      expect(malayalamDate.mlMasaName).to.equal('ഇടവം');
       expect(malayalamDate.calendarData.tithiDay).to.equal(11);
       expect(malayalamDate.calendarData.ftithi).to.equal(0.7870052988803486);
       expect(malayalamDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(23);
-      expect(malayalamDate.calendarData.adhimasa).to.equal('');
-      expect(malayalamDate.calendarData.masa).to.equal('Vaisakha  ');
       expect(malayalamDate.naksatraName).to.equal('Uthrattathi');
       expect(malayalamDate.mlNaksatraName).to.equal('ഉത്രട്ടാതി');
       expect(malayalamDate.julianDay).to.equal(2444016);
@@ -60,17 +56,13 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(1);
       expect(malayalamDate.date).to.equal(22);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
-      expect(malayalamDate.calendarData.masaNum).to.equal(4);
-      expect(malayalamDate.calendarData.sauraMasa).to.equal('Simha     ');
-      expect(malayalamDate.calendarData.malayalaMasa).to.equal('Chingam   ');
-      expect(malayalamDate.calendarData.mlMalayalaMasa).to.equal('ചിങ്ങം');
-      expect(malayalamDate.calendarData.malayalaMasaNum).to.equal(0);
+      expect(malayalamDate.sauraMasaName).to.equal('Simha     ');
+      expect(malayalamDate.masaName).to.equal('Chingam   ');
+      expect(malayalamDate.mlMasaName).to.equal('ചിങ്ങം');
       expect(malayalamDate.calendarData.tithiDay).to.equal(15);
       expect(malayalamDate.calendarData.ftithi).to.equal(0.8896846200537567);
       expect(malayalamDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(48);
-      expect(malayalamDate.calendarData.adhimasa).to.equal('');
-      expect(malayalamDate.calendarData.masa).to.equal('Sravana   ');
       expect(malayalamDate.naksatraName).to.equal('Pooram');
       expect(malayalamDate.mlNaksatraName).to.equal('പൂരം');
       expect(malayalamDate.julianDay).to.equal(2445585);
@@ -92,17 +84,13 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(2);
       expect(malayalamDate.date).to.equal(5);
       expect(malayalamDate.calendarData.paksa).to.equal('Suklapaksa');
-      expect(malayalamDate.calendarData.masaNum).to.equal(5);
-      expect(malayalamDate.calendarData.sauraMasa).to.equal('Kanya     ');
-      expect(malayalamDate.calendarData.malayalaMasa).to.equal('Kanni     ');
-      expect(malayalamDate.calendarData.mlMalayalaMasa).to.equal('കന്നി');
-      expect(malayalamDate.calendarData.malayalaMasaNum).to.equal(1);
+      expect(malayalamDate.sauraMasaName).to.equal('Kanya     ');
+      expect(malayalamDate.masaName).to.equal('Kanni     ');
+      expect(malayalamDate.mlMasaName).to.equal('കന്നി');
       expect(malayalamDate.calendarData.tithiDay).to.equal(14);
       expect(malayalamDate.calendarData.ftithi).to.equal(0.9732245662921084);
       expect(malayalamDate.calendarData.sunriseTime.hour).to.equal(5);
       expect(malayalamDate.calendarData.sunriseTime.minute).to.equal(58);
-      expect(malayalamDate.calendarData.adhimasa).to.equal('');
-      expect(malayalamDate.calendarData.masa).to.equal('Bhadrapada');
       expect(malayalamDate.naksatraName).to.equal('Poororuttathi');
       expect(malayalamDate.mlNaksatraName).to.equal('പൂരുരുട്ടാതി');
       expect(malayalamDate.julianDay).to.equal(2445599);
@@ -174,10 +162,10 @@ describe('Kollavarsham', function () {
     beforeEach(function () {
       kollavarsham = new Kollavarsham();
       hinduDate = {
-        yearSaka : 1937,
-        masaNum  : 4,
-        paksa    : 'Krsnapaksa',
-        tithiDay : 12
+        year  : 1937,
+        month : 4,
+        paksa : 'Krsnapaksa',
+        tithi : 12
       };
     });
 

@@ -346,63 +346,6 @@ describe('Calendar', function () {
 
   });
 
-  describe('getMasaName', function () {
-
-    it('should return correct results', function () {
-
-      expect(Calendar.getMasaName(0).saka).to.equal('Caitra    ');
-      expect(Calendar.getMasaName(1).saka).to.equal('Vaisakha  ');
-      expect(Calendar.getMasaName(2).saka).to.equal('Jyaistha  ');
-      expect(Calendar.getMasaName(3).saka).to.equal('Asadha    ');
-      expect(Calendar.getMasaName(4).saka).to.equal('Sravana   ');
-      expect(Calendar.getMasaName(5).saka).to.equal('Bhadrapada');
-      expect(Calendar.getMasaName(6).saka).to.equal('Asvina    ');
-      expect(Calendar.getMasaName(7).saka).to.equal('Karttika  ');
-      expect(Calendar.getMasaName(8).saka).to.equal('Margasirsa');
-      expect(Calendar.getMasaName(9).saka).to.equal('Pausa     ');
-      expect(Calendar.getMasaName(10).saka).to.equal('Magha     ');
-      expect(Calendar.getMasaName(11).saka).to.equal('Phalguna  ');
-      expect(Calendar.getMasaName(0).saura).to.equal('Mesa      ');
-      expect(Calendar.getMasaName(1).saura).to.equal('Vrsa      ');
-      expect(Calendar.getMasaName(2).saura).to.equal('Mithuna   ');
-      expect(Calendar.getMasaName(3).saura).to.equal('Karkata   ');
-      expect(Calendar.getMasaName(4).saura).to.equal('Simha     ');
-      expect(Calendar.getMasaName(5).saura).to.equal('Kanya     ');
-      expect(Calendar.getMasaName(6).saura).to.equal('Tula      ');
-      expect(Calendar.getMasaName(7).saura).to.equal('Vrscika   ');
-      expect(Calendar.getMasaName(8).saura).to.equal('Dhanus    ');
-      expect(Calendar.getMasaName(9).saura).to.equal('Makara    ');
-      expect(Calendar.getMasaName(10).saura).to.equal('Kumbha    ');
-      expect(Calendar.getMasaName(11).saura).to.equal('Mina      ');
-      expect(Calendar.getMasaName(0).enMalayalam).to.equal('Chingam   ');
-      expect(Calendar.getMasaName(1).enMalayalam).to.equal('Kanni     ');
-      expect(Calendar.getMasaName(2).enMalayalam).to.equal('Thulam    ');
-      expect(Calendar.getMasaName(3).enMalayalam).to.equal('Vrischikam');
-      expect(Calendar.getMasaName(4).enMalayalam).to.equal('Dhanu     ');
-      expect(Calendar.getMasaName(5).enMalayalam).to.equal('Makaram   ');
-      expect(Calendar.getMasaName(6).enMalayalam).to.equal('Kumbham   ');
-      expect(Calendar.getMasaName(7).enMalayalam).to.equal('Meenam    ');
-      expect(Calendar.getMasaName(8).enMalayalam).to.equal('Medam     ');
-      expect(Calendar.getMasaName(9).enMalayalam).to.equal('Idavam    ');
-      expect(Calendar.getMasaName(10).enMalayalam).to.equal('Mithunam  ');
-      expect(Calendar.getMasaName(11).enMalayalam).to.equal('Karkitakam');
-      expect(Calendar.getMasaName(0).mlMalayalam).to.equal('ചിങ്ങം');
-      expect(Calendar.getMasaName(1).mlMalayalam).to.equal('കന്നി');
-      expect(Calendar.getMasaName(2).mlMalayalam).to.equal('തുലാം');
-      expect(Calendar.getMasaName(3).mlMalayalam).to.equal('വൃശ്ചികം');
-      expect(Calendar.getMasaName(4).mlMalayalam).to.equal('ധനു');
-      expect(Calendar.getMasaName(5).mlMalayalam).to.equal('മകരം');
-      expect(Calendar.getMasaName(6).mlMalayalam).to.equal('കുംഭം');
-      expect(Calendar.getMasaName(7).mlMalayalam).to.equal('മീനം');
-      expect(Calendar.getMasaName(8).mlMalayalam).to.equal('മേടം');
-      expect(Calendar.getMasaName(9).mlMalayalam).to.equal('ഇടവം');
-      expect(Calendar.getMasaName(10).mlMalayalam).to.equal('മിഥുനം');
-      expect(Calendar.getMasaName(11).mlMalayalam).to.equal('കർക്കടകം');
-
-    });
-
-  });
-
   describe('getNaksatra', function () {
 
     it('should return correct results', function () {
