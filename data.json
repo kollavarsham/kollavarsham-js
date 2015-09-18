@@ -351,8 +351,8 @@
             "line": 33,
             "description": "The year corresponding to this instance of the date.",
             "itemtype": "property",
-            "name": "gregorianDate",
-            "type": "{Date}",
+            "name": "year",
+            "type": "{Number}",
             "class": "BaseDate",
             "module": "baseDate"
         },
@@ -362,7 +362,7 @@
             "description": "The month corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "month",
-            "type": "{Date}",
+            "type": "{Number}",
             "class": "BaseDate",
             "module": "baseDate"
         },
@@ -411,7 +411,7 @@
             "line": 89,
             "description": "The `Saura Masa` (Solar Calendar Month) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
-            "name": "sauraMasaNumber",
+            "name": "sauraMasa",
             "type": "{Number}",
             "class": "BaseDate",
             "module": "baseDate"
@@ -421,14 +421,24 @@
             "line": 97,
             "description": "The `Saura Divasa` (Solar Calendar Day) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
-            "name": "sauraDivasaNumber",
+            "name": "sauraDivasa",
             "type": "{Number}",
             "class": "BaseDate",
             "module": "baseDate"
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 106,
+            "line": 105,
+            "description": "The `Naksatra` (Star) for this instance of the date. **Set separately after an instance is created**",
+            "itemtype": "property",
+            "name": "naksatra",
+            "type": "{ { saka: String, enMalayalam: string, mlMalayalam: string } }",
+            "class": "BaseDate",
+            "module": "baseDate"
+        },
+        {
+            "file": "lib/dates/baseDate.js",
+            "line": 121,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
             "name": "toString",
@@ -440,6 +450,28 @@
             "module": "baseDate"
         },
         {
+            "file": "lib/dates/kollavarshamDate.js",
+            "line": 29,
+            "description": "Returns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "KollavarshamDate",
+            "module": "kollavarshamDate"
+        },
+        {
+            "file": "lib/dates/kollavarshamDate.js",
+            "line": 38,
+            "description": "Returns the Kollavarsham Naksatra name (in Malayalam) for this instance of SakaDate",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "KollavarshamDate",
+            "module": "kollavarshamDate"
+        },
+        {
             "file": "lib/dates/sakaDate.js",
             "line": 35,
             "description": "Returns the tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
@@ -448,6 +480,28 @@
             "return": {
                 "description": "",
                 "type": "Number"
+            },
+            "class": "SakaDate",
+            "module": "sakaDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 45,
+            "description": "Returns the Vikrama year corresponding to the Saka year of this instance.",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "SakaDate",
+            "module": "sakaDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 54,
+            "description": "Returns the Saka Naksatra name for this instance of SakaDate",
+            "return": {
+                "description": "",
+                "type": "String"
             },
             "class": "SakaDate",
             "module": "sakaDate"
@@ -633,7 +687,23 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/kollavarshamDate.js:29"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/kollavarshamDate.js:38"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " lib/dates/sakaDate.js:35"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/sakaDate.js:45"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/sakaDate.js:54"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -650,6 +720,22 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " lib/index.js:175"
+        },
+        {
+            "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
+            "line": " lib/dates/kollavarshamDate.js:29"
+        },
+        {
+            "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in Malayalam) for this instance of SakaDate",
+            "line": " lib/dates/kollavarshamDate.js:38"
+        },
+        {
+            "message": "Missing item type\nReturns the Vikrama year corresponding to the Saka year of this instance.",
+            "line": " lib/dates/sakaDate.js:45"
+        },
+        {
+            "message": "Missing item type\nReturns the Saka Naksatra name for this instance of SakaDate",
+            "line": " lib/dates/sakaDate.js:54"
         }
     ]
 }

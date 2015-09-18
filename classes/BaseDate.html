@@ -225,10 +225,6 @@
 
                             </li>
                             <li class="index-item property">
-                                <a href="#property_gregorianDate">gregorianDate</a>
-
-                            </li>
-                            <li class="index-item property">
                                 <a href="#property_julianDay">julianDay</a>
 
                             </li>
@@ -237,11 +233,19 @@
 
                             </li>
                             <li class="index-item property">
-                                <a href="#property_sauraDivasaNumber">sauraDivasaNumber</a>
+                                <a href="#property_naksatra">naksatra</a>
 
                             </li>
                             <li class="index-item property">
-                                <a href="#property_sauraMasaNumber">sauraMasaNumber</a>
+                                <a href="#property_sauraDivasa">sauraDivasa</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_sauraMasa">sauraMasa</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_year">year</a>
 
                             </li>
                     </ul>
@@ -271,7 +275,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_dates_baseDate.js.html#l106"><code>lib&#x2F;dates&#x2F;baseDate.js:106</code></a>
+        <a href="../files/lib_dates_baseDate.js.html#l121"><code>lib&#x2F;dates&#x2F;baseDate.js:121</code></a>
         </p>
 
 
@@ -363,31 +367,6 @@ Hence, the Ahargana on any given day stands for the number of lunar days that ha
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_dates_baseDate.js.html#l33"><code>lib&#x2F;dates&#x2F;baseDate.js:33</code></a>
-        </p>
-
-
-    </div>
-
-    <div class="description">
-        <p>The year corresponding to this instance of the date.</p>
-
-    </div>
-
-
-
-</div>
-<div id="property_gregorianDate" class="property item">
-    <h3 class="name"><code>gregorianDate</code></h3>
-    <span class="type">Date</span>
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
         <a href="../files/lib_dates_baseDate.js.html#l57"><code>lib&#x2F;dates&#x2F;baseDate.js:57</code></a>
         </p>
 
@@ -431,7 +410,7 @@ Julian day is the continuous count of days since the beginning of the Julian Per
 </div>
 <div id="property_month" class="property item">
     <h3 class="name"><code>month</code></h3>
-    <span class="type">Date</span>
+    <span class="type">Number</span>
 
 
 
@@ -454,8 +433,33 @@ Julian day is the continuous count of days since the beginning of the Julian Per
 
 
 </div>
-<div id="property_sauraDivasaNumber" class="property item">
-    <h3 class="name"><code>sauraDivasaNumber</code></h3>
+<div id="property_naksatra" class="property item">
+    <h3 class="name"><code>naksatra</code></h3>
+    <span class="type">saka: String, enMalayalam: string, mlMalayalam: string</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_dates_baseDate.js.html#l105"><code>lib&#x2F;dates&#x2F;baseDate.js:105</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The <code>Naksatra</code> (Star) for this instance of the date. <strong>Set separately after an instance is created</strong></p>
+
+    </div>
+
+
+
+</div>
+<div id="property_sauraDivasa" class="property item">
+    <h3 class="name"><code>sauraDivasa</code></h3>
     <span class="type">Number</span>
 
 
@@ -479,8 +483,8 @@ Julian day is the continuous count of days since the beginning of the Julian Per
 
 
 </div>
-<div id="property_sauraMasaNumber" class="property item">
-    <h3 class="name"><code>sauraMasaNumber</code></h3>
+<div id="property_sauraMasa" class="property item">
+    <h3 class="name"><code>sauraMasa</code></h3>
     <span class="type">Number</span>
 
 
@@ -504,6 +508,31 @@ Julian day is the continuous count of days since the beginning of the Julian Per
 
 
 </div>
+<div id="property_year" class="property item">
+    <h3 class="name"><code>year</code></h3>
+    <span class="type">Number</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_dates_baseDate.js.html#l33"><code>lib&#x2F;dates&#x2F;baseDate.js:33</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        <p>The year corresponding to this instance of the date.</p>
+
+    </div>
+
+
+
+</div>
             </div>
 
 
@@ -518,7 +547,7 @@ Julian day is the continuous count of days since the beginning of the Julian Per
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 14:25:12 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 16:34:41 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
