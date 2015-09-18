@@ -443,12 +443,67 @@
         {
             "file": "lib/dates/baseDate.js",
             "line": 139,
+            "description": "Returns the Saura Masa name for the current instance of date.",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "BaseDate",
+            "module": "baseDate"
+        },
+        {
+            "file": "lib/dates/baseDate.js",
+            "line": 147,
+            "description": "Returns the weekday (in English) for the current instance of date.",
+            "itemtype": "property",
+            "name": "weekdayName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "BaseDate",
+            "module": "baseDate"
+        },
+        {
+            "file": "lib/dates/baseDate.js",
+            "line": 157,
+            "description": "Returns the weekday (in Malayalam) for the current instance of date.",
+            "itemtype": "property",
+            "name": "weekdayName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "BaseDate",
+            "module": "baseDate"
+        },
+        {
+            "file": "lib/dates/baseDate.js",
+            "line": 167,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
             "name": "toString",
             "return": {
                 "description": "",
                 "type": "String"
+            },
+            "class": "BaseDate",
+            "module": "baseDate"
+        },
+        {
+            "file": "lib/dates/baseDate.js",
+            "line": 178,
+            "description": "Returns the month names object that has Saka, Saura and Kollavarsham (English & Malayalam) month names for the specified index `masaNumber`",
+            "params": [
+                {
+                    "name": "masaNumber",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": ", saura : {string}, enMalayalam : {string}, mlMalayalam : {string} } }",
+                "type": "Saka : string"
             },
             "class": "BaseDate",
             "module": "baseDate"
@@ -782,6 +837,22 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/baseDate.js:139"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/baseDate.js:147"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/baseDate.js:157"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/baseDate.js:178"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " lib/dates/kollavarshamDate.js:29"
         },
         {
@@ -827,6 +898,14 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " lib/index.js:173"
+        },
+        {
+            "message": "Missing item type\nReturns the Saura Masa name for the current instance of date.",
+            "line": " lib/dates/baseDate.js:139"
+        },
+        {
+            "message": "Missing item type\nReturns the month names object that has Saka, Saura and Kollavarsham (English & Malayalam) month names for the specified index `masaNumber`",
+            "line": " lib/dates/baseDate.js:178"
         },
         {
             "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
