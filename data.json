@@ -49,7 +49,9 @@
             "classes": {
                 "SakaDate": 1
             },
-            "fors": {},
+            "fors": {
+                "SakaDate": 1
+            },
             "namespaces": {}
         },
         "lib/index.js": {
@@ -80,7 +82,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/dates/baseDate.js",
-            "line": 33
+            "line": 35
         },
         "julianDate": {
             "name": "julianDate",
@@ -115,11 +117,13 @@
             "classes": {
                 "SakaDate": 1
             },
-            "fors": {},
+            "fors": {
+                "SakaDate": 1
+            },
             "namespaces": {},
             "tag": "module",
             "file": "lib/dates/sakaDate.js",
-            "line": 16
+            "line": 17
         },
         "kollavarsham": {
             "name": "kollavarsham",
@@ -134,7 +138,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/index.js",
-            "line": 18
+            "line": 16
         }
     },
     "classes": {
@@ -149,7 +153,7 @@
             "module": "baseDate",
             "namespace": "",
             "file": "lib/dates/baseDate.js",
-            "line": 33,
+            "line": 35,
             "description": "Serves as the base class for both the {{#crossLink \"JulianDate\"}}{{/crossLink}} and\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} classes.\n\n **INTERNAL/PRIVATE**",
             "is_constructor": 1,
             "params": [
@@ -259,7 +263,7 @@
             "module": "sakaDate",
             "namespace": "",
             "file": "lib/dates/sakaDate.js",
-            "line": 16,
+            "line": 17,
             "description": "Represents an Saka date's year, month and paksa and tithi",
             "is_constructor": 1,
             "params": [
@@ -305,7 +309,7 @@
             "module": "kollavarsham",
             "namespace": "",
             "file": "lib/index.js",
-            "line": 18,
+            "line": 16,
             "description": "The Kollavarsham class implements all the public APIs of the library.\n\nCreate a new instance of this class, passing in the relevant options and call methods on the instance.",
             "params": [
                 {
@@ -348,7 +352,7 @@
     "classitems": [
         {
             "file": "lib/dates/baseDate.js",
-            "line": 48,
+            "line": 50,
             "description": "The year corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "year",
@@ -358,7 +362,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 56,
+            "line": 58,
             "description": "The month corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "month",
@@ -368,7 +372,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 64,
+            "line": 66,
             "description": "The date corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "date",
@@ -378,7 +382,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 72,
+            "line": 74,
             "description": "The gregorian date corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "gregorianDate",
@@ -388,7 +392,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 80,
+            "line": 82,
             "description": "The `Julian Day` corresponding to this instance of the date. **Set separately after an instance is created**\nJulian day is the continuous count of days since the beginning of the Julian Period used primarily by astronomers.\n\n_Source_: https://en.wikipedia.org/wiki/Julian_day",
             "itemtype": "property",
             "name": "julianDay",
@@ -398,7 +402,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 91,
+            "line": 93,
             "description": "The `Ahargana` corresponding to this instance of the date. **Set separately after an instance is created**\n\nIn Sanskrit `ahoratra` means one full day and `gana` means count.\nHence, the Ahargana on any given day stands for the number of lunar days that have elapsed starting from an epoch.\n\n_Source_: http://cs.annauniv.edu/insight/Reading%20Materials/astro/sharptime/ahargana.htm",
             "itemtype": "property",
             "name": "ahargana",
@@ -408,7 +412,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 104,
+            "line": 106,
             "description": "The `Saura Masa` (Solar Calendar Month) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sauraMasa",
@@ -418,7 +422,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 112,
+            "line": 114,
             "description": "The `Saura Divasa` (Solar Calendar Day) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sauraDivasa",
@@ -428,7 +432,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 120,
+            "line": 122,
             "description": "The `Naksatra` (Star) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "naksatra",
@@ -438,7 +442,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 137,
+            "line": 139,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
             "name": "toString",
@@ -473,7 +477,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 33,
+            "line": 34,
             "description": "The Kali year corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "kaliYear",
@@ -483,7 +487,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 41,
+            "line": 42,
             "description": "The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "adhimasa",
@@ -493,7 +497,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 49,
+            "line": 50,
             "description": "The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "fractionalTithi",
@@ -503,7 +507,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 57,
+            "line": 58,
             "description": "The hour part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseHour",
@@ -513,7 +517,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 65,
+            "line": 66,
             "description": "The minute part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseMinute",
@@ -523,7 +527,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 74,
+            "line": 75,
             "description": "Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "sakaYear",
@@ -536,7 +540,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 84,
+            "line": 85,
             "description": "Returns the tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "tithi",
@@ -549,8 +553,10 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 94,
+            "line": 95,
             "description": "Returns the Vikrama year corresponding to the Saka year of this instance.",
+            "itemtype": "property",
+            "name": "vikramaYear",
             "return": {
                 "description": "",
                 "type": "Number"
@@ -560,8 +566,10 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 103,
+            "line": 105,
             "description": "Returns the Saka Naksatra name for this instance of SakaDate",
+            "itemtype": "property",
+            "name": "naksatraName",
             "return": {
                 "description": "",
                 "type": "String"
@@ -570,8 +578,32 @@
             "module": "sakaDate"
         },
         {
+            "file": "lib/dates/sakaDate.js",
+            "line": 115,
+            "description": "Returns the month name for this instance of SakaDate",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "SakaDate",
+            "module": "sakaDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 124,
+            "description": "Generates an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} from this instance of SakaDate",
+            "itemtype": "method",
+            "name": "generateKollavarshamDate",
+            "return": {
+                "description": "",
+                "type": "KollavarshamDate"
+            },
+            "class": "SakaDate",
+            "module": "sakaDate"
+        },
+        {
             "file": "lib/index.js",
-            "line": 49,
+            "line": 47,
             "description": "Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink \"Kollavarsham/getSettings:method\"}}{{/crossLink}} method",
             "itemtype": "property",
             "name": "settings",
@@ -581,7 +613,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 61,
+            "line": 59,
             "description": "Gets a snapshot of the current settings",
             "itemtype": "method",
             "name": "getSettings",
@@ -597,7 +629,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 85,
+            "line": 83,
             "description": "Sets the system to be either 'InPancasiddhantika' or 'SuryaSiddhanta'",
             "itemtype": "method",
             "name": "setSystem",
@@ -616,7 +648,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 104,
+            "line": 102,
             "description": "Sets the latitude for the location that will be used as the basis for the conversion.\nThe value of the latitude parameter should be within -90 to +90",
             "itemtype": "method",
             "name": "setLatitude",
@@ -635,7 +667,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 121,
+            "line": 119,
             "description": "Sets the longitude for the location that will be used as the basis of the conversion\nThe value of the latitude parameter should be within -180 to +180",
             "itemtype": "method",
             "name": "setLongitude",
@@ -654,7 +686,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 138,
+            "line": 136,
             "description": "Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration",
             "itemtype": "method",
             "name": "fromGregorianDate",
@@ -677,7 +709,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 157,
+            "line": 155,
             "description": "Converts a Kollavarsham date (an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.\n\n **This API has not been implemented yet**",
             "itemtype": "method",
             "name": "toGregorianDate",
@@ -700,7 +732,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 175,
+            "line": 173,
             "description": "Converts a Saka date (an instance of {{#crossLink \"SakaDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.",
             "itemtype": "method",
             "name": "toGregorianDateFromSaka",
@@ -720,7 +752,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 198,
+            "line": 196,
             "description": "Exports the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} class for referencing via `require`. This is the class\nthat is returned when converting {{#crossLink \"Kollavarsham/fromGregorianDate:method\"}}{{/crossLink}} and is passed in\nto {{#crossLink \"Kollavarsham/toGregorianDate:method\"}}{{/crossLink}}. See example below.",
             "itemtype": "property",
             "name": "KollavarshamDate",
@@ -734,7 +766,7 @@
         },
         {
             "file": "lib/index.js",
-            "line": 216,
+            "line": 214,
             "description": "Exports the {{#crossLink \"SakaDate\"}}{{/crossLink}} class for referencing via `require`. This class's instance needs to be passed in\nto {{#crossLink \"Kollavarsham/toGregorianDateFromSaka:method\"}}{{/crossLink}}. See example below.",
             "itemtype": "property",
             "name": "SakaDate",
@@ -758,35 +790,43 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:74"
+            "line": " lib/dates/sakaDate.js:75"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:84"
+            "line": " lib/dates/sakaDate.js:85"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:94"
+            "line": " lib/dates/sakaDate.js:95"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:103"
+            "line": " lib/dates/sakaDate.js:105"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:61"
+            "line": " lib/dates/sakaDate.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:138"
+            "line": " lib/dates/sakaDate.js:124"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:157"
+            "line": " lib/index.js:59"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:175"
+            "line": " lib/index.js:136"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/index.js:155"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/index.js:173"
         },
         {
             "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
@@ -797,12 +837,8 @@
             "line": " lib/dates/kollavarshamDate.js:38"
         },
         {
-            "message": "Missing item type\nReturns the Vikrama year corresponding to the Saka year of this instance.",
-            "line": " lib/dates/sakaDate.js:94"
-        },
-        {
-            "message": "Missing item type\nReturns the Saka Naksatra name for this instance of SakaDate",
-            "line": " lib/dates/sakaDate.js:103"
+            "message": "Missing item type\nReturns the month name for this instance of SakaDate",
+            "line": " lib/dates/sakaDate.js:115"
         }
     ]
 }

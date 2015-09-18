@@ -99,6 +99,8 @@
  * @module baseDate
  */
 
+import Calendar from &#x27;../calendar.js&#x27;;
+
 const pad = function (num, size) {
   const s = &#x60;000000000${ num }&#x60;;
   return s.substr(s.length - size);
@@ -225,6 +227,7 @@ class BaseDate {
 
   /**
    * Converts the Date to a nicely formatted string with year, month and date
+   *
    * @method toString
    * @for BaseDate
    * @return {string}
@@ -240,6 +243,15 @@ class BaseDate {
   get sauraMasaName() {
     return BaseDate.getMasaName(this.sauraMasa).saura;
   }
+
+  get weekdayName() {
+    return Calendar.julianDayToWeekday(this.julianDay).en;
+  }
+
+  get mlWeekdayName() {
+    return Calendar.julianDayToWeekday(this.julianDay).ml;
+  }
+
 }
 
 export default BaseDate;
@@ -255,7 +267,7 @@ export default BaseDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 19:55:26 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 20:26:22 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

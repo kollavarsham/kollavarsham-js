@@ -98,8 +98,6 @@
 /**
  * @module kollavarsham
  */
-import util from &#x27;util&#x27;;
-
 import Calculations from &#x27;./calculations.js&#x27;;
 import KollavarshamDate from &#x27;./dates/kollavarshamDate.js&#x27;;
 import SakaDate from &#x27;./dates/sakaDate.js&#x27;;
@@ -258,7 +256,7 @@ class Kollavarsham {
    */
   toGregorianDate(date) {
     //TODO: Implement this method
-    throw new Error(util.format(&#x27;When the API is implemented, will convert %s&#x27;, date));
+    throw new Error(&#x60;When the API is implemented, will convert ${ date }&#x60;);
   }
 
   /**
@@ -332,7 +330,7 @@ export default Kollavarsham;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 19:55:26 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 20:26:22 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
