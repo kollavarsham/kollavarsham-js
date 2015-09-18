@@ -13,6 +13,7 @@ describe('SakaDate', function () {
   describe('constructor', function () {
     it('should set up the date correctly', function () {
       expect(sakaDate.year).to.equal(1905);
+      expect(sakaDate.sakaYear).to.equal(1905);
       expect(sakaDate.month).to.equal(5);
       expect(sakaDate.tithi).to.equal(10);
       expect(sakaDate.paksa).to.equal('Krsnapaksa');
@@ -34,6 +35,7 @@ describe('SakaDate', function () {
 
     it('should set up the date correctly', function () {
       expect(sakaDate.year).to.equal(1);
+      expect(sakaDate.sakaYear).to.equal(1);
       expect(sakaDate.month).to.equal(1);
       expect(sakaDate.tithi).to.equal(1);
       expect(sakaDate.paksa).to.equal('Suklapaksa');
