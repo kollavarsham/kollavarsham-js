@@ -119,6 +119,55 @@ class SakaDate extends BaseDate {
 
     this.paksa = paksa === &#x27;Krsnapaksa&#x27; ? paksa : &#x27;Suklapaksa&#x27;;
 
+    /**
+     * The Kali year corresponding to this instance of the date. **Set separately after an instance is created**
+     *
+     * @property kaliYear
+     * @type {Number}
+     */
+    this.kaliYear = null;
+
+    /**
+     * The Adhimasa (&#x60;Adhika Masa&#x60;) prefix corresponding to this instance of the date. **Set separately after an instance is created**
+     *
+     * @property adhimasa
+     * @type {string}
+     */
+    this.adhimasa = null;
+
+    /**
+     * The fractional &#x60;Tithi&#x60;corresponding to this instance of the date. **Set separately after an instance is created**
+     *
+     * @property fractionalTithi
+     * @type {Number}
+     */
+    this.fractionalTithi = null;
+
+    /**
+     * The hour part from the sunrise time for this date. **Set separately after an instance is created**
+     *
+     * @property sunriseHour
+     * @type {Number}
+     */
+    this.sunriseHour = null;
+
+    /**
+     * The minute part from the sunrise time for this date. **Set separately after an instance is created**
+     *
+     * @property sunriseMinute
+     * @type {Number}
+     */
+    this.sunriseMinute = null;
+  }
+
+  /**
+   * Returns the Saka year on this instance of SakaDate (same as the underlyiung &#x60;year&#x60; property from the {{#crossLink &quot;BaseDate&quot;}}{{/crossLink}} class)
+   *
+   * @property sakaYear
+   * @returns {Number}
+   */
+  get sakaYear() {
+    return this.year;
   }
 
   /**
@@ -149,6 +198,10 @@ class SakaDate extends BaseDate {
     return this.naksatra.saka;
   }
 
+  get masaName() {
+    return SakaDate.getMasaName(this.month).saka;
+  }
+
   toString() {
     return &#x60;${ super.toString() } ${this.paksa}&#x60;;
   }
@@ -167,7 +220,7 @@ export default SakaDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 16:34:41 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 19:55:26 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

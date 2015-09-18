@@ -104,6 +104,21 @@ const pad = function (num, size) {
   return s.substr(s.length - size);
 };
 
+const masaNames = {
+  0  : {saka : &#x27;Caitra    &#x27;, saura : &#x27;Mesa      &#x27;, enMalayalam : &#x27;Chingam   &#x27;, mlMalayalam : &#x27;ചിങ്ങം&#x27;},
+  1  : {saka : &#x27;Vaisakha  &#x27;, saura : &#x27;Vrsa      &#x27;, enMalayalam : &#x27;Kanni     &#x27;, mlMalayalam : &#x27;കന്നി&#x27;},
+  2  : {saka : &#x27;Jyaistha  &#x27;, saura : &#x27;Mithuna   &#x27;, enMalayalam : &#x27;Thulam    &#x27;, mlMalayalam : &#x27;തുലാം&#x27;},
+  3  : {saka : &#x27;Asadha    &#x27;, saura : &#x27;Karkata   &#x27;, enMalayalam : &#x27;Vrischikam&#x27;, mlMalayalam : &#x27;വൃശ്ചികം&#x27;},
+  4  : {saka : &#x27;Sravana   &#x27;, saura : &#x27;Simha     &#x27;, enMalayalam : &#x27;Dhanu     &#x27;, mlMalayalam : &#x27;ധനു&#x27;},
+  5  : {saka : &#x27;Bhadrapada&#x27;, saura : &#x27;Kanya     &#x27;, enMalayalam : &#x27;Makaram   &#x27;, mlMalayalam : &#x27;മകരം&#x27;},
+  6  : {saka : &#x27;Asvina    &#x27;, saura : &#x27;Tula      &#x27;, enMalayalam : &#x27;Kumbham   &#x27;, mlMalayalam : &#x27;കുംഭം&#x27;},
+  7  : {saka : &#x27;Karttika  &#x27;, saura : &#x27;Vrscika   &#x27;, enMalayalam : &#x27;Meenam    &#x27;, mlMalayalam : &#x27;മീനം&#x27;},
+  8  : {saka : &#x27;Margasirsa&#x27;, saura : &#x27;Dhanus    &#x27;, enMalayalam : &#x27;Medam     &#x27;, mlMalayalam : &#x27;മേടം&#x27;},
+  9  : {saka : &#x27;Pausa     &#x27;, saura : &#x27;Makara    &#x27;, enMalayalam : &#x27;Idavam    &#x27;, mlMalayalam : &#x27;ഇടവം&#x27;},
+  10 : {saka : &#x27;Magha     &#x27;, saura : &#x27;Kumbha    &#x27;, enMalayalam : &#x27;Mithunam  &#x27;, mlMalayalam : &#x27;മിഥുനം&#x27;},
+  11 : {saka : &#x27;Phalguna  &#x27;, saura : &#x27;Mina      &#x27;, enMalayalam : &#x27;Karkitakam&#x27;, mlMalayalam : &#x27;കർക്കടകം&#x27;}
+};
+
 /**
  * Serves as the base class for both the {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} and
  * {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} classes.
@@ -203,6 +218,7 @@ class BaseDate {
   get naksatra() {
     return this._naksatra || {};  // eslint-disable-line no-underscore-dangle
   }
+
   set naksatra(val) {
     this._naksatra = val;  // eslint-disable-line no-underscore-dangle
   }
@@ -215,6 +231,14 @@ class BaseDate {
    */
   toString() {
     return &#x60;${ pad(this.year, 4) } ${ pad(this.month, 2) } ${ pad(this.date, 2) }&#x60;;
+  }
+
+  static getMasaName(masaNum) {
+    return masaNames[masaNum];
+  }
+
+  get sauraMasaName() {
+    return BaseDate.getMasaName(this.sauraMasa).saura;
   }
 }
 
@@ -231,7 +255,7 @@ export default BaseDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 16:34:41 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 18 Sep 2015 19:55:26 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
