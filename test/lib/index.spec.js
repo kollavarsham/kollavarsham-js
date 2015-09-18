@@ -28,8 +28,6 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(10);
       expect(malayalamDate.date).to.equal(8);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
-      expect(malayalamDate.calendarData.YearKali).to.equal(5080);
-      expect(malayalamDate.calendarData.YearSaka).to.equal(1901);
       expect(malayalamDate.calendarData.masaNum).to.equal(1);
       expect(malayalamDate.calendarData.sauraMasa).to.equal('Vrsa      ');
       expect(malayalamDate.calendarData.malayalaMasa).to.equal('Idavam    ');
@@ -62,8 +60,6 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(1);
       expect(malayalamDate.date).to.equal(22);
       expect(malayalamDate.calendarData.paksa).to.equal('Krsnapaksa');
-      expect(malayalamDate.calendarData.YearKali).to.equal(5084);
-      expect(malayalamDate.calendarData.YearSaka).to.equal(1905);
       expect(malayalamDate.calendarData.masaNum).to.equal(4);
       expect(malayalamDate.calendarData.sauraMasa).to.equal('Simha     ');
       expect(malayalamDate.calendarData.malayalaMasa).to.equal('Chingam   ');
@@ -96,8 +92,6 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.month).to.equal(2);
       expect(malayalamDate.date).to.equal(5);
       expect(malayalamDate.calendarData.paksa).to.equal('Suklapaksa');
-      expect(malayalamDate.calendarData.YearKali).to.equal(5084);
-      expect(malayalamDate.calendarData.YearSaka).to.equal(1905);
       expect(malayalamDate.calendarData.masaNum).to.equal(5);
       expect(malayalamDate.calendarData.sauraMasa).to.equal('Kanya     ');
       expect(malayalamDate.calendarData.malayalaMasa).to.equal('Kanni     ');
