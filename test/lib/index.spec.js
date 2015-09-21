@@ -100,7 +100,7 @@ describe('Kollavarsham', function () {
 
   describe('non-default settings', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham({system: 'InPancasiddhantika', latitude : 10.5, longitude : 77.2});
+      kollavarsham = new Kollavarsham({system : 'InPancasiddhantika', latitude : 10.5, longitude : 77.2});
       settings = kollavarsham.getSettings();
     });
 

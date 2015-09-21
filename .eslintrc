@@ -62,6 +62,14 @@
       "all"
     ],
     "eol-last": 2,
+    "key-spacing": [
+      2,
+      {
+        "align": "colon",
+        "beforeColon": true,
+        "afterColon": true
+      }
+    ],
     "no-eval": 2,
     "no-with": 2,
     "space-infix-ops": 2,
