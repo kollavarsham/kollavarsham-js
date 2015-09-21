@@ -352,7 +352,7 @@
     "classitems": [
         {
             "file": "lib/dates/baseDate.js",
-            "line": 50,
+            "line": 51,
             "description": "The year corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "year",
@@ -362,7 +362,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 58,
+            "line": 59,
             "description": "The month corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "month",
@@ -372,7 +372,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 66,
+            "line": 67,
             "description": "The date corresponding to this instance of the date.",
             "itemtype": "property",
             "name": "date",
@@ -382,7 +382,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 74,
+            "line": 75,
             "description": "The gregorian date corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "gregorianDate",
@@ -392,7 +392,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 82,
+            "line": 83,
             "description": "The `Julian Day` corresponding to this instance of the date. **Set separately after an instance is created**\nJulian day is the continuous count of days since the beginning of the Julian Period used primarily by astronomers.\n\n_Source_: https://en.wikipedia.org/wiki/Julian_day",
             "itemtype": "property",
             "name": "julianDay",
@@ -402,7 +402,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 93,
+            "line": 94,
             "description": "The `Ahargana` corresponding to this instance of the date. **Set separately after an instance is created**\n\nIn Sanskrit `ahoratra` means one full day and `gana` means count.\nHence, the Ahargana on any given day stands for the number of lunar days that have elapsed starting from an epoch.\n\n_Source_: http://cs.annauniv.edu/insight/Reading%20Materials/astro/sharptime/ahargana.htm",
             "itemtype": "property",
             "name": "ahargana",
@@ -412,7 +412,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 106,
+            "line": 107,
             "description": "The `Saura Masa` (Solar Calendar Month) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sauraMasa",
@@ -422,7 +422,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 114,
+            "line": 115,
             "description": "The `Saura Divasa` (Solar Calendar Day) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sauraDivasa",
@@ -432,7 +432,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 122,
+            "line": 123,
             "description": "The `Naksatra` (Star) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "naksatra",
@@ -442,8 +442,10 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 139,
+            "line": 140,
             "description": "Returns the Saura Masa name for the current instance of date.",
+            "itemtype": "property",
+            "name": "sauraMasaName",
             "return": {
                 "description": "",
                 "type": "String"
@@ -453,7 +455,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 147,
+            "line": 150,
             "description": "Returns the weekday (in English) for the current instance of date.",
             "itemtype": "property",
             "name": "weekdayName",
@@ -466,10 +468,10 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 157,
+            "line": 160,
             "description": "Returns the weekday (in Malayalam) for the current instance of date.",
             "itemtype": "property",
-            "name": "weekdayName",
+            "name": "mlWeekdayName",
             "return": {
                 "description": "",
                 "type": "String"
@@ -479,7 +481,7 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 167,
+            "line": 170,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
             "name": "toString",
@@ -492,8 +494,10 @@
         },
         {
             "file": "lib/dates/baseDate.js",
-            "line": 178,
+            "line": 181,
             "description": "Returns the month names object that has Saka, Saura and Kollavarsham (English & Malayalam) month names for the specified index `masaNumber`",
+            "itemtype": "method",
+            "name": "getMasaName",
             "params": [
                 {
                     "name": "masaNumber",
@@ -510,8 +514,10 @@
         },
         {
             "file": "lib/dates/kollavarshamDate.js",
-            "line": 29,
-            "description": "Returns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
+            "line": 30,
+            "description": "Returns the Kollavarsham Naksatra name (in English) for this instance date",
+            "itemtype": "property",
+            "name": "naksatraName",
             "return": {
                 "description": "",
                 "type": "String"
@@ -521,8 +527,36 @@
         },
         {
             "file": "lib/dates/kollavarshamDate.js",
-            "line": 38,
-            "description": "Returns the Kollavarsham Naksatra name (in Malayalam) for this instance of SakaDate",
+            "line": 40,
+            "description": "Returns the Kollavarsham Naksatra name (in Malayalam) for this instance of date",
+            "itemtype": "property",
+            "name": "mlNaksatraName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "KollavarshamDate",
+            "module": "kollavarshamDate"
+        },
+        {
+            "file": "lib/dates/kollavarshamDate.js",
+            "line": 50,
+            "description": "Returns the Kollavarsham month name (in English) for this instance of date",
+            "itemtype": "property",
+            "name": "masaName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "KollavarshamDate",
+            "module": "kollavarshamDate"
+        },
+        {
+            "file": "lib/dates/kollavarshamDate.js",
+            "line": 60,
+            "description": "Returns the Kollavarsham month name (in Malayalam) for this instance of date",
+            "itemtype": "property",
+            "name": "masaName",
             "return": {
                 "description": "",
                 "type": "String"
@@ -532,7 +566,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 34,
+            "line": 35,
             "description": "The Kali year corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "kaliYear",
@@ -542,7 +576,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 42,
+            "line": 43,
             "description": "The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "adhimasa",
@@ -552,7 +586,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 50,
+            "line": 51,
             "description": "The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "fractionalTithi",
@@ -562,7 +596,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 58,
+            "line": 59,
             "description": "The hour part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseHour",
@@ -572,7 +606,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 66,
+            "line": 67,
             "description": "The minute part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseMinute",
@@ -582,7 +616,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 75,
+            "line": 76,
             "description": "Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "sakaYear",
@@ -595,7 +629,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 85,
+            "line": 86,
             "description": "Returns the tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "tithi",
@@ -608,7 +642,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 95,
+            "line": 96,
             "description": "Returns the Vikrama year corresponding to the Saka year of this instance.",
             "itemtype": "property",
             "name": "vikramaYear",
@@ -621,7 +655,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 105,
+            "line": 106,
             "description": "Returns the Saka Naksatra name for this instance of SakaDate",
             "itemtype": "property",
             "name": "naksatraName",
@@ -634,7 +668,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 115,
+            "line": 116,
             "description": "Returns the month name for this instance of SakaDate",
             "return": {
                 "description": "",
@@ -645,7 +679,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 124,
+            "line": 125,
             "description": "Generates an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} from this instance of SakaDate",
             "itemtype": "method",
             "name": "generateKollavarshamDate",
@@ -837,51 +871,59 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/baseDate.js:139"
+            "line": " lib/dates/baseDate.js:140"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/baseDate.js:147"
+            "line": " lib/dates/baseDate.js:150"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/baseDate.js:157"
+            "line": " lib/dates/baseDate.js:160"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/baseDate.js:178"
+            "line": " lib/dates/baseDate.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/kollavarshamDate.js:29"
+            "line": " lib/dates/kollavarshamDate.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/kollavarshamDate.js:38"
+            "line": " lib/dates/kollavarshamDate.js:40"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:75"
+            "line": " lib/dates/kollavarshamDate.js:50"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:85"
+            "line": " lib/dates/kollavarshamDate.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:95"
+            "line": " lib/dates/sakaDate.js:76"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:105"
+            "line": " lib/dates/sakaDate.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:115"
+            "line": " lib/dates/sakaDate.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:124"
+            "line": " lib/dates/sakaDate.js:106"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/sakaDate.js:116"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/dates/sakaDate.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -900,24 +942,8 @@
             "line": " lib/index.js:173"
         },
         {
-            "message": "Missing item type\nReturns the Saura Masa name for the current instance of date.",
-            "line": " lib/dates/baseDate.js:139"
-        },
-        {
-            "message": "Missing item type\nReturns the month names object that has Saka, Saura and Kollavarsham (English & Malayalam) month names for the specified index `masaNumber`",
-            "line": " lib/dates/baseDate.js:178"
-        },
-        {
-            "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in English) for this instance of SakaDate",
-            "line": " lib/dates/kollavarshamDate.js:29"
-        },
-        {
-            "message": "Missing item type\nReturns the Kollavarsham Naksatra name (in Malayalam) for this instance of SakaDate",
-            "line": " lib/dates/kollavarshamDate.js:38"
-        },
-        {
             "message": "Missing item type\nReturns the month name for this instance of SakaDate",
-            "line": " lib/dates/sakaDate.js:115"
+            "line": " lib/dates/sakaDate.js:116"
         }
     ]
 }
