@@ -98,6 +98,19 @@ describe('Kollavarsham', function () {
     });
   });
 
+  describe('non-default settings', function () {
+    beforeEach(function () {
+      kollavarsham = new Kollavarsham({system: 'InPancasiddhantika', latitude : 10.5, longitude : 77.2});
+      settings = kollavarsham.getSettings();
+    });
+
+    it('should return default settings', function () {
+      expect(settings.system).to.equal('InPancasiddhantika');
+      expect(settings.latitude).to.equal(10.5);
+      expect(settings.longitude).to.equal(77.2);
+    });
+  });
+
   describe('setSystem', function () {
     beforeEach(function () {
       kollavarsham = new Kollavarsham();

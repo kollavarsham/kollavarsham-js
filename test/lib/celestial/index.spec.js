@@ -36,12 +36,12 @@ describe('Celestial', function () {
 
     it('should return correct results', function () {
 
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(37.5275236212135, 294.989551683806), 8.54483099478396)).to.be.true;
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(45.9229472947752, 333.593757395798), 6.02743249158144)).to.be.true;
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(123.3068304585275, 15.597297524597), 8.97579441116087)).to.be.true;
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(15.5275236212135, 163.989551683806), 17.6281643281173)).to.be.true;
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(245.9229472947752, 3.593757395798), 20.1940991582481)).to.be.true;
-      expect(MathHelper.floatingPointEqual(Celestial.getTithi(302.3068304585275, 56.597297524597), 20.4757944111609)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(294.989551683806, 37.5275236212135), 8.54483099478396)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(333.593757395798, 45.9229472947752), 6.02743249158144)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(15.597297524597, 123.3068304585275), 8.97579441116087)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(163.989551683806, 15.5275236212135), 17.6281643281173)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(3.593757395798, 245.9229472947752), 20.1940991582481)).to.be.true;
+      expect(MathHelper.floatingPointEqual(Celestial.getTithi(56.597297524597, 302.3068304585275), 20.4757944111609)).to.be.true;
 
     });
 
