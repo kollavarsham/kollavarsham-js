@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/dates/sakaDate.js - kollavarsham</title>
+    <title>lib/celestial/planetarySystem/planets/index.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/dates/sakaDate.js</h1>
+                    <div class="content"><h1 class="file-heading">File: lib/celestial/planetarySystem/planets/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -120,158 +120,160 @@
  */
 
 /**
- * @module sakaDate
+ * @module planets
  */
-import BaseDate from &#x27;./baseDate.js&#x27;;
-import KollavarshamDate from &#x27;./kollavarshamDate.js&#x27;;
-import MathHelper from &#x27;../mathHelper.js&#x27;;
 
 /**
- * Represents an Saka date&#x27;s year, month and paksa and tithi
- * @class SakaDate
- * @constructor
- * @param [year=1] {Number} Saka Year
- * @param [month=1] {Number} Saka Month
- * @param [tithi=1] {Number}
- * @param [paksa=&#x27;Suklapaksa&#x27;] {string} Valid values are &#x60;Suklapaksa&#x60; (default) or &#x27;Krsnapaksa&#x60;
- * @extends BaseDate
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Planet
  */
-class SakaDate extends BaseDate {
-
-  constructor(year = 1, month = 1, tithi = 1, paksa = &#x27;Suklapaksa&#x27;) {
-
-    super(year, month, tithi);
-
-    this.paksa = paksa === &#x27;Krsnapaksa&#x27; ? paksa : &#x27;Suklapaksa&#x27;;
-
-    /**
-     * The Kali year corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property kaliYear
-     * @type {Number}
-     */
-    this.kaliYear = null;
-
-    /**
-     * The Adhimasa (&#x60;Adhika Masa&#x60;) prefix corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property adhimasa
-     * @type {string}
-     */
-    this.adhimasa = null;
-
-    /**
-     * The fractional &#x60;Tithi&#x60;corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property fractionalTithi
-     * @type {Number}
-     */
-    this.fractionalTithi = null;
-
-    /**
-     * The hour part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseHour
-     * @type {Number}
-     */
-    this.sunriseHour = null;
-
-    /**
-     * The minute part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseMinute
-     * @type {Number}
-     */
-    this.sunriseMinute = null;
+class Planet {
+  constructor() {
+    this.name = null;
+    this.YugaRotation = 0;  // sidereal rotations
+    this.Rotation = 0;
+    this.Sighra = 0;
+    this.MeanPosition = 0;
+    this.TruePosition = 0;
+    this.Apogee = 0;
+    this.MandaCircumference = 0;
+    this.SighraCircumference = 0;
   }
-
-  /**
-   * Returns the Saka year on this instance of SakaDate (same as the underlyiung &#x60;year&#x60; property from the {{#crossLink &quot;BaseDate&quot;}}{{/crossLink}} class)
-   *
-   * @property sakaYear
-   * @type {Number}
-   */
-  get sakaYear() {
-    return this.year;
-  }
-
-  /**
-   * Returns the tithi on this instance of SakaDate (same as the underlyiung &#x60;date&#x60; property from the {{#crossLink &quot;BaseDate&quot;}}{{/crossLink}} class)
-   *
-   * @property tithi
-   * @type {Number}
-   */
-  get tithi() {
-    return this.date;
-  }
-
-  /**
-   * Returns the Vikrama year corresponding to the Saka year of this instance.
-   *
-   * @property vikramaYear
-   * @type {Number}
-   */
-  get vikramaYear() {
-    return this.year + 135;
-  }
-
-  /**
-   * Returns the Saka Naksatra name for this instance of SakaDate
-   *
-   * @property naksatraName
-   * @type {string}
-   */
-  get naksatraName() {
-    return this.naksatra.saka;
-  }
-
-  /**
-   * Returns the month name for this instance of SakaDate
-   *
-   * @property masaName
-   * @type {string}
-   */
-  get masaName() {
-    return SakaDate.getMasaName(this.month).saka;
-  }
-
-  /**
-   * Generates an instance of {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} from this instance of SakaDate
-   *
-   * @method generateKollavarshamDate
-   * @for SakaDate
-   * @returns {KollavarshamDate}
-   */
-  generateKollavarshamDate() {
-    // TODO: Add unit tests
-    const malayalaMasa = (this.sauraMasa - 4 + 12 ) % 12;
-
-    // Sewell p.45 - https://archive.org/stream/indiancalendarwi00sewerich#page/45/mode/1up
-    const malayalamYear = this.year - 747 + MathHelper.truncate((this.month - malayalaMasa + 12) / 12);
-
-    const kollavarshamDate = new KollavarshamDate(malayalamYear, malayalaMasa + 1, this.sauraDivasa);
-
-    kollavarshamDate.gregorianDate = this.gregorianDate;
-    kollavarshamDate.julianDay = this.julianDay;
-
-    kollavarshamDate.ahargana = this.ahargana;
-    kollavarshamDate.sauraMasa = this.sauraMasa;
-    kollavarshamDate.sauraDivasa = this.sauraDivasa;
-    kollavarshamDate.naksatra = this.naksatra;
-
-    // TODO: As fail-Safe for getting any other properties from the SakaDate, store a copy here directly
-    kollavarshamDate.this = this;
-
-    return kollavarshamDate;
-  }
-
-  toString() {
-    return &#x60;${ super.toString() } ${this.paksa}&#x60;;
-  }
-
 }
 
-export default SakaDate;
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Star
+ */
+class Star extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;star&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Sun
+ */
+class Sun extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;sun&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Moon
+ */
+class Moon extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;moon&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Mercury
+ */
+class Mercury extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;mercury&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Venus
+ */
+class Venus extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;venus&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Mars
+ */
+class Mars extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;mars&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Jupiter
+ */
+class Jupiter extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;jupiter&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Saturn
+ */
+class Saturn extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;saturn&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Candrocca
+ */
+class Candrocca extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;candrocca&#x27;;
+  }
+}
+
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Rahu
+ */
+class Rahu extends Planet {
+  constructor() {
+    super();
+    this.name = &#x27;rahu&#x27;;
+  }
+}
+
+export default {Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu};
 
     </pre>
 </div>

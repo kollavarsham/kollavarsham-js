@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/dates/sakaDate.js - kollavarsham</title>
+    <title>Star - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,173 +107,44 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/dates/sakaDate.js</h1>
+                    <div class="content"><h1>Star Class</h1>
+<div class="box meta">
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/*
- * kollavarsham
- * http://kollavarsham.org
- *
- * Copyright (c) 2014-2015 The Kollavarsham Team
- * Licensed under the MIT license.
- */
 
-/**
- * @module sakaDate
- */
-import BaseDate from &#x27;./baseDate.js&#x27;;
-import KollavarshamDate from &#x27;./kollavarshamDate.js&#x27;;
-import MathHelper from &#x27;../mathHelper.js&#x27;;
+        <div class="foundat">
+            Defined in: <a href="../files/lib_celestial_planetarySystem_planets_index.js.html#l33"><code>lib&#x2F;celestial&#x2F;planetarySystem&#x2F;planets&#x2F;index.js:33</code></a>
+        </div>
 
-/**
- * Represents an Saka date&#x27;s year, month and paksa and tithi
- * @class SakaDate
- * @constructor
- * @param [year=1] {Number} Saka Year
- * @param [month=1] {Number} Saka Month
- * @param [tithi=1] {Number}
- * @param [paksa=&#x27;Suklapaksa&#x27;] {string} Valid values are &#x60;Suklapaksa&#x60; (default) or &#x27;Krsnapaksa&#x60;
- * @extends BaseDate
- */
-class SakaDate extends BaseDate {
+            Module: <a href="../modules/planets.html">planets</a>
 
-  constructor(year = 1, month = 1, tithi = 1, paksa = &#x27;Suklapaksa&#x27;) {
+</div>
 
-    super(year, month, tithi);
 
-    this.paksa = paksa === &#x27;Krsnapaksa&#x27; ? paksa : &#x27;Suklapaksa&#x27;;
+<div class="box intro">
+    <p><strong>INTERNAL/PRIVATE</strong></p>
 
-    /**
-     * The Kali year corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property kaliYear
-     * @type {Number}
-     */
-    this.kaliYear = null;
+</div>
 
-    /**
-     * The Adhimasa (&#x60;Adhika Masa&#x60;) prefix corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property adhimasa
-     * @type {string}
-     */
-    this.adhimasa = null;
 
-    /**
-     * The fractional &#x60;Tithi&#x60;corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property fractionalTithi
-     * @type {Number}
-     */
-    this.fractionalTithi = null;
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-    /**
-     * The hour part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseHour
-     * @type {Number}
-     */
-    this.sunriseHour = null;
+    </ul>
 
-    /**
-     * The minute part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseMinute
-     * @type {Number}
-     */
-    this.sunriseMinute = null;
-  }
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
 
-  /**
-   * Returns the Saka year on this instance of SakaDate (same as the underlyiung &#x60;year&#x60; property from the {{#crossLink &quot;BaseDate&quot;}}{{/crossLink}} class)
-   *
-   * @property sakaYear
-   * @type {Number}
-   */
-  get sakaYear() {
-    return this.year;
-  }
 
-  /**
-   * Returns the tithi on this instance of SakaDate (same as the underlyiung &#x60;date&#x60; property from the {{#crossLink &quot;BaseDate&quot;}}{{/crossLink}} class)
-   *
-   * @property tithi
-   * @type {Number}
-   */
-  get tithi() {
-    return this.date;
-  }
 
-  /**
-   * Returns the Vikrama year corresponding to the Saka year of this instance.
-   *
-   * @property vikramaYear
-   * @type {Number}
-   */
-  get vikramaYear() {
-    return this.year + 135;
-  }
 
-  /**
-   * Returns the Saka Naksatra name for this instance of SakaDate
-   *
-   * @property naksatraName
-   * @type {string}
-   */
-  get naksatraName() {
-    return this.naksatra.saka;
-  }
+        </div>
 
-  /**
-   * Returns the month name for this instance of SakaDate
-   *
-   * @property masaName
-   * @type {string}
-   */
-  get masaName() {
-    return SakaDate.getMasaName(this.month).saka;
-  }
 
-  /**
-   * Generates an instance of {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} from this instance of SakaDate
-   *
-   * @method generateKollavarshamDate
-   * @for SakaDate
-   * @returns {KollavarshamDate}
-   */
-  generateKollavarshamDate() {
-    // TODO: Add unit tests
-    const malayalaMasa = (this.sauraMasa - 4 + 12 ) % 12;
 
-    // Sewell p.45 - https://archive.org/stream/indiancalendarwi00sewerich#page/45/mode/1up
-    const malayalamYear = this.year - 747 + MathHelper.truncate((this.month - malayalaMasa + 12) / 12);
 
-    const kollavarshamDate = new KollavarshamDate(malayalamYear, malayalaMasa + 1, this.sauraDivasa);
-
-    kollavarshamDate.gregorianDate = this.gregorianDate;
-    kollavarshamDate.julianDay = this.julianDay;
-
-    kollavarshamDate.ahargana = this.ahargana;
-    kollavarshamDate.sauraMasa = this.sauraMasa;
-    kollavarshamDate.sauraDivasa = this.sauraDivasa;
-    kollavarshamDate.naksatra = this.naksatra;
-
-    // TODO: As fail-Safe for getting any other properties from the SakaDate, store a copy here directly
-    kollavarshamDate.this = this;
-
-    return kollavarshamDate;
-  }
-
-  toString() {
-    return &#x60;${ super.toString() } ${this.paksa}&#x60;;
-  }
-
-}
-
-export default SakaDate;
-
-    </pre>
+    </div>
 </div>
                     </div>
                 </div>
@@ -284,7 +155,7 @@ export default SakaDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Wed, 23 Sep 2015 21:35:40 GMT</span>
+  <span class="last-modified">Last Updated: Wed, 23 Sep 2015 21:35:39 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
