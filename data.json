@@ -177,7 +177,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 150
+            "line": 214
         },
         "planetarySystem": {
             "name": "planetarySystem",
@@ -342,7 +342,8 @@
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
             "line": 13,
-            "description": "**INTERNAL/PRIVATE**"
+            "description": "**INTERNAL/PRIVATE**",
+            "is_constructor": 1
         },
         "Star": {
             "name": "Star",
@@ -355,8 +356,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 33,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 88,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Sun": {
             "name": "Sun",
@@ -369,8 +371,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 46,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 102,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Moon": {
             "name": "Moon",
@@ -383,8 +386,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 59,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 116,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Mercury": {
             "name": "Mercury",
@@ -397,8 +401,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 72,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 130,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Venus": {
             "name": "Venus",
@@ -411,8 +416,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 85,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 144,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Mars": {
             "name": "Mars",
@@ -425,8 +431,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 98,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 158,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Jupiter": {
             "name": "Jupiter",
@@ -439,8 +446,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 111,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 172,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Saturn": {
             "name": "Saturn",
@@ -453,8 +461,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 124,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 186,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Candrocca": {
             "name": "Candrocca",
@@ -467,8 +476,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 137,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 200,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "Rahu": {
             "name": "Rahu",
@@ -481,8 +491,9 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 150,
-            "description": "**INTERNAL/PRIVATE**"
+            "line": 214,
+            "description": "**INTERNAL/PRIVATE**",
+            "extends": "Planet"
         },
         "PlanetarySystem": {
             "name": "PlanetarySystem",
@@ -776,6 +787,96 @@
     },
     "elements": {},
     "classitems": [
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 22,
+            "description": "Name of the planet subclass",
+            "itemtype": "property",
+            "name": "name",
+            "type": "{string}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 29,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "YugaRotation",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 36,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "Rotation",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 43,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "Sighra",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 50,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "MeanPosition",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 57,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "TruePosition",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 64,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "Apogee",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 71,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "MandaCircumference",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
+        {
+            "file": "lib/celestial/planetarySystem/planets/index.js",
+            "line": 78,
+            "description": "**TODO: Description**",
+            "itemtype": "property",
+            "name": "SighraCircumference",
+            "type": "{Number}",
+            "class": "Planet",
+            "module": "planets"
+        },
         {
             "file": "lib/dates/baseDate.js",
             "line": 50,

@@ -128,17 +128,72 @@
  *  **INTERNAL/PRIVATE**
  *
  * @class Planet
+ * @constructor
  */
 class Planet {
   constructor() {
+    /**
+     * Name of the planet subclass
+     *
+     * @property name
+     * @type {string}
+     */
     this.name = null;
+    /**
+     * **TODO: Description**
+     *
+     * @property YugaRotation
+     * @type {Number}
+     */
     this.YugaRotation = 0;  // sidereal rotations
+    /**
+     * **TODO: Description**
+     *
+     * @property Rotation
+     * @type {Number}
+     */
     this.Rotation = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property Sighra
+     * @type {Number}
+     */
     this.Sighra = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property MeanPosition
+     * @type {Number}
+     */
     this.MeanPosition = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property TruePosition
+     * @type {Number}
+     */
     this.TruePosition = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property Apogee
+     * @type {Number}
+     */
     this.Apogee = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property MandaCircumference
+     * @type {Number}
+     */
     this.MandaCircumference = 0;
+    /**
+     * **TODO: Description**
+     *
+     * @property SighraCircumference
+     * @type {Number}
+     */
     this.SighraCircumference = 0;
   }
 }
@@ -148,6 +203,7 @@ class Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Star
+ * @extends Planet
  */
 class Star extends Planet {
   constructor() {
@@ -161,6 +217,7 @@ class Star extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Sun
+ * @extends Planet
  */
 class Sun extends Planet {
   constructor() {
@@ -174,6 +231,7 @@ class Sun extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Moon
+ * @extends Planet
  */
 class Moon extends Planet {
   constructor() {
@@ -187,6 +245,7 @@ class Moon extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Mercury
+ * @extends Planet
  */
 class Mercury extends Planet {
   constructor() {
@@ -200,6 +259,7 @@ class Mercury extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Venus
+ * @extends Planet
  */
 class Venus extends Planet {
   constructor() {
@@ -213,6 +273,7 @@ class Venus extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Mars
+ * @extends Planet
  */
 class Mars extends Planet {
   constructor() {
@@ -226,6 +287,7 @@ class Mars extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Jupiter
+ * @extends Planet
  */
 class Jupiter extends Planet {
   constructor() {
@@ -239,6 +301,7 @@ class Jupiter extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Saturn
+ * @extends Planet
  */
 class Saturn extends Planet {
   constructor() {
@@ -252,6 +315,7 @@ class Saturn extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Candrocca
+ * @extends Planet
  */
 class Candrocca extends Planet {
   constructor() {
@@ -265,6 +329,7 @@ class Candrocca extends Planet {
  *  **INTERNAL/PRIVATE**
  *
  * @class Rahu
+ * @extends Planet
  */
 class Rahu extends Planet {
   constructor() {
@@ -286,7 +351,7 @@ export default {Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, 
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Wed, 23 Sep 2015 21:35:40 GMT</span>
+  <span class="last-modified">Last Updated: Wed, 23 Sep 2015 23:41:26 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
