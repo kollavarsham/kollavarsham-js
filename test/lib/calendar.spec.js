@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 
 import MathHelper from '../../lib/mathHelper.js';
+import Celestial from '../../lib/celestial/index.js';
 import Calendar from '../../lib/calendar.js';
 
 describe('Calendar', function () {
@@ -20,7 +21,7 @@ describe('Calendar', function () {
   };
 
   beforeEach(function () {
-    calendar = new Calendar(settings);
+    calendar = new Calendar(new Celestial(settings));
   });
 
 

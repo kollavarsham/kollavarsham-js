@@ -13,7 +13,16 @@ describe('Calculations', function () {
 
   beforeEach(function () {
     settings = (new Kollavarsham()).getSettings();
-    calculations = new Calculations();
+    calculations = new Calculations(settings);
+  });
+
+  describe('getPaksa', function () {
+    it('should return the correct results', function () {
+      expect(Calculations.getPaksa(1)).to.equal('Suklapaksa');
+      expect(Calculations.getPaksa(14)).to.equal('Suklapaksa');
+      expect(Calculations.getPaksa(15)).to.equal('Krsnapaksa');
+      expect(Calculations.getPaksa(40)).to.equal('Krsnapaksa');
+    });
   });
 
   describe('toGregorian', function () {
@@ -27,7 +36,7 @@ describe('Calculations', function () {
   describe('fromGregorianToSaka 01', function () {
     beforeEach(function () {
       date = new Date(1979, 4, 22);
-      sakaDate = calculations.fromGregorianToSaka(settings, date);
+      sakaDate = calculations.fromGregorianToSaka(date);
     });
 
     it('should return a valid malayalam date', function () {
@@ -52,7 +61,7 @@ describe('Calculations', function () {
   describe('fromGregorianToSaka 02', function () {
     beforeEach(function () {
       date = new Date(1983, 8, 7);
-      sakaDate = calculations.fromGregorianToSaka(settings, date);
+      sakaDate = calculations.fromGregorianToSaka(date);
     });
 
     it('should return a valid malayalam date', function () {
@@ -77,7 +86,7 @@ describe('Calculations', function () {
   describe('fromGregorianToSaka 03', function () {
     beforeEach(function () {
       date = new Date(1983, 8, 21);
-      sakaDate = calculations.fromGregorianToSaka(settings, date);
+      sakaDate = calculations.fromGregorianToSaka(date);
     });
 
     it('should return a valid malayalam date', function () {

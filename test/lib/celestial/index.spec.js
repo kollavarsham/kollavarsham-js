@@ -11,9 +11,8 @@ describe('Celestial', function () {
   let calculations;
 
   const settings = {
-    latitude     : 23.2,
-    longitude    : 75.8,
-    outputformat : 'verbose'
+    latitude  : 23.2,
+    longitude : 75.8
   };
 
   beforeEach(function () {
@@ -190,8 +189,8 @@ describe('Celestial', function () {
     beforeEach(function () {
       // TODO: the fromGregorian call on calculations instance affects the results of celestial.getTrueLongitude == NOT GOOD.
       calculations = new Calculations(settings);
-      calculations.fromGregorian(settings, new Date(2014, Calendar.months.February, 11));
-      celestial = calculations.celestial;
+      calculations.fromGregorian(new Date(2014, Calendar.months.February, 11));
+      celestial = calculations.celestial; // TODO: Without this line all of the below tests fail
     });
 
     it('should return correct results', function () {
