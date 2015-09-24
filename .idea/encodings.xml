@@ -19,7 +19,6 @@
     <file url="file://$PROJECT_DIR$/lib/dates/kollavarshamDate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/dates/sakaDate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/index.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/lib/locations.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lib/mathHelper.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/.eslintrc" charset="UTF-8" />
