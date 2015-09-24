@@ -141,14 +141,6 @@ class MathHelper {
     return _radianInDegrees;
   }
 
-  static floatingPointEqual(n1, n2, isTest = true) {
-    const areEqual = Math.abs(n1 - n2) &lt; MathHelper.epsilon;
-    if (!areEqual &amp;&amp; isTest) {
-      console.log(&#x27;\nDEBUG: MathHelper.floatingPointEqual failed for %d and %d&#x27;, n1, n2); // eslint-disable-line no-console
-    }
-    return areEqual;
-  }
-
   static isNumber(n) {
     return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);
   }
@@ -210,7 +202,7 @@ export default MathHelper;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 24 Sep 2015 19:44:50 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 24 Sep 2015 22:14:19 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
