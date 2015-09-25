@@ -286,6 +286,7 @@ describe('Calendar', function () {
       expect(Calendar.getMasaNum(242.2597957259723, 9.07961889886)).to.equal(8);
       expect(Calendar.getMasaNum(359.2349729472294, 83.469749507872)).to.equal(11);
       expect(Calendar.getMasaNum(62.5975972349908, 108.58681756282)).to.equal(2);
+      expect(Calendar.getMasaNum(142.8812491322719, 142.8812491322719)).to.equal(5);
       expect(Calendar.getMasaNum(280.4818781723799, 180.203508055438)).to.equal(9);
       expect(Calendar.getMasaNum(21.1497130809087, 108.340416894636)).to.equal(0);
       expect(Calendar.getMasaNum(20.8687779979979, 286.735990965544)).to.equal(0);
