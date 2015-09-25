@@ -102,7 +102,7 @@ describe('Calculations', function () {
       expect(sakaDate.sunriseMinute).to.equal(58);
       expect(sakaDate.adhimasa).to.equal('');
       expect(sakaDate.masaName).to.equal('Bhadrapada');
-      expect(sakaDate.naksatraName).to.equal('P-bhadrapada');
+      expect(sakaDate.naksatraName).to.equal('Satabhisaj');
       expect(sakaDate.julianDay).to.equal(2445599);
       expect(sakaDate.ahargana).to.equal(1857133);
     });
