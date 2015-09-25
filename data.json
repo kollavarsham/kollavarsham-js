@@ -2,7 +2,7 @@
     "project": {
         "name": "kollavarsham",
         "description": "Convert Gregorian date to Kollavarsham date and vice versa",
-        "version": "0.7.0",
+        "version": "0.7.1",
         "url": "http://kollavarsham.org"
     },
     "files": {
