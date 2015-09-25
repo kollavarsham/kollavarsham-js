@@ -2,7 +2,6 @@ import {expect} from 'chai';
 
 import Kollavarsham from '../../lib/index.js';
 import Calculations from '../../lib/calculations.js';
-import Calendar from '../../lib/calendar.js';
 import SakaDate from '../../lib/dates/sakaDate.js';
 
 describe('Calculations', function () {
@@ -103,34 +102,9 @@ describe('Calculations', function () {
       expect(sakaDate.sunriseMinute).to.equal(58);
       expect(sakaDate.adhimasa).to.equal('');
       expect(sakaDate.masaName).to.equal('Bhadrapada');
-      expect(sakaDate.naksatraName).to.equal('P-bhadrapada');
+      expect(sakaDate.naksatraName).to.equal('Satabhisaj');
       expect(sakaDate.julianDay).to.equal(2445599);
       expect(sakaDate.ahargana).to.equal(1857133);
-    });
-  });
-
-  describe('celestialCalculations With Varying Times', function () {
-    let sakaDates = {};
-    let julianDay;
-    let ahargana;
-    let tweakedAhargana;
-
-    before(function () {
-      date = new Date(1979, 4, 22);
-      julianDay = Calendar.gregorianDateToJulianDay(date);
-      ahargana = Calendar.julianDayToAhargana(julianDay);
-
-      for (let timeOffset = 0; timeOffset <= 1; timeOffset = timeOffset + 0.05) {
-        tweakedAhargana = ahargana + timeOffset;
-        sakaDates[timeOffset] = calculations.celestialCalculations(tweakedAhargana, date, julianDay);
-      }
-    });
-
-    it('should return a valid malayalam date', function () {
-      console.log('\n');
-      console.log(JSON.stringify(sakaDates));
-      console.log('\n');
-      expect(true).to.equal(true);
     });
   });
 

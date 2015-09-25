@@ -466,6 +466,18 @@ describe('Calendar', function () {
       expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.75, MathHelper.epsilon);
     });
 
+    describe('with invalid input', function () {
+      before(function () {
+        date = {year : 1979, month : 4, day : 22};
+      });
+
+      it('should throw appropriate error', function () {
+        expect(function () {
+          Calendar.timeIntoFractionalDay(date);
+        }).to.throw('Invalid parameter. \'date\' should be an instance of \'Date\'');
+      });
+    });
+
   });
 
 });

@@ -76,12 +76,35 @@ describe('Kollavarsham', function () {
       expect(malayalamDate.sauraMasaName).to.equal('Kanya     ');
       expect(malayalamDate.masaName).to.equal('Kanni     ');
       expect(malayalamDate.mlMasaName).to.equal('കന്നി');
-      expect(malayalamDate.naksatraName).to.equal('Poororuttathi');
-      expect(malayalamDate.mlNaksatraName).to.equal('പൂരുരുട്ടാതി');
+      expect(malayalamDate.naksatraName).to.equal('Chathayam');
+      expect(malayalamDate.mlNaksatraName).to.equal('ചതയം');
       expect(malayalamDate.julianDay).to.equal(2445599);
       expect(malayalamDate.weekdayName).to.equal('Wednesday');
       expect(malayalamDate.mlWeekdayName).to.equal('ബുധൻ');
       expect(malayalamDate.ahargana).to.equal(1857133);
+    });
+  });
+
+  describe('fromGregorianDate 04', function () {
+    beforeEach(function () {
+      kollavarsham = new Kollavarsham();
+      date = new Date(1979, 4, 22, 13, 45, 30);
+      malayalamDate = kollavarsham.fromGregorianDate(date);
+    });
+
+    it('should return a valid malayalam date', function () {
+      expect(malayalamDate.year).to.equal(1154);
+      expect(malayalamDate.month).to.equal(10);
+      expect(malayalamDate.date).to.equal(8);
+      expect(malayalamDate.sauraMasaName).to.equal('Vrsa      ');
+      expect(malayalamDate.masaName).to.equal('Idavam    ');
+      expect(malayalamDate.mlMasaName).to.equal('ഇടവം');
+      expect(malayalamDate.naksatraName).to.equal('Revathi');
+      expect(malayalamDate.mlNaksatraName).to.equal('രേവതി');
+      expect(malayalamDate.julianDay).to.equal(2444016);
+      expect(malayalamDate.weekdayName).to.equal('Tuesday');
+      expect(malayalamDate.mlWeekdayName).to.equal('ചൊവ്വ');
+      expect(malayalamDate.ahargana).to.equal(1855550);
     });
   });
 
