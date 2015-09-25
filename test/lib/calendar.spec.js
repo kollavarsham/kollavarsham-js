@@ -24,7 +24,6 @@ describe('Calendar', function () {
     calendar = new Calendar(new Celestial(settings));
   });
 
-
   describe('nextDate', function () {
 
     it('should return correct results', function () {
@@ -337,11 +336,11 @@ describe('Calendar', function () {
 
     it('should return correct results', function () {
 
-      expect(MathHelper.floatingPointEqual(calendar.findSamkranti(1868206, 1868207), 1868206.71761142)).to.be.true;
-      expect(MathHelper.floatingPointEqual(calendar.findSamkranti(1868236, 1868237), 1868236.15636098)).to.be.true;
-      expect(MathHelper.floatingPointEqual(calendar.findSamkranti(1868266, 1868267), 1868266.00000001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(calendar.findSamkranti(1721431, 1721432), 1721431.9425787)).to.be.true;
-      expect(MathHelper.floatingPointEqual(calendar.findSamkranti(2299153, 2299154), 2299153.23922039)).to.be.true;
+      expect(calendar.findSamkranti(1868206, 1868207)).to.be.closeTo(1868206.71761142, MathHelper.epsilon);
+      expect(calendar.findSamkranti(1868236, 1868237)).to.be.closeTo(1868236.15636098, MathHelper.epsilon);
+      expect(calendar.findSamkranti(1868266, 1868267)).to.be.closeTo(1868266.00000001, MathHelper.epsilon);
+      expect(calendar.findSamkranti(1721431, 1721432)).to.be.closeTo(1721431.9425787, MathHelper.epsilon);
+      expect(calendar.findSamkranti(2299153, 2299154)).to.be.closeTo(2299153.23922039, MathHelper.epsilon);
 
     });
 
@@ -440,6 +439,31 @@ describe('Calendar', function () {
       expect(Calendar.kaliToSaka(5112)).to.equal(1933);
       expect(Calendar.kaliToSaka(5050)).to.equal(1871);
 
+    });
+
+  });
+
+  describe('timeIntoFractionalDay', function () {
+    let date;
+
+    before(function () {
+      date = new Date(1979, 4, 22, 0, 0, 1);  // Tue May 22 1979 00:00:01
+    });
+
+    it('should return the expected results', function () {
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.0, MathHelper.epsilon);
+      date.setHours(3, 30); // Tue May 22 1979 03:30:01 => ((3 * 60) + 30) minutes => 210 minutes => 210 / 1440 => 0.14583333333333
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.14583333333333, MathHelper.epsilon);
+      date.setHours(6, 0); // Tue May 22 1979 06:00:01 => ((6 * 60) + 0) minutes => 360 minutes => 360 / 1440 => 0.25
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.25, MathHelper.epsilon);
+      date.setHours(11, 45); // Tue May 22 1979 11:45:01 => ((11 * 60) + 45) minutes => 705 minutes => 705 / 1440 => 0.48958333333333
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.48958333333333, MathHelper.epsilon);
+      date.setHours(12, 0); // Tue May 22 1979 12:00:01 => ((12 * 60) + 0) minutes => 720 minutes => 720 / 1440 => 0.5
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.5, MathHelper.epsilon);
+      date.setHours(16, 25); // Tue May 22 1979 16:25:01 => ((16 * 60) + 25) minutes => 985 minutes => 985 / 1440 => 0.68402777777778
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.68402777777778, MathHelper.epsilon);
+      date.setHours(18, 0); // Tue May 22 1979 18:00:01 => ((18 * 60) + 0) minutes => 1080 minutes => 1080 / 1440 => 0.75
+      expect(Calendar.timeIntoFractionalDay(date)).to.be.closeTo(0.75, MathHelper.epsilon);
     });
 
   });

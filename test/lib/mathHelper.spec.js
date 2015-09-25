@@ -96,16 +96,16 @@ describe('MathHelper', function () {
 
     it('should return correct results', function () {
 
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(0.2345), 0.2345)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(-0.2385), -0.2385)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(0.23999), 0.23999)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(-456.23999), -0.23999)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(456.999), 0.999)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional('456.999'), 0.999)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional('A quick brown fox'), 0)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional('-123456.350'), -0.350)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(42.999), 0.999)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.fractional(42.00001), 0.00001)).to.be.true;
+      expect(MathHelper.fractional(0.2345)).to.be.closeTo(0.2345, MathHelper.epsilon);
+      expect(MathHelper.fractional(-0.2385)).to.be.closeTo(-0.2385, MathHelper.epsilon);
+      expect(MathHelper.fractional(0.23999)).to.be.closeTo(0.23999, MathHelper.epsilon);
+      expect(MathHelper.fractional(-456.23999)).to.be.closeTo(-0.23999, MathHelper.epsilon);
+      expect(MathHelper.fractional(456.999)).to.be.closeTo(0.999, MathHelper.epsilon);
+      expect(MathHelper.fractional('456.999')).to.be.closeTo(0.999, MathHelper.epsilon);
+      expect(MathHelper.fractional('A quick brown fox')).to.be.closeTo(0, MathHelper.epsilon);
+      expect(MathHelper.fractional('-123456.350')).to.be.closeTo(-0.350, MathHelper.epsilon);
+      expect(MathHelper.fractional(42.999)).to.be.closeTo(0.999, MathHelper.epsilon);
+      expect(MathHelper.fractional(42.00001)).to.be.closeTo(0.00001, MathHelper.epsilon);
 
     });
 
@@ -135,27 +135,17 @@ describe('MathHelper', function () {
 
     it('should return correct results', function () {
 
-      expect(MathHelper.floatingPointEqual(MathHelper.square(0.2345), 0.05499025)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(-0.2385), 0.05688225)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(0.23999), 0.0575952001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(-456.23999), 208154.9284752001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(456.999), 208848.086001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square('456.999'), 208848.086001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square('A quick brown fox'), 0)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(42.999), 1848.914001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(42.00001), 1764.0008400001)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(5), 25)).to.be.true;
-      expect(MathHelper.floatingPointEqual(MathHelper.square(9), 81)).to.be.true;
-
-    });
-
-  });
-
-  describe('floatingPointEqual', function () {
-
-    it('should return correct results', function () {
-
-      expect(MathHelper.floatingPointEqual(1, 0)).to.equal(false);
+      expect(MathHelper.square(0.2345)).to.be.closeTo(0.05499025, MathHelper.epsilon);
+      expect(MathHelper.square(-0.2385)).to.be.closeTo(0.05688225, MathHelper.epsilon);
+      expect(MathHelper.square(0.23999)).to.be.closeTo(0.0575952001, MathHelper.epsilon);
+      expect(MathHelper.square(-456.23999)).to.be.closeTo(208154.9284752001, MathHelper.epsilon);
+      expect(MathHelper.square(456.999)).to.be.closeTo(208848.086001, MathHelper.epsilon);
+      expect(MathHelper.square('456.999')).to.be.closeTo(208848.086001, MathHelper.epsilon);
+      expect(MathHelper.square('A quick brown fox')).to.be.closeTo(0, MathHelper.epsilon);
+      expect(MathHelper.square(42.999)).to.be.closeTo(1848.914001, MathHelper.epsilon);
+      expect(MathHelper.square(42.00001)).to.be.closeTo(1764.0008400001, MathHelper.epsilon);
+      expect(MathHelper.square(5)).to.be.closeTo(25, MathHelper.epsilon);
+      expect(MathHelper.square(9)).to.be.closeTo(81, MathHelper.epsilon);
 
     });
 
