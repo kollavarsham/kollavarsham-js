@@ -17,7 +17,7 @@
             <h1><a href="/kollavarsham-js/"><img src="../assets/img/logo.png" title="kollavarsham"></a></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>കൊല്ലവർഷം - JavaScript API (v0.7.1)</em>
+            <em>കൊല്ലവർഷം - JavaScript API (v0.7.3)</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -137,6 +137,11 @@ class Celestial {
     let planetarySystem = new PlanetarySystem(system);
     this.planets = planetarySystem.planets;
     this.yuga = planetarySystem.yuga;
+
+    this.backLastConjunctionAhargana = -1;
+    this.backNextConjunctionAhargana = -1;
+    this.backLastConjunctionLongitude = -1;
+    this.backNextConjunctionLongitude = -1;
   }
 
   static threeRelation(left, center, right) {
@@ -181,7 +186,6 @@ class Celestial {
     $planets.sun.MeanPosition = meanSolarLongitude;
 
     const trueSolarLongitude = MathHelper.zero360(meanSolarLongitude - this.getMandaEquation(meanSolarLongitude - $planets.sun.Apogee, &#x27;sun&#x27;));
-    $planets.sun.TruePosition = trueSolarLongitude;
 
     // mean and true moon at sunrise
     const meanLunarLongitude = this.getMeanLongitude(ahargana, $planets.moon.YugaRotation);
@@ -190,74 +194,19 @@ class Celestial {
     $planets.moon.Apogee = $planets.candrocca.MeanPosition;
 
     const trueLunarLongitude = MathHelper.zero360(meanLunarLongitude - this.getMandaEquation(meanLunarLongitude - $planets.moon.Apogee, &#x27;moon&#x27;));
-    $planets.moon.TruePosition = trueLunarLongitude;
 
     // The below was a separate method named calculations.planetary (ported from planetary_calculations in perl)
     const planetNames = [&#x27;mercury&#x27;, &#x27;venus&#x27;, &#x27;mars&#x27;, &#x27;jupiter&#x27;, &#x27;saturn&#x27;];
     for (let i = 0; i &lt; planetNames.length; i++) {
       $planets[planetNames[i]].MeanPosition = this.getMeanLongitude(ahargana, $planets[planetNames[i]].Rotation);
-      $planets[planetNames[i]].TruePosition = this.getTrueLongitude(ahargana, meanSolarLongitude, planetNames[i]);
     }
     return {trueSolarLongitude, trueLunarLongitude};
-  }
-
-  setAyanamsa(ahargana) {
-    // TODO: -XXX- This seems to be redundant - we do not want ayanaDegree and ayanaMinute -XXX-
-    // Good reads:
-    // https://en.wikipedia.org/wiki/Ayanamsa
-    // http://pidaparthypanchangam.com/?m=201306&amp;paged=2
-    const ayanamsa = 54 * 4320000 / this.yuga.CivilDays / 3600 * ( ahargana - 1314930 );
-    this.ayanaDegree = MathHelper.truncate(ayanamsa);
-    this.ayanaMinute = MathHelper.truncate(60 * MathHelper.fractional(ayanamsa));
   }
 
   getMeanLongitude(ahargana, rotation) {
     // https://en.wikipedia.org/wiki/Mean_longitude
     // https://en.wikipedia.org/wiki/Ecliptic_coordinate_system#Spherical_coordinates
     return 360 * MathHelper.fractional(rotation * ahargana / this.yuga.CivilDays);
-  }
-
-  getTrueLongitude(ahargana, meanSolarLongitude, planet) {
-    let argument;
-    let anomaly1;
-
-    // first sighra correction
-    if (planet === &#x27;mercury&#x27; || planet === &#x27;venus&#x27;) {
-      anomaly1 = this.getMeanLongitude(ahargana, this.planets[planet].Sighra) - meanSolarLongitude;
-    } else {
-      anomaly1 = this.getMeanLongitude(ahargana, this.planets[planet].Sighra) - this.planets[planet].MeanPosition;
-    }
-    const equation1 = this.getSighraEquation(anomaly1, planet);
-
-    // first manda correction
-    const meanLong1 = this.planets[planet].MeanPosition + equation1 / 2;
-    argument = meanLong1 - this.planets[planet].Apogee;
-    const equation2 = this.getMandaEquation(argument, planet);
-
-    // second manda correction
-    const meanLong2 = meanLong1 - equation2 / 2;
-    argument = meanLong2 - this.planets[planet].Apogee;
-    const equation3 = this.getMandaEquation(argument, planet);
-
-    // second sighra correction
-    const meanLong3 = this.planets[planet].MeanPosition - equation3;
-    const anomaly2 = this.getMeanLongitude(ahargana, this.planets[planet].Sighra) - meanLong3;
-    const equation4 = this.getSighraEquation(anomaly2, planet);
-
-    const equation5 = 0;
-
-    // {$ifdef suryasiddhanta}
-    // {$else}
-    //    if (planet === &#x27;mercury&#x27; || planet === &#x27;venus&#x27;) {
-    //        argument = meanSolarLongitude - (77 + 17 / 60);
-    //        equation5 = (13.5 / 360 * Math.sin(argument / MathHelper.radianInDegrees)) * MathHelper.radianInDegrees;
-    //    }
-    //    if (planet === &#x27;venus&#x27;) {
-    //        equation5 = equation5 - (1 + 7 / 60);
-    //    }
-    // {$endif}
-
-    return MathHelper.zero360(meanLong3 + equation4 + equation5);
   }
 
   getDaylightEquation(year, latitude, ahargana) {
@@ -277,14 +226,6 @@ class Celestial {
 
   getMandaEquation(argument, planet) {
     return Math.asin(this.planets[planet].MandaCircumference / 360 * Math.sin(argument / MathHelper.radianInDegrees)) * MathHelper.radianInDegrees;
-  }
-
-  getSighraEquation(anomaly, planet) {
-    const bhuja = this.planets[planet].SighraCircumference / 360 * Math.sin(anomaly / MathHelper.radianInDegrees) * MathHelper.radianInDegrees;
-    const koti = this.planets[planet].SighraCircumference / 360 * Math.cos(anomaly / MathHelper.radianInDegrees) * MathHelper.radianInDegrees;
-    const karna = Math.sqrt(MathHelper.square(MathHelper.radianInDegrees + koti) + MathHelper.square(bhuja));
-
-    return Math.asin(bhuja / karna) * MathHelper.radianInDegrees;
   }
 
   getTrueLunarLongitude(ahargana) {
@@ -385,7 +326,7 @@ export default Celestial;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2015 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Fri, 25 Sep 2015 05:52:05 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 25 Sep 2015 17:45:02 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

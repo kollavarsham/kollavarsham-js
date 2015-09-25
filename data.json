@@ -2,7 +2,7 @@
     "project": {
         "name": "kollavarsham",
         "description": "Convert Gregorian date to Kollavarsham date and vice versa",
-        "version": "0.7.1",
+        "version": "0.7.3",
         "url": "http://kollavarsham.org"
     },
     "files": {
@@ -177,7 +177,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 214
+            "line": 207
         },
         "planetarySystem": {
             "name": "planetarySystem",
@@ -356,7 +356,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 88,
+            "line": 81,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -371,7 +371,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 102,
+            "line": 95,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -386,7 +386,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 116,
+            "line": 109,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -401,7 +401,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 130,
+            "line": 123,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -416,7 +416,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 144,
+            "line": 137,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -431,7 +431,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 158,
+            "line": 151,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -446,7 +446,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 172,
+            "line": 165,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -461,7 +461,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 186,
+            "line": 179,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -476,7 +476,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 200,
+            "line": 193,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -491,7 +491,7 @@
             "module": "planets",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 214,
+            "line": 207,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -678,14 +678,14 @@
                 },
                 {
                     "name": "tithi",
-                    "description": "",
+                    "description": "Lunar Day",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "1"
                 },
                 {
                     "name": "paksa",
-                    "description": "Valid values are `Suklapaksa` (default) or 'Krsnapaksa`",
+                    "description": "Lunar Phase - Valid values are `Suklapaksa` (default) or 'Krsnapaksa`",
                     "type": "String",
                     "optional": true,
                     "optdefault": "'Suklapaksa'"
@@ -842,7 +842,7 @@
             "line": 57,
             "description": "**TODO: Description**",
             "itemtype": "property",
-            "name": "TruePosition",
+            "name": "Apogee",
             "type": "{Number}",
             "class": "Planet",
             "module": "planets"
@@ -852,16 +852,6 @@
             "line": 64,
             "description": "**TODO: Description**",
             "itemtype": "property",
-            "name": "Apogee",
-            "type": "{Number}",
-            "class": "Planet",
-            "module": "planets"
-        },
-        {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 71,
-            "description": "**TODO: Description**",
-            "itemtype": "property",
             "name": "MandaCircumference",
             "type": "{Number}",
             "class": "Planet",
@@ -869,7 +859,7 @@
         },
         {
             "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 78,
+            "line": 71,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "SighraCircumference",
@@ -1069,7 +1059,17 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 34,
+            "line": 32,
+            "description": "The Paksha/Paksa corresponding to this instance of the date.\n\nPaksha (or pakṣa: Sanskrit: पक्ष), refers to a fortnight or a lunar phase in a month of the Hindu lunar calendar.\n\n_Source_: https://en.wikipedia.org/wiki/Paksha",
+            "itemtype": "property",
+            "name": "paksa",
+            "type": "{string}",
+            "class": "SakaDate",
+            "module": "sakaDate"
+        },
+        {
+            "file": "lib/dates/sakaDate.js",
+            "line": 44,
             "description": "The Kali year corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "kaliYear",
@@ -1079,7 +1079,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 42,
+            "line": 52,
             "description": "The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "adhimasa",
@@ -1089,7 +1089,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 50,
+            "line": 60,
             "description": "The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "fractionalTithi",
@@ -1099,7 +1099,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 58,
+            "line": 68,
             "description": "The hour part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseHour",
@@ -1109,7 +1109,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 66,
+            "line": 76,
             "description": "The minute part from the sunrise time for this date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "sunriseMinute",
@@ -1119,7 +1119,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 75,
+            "line": 85,
             "description": "Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "sakaYear",
@@ -1129,8 +1129,8 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 85,
-            "description": "Returns the tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
+            "line": 95,
+            "description": "Returns the Tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)\n\nIn Vedic timekeeping, a tithi (also spelled thithi) is a lunar day, or the time it takes for the longitudinal angle between the Moon and the Sun to increase by 12°.\nTithis begin at varying times of day and vary in duration from approximately 19 to approximately 26 hours.\n\n_Source_: https://en.wikipedia.org/wiki/Tithi",
             "itemtype": "property",
             "name": "tithi",
             "type": "{Number}",
@@ -1139,7 +1139,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 95,
+            "line": 110,
             "description": "Returns the Vikrama year corresponding to the Saka year of this instance.",
             "itemtype": "property",
             "name": "vikramaYear",
@@ -1149,7 +1149,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 105,
+            "line": 120,
             "description": "Returns the Saka Naksatra name for this instance of SakaDate",
             "itemtype": "property",
             "name": "naksatraName",
@@ -1159,7 +1159,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 115,
+            "line": 130,
             "description": "Returns the month name for this instance of SakaDate",
             "itemtype": "property",
             "name": "masaName",
@@ -1169,7 +1169,7 @@
         },
         {
             "file": "lib/dates/sakaDate.js",
-            "line": 125,
+            "line": 140,
             "description": "Generates an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} from this instance of SakaDate",
             "itemtype": "method",
             "name": "generateKollavarshamDate",
@@ -1365,7 +1365,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:125"
+            "line": " lib/dates/sakaDate.js:140"
         },
         {
             "message": "replacing incorrect tag: returns with return",
