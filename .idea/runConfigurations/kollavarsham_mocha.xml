@@ -6,7 +6,6 @@
     <envs />
     <ui>bdd</ui>
     <extra-mocha-options>--require=babel-core/register</extra-mocha-options>
-    <test-kind>DIRECTORY</test-kind>
     <test-directory>$PROJECT_DIR$/test</test-directory>
     <recursive>true</recursive>
     <method />
