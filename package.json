@@ -1,6 +1,6 @@
 {
   "name": "kollavarsham",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Convert Gregorian date to Kollavarsham date and vice versa",
   "homepage": "http://kollavarsham.org",
   "repository": {
