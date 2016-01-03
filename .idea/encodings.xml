@@ -31,5 +31,6 @@
     <file url="file://$PROJECT_DIR$/test/lib/dates/sakaDate.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/index.spec.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/lib/mathHelper.spec.js" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
