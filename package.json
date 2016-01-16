@@ -67,12 +67,7 @@
     "prepublish": "gulp prepublish",
     "test": "gulp"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://kollavarsham.org/LICENSE.txt"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.1"
   }
