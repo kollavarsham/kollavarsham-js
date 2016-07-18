@@ -1,10 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-  - '0.10'
+  - v6
+  - v5
+  - v4
   - '0.12'
-  - 'iojs'
-  - '4.0'
+  - '0.10'
 before_install:
   - npm install -g grunt-cli codeclimate-test-reporter
 before_script:

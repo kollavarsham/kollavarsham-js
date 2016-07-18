@@ -5,3 +5,4 @@ doc/
 dist/
 .publish/
 Gruntfile.js
+gulpfile.js

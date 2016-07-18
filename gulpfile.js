@@ -1,14 +1,13 @@
 var path = require('path');
 var gulp = require('gulp');
-var del = require('del');
 var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
-var gulpNSP = require('gulp-nsp');
+var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
-var coveralls = require('gulp-coveralls');
 var babel = require('gulp-babel');
+var del = require('del');
 var isparta = require('isparta');
 var ghPages = require('gulp-gh-pages');
 
@@ -38,11 +37,13 @@ gulp.task('static', function () {
 });
 
 gulp.task('nsp', function (cb) {
-  gulpNSP({package : __dirname + '/package.json'}, cb);
+  nsp({package : path.resolve('package.json')}, cb);
+  // gulpNSP({package : __dirname + '/package.json'}, cb);
 });
 
 gulp.task('pre-test', function () {
   return gulp.src('lib/**/*.js')
+    .pipe(excludeGitignore())
     .pipe(istanbul({
       includeUntested : true,
       instrumenter    : isparta.Instrumenter
@@ -65,13 +66,8 @@ gulp.task('test', ['pre-test'], function (cb) {
     });
 });
 
-gulp.task('coveralls', function () {
-  if (!process.env.CI) {
-    return;
-  }
-
-  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
-    .pipe(coveralls());
+gulp.task('watch', function () {
+  gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
 
 gulp.task('babel', function () {
