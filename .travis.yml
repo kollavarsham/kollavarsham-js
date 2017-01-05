@@ -1,6 +1,7 @@
 sudo: false
 language: node_js
 node_js:
+  - v7
   - v6
   - v5
   - v4
@@ -19,7 +20,7 @@ before_script:
 after_success:
   # If build is successful, push the documentation from this build to the gh-pages (run only on one job)
   # and generate test coverage and push it to code climate
-  - if [ "$TRAVIS_NODE_VERSION" = "4.0" ]; then ./deploy.sh; fi
+  - if [ "$TRAVIS_NODE_VERSION" == "4.*" ]; then ./deploy.sh; fi
 notifications:
   email:
   - info@kollavarsham.org
