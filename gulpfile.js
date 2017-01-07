@@ -1,5 +1,6 @@
 var path = require('path');
 var gulp = require('gulp');
+var coveralls = require('gulp-coveralls');
 var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
 var mocha = require('gulp-mocha');
