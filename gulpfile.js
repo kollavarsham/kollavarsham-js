@@ -70,6 +70,15 @@ gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
 
+gulp.task('coveralls', function () {
+  if (!process.env.CI) {
+    return;
+  }
+
+  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
+    .pipe(coveralls());
+});
+
 gulp.task('babel', function () {
   return gulp.src('lib/**/*.js')
     .pipe(babel())
