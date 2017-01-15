@@ -48,7 +48,7 @@
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
     "del": "^2.2.2",
-    "eslint": "^3.13.0",
+    "eslint": "^3.13.1",
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-babel": "^4.0.0",
     "grunt": "^1.0.1",
