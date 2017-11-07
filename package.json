@@ -16,6 +16,10 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 6.0.0"
+  },
   "keywords": [
     "kollavarsham",
     "malayalam",
