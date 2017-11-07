@@ -160,7 +160,7 @@ class Calculations {
     let ahargana = Calendar.julianDayToAhargana(julianDay);
 
     // Calculate the SakaDate at 6 AM
-    const timeAsFractionalDayAt6AM = 0.25;  // time at 6 o&#x27;clock
+    const timeAsFractionalDayAt6AM = 0.25; // time at 6 o&#x27;clock
     const sakaDate = this.celestialCalculations(ahargana, year, julianDay, timeAsFractionalDayAt6AM);
 
     // Calculate the SakaDate at the given time
@@ -213,7 +213,7 @@ class Calculations {
     const sakaDate = new SakaDate(sakaYear, masaNum, tithiDay, paksa);
 
     sakaDate.julianDay = MathHelper.truncate(julianDay + 0.5);
-    sakaDate.ahargana = MathHelper.truncate(ahargana + 0.5);  // Remove the decimals
+    sakaDate.ahargana = MathHelper.truncate(ahargana + 0.5); // Remove the decimals
     sakaDate.originalAhargana = ahargana;
     sakaDate.sauraMasa = sauraMasa;
     sakaDate.sauraDivasa = sauraDivasa;
@@ -290,7 +290,7 @@ export default Calculations;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2017 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Sun, 15 Jan 2017 19:22:56 GMT</span>
+  <span class="last-modified">Last Updated: Tue, 07 Nov 2017 00:53:27 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
