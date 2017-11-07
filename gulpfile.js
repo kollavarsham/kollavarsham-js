@@ -1,25 +1,21 @@
-var path = require('path');
-var gulp = require('gulp');
-var coveralls = require('gulp-coveralls');
-var eslint = require('gulp-eslint');
-var excludeGitignore = require('gulp-exclude-gitignore');
-var mocha = require('gulp-mocha');
-var istanbul = require('gulp-istanbul');
-var nsp = require('gulp-nsp');
-var plumber = require('gulp-plumber');
-var babel = require('gulp-babel');
-var del = require('del');
-var isparta = require('isparta');
-var ghPages = require('gulp-gh-pages');
-
-// Initialize the babel transpiler so ES2015 files gets compiled
-// when they're loaded
-require('babel-core/register');
+const path = require('path');
+const gulp = require('gulp');
+const coveralls = require('gulp-coveralls');
+const eslint = require('gulp-eslint');
+const excludeGitignore = require('gulp-exclude-gitignore');
+const mocha = require('gulp-mocha');
+const istanbul = require('gulp-istanbul');
+const nsp = require('gulp-nsp');
+const plumber = require('gulp-plumber');
+const babel = require('gulp-babel');
+const del = require('del');
+const isparta = require('isparta');
+const ghPages = require('gulp-gh-pages');
 
 // Grunt is used for yuidoc doc generation and for deployment to GH pages
-var gulpGrunt = require('gulp-grunt');
+const gulpGrunt = require('gulp-grunt');
 gulpGrunt(gulp); // add all the gruntfile tasks to gulp
-var gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
+const gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
 
 gulp.task('clean:dist', function () {
   return del.sync(['dist/**']);
@@ -53,11 +49,11 @@ gulp.task('pre-test', function () {
 });
 
 gulp.task('test', ['pre-test'], function (cb) {
-  var mochaErr;
+  let mochaErr;
 
   gulp.src('test/**/*.js')
     .pipe(plumber())
-    .pipe(mocha({reporter : 'spec'}))
+    .pipe(mocha({reporter : 'spec', require: 'babel-register'}))
     .on('error', function (err) {
       mochaErr = err;
     })

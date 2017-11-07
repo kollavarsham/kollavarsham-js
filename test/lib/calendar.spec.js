@@ -448,7 +448,7 @@ describe('Calendar', function () {
     let date;
 
     before(function () {
-      date = new Date(1979, 4, 22, 0, 0, 1);  // Tue May 22 1979 00:00:01
+      date = new Date(1979, 4, 22, 0, 0, 1); // Tue May 22 1979 00:00:01
     });
 
     it('should return the expected results', function () {
