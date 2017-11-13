@@ -3,8 +3,6 @@ const gulp = require('gulp');
 const coveralls = require('gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
-const mocha = require('gulp-mocha');
-const istanbul = require('gulp-istanbul');
 const nsp = require('gulp-nsp');
 const plumber = require('gulp-plumber');
 const babel = require('gulp-babel');
@@ -38,31 +36,6 @@ gulp.task('nsp', function (cb) {
   // gulpNSP({package : __dirname + '/package.json'}, cb);
 });
 
-gulp.task('pre-test', function () {
-  return gulp.src('lib/**/*.js')
-    .pipe(excludeGitignore())
-    .pipe(istanbul({
-      includeUntested : true,
-      instrumenter    : isparta.Instrumenter
-    }))
-    .pipe(istanbul.hookRequire());
-});
-
-gulp.task('test', ['pre-test'], function (cb) {
-  let mochaErr;
-
-  gulp.src('test/**/*.js')
-    .pipe(plumber())
-    .pipe(mocha({reporter : 'spec', require: 'babel-register'}))
-    .on('error', function (err) {
-      mochaErr = err;
-    })
-    .pipe(istanbul.writeReports())
-    .on('end', function () {
-      cb(mochaErr);
-    });
-});
-
 gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
@@ -82,7 +55,6 @@ gulp.task('babel', function () {
     .pipe(gulp.dest('dist'));
 });
 
-
 gulp.task('yuidoc', ['clean:doc', 'prepublish', 'coveralls'], function (cb) {
   gulpGruntTasks['grunt-yuidoc'](function () {
     cb();
@@ -97,5 +69,3 @@ gulp.task('deployDoc', ['yuidoc'], function () {
 });
 
 gulp.task('prepublish', ['clean:dist', 'nsp', 'babel']);
-
-gulp.task('default', ['static', 'test']);

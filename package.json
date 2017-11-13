@@ -64,14 +64,14 @@
     "gulp-exclude-gitignore": "^1.2.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-grunt": "^0.5.5",
-    "gulp-istanbul": "^1.1.2",
     "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^4.3.1",
     "gulp-nsp": "^2.4.2",
     "gulp-plumber": "^1.1.0",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.5",
-    "load-grunt-tasks": "^3.5.2"
+    "load-grunt-tasks": "^3.5.2",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
   },
   "eslintConfig": {
     "extends": "xo-space",
@@ -79,9 +79,15 @@
       "mocha": true
     }
   },
+  "nyc": {
+    "include": ["lib/**/*.js"],
+    "exclude": ["test/**/*.spec.js", "gulpfile.js", "Gruntfile.js"],
+    "reporter": ["html", "lcov", "text-summary", "text"],
+    "temp-directory": "./coverage/.nyc_output"
+  },
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "prepublishOnly": "gulp prepublish",
+    "test": "nyc --require babel-core/register _mocha test/**/*.spec.js"
   },
   "license": "MIT",
   "dependencies": {
