@@ -80,9 +80,20 @@
     }
   },
   "nyc": {
-    "include": ["lib/**/*.js"],
-    "exclude": ["test/**/*.spec.js", "gulpfile.js", "Gruntfile.js"],
-    "reporter": ["html", "lcov", "text-summary", "text"],
+    "include": [
+      "lib/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*.spec.js",
+      "gulpfile.js",
+      "Gruntfile.js"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text-summary",
+      "text"
+    ],
     "temp-directory": "./coverage/.nyc_output"
   },
   "scripts": {
