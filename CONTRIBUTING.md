@@ -4,4 +4,4 @@ Presently, there is 99% code coverage in the unit tests, maintain similar covera
 
 Add unit tests using Mocha/Chai similar to the existing tests.
 
-Lint and test the code by running `gulp` at the root.
+Lint and test the code by running `npm test` at the root.
