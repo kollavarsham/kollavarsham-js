@@ -334,6 +334,26 @@ describe('Celestial', function () {
 
   });
 
+  describe('getDaylightEquation', function () {
+
+    it('should return correct results', function () {
+      expect(celestial.getDaylightEquation(2018, 10.5, 1710693)).to.be.closeTo(-0.005420561412729585, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1710694)).to.be.closeTo(-0.005614522183274197, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1710695)).to.be.closeTo(-0.005807467501313135, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1710696)).to.be.closeTo(-0.005999348448389154, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1772755)).to.be.closeTo(0.00107770027863962, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1772756)).to.be.closeTo(0.0008716564611006835, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1772757)).to.be.closeTo(0.0006654834899484697, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1132992)).to.be.closeTo(-0.003588875611065327, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1868191)).to.be.closeTo(-0.013036431706478948, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1868192)).to.be.closeTo(-0.013001996328907502, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1867492)).to.be.closeTo(-0.010004131830564776, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1867886)).to.be.closeTo(-0.004905444657490358, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1867520)).to.be.closeTo(-0.005051116361050748, MathHelper.epsilon);
+      expect(celestial.getDaylightEquation(2018, 10.5, 1844848)).to.be.closeTo(-0.009693442247709978, MathHelper.epsilon);
+    });
+
+  });
 
 });
 
