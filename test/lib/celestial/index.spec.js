@@ -355,5 +355,39 @@ describe('Celestial', function () {
 
   });
 
+  describe('getSunriseTime', function () {
+
+    it('should return correct results', function () {
+      let sunriseTime = Celestial.getSunriseTime(0.0, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(0);
+      expect(sunriseTime.sunriseMinute).to.equal(0);
+
+      sunriseTime = Celestial.getSunriseTime(0.14583333333333, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(3);
+      expect(sunriseTime.sunriseMinute).to.equal(29);
+
+      sunriseTime = Celestial.getSunriseTime(0.25, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(6);
+      expect(sunriseTime.sunriseMinute).to.equal(0);
+
+      sunriseTime = Celestial.getSunriseTime(0.48958333333333, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(11);
+      expect(sunriseTime.sunriseMinute).to.equal(44);
+
+      sunriseTime = Celestial.getSunriseTime(0.5, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(12);
+      expect(sunriseTime.sunriseMinute).to.equal(0);
+
+      sunriseTime = Celestial.getSunriseTime(0.68402777777778, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(16);
+      expect(sunriseTime.sunriseMinute).to.equal(25);
+
+      sunriseTime = Celestial.getSunriseTime(0.75, 0.0);
+      expect(sunriseTime.sunriseHour).to.equal(18);
+      expect(sunriseTime.sunriseMinute).to.equal(0);
+    });
+
+  });
+
 });
 
