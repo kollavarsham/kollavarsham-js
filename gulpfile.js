@@ -15,12 +15,14 @@ const gulpGrunt = require('gulp-grunt');
 gulpGrunt(gulp); // add all the gruntfile tasks to gulp
 const gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
 
-gulp.task('clean:dist', function () {
-  return del.sync(['dist/**']);
+gulp.task('clean:dist', function (done) {
+  del.sync(['dist/**']);
+  done();
 });
 
-gulp.task('clean:doc', function () {
-  return del.sync(['doc/**']);
+gulp.task('clean:doc', function (done) {
+  del.sync(['doc/**']);
+  done();
 });
 
 gulp.task('static', function () {
@@ -40,13 +42,13 @@ gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
 
-gulp.task('coveralls', function () {
+gulp.task('coveralls', function (done) {
   if (!process.env.CI) {
-    return;
+    done();
+  } else {
+    return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
+      .pipe(coveralls());
   }
-
-  return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
-    .pipe(coveralls());
 });
 
 gulp.task('babel', function () {
@@ -55,17 +57,17 @@ gulp.task('babel', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('yuidoc', ['clean:doc', 'prepublish', 'coveralls'], function (cb) {
-  gulpGruntTasks['grunt-yuidoc'](function () {
-    cb();
-  });
-});
+gulp.task('prepublish', gulp.series('clean:dist', 'nsp', 'babel'));
 
-gulp.task('deployDoc', ['yuidoc'], function () {
+gulp.task('yuidoc', gulp.series('clean:doc', 'prepublish', 'coveralls', function (done) {
+  gulpGruntTasks['grunt-yuidoc'](function () {
+    done();
+  });
+}));
+
+gulp.task('deployDoc', gulp.series('yuidoc', function () {
   return gulp.src('./doc/**/*')
     .pipe(ghPages({
       remoteUrl : 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
-});
-
-gulp.task('prepublish', ['clean:dist', 'nsp', 'babel']);
+}));
