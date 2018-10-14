@@ -63,7 +63,7 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
-    "@kollavarsham/gulp-coveralls": "^0.2.1",
+    "@kollavarsham/gulp-coveralls": "^0.2.2",
     "babel-eslint": "^10.0.1",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "^4.2.0",
