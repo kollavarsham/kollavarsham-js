@@ -1,6 +1,6 @@
 const path = require('path');
 const gulp = require('gulp');
-const coveralls = require('gulp-coveralls');
+const coveralls = require('@kollavarsham/gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
 const nsp = require('gulp-nsp');
