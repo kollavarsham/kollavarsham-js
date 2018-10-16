@@ -389,5 +389,25 @@ describe('Celestial', function () {
 
   });
 
+  describe('getLastConjunctionLongitude', function () {
+
+    it('should return correct results', function () {
+      expect(celestial.getLastConjunctionLongitude(1710693, 8.54483099478396)).to.be.closeTo(165.6082302520299, MathHelper.epsilon);
+      expect(celestial.getLastConjunctionLongitude(1810694, 9.74443045978396)).to.be.closeTo(106.68697671647189, MathHelper.epsilon);
+      expect(celestial.getLastConjunctionLongitude(1910695, 10.54899456473964)).to.be.closeTo(21.008813423509878, MathHelper.epsilon);
+    });
+
+  });
+
+  describe('getNextConjunctionLongitude', function () {
+
+    it('should return correct results', function () {
+      expect(celestial.getNextConjunctionLongitude(1710693, 8.54483099478396)).to.be.closeTo(195.2209295926904, MathHelper.epsilon);
+      expect(celestial.getNextConjunctionLongitude(1810694, 9.74443045978396)).to.be.closeTo(135.03288802411012, MathHelper.epsilon);
+      expect(celestial.getNextConjunctionLongitude(1910695, 10.54899456473964)).to.be.closeTo(49.155790280363135, MathHelper.epsilon);
+    });
+
+  });
+
 });
 
