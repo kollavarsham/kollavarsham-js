@@ -73,7 +73,7 @@
     "eslint-plugin-babel": "^5.2.1",
     "grunt": "^1.0.3",
     "grunt-contrib-yuidoc": "^1.0.0",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "github:gulpjs/gulp#v4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-exclude-gitignore": "^1.2.0",
