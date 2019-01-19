@@ -3,7 +3,6 @@ const gulp = require('gulp');
 const coveralls = require('@kollavarsham/gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
-const nsp = require('gulp-nsp');
 const plumber = require('gulp-plumber');
 const babel = require('gulp-babel');
 const del = require('del');
@@ -33,11 +32,6 @@ gulp.task('static', function () {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('nsp', function (cb) {
-  nsp({package : path.resolve('package.json')}, cb);
-  // gulpNSP({package : __dirname + '/package.json'}, cb);
-});
-
 gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
 });
@@ -57,7 +51,7 @@ gulp.task('babel', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('prepublish', gulp.series('clean:dist', 'nsp', 'babel'));
+gulp.task('prepublish', gulp.series('clean:dist', 'babel'));
 
 gulp.task('yuidoc', gulp.series('clean:doc', 'prepublish', 'coveralls', function (done) {
   gulpGruntTasks['grunt-yuidoc'](function () {

@@ -5,3 +5,4 @@ dist/
 .publish/
 !.idea
 .idea/workspace.xml
+.nyc_output/

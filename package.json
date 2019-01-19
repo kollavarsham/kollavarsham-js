@@ -18,7 +18,8 @@
   "main": "dist/index.js",
   "engineStrict": true,
   "engines": {
-    "node": ">= 8"
+    "node": ">= 8",
+    "npm": ">= 6"
   },
   "keywords": [
     "kollavarsham",
@@ -80,7 +81,6 @@
     "gulp-gh-pages": "^0.5.4",
     "gulp-grunt": "^0.5.5",
     "gulp-line-ending-corrector": "^1.0.3",
-    "gulp-nsp": "^3.0.1",
     "gulp-plumber": "^1.2.1",
     "isparta": "^4.1.1",
     "istanbul": "^0.4.5",
