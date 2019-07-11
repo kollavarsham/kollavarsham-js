@@ -76,7 +76,7 @@
     "grunt-contrib-yuidoc": "^1.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
-    "gulp-eslint": "^5.0.0",
+    "gulp-eslint": "^6.0.0",
     "gulp-exclude-gitignore": "^1.2.0",
     "gulp-gh-pages": "^0.5.4",
     "gulp-grunt": "^0.5.5",
