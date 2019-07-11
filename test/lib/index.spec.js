@@ -241,7 +241,7 @@ describe('Kollavarsham', function () {
     });
 
     it('should return a valid Julian Date', function () {
-      expect(JulianDate.prototype.isPrototypeOf(date.gregorianDate)).to.be.true;
+      expect(JulianDate.prototype.isPrototypeOf(date.gregorianDate)).to.be.true; // eslint-disable-line no-prototype-builtins
       expect(date.gregorianDate.year).to.equal(1515);
       expect(date.gregorianDate.month).to.equal(7);
       expect(date.gregorianDate.date).to.equal(23);
