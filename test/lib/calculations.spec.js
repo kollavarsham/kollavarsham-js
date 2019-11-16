@@ -12,7 +12,7 @@ describe('Calculations', function () {
   let sakaDate;
 
   beforeEach(function () {
-    settings = (new Kollavarsham()).getSettings();
+    settings = new Kollavarsham().getSettings();
     calculations = new Calculations(settings);
   });
 
