@@ -86,7 +86,7 @@
     "istanbul": "^0.4.5",
     "load-grunt-tasks": "^5.1.0",
     "mocha": "^6.2.2",
-    "nyc": "^14.1.1"
+    "nyc": "^15.0.0"
   },
   "eslintConfig": {
     "extends": "xo-space",
