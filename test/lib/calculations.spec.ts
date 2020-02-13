@@ -1,8 +1,9 @@
 import {expect} from 'chai';
 
-import Kollavarsham from '../../lib/index.js';
-import Calculations from '../../lib/calculations.js';
-import SakaDate from '../../lib/dates/sakaDate.js';
+import Kollavarsham from '../../lib';
+import { Calculations } from '../../lib/calculations';
+import { SakaDate } from '../../lib/dates/sakaDate';
+import { KollavarshamDate } from '../../lib/dates/kollavarshamDate';
 
 describe('Calculations', function () {
 
@@ -28,7 +29,7 @@ describe('Calculations', function () {
   describe('toGregorian', function () {
     it('should throw appropriate exception', function () {
       expect(function () {
-        calculations.toGregorian({});
+        calculations.toGregorian(new KollavarshamDate());
       }).to.throw('Not implemented');
     });
   });
@@ -40,6 +41,7 @@ describe('Calculations', function () {
     });
 
     it('should return a valid malayalam date', function () {
+      // eslint-disable-next-line no-unused-expressions
       expect(sakaDate instanceof SakaDate).to.be.true;
       expect(sakaDate.year).to.equal(1901);
       expect(sakaDate.month).to.equal(1);
@@ -65,6 +67,7 @@ describe('Calculations', function () {
     });
 
     it('should return a valid malayalam date', function () {
+      // eslint-disable-next-line no-unused-expressions
       expect(sakaDate instanceof SakaDate).to.be.true;
       expect(sakaDate.year).to.equal(1905);
       expect(sakaDate.month).to.equal(4);
@@ -90,6 +93,7 @@ describe('Calculations', function () {
     });
 
     it('should return a valid malayalam date', function () {
+      // eslint-disable-next-line no-unused-expressions
       expect(sakaDate instanceof SakaDate).to.be.true;
       expect(sakaDate.year).to.equal(1905);
       expect(sakaDate.month).to.equal(5);

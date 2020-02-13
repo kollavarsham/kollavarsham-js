@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import JulianDate from '../../../lib/dates/julianDate.js';
+import { JulianDate } from '../../../lib/dates/julianDate';
 
 describe('JulianDate', function () {
 
@@ -45,6 +45,7 @@ describe('JulianDate', function () {
     });
 
     it('should have valid values for naksatra correctly', function () {
+      // eslint-disable-next-line no-unused-expressions
       expect(julianDate.naksatraName).to.be.undefined;
     });
   });

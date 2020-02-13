@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import SakaDate from '../../../lib/dates/sakaDate.js';
+import { SakaDate } from '../../../lib/dates/sakaDate';
 
 describe('SakaDate', function () {
 
@@ -61,7 +61,8 @@ describe('SakaDate', function () {
     });
 
     it('should have valid values for naksatra correctly', function () {
-      expect(sakaDate.naksatraName).to.be.undefined;
+      // eslint-disable-next-line no-unused-expressions
+      expect(sakaDate.naksatraName).to.be.empty;
     });
   });
 

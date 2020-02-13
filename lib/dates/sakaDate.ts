@@ -2,16 +2,16 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module sakaDate
  */
-import BaseDate from './baseDate.js';
-import KollavarshamDate from './kollavarshamDate.js';
-import MathHelper from '../mathHelper.js';
+import { BaseDate } from './baseDate';
+import { KollavarshamDate } from './kollavarshamDate';
+import { MathHelper } from '../mathHelper';
 
 /**
  * Represents an Saka date's year, month and paksa and tithi
@@ -23,63 +23,76 @@ import MathHelper from '../mathHelper.js';
  * @param [paksa='Suklapaksa'] {string} Lunar Phase - Valid values are `Suklapaksa` (default) or 'Krsnapaksa`
  * @extends BaseDate
  */
-class SakaDate extends BaseDate {
+export class SakaDate extends BaseDate {
+
+  /**
+   * The Paksha/Paksa corresponding to this instance of the date.
+   *
+   * Paksha (or pakṣa: Sanskrit: पक्ष), refers to a fortnight or a lunar phase in a month of the Hindu lunar calendar.
+   *
+   * _Source_: https://en.wikipedia.org/wiki/Paksha
+   *
+   * @property paksa
+   * @type {string}
+   */
+  paksa: string;
+
+  /**
+   * The Kali year corresponding to this instance of the date. **Set separately after an instance is created**
+   *
+   * @property kaliYear
+   * @type {Number}
+   */
+  kaliYear: number;
+
+  /**
+   * The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**
+   *
+   * @property adhimasa
+   * @type {string}
+   */
+  adhimasa: string;
+
+  /**
+   * The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**
+   *
+   * @property fractionalTithi
+   * @type {Number}
+   */
+  fractionalTithi: number;
+
+  /**
+   * The hour part from the sunrise time for this date. **Set separately after an instance is created**
+   *
+   * @property sunriseHour
+   * @type {Number}
+   */
+  sunriseHour: number;
+
+  /**
+   * The minute part from the sunrise time for this date. **Set separately after an instance is created**
+   *
+   * @property sunriseMinute
+   * @type {Number}
+   */
+  sunriseMinute: number;
+
+  /**
+   * The original ahargana passed in to the celestial calculations (TODO: Not sure why we need this!?)
+   */
+  originalAhargana: number;
 
   constructor(year = 1, month = 1, tithi = 1, paksa = 'Suklapaksa') {
 
     super(year, month, tithi);
 
-    /**
-     * The Paksha/Paksa corresponding to this instance of the date.
-     *
-     * Paksha (or pakṣa: Sanskrit: पक्ष), refers to a fortnight or a lunar phase in a month of the Hindu lunar calendar.
-     *
-     * _Source_: https://en.wikipedia.org/wiki/Paksha
-     *
-     * @property paksa
-     * @type {string}
-     */
     this.paksa = paksa === 'Krsnapaksa' ? paksa : 'Suklapaksa';
-
-    /**
-     * The Kali year corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property kaliYear
-     * @type {Number}
-     */
-    this.kaliYear = null;
-
-    /**
-     * The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property adhimasa
-     * @type {string}
-     */
-    this.adhimasa = null;
-
-    /**
-     * The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property fractionalTithi
-     * @type {Number}
-     */
-    this.fractionalTithi = null;
-
-    /**
-     * The hour part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseHour
-     * @type {Number}
-     */
-    this.sunriseHour = null;
-
-    /**
-     * The minute part from the sunrise time for this date. **Set separately after an instance is created**
-     *
-     * @property sunriseMinute
-     * @type {Number}
-     */
-    this.sunriseMinute = null;
+    this.kaliYear = -1;
+    this.adhimasa = '';
+    this.fractionalTithi = -1;
+    this.sunriseHour = -1;
+    this.sunriseMinute = -1;
+    this.originalAhargana = -1;
   }
 
   /**
@@ -88,7 +101,7 @@ class SakaDate extends BaseDate {
    * @property sakaYear
    * @type {Number}
    */
-  get sakaYear() {
+  get sakaYear(): number {
     return this.year;
   }
 
@@ -103,7 +116,7 @@ class SakaDate extends BaseDate {
    * @property tithi
    * @type {Number}
    */
-  get tithi() {
+  get tithi(): number {
     return this.date;
   }
 
@@ -113,7 +126,7 @@ class SakaDate extends BaseDate {
    * @property vikramaYear
    * @type {Number}
    */
-  get vikramaYear() {
+  get vikramaYear(): number {
     return this.year + 135;
   }
 
@@ -123,7 +136,7 @@ class SakaDate extends BaseDate {
    * @property naksatraName
    * @type {string}
    */
-  get naksatraName() {
+  get naksatraName(): string {
     return this.naksatra.saka;
   }
 
@@ -133,7 +146,7 @@ class SakaDate extends BaseDate {
    * @property masaName
    * @type {string}
    */
-  get masaName() {
+  get masaName(): string {
     return SakaDate.getMasaName(this.month).saka;
   }
 
@@ -144,9 +157,9 @@ class SakaDate extends BaseDate {
    * @for SakaDate
    * @returns {KollavarshamDate}
    */
-  generateKollavarshamDate() {
+  generateKollavarshamDate(): KollavarshamDate {
     // TODO: Add unit tests
-    const malayalaMasa = (this.sauraMasa - 4 + 12 ) % 12;
+    const malayalaMasa = (this.sauraMasa - 4 + 12) % 12;
 
     // Sewell p.45 - https://archive.org/stream/indiancalendarwi00sewerich#page/45/mode/1up
     const malayalamYear = this.year - 747 + MathHelper.truncate((this.month - malayalaMasa + 12) / 12);
@@ -167,10 +180,8 @@ class SakaDate extends BaseDate {
     return kollavarshamDate;
   }
 
-  toString() {
-    return `${ super.toString() } ${this.paksa}`;
+  toString(): string {
+    return `${super.toString()} ${this.paksa}`;
   }
 
 }
-
-export default SakaDate;

@@ -2,14 +2,14 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module julianDate
  */
-import BaseDate from './baseDate.js';
+import { BaseDate } from './baseDate';
 
 /**
  * Represents a Julian date's year, month and day
@@ -25,12 +25,10 @@ import BaseDate from './baseDate.js';
  * @param [day=1] {Number} Julian day
  * @extends BaseDate
  */
-class JulianDate extends BaseDate {
+export class JulianDate extends BaseDate {
 
   constructor(year = 1, month = 1, day = 1) {
     super(year, month, day);
   }
 
 }
-
-export default JulianDate;

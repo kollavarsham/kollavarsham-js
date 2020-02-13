@@ -2,7 +2,7 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
@@ -18,6 +18,15 @@
  * @constructor
  */
 class Planet {
+  name: string;
+  YugaRotation: number;
+  Rotation: number;
+  Sighra: number;
+  MeanPosition: number;
+  Apogee: number;
+  MandaCircumference: number;
+  SighraCircumference: number;
+
   constructor() {
     /**
      * Name of the planet subclass
@@ -25,7 +34,7 @@ class Planet {
      * @property name
      * @type {string}
      */
-    this.name = null;
+    this.name = '';
     /**
      * **TODO: Description**
      *
@@ -218,4 +227,4 @@ class Rahu extends Planet {
   }
 }
 
-export default {Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu};
+export { Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu };

@@ -2,7 +2,9 @@ node_modules/
 coverage/
 doc/
 dist/
+es6/
 .publish/
 !.idea
 .idea/workspace.xml
 .nyc_output/
+tsconfig.json

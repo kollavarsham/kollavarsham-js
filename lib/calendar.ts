@@ -2,25 +2,37 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module calendar
  */
-import JulianDate from './dates/julianDate.js';
-import MathHelper from './mathHelper.js';
+import { JulianDate } from './dates/julianDate';
+import { MathHelper } from './mathHelper';
+import { Celestial } from './celestial/index';
+import { Naksatra } from './dates/baseDate';
 
 // TODO: Refactor this out
-let samkranti = { // eslint-disable-line no-underscore-dangle
-  ahargana : true,
-  Year     : true,
-  Month    : true,
-  Day      : true,
-  Hour     : true,
-  Min      : true
+const samkranti = { // eslint-disable-line no-underscore-dangle
+  ahargana : -1,
+  Year     : -1,
+  Month    : -1,
+  Day      : -1,
+  Hour     : -1,
+  Min      : -1
 };
+
+export interface SauraDate {
+  sauraMasa: number;
+  sauraDivasa: number;
+}
+
+export interface WeekDay {
+  en: string;
+  ml: string;
+}
 
 /**
  *
@@ -28,25 +40,26 @@ let samkranti = { // eslint-disable-line no-underscore-dangle
  *
  * @class Calendar
  */
-class Calendar {
+export class Calendar {
+  celestial: Celestial;
 
-  constructor(celestial) {
+  constructor(celestial: Celestial) {
     this.celestial = celestial;
   }
 
-  static get weekdays() {
+  static get weekdays(): { [key: number]: WeekDay } {
     return {
-      0 : {en : 'Monday', ml : 'തിങ്കൾ'},
-      1 : {en : 'Tuesday', ml : 'ചൊവ്വ'},
-      2 : {en : 'Wednesday', ml : 'ബുധൻ'},
-      3 : {en : 'Thursday', ml : 'വ്യാഴം'},
-      4 : {en : 'Friday', ml : 'വെള്ളി'},
-      5 : {en : 'Saturday', ml : 'ശനി'},
-      6 : {en : 'Sunday', ml : 'ഞായർ'}
+      0 : { en : 'Monday', ml : 'തിങ്കൾ' },
+      1 : { en : 'Tuesday', ml : 'ചൊവ്വ' },
+      2 : { en : 'Wednesday', ml : 'ബുധൻ' },
+      3 : { en : 'Thursday', ml : 'വ്യാഴം' },
+      4 : { en : 'Friday', ml : 'വെള്ളി' },
+      5 : { en : 'Saturday', ml : 'ശനി' },
+      6 : { en : 'Sunday', ml : 'ഞായർ' }
     };
   }
 
-  static get months() {
+  static get months(): { [key: string]: number } {
     return {
       January   : 0,
       February  : 1,
@@ -63,40 +76,41 @@ class Calendar {
     };
   }
 
-  static get naksatras() {
+  static get naksatras(): { [key: number]: Naksatra } {
     return {
-      0  : {saka : 'Asvini', enMalayalam : 'Ashwathi', mlMalayalam : 'അശ്വതി'},
-      1  : {saka : 'Bharani', enMalayalam : 'Bharani', mlMalayalam : 'ഭരണി'},
-      2  : {saka : 'Krttika', enMalayalam : 'Karthika', mlMalayalam : 'കാർത്തിക'},
-      3  : {saka : 'Rohini', enMalayalam : 'Rohini', mlMalayalam : 'രോഹിണി'},
-      4  : {saka : 'Mrgasira', enMalayalam : 'Makiryam', mlMalayalam : 'മകയിരം'},
-      5  : {saka : 'Ardra', enMalayalam : 'Thiruvathira', mlMalayalam : 'തിരുവാതിര'},
-      6  : {saka : 'Punarvasu', enMalayalam : 'Punartham', mlMalayalam : 'പുണർതം'},
-      7  : {saka : 'Pusya', enMalayalam : 'Pooyam', mlMalayalam : 'പൂയം'},
-      8  : {saka : 'Aslesa', enMalayalam : 'Aayilyam', mlMalayalam : 'ആയില്യം'},
-      9  : {saka : 'Magha', enMalayalam : 'Makam', mlMalayalam : 'മകം'},
-      10 : {saka : 'P-phalguni', enMalayalam : 'Pooram', mlMalayalam : 'പൂരം'},
-      11 : {saka : 'U-phalguni', enMalayalam : 'Uthram', mlMalayalam : 'ഉത്രം'},
-      12 : {saka : 'Hasta', enMalayalam : 'Atham', mlMalayalam : 'അത്തം'},
-      13 : {saka : 'Citra', enMalayalam : 'Chithra', mlMalayalam : 'ചിത്ര'},
-      14 : {saka : 'Svati', enMalayalam : 'Chothi', mlMalayalam : 'ചോതി'},
-      15 : {saka : 'Visakha', enMalayalam : 'Vishakham', mlMalayalam : 'വിശാഖം'},
-      16 : {saka : 'Anuradha', enMalayalam : 'Anizham', mlMalayalam : 'അനിഴം'},
-      17 : {saka : 'Jyestha', enMalayalam : 'Thrikketta', mlMalayalam : 'തൃക്കേട്ട'},
-      18 : {saka : 'Mula', enMalayalam : 'Moolam', mlMalayalam : 'മൂലം'},
-      19 : {saka : 'P-asadha', enMalayalam : 'Pooradam', mlMalayalam : 'പൂരാടം'},
-      20 : {saka : 'U-asadha', enMalayalam : 'Uthradam', mlMalayalam : 'ഉത്രാടം'},
-      21 : {saka : 'Sravana', enMalayalam : 'Thiruvonam', mlMalayalam : 'തിരുവോണം'},
-      22 : {saka : 'Dhanistha', enMalayalam : 'Avittam', mlMalayalam : 'അവിട്ടം'},
-      23 : {saka : 'Satabhisaj', enMalayalam : 'Chathayam', mlMalayalam : 'ചതയം'},
-      24 : {saka : 'P-bhadrapada', enMalayalam : 'Poororuttathi', mlMalayalam : 'പൂരുരുട്ടാതി'},
-      25 : {saka : 'U-bhadrapada', enMalayalam : 'Uthrattathi', mlMalayalam : 'ഉത്രട്ടാതി'},
-      26 : {saka : 'Revati', enMalayalam : 'Revathi', mlMalayalam : 'രേവതി'},
-      27 : {saka : 'Asvini', enMalayalam : 'Ashwathi', mlMalayalam : 'അശ്വതി'}
+      [-1] : { saka : '', enMalayalam : '', mlMalayalam : '' },
+      0    : { saka : 'Asvini', enMalayalam : 'Ashwathi', mlMalayalam : 'അശ്വതി' },
+      1    : { saka : 'Bharani', enMalayalam : 'Bharani', mlMalayalam : 'ഭരണി' },
+      2    : { saka : 'Krttika', enMalayalam : 'Karthika', mlMalayalam : 'കാർത്തിക' },
+      3    : { saka : 'Rohini', enMalayalam : 'Rohini', mlMalayalam : 'രോഹിണി' },
+      4    : { saka : 'Mrgasira', enMalayalam : 'Makiryam', mlMalayalam : 'മകയിരം' },
+      5    : { saka : 'Ardra', enMalayalam : 'Thiruvathira', mlMalayalam : 'തിരുവാതിര' },
+      6    : { saka : 'Punarvasu', enMalayalam : 'Punartham', mlMalayalam : 'പുണർതം' },
+      7    : { saka : 'Pusya', enMalayalam : 'Pooyam', mlMalayalam : 'പൂയം' },
+      8    : { saka : 'Aslesa', enMalayalam : 'Aayilyam', mlMalayalam : 'ആയില്യം' },
+      9    : { saka : 'Magha', enMalayalam : 'Makam', mlMalayalam : 'മകം' },
+      10   : { saka : 'P-phalguni', enMalayalam : 'Pooram', mlMalayalam : 'പൂരം' },
+      11   : { saka : 'U-phalguni', enMalayalam : 'Uthram', mlMalayalam : 'ഉത്രം' },
+      12   : { saka : 'Hasta', enMalayalam : 'Atham', mlMalayalam : 'അത്തം' },
+      13   : { saka : 'Citra', enMalayalam : 'Chithra', mlMalayalam : 'ചിത്ര' },
+      14   : { saka : 'Svati', enMalayalam : 'Chothi', mlMalayalam : 'ചോതി' },
+      15   : { saka : 'Visakha', enMalayalam : 'Vishakham', mlMalayalam : 'വിശാഖം' },
+      16   : { saka : 'Anuradha', enMalayalam : 'Anizham', mlMalayalam : 'അനിഴം' },
+      17   : { saka : 'Jyestha', enMalayalam : 'Thrikketta', mlMalayalam : 'തൃക്കേട്ട' },
+      18   : { saka : 'Mula', enMalayalam : 'Moolam', mlMalayalam : 'മൂലം' },
+      19   : { saka : 'P-asadha', enMalayalam : 'Pooradam', mlMalayalam : 'പൂരാടം' },
+      20   : { saka : 'U-asadha', enMalayalam : 'Uthradam', mlMalayalam : 'ഉത്രാടം' },
+      21   : { saka : 'Sravana', enMalayalam : 'Thiruvonam', mlMalayalam : 'തിരുവോണം' },
+      22   : { saka : 'Dhanistha', enMalayalam : 'Avittam', mlMalayalam : 'അവിട്ടം' },
+      23   : { saka : 'Satabhisaj', enMalayalam : 'Chathayam', mlMalayalam : 'ചതയം' },
+      24   : { saka : 'P-bhadrapada', enMalayalam : 'Poororuttathi', mlMalayalam : 'പൂരുരുട്ടാതി' },
+      25   : { saka : 'U-bhadrapada', enMalayalam : 'Uthrattathi', mlMalayalam : 'ഉത്രട്ടാതി' },
+      26   : { saka : 'Revati', enMalayalam : 'Revathi', mlMalayalam : 'രേവതി' },
+      27   : { saka : 'Asvini', enMalayalam : 'Ashwathi', mlMalayalam : 'അശ്വതി' }
     };
   }
 
-  static timeIntoFractionalDay(date) {
+  static timeIntoFractionalDay(date: Date): number {
     // TODO: Incorporate this into calculating the multiple-naksatra-per-day (time precision)
     // The year, month and day from the passed in date is discarded and only the time is used.
     // And even from the time information only the hour and minute is used and seconds, milliseconds etc. is discarded
@@ -108,14 +122,14 @@ class Calendar {
     return (hour * 60 + minute) / (24 * 60);
   }
 
-  static gregorianDateToJulianDay(date) {
+  static gregorianDateToJulianDay(date: Date): number {
     //  TODO:
     // Annotate all the magic numbers below !
     // There is some explanation here - http://quasar.as.utexas.edu/BillInfo/JulianDatesG.html
 
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
-    let day = date.getDate();
+    const day = date.getDate();
 
     if (month < 3) {
       year -= 1;
@@ -138,7 +152,7 @@ class Calendar {
     return julianDay;
   }
 
-  static julianDayToJulianDate(julianDay) {
+  static julianDayToJulianDate(julianDay: number): JulianDate {
     const j = MathHelper.truncate(julianDay) + 1402;
     const k = MathHelper.truncate((j - 1) / 1461);
     const l = j - 1461 * k;
@@ -154,7 +168,7 @@ class Calendar {
     return new JulianDate(year, month, day);
   }
 
-  static julianDayToGregorianDate(julianDay) {
+  static julianDayToGregorianDate(julianDay: number): Date {
     const a = julianDay + 68569;
     const b = MathHelper.truncate(a / 36524.25);
     const c = a - MathHelper.truncate(36524.25 * b + 0.75);
@@ -174,38 +188,38 @@ class Calendar {
     return result;
   }
 
-  static julianDayToModernDate(julianDay) {
+  static julianDayToModernDate(julianDay: number): (Date | JulianDate) {
     // Will return JulianDate object for any date before 1st January 1583 AD and Date objects for later dates
     return julianDay < 2299239 ? Calendar.julianDayToJulianDate(julianDay) : Calendar.julianDayToGregorianDate(julianDay);
   }
 
-  static julianDayToAhargana(julianDay) {
+  static julianDayToAhargana(julianDay: number): number {
     return julianDay - 588465.50;
   }
 
-  static aharganaToJulianDay(ahargana) {
+  static aharganaToJulianDay(ahargana: number): number {
     return 588465.50 + ahargana;
   }
 
-  static kaliToSaka(yearKali) {
+  static kaliToSaka(yearKali: number): number {
     return yearKali - 3179;
   }
 
-  static sakaToKali(yearSaka) {
+  static sakaToKali(yearSaka: number): number {
     return yearSaka + 3179;
   }
 
-  static julianDayToWeekday(julianDay) {
+  static julianDayToWeekday(julianDay: number): WeekDay {
     return Calendar.weekdays[MathHelper.truncate(julianDay + 0.5) % 7];
   }
 
-  static getAdhimasa(lastConjunctionLongitude, nextConjunctionLongitude) {
-    let n1 = MathHelper.truncate(lastConjunctionLongitude / 30);
-    let n2 = MathHelper.truncate(nextConjunctionLongitude / 30);
+  static getAdhimasa(lastConjunctionLongitude: number, nextConjunctionLongitude: number): string {
+    const n1 = MathHelper.truncate(lastConjunctionLongitude / 30);
+    const n2 = MathHelper.truncate(nextConjunctionLongitude / 30);
     return Math.abs(n1 - n2) < MathHelper.epsilon ? 'Adhika-' : '';
   }
 
-  static getMasaNum(trueSolarLongitude, lastConjunctionLongitude) {
+  static getMasaNum(trueSolarLongitude: number, lastConjunctionLongitude: number): number {
     let masaNum = MathHelper.truncate(trueSolarLongitude / 30) % 12;
     if (masaNum === MathHelper.truncate(lastConjunctionLongitude / 30) % 12) {
       masaNum += 1;
@@ -214,17 +228,17 @@ class Calendar {
     return masaNum;
   }
 
-  static getNaksatra(trueLunarLongitude) {
+  static getNaksatra(trueLunarLongitude: number): Naksatra {
     return Calendar.naksatras[MathHelper.truncate(trueLunarLongitude * 27 / 360)];
   }
 
-  nextDate(date) {
+  nextDate(date: Date): Date {
     // TODO: This looks like a concern of the calling library - But could be exposed as a static utility method (0 usages other than tests)
     date.setUTCDate(date.getUTCDate() + 1);
     return date;
   }
 
-  julianInEngland(julianDay) {
+  julianInEngland(julianDay: number): boolean {
     // TODO: This might be exposed as a static utility method (0 usages other than tests)
     // Gregorian calendar was first introduced in most of Europe in 1582,
     // but it wasn't adopted in England (and so in US and Canada) until 1752
@@ -236,14 +250,14 @@ class Calendar {
     return julianDay >= 2299160 && julianDay <= 2361221;
   }
 
-  aharganaToKali(ahargana) {
+  aharganaToKali(ahargana: number): number {
     return MathHelper.truncate(ahargana * this.celestial.planets.sun.YugaRotation / this.celestial.yuga.CivilDays);
   }
 
-  kaliToAhargana(yearKali, masaNum, tithiDay) {
+  kaliToAhargana(yearKali: number, masaNum: number, tithiDay: number): number {
     const sauraMasas = yearKali * 12 + masaNum; // expired saura masas
 
-    const adhiMasas = MathHelper.truncate(sauraMasas * this.celestial.yuga.Adhimasa / ( 12 * this.celestial.planets.sun.YugaRotation )); // expired adhimasas
+    const adhiMasas = MathHelper.truncate(sauraMasas * this.celestial.yuga.Adhimasa / (12 * this.celestial.planets.sun.YugaRotation)); // expired adhimasas
 
     const candraMasas = sauraMasas + adhiMasas; // expired candra masas
 
@@ -254,9 +268,9 @@ class Calendar {
     return tithis - avamas;
   }
 
-  findSamkranti(leftAhargana, rightAhargana) {
-    let width = (rightAhargana - leftAhargana) / 2;
-    let centreAhargana = (rightAhargana + leftAhargana) / 2;
+  findSamkranti(leftAhargana: number, rightAhargana: number): number {
+    const width = (rightAhargana - leftAhargana) / 2;
+    const centreAhargana = (rightAhargana + leftAhargana) / 2;
 
     if (width < MathHelper.epsilon) {
       return centreAhargana;
@@ -271,26 +285,28 @@ class Calendar {
     }
   }
 
-  calculateSamkranti(ahargana, desantara) {
+  calculateSamkranti(ahargana: number, desantara: number): void {
     samkranti.ahargana = this.findSamkranti(ahargana, ahargana + 1) + desantara;
     // below line is the fix that Yano-san worked in for Kerala dates - #20140223 cf. try_calculations
-    let roundedSamkranti = MathHelper.truncate(samkranti.ahargana) + 0.5;
-    let samkrantiModernDate = Calendar.julianDayToModernDate(Calendar.aharganaToJulianDay(roundedSamkranti));
+    const roundedSamkranti = MathHelper.truncate(samkranti.ahargana) + 0.5;
+    const samkrantiModernDate = Calendar.julianDayToModernDate(Calendar.aharganaToJulianDay(roundedSamkranti));
     if (JulianDate.prototype.isPrototypeOf(samkrantiModernDate)) { // eslint-disable-line no-prototype-builtins
-      samkranti.Year = samkrantiModernDate.year;
-      samkranti.Month = samkrantiModernDate.month;
-      samkranti.Day = samkrantiModernDate.date;
+      const samkrantiDate = samkrantiModernDate as JulianDate;
+      samkranti.Year = samkrantiDate.year;
+      samkranti.Month = samkrantiDate.month;
+      samkranti.Day = samkrantiDate.date;
     } else {
-      samkranti.Year = samkrantiModernDate.getFullYear();
-      samkranti.Month = samkrantiModernDate.getMonth() + 1;
-      samkranti.Day = samkrantiModernDate.getDate();
+      const samkrantiDate = samkrantiModernDate as Date;
+      samkranti.Year = samkrantiDate.getFullYear();
+      samkranti.Month = samkrantiDate.getMonth() + 1;
+      samkranti.Day = samkrantiDate.getDate();
     }
-    let fractionalDay = MathHelper.fractional(samkranti.ahargana) * 24;
+    const fractionalDay = MathHelper.fractional(samkranti.ahargana) * 24;
     samkranti.Hour = MathHelper.truncate(fractionalDay);
     samkranti.Min = MathHelper.truncate(60 * MathHelper.fractional(fractionalDay));
   }
 
-  isTodaySauraMasaFirst(ahargana, desantara) {
+  isTodaySauraMasaFirst(ahargana: number, desantara: number): boolean {
     /*
      //    Definition of the first day
      //    samkranti is between today's 0:00 and 24:00
@@ -311,7 +327,7 @@ class Calendar {
     return false;
   }
 
-  getSauraMasaAndSauraDivasa(ahargana, desantara) {
+  getSauraMasaAndSauraDivasa(ahargana: number, desantara: number): SauraDate {
     // If today is the first day then 1
     // Otherwise yesterday's + 1
     let month;
@@ -319,17 +335,15 @@ class Calendar {
     ahargana = MathHelper.truncate(ahargana);
     if (this.isTodaySauraMasaFirst(ahargana, desantara)) {
       day = 1;
-      let tsLongTomorrow = this.celestial.getTrueSolarLongitude(ahargana + 1);
+      const tsLongTomorrow = this.celestial.getTrueSolarLongitude(ahargana + 1);
       month = MathHelper.truncate(tsLongTomorrow / 30) % 12;
       month = (month + 12) % 12;
     } else {
-      const {sauraMasa, sauraDivasa} = this.getSauraMasaAndSauraDivasa(ahargana - 1, desantara);
+      const { sauraMasa, sauraDivasa } = this.getSauraMasaAndSauraDivasa(ahargana - 1, desantara);
       month = sauraMasa;
       day = sauraDivasa + 1;
     }
-    return {sauraMasa : month, sauraDivasa : day};
+    return { sauraMasa : month, sauraDivasa : day };
   }
 
 }
-
-export default Calendar;

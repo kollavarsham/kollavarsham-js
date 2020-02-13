@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 
-import Celestial from '../../../lib/celestial/index.js';
-import MathHelper from '../../../lib/mathHelper.js';
+import { Celestial } from '../../../lib/celestial';
+import { MathHelper } from '../../../lib/mathHelper';
 
 describe('Celestial', function () {
 

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/tests",
+    "target": "es5",
+    "allowJs": true
+  },
+  "include": [
+    "test/**/*.spec.ts"
+  ]
+}

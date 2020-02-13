@@ -2,7 +2,7 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         version     : '<%= pkg.version %>',
         url         : '<%= pkg.homepage %>',
         options     : {
-          paths    : 'lib',
+          paths    : 'es6',
           themedir : 'themes/kollavarsham',
           outdir   : 'doc',
           helpers  : ['themes/kollavarsham/helpers/helpers.js']

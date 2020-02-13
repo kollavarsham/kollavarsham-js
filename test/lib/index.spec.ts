@@ -1,8 +1,9 @@
 import {expect} from 'chai';
 
-import Kollavarsham from '../../lib/index.js';
-import JulianDate from '../../lib/dates/julianDate.js';
-import SakaDate from '../../lib/dates/sakaDate.js';
+import Kollavarsham from '../../lib';
+import { JulianDate } from '../../lib/dates/julianDate';
+import { SakaDate } from '../../lib/dates/sakaDate';
+import { KollavarshamDate } from '../../lib/dates/kollavarshamDate';
 
 describe('Kollavarsham', function () {
 
@@ -13,6 +14,7 @@ describe('Kollavarsham', function () {
   let hinduDate;
 
   it('should be defined', function () {
+    // eslint-disable-next-line no-unused-expressions
     expect(Kollavarsham).to.exist;
   });
 
@@ -148,22 +150,22 @@ describe('Kollavarsham', function () {
   describe('setLatitude', function () {
     beforeEach(function () {
       kollavarsham = new Kollavarsham();
-      kollavarsham.setLatitude('DUMMY Latitude');
+      kollavarsham.setLatitude(0);
     });
 
     it('should set the latitude', function () {
-      expect(kollavarsham.getSettings().latitude).to.equal('DUMMY Latitude');
+      expect(kollavarsham.getSettings().latitude).to.equal(0);
     });
   });
 
   describe('setLongitude', function () {
     beforeEach(function () {
       kollavarsham = new Kollavarsham();
-      kollavarsham.setLongitude('DUMMY Longitude');
+      kollavarsham.setLongitude(0);
     });
 
     it('should set the longitude', function () {
-      expect(kollavarsham.getSettings().longitude).to.equal('DUMMY Longitude');
+      expect(kollavarsham.getSettings().longitude).to.equal(0);
     });
   });
 
@@ -174,8 +176,8 @@ describe('Kollavarsham', function () {
 
     it('should throw appropriate exception', function () {
       expect(function () {
-        kollavarsham.toGregorianDate('DUMMY KOLLAVARSHAM DATE');
-      }).to.throw('When the API is implemented, will convert DUMMY KOLLAVARSHAM DATE');
+        kollavarsham.toGregorianDate(new KollavarshamDate());
+      }).to.throw('When the API is implemented, will convert 0001 01 01');
     });
   });
 
@@ -241,6 +243,7 @@ describe('Kollavarsham', function () {
     });
 
     it('should return a valid Julian Date', function () {
+      // eslint-disable-next-line no-unused-expressions
       expect(JulianDate.prototype.isPrototypeOf(date.gregorianDate)).to.be.true; // eslint-disable-line no-prototype-builtins
       expect(date.gregorianDate.year).to.equal(1515);
       expect(date.gregorianDate.month).to.equal(7);

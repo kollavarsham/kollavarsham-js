@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-expressions */
 import {expect} from 'chai';
 
-import KollavarshamDate from '../../../lib/dates/kollavarshamDate.js';
+import { KollavarshamDate } from '../../../lib/dates/kollavarshamDate';
 
 describe('KollavarshamDate', function () {
 
@@ -42,8 +43,8 @@ describe('KollavarshamDate', function () {
     });
 
     it('should have valid values for naksatra correctly', function () {
-      expect(date.naksatraName).to.be.undefined;
-      expect(date.mlNaksatraName).to.be.undefined;
+      expect(date.naksatraName).to.be.empty;
+      expect(date.mlNaksatraName).to.be.empty;
     });
   });
 

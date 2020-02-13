@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import MathHelper from '../../lib/mathHelper.js';
+import { MathHelper } from '../../lib/mathHelper';
 
 describe('MathHelper', function () {
 

@@ -2,21 +2,23 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module calculations
  */
-import Calendar from './calendar.js';
-import Celestial from './celestial/index.js';
-import JulianDate from './dates/julianDate.js';
-import KollavarshamDate from './dates/kollavarshamDate.js';
-import MathHelper from './mathHelper.js';
-import SakaDate from './dates/sakaDate.js';
+import { Calendar } from './calendar';
+import { Celestial } from './celestial/index';
+import { JulianDate } from './dates/julianDate';
+import { KollavarshamDate } from './dates/kollavarshamDate';
+import { MathHelper } from './mathHelper';
+import { SakaDate } from './dates/sakaDate';
+import { Settings } from './index';
 
-const Ujjain = {
+const Ujjain: Settings = {
+  system    : '',
   latitude  : 23.2,
   longitude : 75.8
 };
@@ -27,24 +29,28 @@ const Ujjain = {
  *
  * @class Calculations
  */
-class Calculations {
+export class Calculations {
+  longitude: number;
+  latitude: number;
+  celestial: Celestial;
+  calendar: Calendar;
 
-  constructor(settings) {
+  constructor(settings: Settings) {
     this.longitude = settings.longitude;
     this.latitude = settings.latitude;
     this.celestial = new Celestial(settings.system);
     this.calendar = new Calendar(this.celestial);
   }
 
-  static getPaksa(tithi) {
+  static getPaksa(tithi: number): string {
     return tithi >= 15 ? 'Krsnapaksa' : 'Suklapaksa';
   }
 
-  fromGregorianToSaka(gregorianDate) {
+  fromGregorianToSaka(gregorianDate: Date): SakaDate {
     const year = gregorianDate.getFullYear();
 
-    let julianDay = Calendar.gregorianDateToJulianDay(gregorianDate);
-    let ahargana = Calendar.julianDayToAhargana(julianDay);
+    const julianDay = Calendar.gregorianDateToJulianDay(gregorianDate);
+    const ahargana = Calendar.julianDayToAhargana(julianDay);
 
     // Calculate the SakaDate at 6 AM
     const timeAsFractionalDayAt6AM = 0.25; // time at 6 o'clock
@@ -60,7 +66,7 @@ class Calculations {
     return sakaDate;
   }
 
-  celestialCalculations(ahargana, year, julianDay, timeAsFractionalDay) {
+  celestialCalculations(ahargana: number, year: number, julianDay: number, timeAsFractionalDay: number): SakaDate {
     ahargana += timeAsFractionalDay;
 
     // Definition of desantara
@@ -73,9 +79,9 @@ class Calculations {
     // time of sunrise at local latitude
     const equationOfTime = this.celestial.getDaylightEquation(year, this.latitude, ahargana);
     ahargana -= equationOfTime;
-    const {sunriseHour, sunriseMinute} = Celestial.getSunriseTime(timeAsFractionalDay, equationOfTime);
+    const { sunriseHour, sunriseMinute } = Celestial.getSunriseTime(timeAsFractionalDay, equationOfTime);
 
-    const {trueSolarLongitude, trueLunarLongitude} = this.celestial.setPlanetaryPositions(ahargana);
+    const { trueSolarLongitude, trueLunarLongitude } = this.celestial.setPlanetaryPositions(ahargana);
 
     // finding tithi and longitude of conjunction
     const tithi = Celestial.getTithi(trueSolarLongitude, trueLunarLongitude);
@@ -87,7 +93,7 @@ class Calculations {
     const masaNum = Calendar.getMasaNum(trueSolarLongitude, lastConjunctionLongitude);
 
     // kali and Saka era
-    const kaliYear = this.calendar.aharganaToKali(ahargana + ( 4 - masaNum ) * 30);
+    const kaliYear = this.calendar.aharganaToKali(ahargana + (4 - masaNum) * 30);
     const sakaYear = Calendar.kaliToSaka(kaliYear);
 
     let tithiDay = MathHelper.truncate(tithi) + 1;
@@ -95,7 +101,7 @@ class Calculations {
     const paksa = Calculations.getPaksa(tithiDay);
     tithiDay = tithiDay >= 15 ? tithiDay -= 15 : tithiDay;
 
-    const {sauraMasa, sauraDivasa} = this.calendar.getSauraMasaAndSauraDivasa(ahargana, desantara);
+    const { sauraMasa, sauraDivasa } = this.calendar.getSauraMasaAndSauraDivasa(ahargana, desantara);
 
     const sakaDate = new SakaDate(sakaYear, masaNum, tithiDay, paksa);
 
@@ -113,7 +119,7 @@ class Calculations {
     return sakaDate;
   }
 
-  fromGregorian(gregorianDate) {
+  fromGregorian(gregorianDate: Date): KollavarshamDate {
 
     const sakaDate = this.fromGregorianToSaka(gregorianDate);
 
@@ -121,13 +127,13 @@ class Calculations {
 
   }
 
-  toGregorian(kollavarshamDate) {
+  toGregorian(kollavarshamDate: KollavarshamDate): Date {
     // TODO: Implement this to convert a Kollavarsham date to Gregorian
     console.log('kollavarshamDate: ' + JSON.stringify(kollavarshamDate)); // eslint-disable-line no-console
     throw new Error('Not implemented');
   }
 
-  toGregorianFromSaka(sakaDate) {
+  toGregorianFromSaka(sakaDate: SakaDate): KollavarshamDate {
     // TODO: Remove this method??
     // This is implemented specifically for the pancanga-nodejs cli (https://github.com/kollavarsham/pancanga-nodejs)
     // Could be removed when toGregorian has been implemented based on this
@@ -154,7 +160,7 @@ class Calculations {
     // TODO: Not happy that the empty constructor will make this with MalayalamYear => 1, MalayalamMonth => 1, and MalayalamDate => 1
     // TODO: Think this through before implementing toGregorian above
     const kollavarshamDate = new KollavarshamDate();
-    kollavarshamDate.gregorianDate = modernDate;
+    kollavarshamDate.gregorianDate = modernDate as Date;
     kollavarshamDate.julianDay = julianDay;
     kollavarshamDate.ahargana = ahargana;
     kollavarshamDate.sakaDate = sakaDate;
@@ -163,5 +169,3 @@ class Calculations {
   }
 
 }
-
-export default Calculations;

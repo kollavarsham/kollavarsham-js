@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 
-import BaseDate from '../../../lib/dates/baseDate.js';
+import { BaseDate } from '../../../lib/dates/baseDate';
+import { Calendar } from '../../../lib/calendar';
 
 describe('BaseDate', function () {
 
@@ -44,7 +45,7 @@ describe('BaseDate', function () {
     });
 
     it('should have valid values for naksatra correctly', function () {
-      expect(baseDate.naksatra).to.eql({});
+      expect(baseDate.naksatra).to.eql(Calendar.naksatras[-1]);
     });
   });
 

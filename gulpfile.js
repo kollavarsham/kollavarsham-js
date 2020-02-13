@@ -4,7 +4,7 @@ const coveralls = require('@kollavarsham/gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
 const plumber = require('gulp-plumber');
-const babel = require('gulp-babel');
+const ts = require('gulp-typescript');
 const del = require('del');
 const isparta = require('isparta');
 const ghPages = require('gulp-gh-pages');
@@ -14,6 +14,9 @@ const gulpGrunt = require('gulp-grunt');
 gulpGrunt(gulp); // add all the gruntfile tasks to gulp
 const gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
 
+const tsProject = ts.createProject('tsconfig.main.json');
+const tsDocsProject = ts.createProject('tsconfig.docs.json');
+
 gulp.task('clean:dist', function (done) {
   del.sync(['dist/**']);
   done();
@@ -21,11 +24,12 @@ gulp.task('clean:dist', function (done) {
 
 gulp.task('clean:doc', function (done) {
   del.sync(['doc/**']);
+  del.sync(['es6/**']);
   done();
 });
 
 gulp.task('static', function () {
-  return gulp.src('**/*.js')
+  return gulp.src('**/*.ts')
     .pipe(excludeGitignore())
     .pipe(eslint())
     .pipe(eslint.format())
@@ -45,15 +49,21 @@ gulp.task('coveralls', function (done) {
   }
 });
 
-gulp.task('babel', function () {
-  return gulp.src('lib/**/*.js')
-    .pipe(babel())
+gulp.task('compile', function () {
+  return tsProject.src()
+    .pipe(tsProject())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('prepublish', gulp.series('clean:dist', 'babel'));
+gulp.task('compile:docs', function () {
+  return tsDocsProject.src()
+    .pipe(tsDocsProject())
+    .pipe(gulp.dest('es6'));
+});
 
-gulp.task('yuidoc', gulp.series('clean:doc', 'prepublish', 'coveralls', function (done) {
+gulp.task('prepublish', gulp.series('clean:dist', 'static', 'compile'));
+
+gulp.task('yuidoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
   gulpGruntTasks['grunt-yuidoc'](function () {
     done();
   });

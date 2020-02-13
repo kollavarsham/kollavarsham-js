@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import PlanetarySystem from '../../../../lib/celestial/planetarySystem/index.js';
+import { PlanetarySystem } from '../../../../lib/celestial/planetarySystem';
 
 describe('PlanetarySystem', function () {
 

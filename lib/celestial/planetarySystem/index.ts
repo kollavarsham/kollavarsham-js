@@ -2,30 +2,34 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module planetarySystem
  */
-import planets from './planets/index.js';
-import Yuga from './yuga.js';
+import { Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu } from './planets/index';
+import { Yuga } from './yuga';
 
-let star;
-let sun;
-let moon;
-let mercury;
-let venus;
-let mars;
-let jupiter;
-let saturn;
-let candrocca; // Moon Apogee
-let rahu; // Moon Node
+export interface PlanetList {
+  [key: string]: Planet;
+}
 
-let _yuga; // eslint-disable-line no-underscore-dangle
+let star: Star;
+let sun: Sun;
+let moon: Moon;
+let mercury: Mercury;
+let venus: Venus;
+let mars: Mars;
+let jupiter: Jupiter;
+let saturn: Saturn;
+let candrocca: Candrocca; // Moon Apogee
+let rahu: Rahu; // Moon Node
 
-let planetsList;
+let _yuga: Yuga; // eslint-disable-line no-underscore-dangle
+
+let planetsList: PlanetList;
 
 /**
  *
@@ -33,22 +37,23 @@ let planetsList;
  *
  * @class PlanetarySystem
  */
-class PlanetarySystem {
+export class PlanetarySystem {
+  system: string;
 
   constructor(system = 'SuryaSiddhanta') {
 
     this.system = system === 'InPancasiddhantika' ? system : 'SuryaSiddhanta';
 
-    star = new planets.Star();
-    sun = new planets.Sun();
-    moon = new planets.Moon();
-    mercury = new planets.Mercury();
-    venus = new planets.Venus();
-    mars = new planets.Mars();
-    jupiter = new planets.Jupiter();
-    saturn = new planets.Saturn();
-    candrocca = new planets.Candrocca(); // Moon Apogee
-    rahu = new planets.Rahu(); // Moon Node
+    star = new Star();
+    sun = new Sun();
+    moon = new Moon();
+    mercury = new Mercury();
+    venus = new Venus();
+    mars = new Mars();
+    jupiter = new Jupiter();
+    saturn = new Saturn();
+    candrocca = new Candrocca(); // Moon Apogee
+    rahu = new Rahu(); // Moon Node
 
     _yuga = new Yuga();
 
@@ -59,19 +64,19 @@ class PlanetarySystem {
     PlanetarySystem.initializePlanetaryConstants();
 
     planetsList = [star, sun, moon, mercury, venus, mars, jupiter, saturn, candrocca, rahu]
-      .reduce((list, planet) => ({...list, [planet.name] : planet}), {});
+      .reduce((list, planet) => ({ ...list, [planet.name] : planet }), {});
 
   }
 
-  get yuga() {
+  get yuga(): Yuga {
     return _yuga;
   }
 
-  get planets() {
+  get planets(): PlanetList {
     return planetsList;
   }
 
-  initializeYugaRotations() {
+  initializeYugaRotations(): void {
     // common values across the systems
     sun.YugaRotation = 4320000;
     moon.YugaRotation = 57753336;
@@ -89,7 +94,7 @@ class PlanetarySystem {
     rahu.YugaRotation = isSuryaSiddhantaSystem ? -232226 : -232238;
   }
 
-  initializeYuga() {
+  initializeYuga(): void {
     this.yuga.CivilDays = star.YugaRotation - sun.YugaRotation;
     this.yuga.SynodicMonth = moon.YugaRotation - sun.YugaRotation;
 
@@ -99,7 +104,7 @@ class PlanetarySystem {
     this.yuga.Ksayadina = this.yuga.Tithi - this.yuga.CivilDays;
   }
 
-  static initializePlanetaryConstants() {
+  static initializePlanetaryConstants(): void {
     // star
     star.Rotation = 0;
     star.Sighra = 0;
@@ -172,5 +177,3 @@ class PlanetarySystem {
   }
 
 }
-
-export default PlanetarySystem;

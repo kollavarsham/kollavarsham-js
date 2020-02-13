@@ -2,16 +2,22 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module kollavarsham
  */
-import Calculations from './calculations.js';
-import KollavarshamDate from './dates/kollavarshamDate.js';
-import SakaDate from './dates/sakaDate.js';
+import { Calculations } from './calculations';
+import { KollavarshamDate } from './dates/kollavarshamDate';
+import { SakaDate } from './dates/sakaDate';
+
+export interface Settings {
+  system: string;
+  latitude: number;
+  longitude: number;
+}
 
 /**
  * The Kollavarsham class implements all the public APIs of the library.
@@ -42,8 +48,44 @@ import SakaDate from './dates/sakaDate.js';
  *```
  */
 class Kollavarsham {
+  settings: Settings;
 
-  constructor({system = 'SuryaSiddhanta', latitude = 23.2, longitude = 75.8} = {}) {
+  /**
+   * Exports the {{#crossLink "KollavarshamDate"}}{{/crossLink}} class for referencing via `require`. This is the class
+   * that is returned when converting {{#crossLink "Kollavarsham/fromGregorianDate:method"}}{{/crossLink}} and is passed in
+   * to {{#crossLink "Kollavarsham/toGregorianDate:method"}}{{/crossLink}}. See example below.
+   * @property KollavarshamDate
+   * @type {KollavarshamDate}
+   * @static
+   * @example
+   * ```
+   * const Kollavarsham = require('kollavarsham');
+   * const KollavarshamDate = Kollavarsham.KollavarshamDate;
+   *
+   * let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
+   * let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
+   * ```
+   */
+  static KollavarshamDate: typeof KollavarshamDate;
+
+  /**
+   * Exports the {{#crossLink "SakaDate"}}{{/crossLink}} class for referencing via `require`. This class's instance needs to be passed in
+   * to {{#crossLink "Kollavarsham/toGregorianDateFromSaka:method"}}{{/crossLink}}. See example below.
+   * @property SakaDate
+   * @type {SakaDate}
+   * @static
+   * @example
+   * ```
+   * const Kollavarsham = require('kollavarsham');
+   * const SakaDate = Kollavarsham.SakaDate;
+   *
+   * let sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation
+   * let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
+   * ```
+   */
+  static SakaDate: typeof SakaDate;
+
+  constructor({ system = 'SuryaSiddhanta', latitude = 23.2, longitude = 75.8 } = {}) {
     /**
      * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink "Kollavarsham/getSettings:method"}}{{/crossLink}} method
      * @property settings
@@ -76,7 +118,7 @@ class Kollavarsham {
    *let currentSettings = kollavarsham.getSettings();
    *```
    */
-  getSettings() {
+  getSettings(): Settings {
     return this.settings;
   }
 
@@ -95,7 +137,7 @@ class Kollavarsham {
    *kollavarsham.convert();
    * ```
    */
-  setSystem(system) {
+  setSystem(system: string): void {
     this.settings.system = system;
   }
 
@@ -112,7 +154,7 @@ class Kollavarsham {
    *kollavarsham.setLatitude(8.5);
    * ```
    */
-  setLatitude(latitude) {
+  setLatitude(latitude: number): void {
     this.settings.latitude = latitude;
   }
 
@@ -129,7 +171,7 @@ class Kollavarsham {
    *kollavarsham.setLongitude(77.0);
    *```
    */
-  setLongitude(longitude) {
+  setLongitude(longitude: number): void {
     this.settings.longitude = longitude;
   }
 
@@ -147,7 +189,7 @@ class Kollavarsham {
    *let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));
    *```
    */
-  fromGregorianDate(date) {
+  fromGregorianDate(date: Date): KollavarshamDate {
     const calculations = new Calculations(this.settings);
     return calculations.fromGregorian(date);
   }
@@ -165,9 +207,9 @@ class Kollavarsham {
    * @returns {Date|JulianDate} Converted date
    * @throws **"When the API is implemented, will convert &lt;date&gt;"**
    */
-  toGregorianDate(date) {
+  toGregorianDate(date: KollavarshamDate): Date {
     //TODO: Implement this method
-    throw new Error(`When the API is implemented, will convert ${ date }`);
+    throw new Error(`When the API is implemented, will convert ${date}`);
   }
 
   /**
@@ -180,7 +222,7 @@ class Kollavarsham {
    * @param sakaDate {SakaDate} The Saka date to be converted to Gregorian
    * @returns {Date|JulianDate} Converted date
    */
-  toGregorianDateFromSaka(sakaDate) {
+  toGregorianDateFromSaka(sakaDate: SakaDate): KollavarshamDate {
     // TODO: Remove this method??
     // This is implemented specifically for the pancanga-nodejs cli (https://github.com/kollavarsham/pancanga-nodejs)
     // Could be removed when toGregorian has been implemented based on this
@@ -193,39 +235,7 @@ class Kollavarsham {
   }
 }
 
-/**
- * Exports the {{#crossLink "KollavarshamDate"}}{{/crossLink}} class for referencing via `require`. This is the class
- * that is returned when converting {{#crossLink "Kollavarsham/fromGregorianDate:method"}}{{/crossLink}} and is passed in
- * to {{#crossLink "Kollavarsham/toGregorianDate:method"}}{{/crossLink}}. See example below.
- * @property KollavarshamDate
- * @type {KollavarshamDate}
- * @static
- * @example
- * ```
- * const Kollavarsham = require('kollavarsham');
- * const KollavarshamDate = Kollavarsham.KollavarshamDate;
- *
- * let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
- * let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
- * ```
- */
 Kollavarsham.KollavarshamDate = KollavarshamDate;
-
-/**
- * Exports the {{#crossLink "SakaDate"}}{{/crossLink}} class for referencing via `require`. This class's instance needs to be passed in
- * to {{#crossLink "Kollavarsham/toGregorianDateFromSaka:method"}}{{/crossLink}}. See example below.
- * @property SakaDate
- * @type {SakaDate}
- * @static
- * @example
- * ```
- * const Kollavarsham = require('kollavarsham');
- * const SakaDate = Kollavarsham.SakaDate;
- *
- * let sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation
- * let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
- * ```
- */
 Kollavarsham.SakaDate = SakaDate;
 
 export default Kollavarsham;

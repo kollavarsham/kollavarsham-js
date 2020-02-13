@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/coverage" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/doc" />
+      <excludeFolder url="file://$MODULE_DIR$/es6" />
       <excludeFolder url="file://$MODULE_DIR$/themes" />
     </content>
     <orderEntry type="inheritedJdk" />

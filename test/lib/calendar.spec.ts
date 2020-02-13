@@ -1,27 +1,29 @@
-import {expect} from 'chai';
+/* eslint-disable no-unused-expressions */
+import { expect } from 'chai';
 
-import MathHelper from '../../lib/mathHelper.js';
-import Celestial from '../../lib/celestial/index.js';
-import Calendar from '../../lib/calendar.js';
+import { MathHelper } from '../../lib/mathHelper';
+import { Celestial } from '../../lib/celestial';
+import { Calendar } from '../../lib/calendar';
+import { Settings } from '../../lib';
 
 describe('Calendar', function () {
 
   let calendar;
 
-  const settings = {
-    latitude     : 23.2,
-    longitude    : 75.8,
-    outputformat : 'verbose'
+  const settings: Settings = {
+    latitude  : 23.2,
+    longitude : 75.8,
+    system    : 'verbose'
   };
 
-  const cmpDates = function (date1, date2) {
+  const cmpDates = function (date1, date2): boolean {
     return date1.getFullYear() === date2.getFullYear() &&
       date1.getMonth() === date2.getMonth() &&
       date1.getDate() === date2.getDate();
   };
 
   beforeEach(function () {
-    calendar = new Calendar(new Celestial(settings));
+    calendar = new Calendar(new Celestial(settings.system));
   });
 
   describe('nextDate', function () {
@@ -469,7 +471,7 @@ describe('Calendar', function () {
 
     describe('with invalid input', function () {
       before(function () {
-        date = {year : 1979, month : 4, day : 22};
+        date = { year : 1979, month : 4, day : 22 };
       });
 
       it('should throw appropriate error', function () {

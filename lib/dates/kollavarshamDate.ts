@@ -2,14 +2,15 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module kollavarshamDate
  */
-import BaseDate from './baseDate.js';
+import { BaseDate } from './baseDate';
+import { SakaDate } from './sakaDate';
 
 /**
  * Represents a Kollavarsham date's year, month and date
@@ -20,10 +21,13 @@ import BaseDate from './baseDate.js';
  * @param [day=1] {Number} The Kollavarsham day
  * @extends BaseDate
  */
-class KollavarshamDate extends BaseDate {
+export class KollavarshamDate extends BaseDate {
+  sakaDate: SakaDate;
 
   constructor(year = 1, month = 1, day = 1) {
     super(year, month, day);
+
+    this.sakaDate = new SakaDate(year, month);
   }
 
   /**
@@ -32,7 +36,7 @@ class KollavarshamDate extends BaseDate {
    * @property naksatraName
    * @type {string}
    */
-  get naksatraName() {
+  get naksatraName(): string {
     return this.naksatra.enMalayalam;
   }
 
@@ -42,7 +46,7 @@ class KollavarshamDate extends BaseDate {
    * @property mlNaksatraName
    * @type {string}
    */
-  get mlNaksatraName() {
+  get mlNaksatraName(): string {
     return this.naksatra.mlMalayalam;
   }
 
@@ -52,7 +56,7 @@ class KollavarshamDate extends BaseDate {
    * @property masaName
    * @type {string}
    */
-  get masaName() {
+  get masaName(): string {
     return KollavarshamDate.getMasaName(this.month - 1).enMalayalam;
   }
 
@@ -62,10 +66,8 @@ class KollavarshamDate extends BaseDate {
    * @property mlMasaName
    * @type {string}
    */
-  get mlMasaName() {
+  get mlMasaName(): string {
     return KollavarshamDate.getMasaName(this.month - 1).mlMalayalam;
   }
 
 }
-
-export default KollavarshamDate;

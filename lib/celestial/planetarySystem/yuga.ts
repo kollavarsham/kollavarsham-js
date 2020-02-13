@@ -2,7 +2,7 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
@@ -16,7 +16,12 @@
  *
  * @class Yuga
  */
-class Yuga {
+export class Yuga {
+  CivilDays: number;
+  SynodicMonth: number;
+  Adhimasa: number;
+  Tithi: number;
+  Ksayadina: number;
 
   constructor() {
     this.CivilDays = 0;
@@ -28,4 +33,3 @@ class Yuga {
 
 }
 
-export default Yuga;

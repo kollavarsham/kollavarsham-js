@@ -2,15 +2,16 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 
 /**
  * @module celestial
  */
-import MathHelper from './../mathHelper.js';
-import PlanetarySystem from './planetarySystem/index.js';
+import { MathHelper } from '../mathHelper';
+import { PlanetarySystem, PlanetList } from './planetarySystem/index';
+import { Yuga } from './planetarySystem/yuga';
 
 /**
  *
@@ -18,10 +19,16 @@ import PlanetarySystem from './planetarySystem/index.js';
  *
  * @class Celestial
  */
-class Celestial {
+export class Celestial {
+  planets: PlanetList;
+  yuga: Yuga;
+  backLastConjunctionAhargana: number;
+  backNextConjunctionAhargana: number;
+  backLastConjunctionLongitude: number;
+  backNextConjunctionLongitude: number;
 
   constructor(system = 'SuryaSiddhanta') {
-    let planetarySystem = new PlanetarySystem(system);
+    const planetarySystem: PlanetarySystem = new PlanetarySystem(system);
     this.planets = planetarySystem.planets;
     this.yuga = planetarySystem.yuga;
 
@@ -31,7 +38,7 @@ class Celestial {
     this.backNextConjunctionLongitude = -1;
   }
 
-  static threeRelation(left, center, right) {
+  static threeRelation(left: number, center: number, right: number): number {
     if (left < center && center < right) {
       return 1;
     } else if (right < center && center < left) {
@@ -40,28 +47,28 @@ class Celestial {
     return 0;
   }
 
-  static declination(longitude) {
+  static declination(longitude: number): number {
     // https://en.wikipedia.org/wiki/Declination
     return Math.asin(Math.sin(longitude / MathHelper.radianInDegrees) * Math.sin(24 / MathHelper.radianInDegrees)) *
       MathHelper.radianInDegrees;
   }
 
-  static getSunriseTime(time, equationOfTime) {
+  static getSunriseTime(time: number, equationOfTime: number): { sunriseHour: number; sunriseMinute: number } {
     // TODO: Add Tests if/when feasible
     const sunriseTime = (time - equationOfTime) * 24;
     const sunriseHour = MathHelper.truncate(sunriseTime);
     const sunriseMinute = MathHelper.truncate(60 * MathHelper.fractional(sunriseTime));
-    return {sunriseHour, sunriseMinute};
+    return { sunriseHour, sunriseMinute };
   }
 
-  static getTithi(trueSolarLongitude, trueLunarLongitude) {
+  static getTithi(trueSolarLongitude: number, trueLunarLongitude: number): number {
     let eclipticLongitude = trueLunarLongitude - trueSolarLongitude;
     eclipticLongitude = MathHelper.zero360(eclipticLongitude);
 
     return eclipticLongitude / 12;
   }
 
-  setPlanetaryPositions(ahargana) {
+  setPlanetaryPositions(ahargana: number): { trueSolarLongitude: number; trueLunarLongitude: number } {
     const $planets = this.planets;
 
     // Lunar apogee and node at sunrise
@@ -87,16 +94,16 @@ class Celestial {
     for (let i = 0; i < planetNames.length; i++) {
       $planets[planetNames[i]].MeanPosition = this.getMeanLongitude(ahargana, $planets[planetNames[i]].Rotation);
     }
-    return {trueSolarLongitude, trueLunarLongitude};
+    return { trueSolarLongitude, trueLunarLongitude };
   }
 
-  getMeanLongitude(ahargana, rotation) {
+  getMeanLongitude(ahargana: number, rotation: number): number {
     // https://en.wikipedia.org/wiki/Mean_longitude
     // https://en.wikipedia.org/wiki/Ecliptic_coordinate_system#Spherical_coordinates
     return 360 * MathHelper.fractional(rotation * ahargana / this.yuga.CivilDays);
   }
 
-  getDaylightEquation(year, latitude, ahargana) {
+  getDaylightEquation(year: number, latitude: number, ahargana: number): number {
     // Good read - http://en.wikipedia.org/wiki/Equation_of_time#Calculating_the_equation_of_time
     const meanSolarLongitude = this.getMeanLongitude(ahargana, this.planets.sun.YugaRotation);
 
@@ -110,22 +117,22 @@ class Celestial {
     return 0.5 * Math.asin(x) / Math.PI;
   }
 
-  getMandaEquation(argument, planet) {
+  getMandaEquation(argument: number, planet: string): number {
     return Math.asin(this.planets[planet].MandaCircumference / 360 * Math.sin(argument / MathHelper.radianInDegrees)) * MathHelper.radianInDegrees;
   }
 
-  getTrueLunarLongitude(ahargana) {
+  getTrueLunarLongitude(ahargana: number): number {
     const meanLunarLongitude = this.getMeanLongitude(ahargana, this.planets.moon.YugaRotation);
     const apogee = this.getMeanLongitude(ahargana, this.planets.candrocca.YugaRotation) + 90;
     return MathHelper.zero360(meanLunarLongitude - this.getMandaEquation(meanLunarLongitude - apogee, 'moon'));
   }
 
-  getTrueSolarLongitude(ahargana) {
+  getTrueSolarLongitude(ahargana: number): number {
     const meanSolarLongitude = this.getMeanLongitude(ahargana, this.planets.sun.YugaRotation);
     return MathHelper.zero360(meanSolarLongitude - this.getMandaEquation(meanSolarLongitude - this.planets.sun.Apogee, 'sun'));
   }
 
-  getEclipticLongitude(ahargana) {
+  getEclipticLongitude(ahargana: number): number {
     let eclipticLongitude = Math.abs(this.getTrueLunarLongitude(ahargana) - this.getTrueSolarLongitude(ahargana));
     if (eclipticLongitude >= 180) {
       eclipticLongitude = 360 - eclipticLongitude;
@@ -133,7 +140,7 @@ class Celestial {
     return eclipticLongitude;
   }
 
-  findConjunction(leftX, leftY, rightX, rightY) {
+  findConjunction(leftX: number, leftY: number, rightX: number, rightY: number): number {
     const width = (rightX - leftX) / 2;
     const centreX = (rightX + leftX) / 2;
     if (width < MathHelper.epsilon) {
@@ -159,7 +166,7 @@ class Celestial {
     }
   }
 
-  getConjunction(ahargana) {
+  getConjunction(ahargana: number): number {
     const leftX = ahargana - 2;
     const leftY = this.getEclipticLongitude(leftX);
     const rightX = ahargana + 2;
@@ -167,7 +174,7 @@ class Celestial {
     return this.findConjunction(leftX, leftY, rightX, rightY);
   }
 
-  getLastConjunctionLongitude(ahargana, tithi) {
+  getLastConjunctionLongitude(ahargana: number, tithi: number): number {
     const newNew = this.yuga.CivilDays / (this.planets.moon.YugaRotation - this.planets.sun.YugaRotation);
     ahargana -= tithi * (newNew / 30);
 
@@ -184,7 +191,7 @@ class Celestial {
     }
   }
 
-  getNextConjunctionLongitude(ahargana, tithi) {
+  getNextConjunctionLongitude(ahargana: number, tithi: number): number {
     const newNew = this.yuga.CivilDays / (this.planets.moon.YugaRotation - this.planets.sun.YugaRotation);
     ahargana += (30 - tithi) * (newNew / 30);
 
@@ -198,5 +205,3 @@ class Celestial {
   }
 
 }
-
-export default Celestial;
