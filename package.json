@@ -15,11 +15,35 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "engineStrict": true,
   "engines": {
     "node": ">= 8",
     "npm": ">= 6"
+  },
+  "jsii": {
+    "excludeTypescript": "test/**",
+    "outdir": "dist",
+    "versionFormat": "full",
+    "targets": {
+      "java": {
+        "package": "org.kollavarsham.converter",
+        "maven": {
+          "groupId": "org.kollavarsham.converter",
+          "artifactId": "kollavarsham-converter"
+        }
+      },
+      "python": {
+        "distName": "kollavarsham",
+        "module": "kollavarsham"
+      },
+      "dotnet": {
+        "namespace": "Kollavarsham.Org",
+        "packageId": "Kollavarsham.Org.Converter",
+        "iconUrl": "https://kollavarsham.org/static/images/logo.png"
+      }
+    }
   },
   "keywords": [
     "kollavarsham",
@@ -62,6 +86,8 @@
     "gulp-plumber": "^1.2.1",
     "gulp-typescript": "^6.0.0-alpha.1",
     "isparta": "^4.1.1",
+    "jsii": "^0.22.0",
+    "jsii-pacmak": "^0.22.0",
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
     "source-map-support": "^0.5.16",
@@ -74,6 +100,7 @@
       "mocha": true
     }
   },
+  "mocha": {},
   "nyc": {
     "include": [
       "lib/**/*.ts",
@@ -99,10 +126,13 @@
     "temp-directory": "./coverage/.nyc_output"
   },
   "scripts": {
+    "build": "jsii -vv",
+    "build:watch": "jsii -w",
+    "package": "jsii-pacmak -vv",
     "prepublishOnly": "gulp prepublish",
-    "test": "TS_NODE_PROJECT=tsconfig.spec.json nyc mocha"
+    "test": "gulp clean:jsii && TS_NODE_PROJECT=tsconfig.spec.json nyc mocha"
   },
   "license": "MIT",
   "dependencies": {},
-  "stability": "experimental"
+  "stability": "stable"
 }

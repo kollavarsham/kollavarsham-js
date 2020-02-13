@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import { Kollavarsham } from '../../lib';
+import { DefaultSettings, Kollavarsham } from '../../lib';
 import { JulianDate } from '../../lib/dates/julianDate';
 import { SakaDate } from '../../lib/dates/sakaDate';
 import { KollavarshamDate } from '../../lib/dates/kollavarshamDate';
@@ -20,7 +20,7 @@ describe('Kollavarsham', function () {
 
   describe('fromGregorianDate 01', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       date = new Date(1979, 4, 22);
       malayalamDate = kollavarsham.fromGregorianDate(date);
     });
@@ -43,7 +43,7 @@ describe('Kollavarsham', function () {
 
   describe('fromGregorianDate 02', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       date = new Date(1983, 8, 7);
       malayalamDate = kollavarsham.fromGregorianDate(date);
     });
@@ -66,7 +66,7 @@ describe('Kollavarsham', function () {
 
   describe('fromGregorianDate 03', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       date = new Date(1983, 8, 21);
       malayalamDate = kollavarsham.fromGregorianDate(date);
     });
@@ -89,7 +89,7 @@ describe('Kollavarsham', function () {
 
   describe('fromGregorianDate 04', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       date = new Date(1979, 4, 22, 13, 45, 30);
       malayalamDate = kollavarsham.fromGregorianDate(date);
     });
@@ -112,8 +112,8 @@ describe('Kollavarsham', function () {
 
   describe('default settings', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
-      settings = kollavarsham.getSettings();
+      kollavarsham = new Kollavarsham(DefaultSettings);
+      settings = kollavarsham.settings;
     });
 
     it('should return default settings', function () {
@@ -126,7 +126,7 @@ describe('Kollavarsham', function () {
   describe('non-default settings', function () {
     beforeEach(function () {
       kollavarsham = new Kollavarsham({system : 'InPancasiddhantika', latitude : 10.5, longitude : 77.2});
-      settings = kollavarsham.getSettings();
+      settings = kollavarsham.settings;
     });
 
     it('should return default settings', function () {
@@ -136,42 +136,9 @@ describe('Kollavarsham', function () {
     });
   });
 
-  describe('setSystem', function () {
-    beforeEach(function () {
-      kollavarsham = new Kollavarsham();
-      kollavarsham.setSystem('DUMMY SYSTEM');
-    });
-
-    it('should set the system', function () {
-      expect(kollavarsham.getSettings().system).to.equal('DUMMY SYSTEM');
-    });
-  });
-
-  describe('setLatitude', function () {
-    beforeEach(function () {
-      kollavarsham = new Kollavarsham();
-      kollavarsham.setLatitude(0);
-    });
-
-    it('should set the latitude', function () {
-      expect(kollavarsham.getSettings().latitude).to.equal(0);
-    });
-  });
-
-  describe('setLongitude', function () {
-    beforeEach(function () {
-      kollavarsham = new Kollavarsham();
-      kollavarsham.setLongitude(0);
-    });
-
-    it('should set the longitude', function () {
-      expect(kollavarsham.getSettings().longitude).to.equal(0);
-    });
-  });
-
   describe('toGregorianDate', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
     });
 
     it('should throw appropriate exception', function () {
@@ -183,7 +150,7 @@ describe('Kollavarsham', function () {
 
   describe('toGregorianDateFromSaka - with invalid Saka Date', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       hinduDate = {
         year  : 1937,
         month : 4,
@@ -201,7 +168,7 @@ describe('Kollavarsham', function () {
 
   describe('toGregorianDateFromSaka 01', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       hinduDate = new SakaDate(1937, 4, 12, 'Krsnapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
     });
@@ -219,7 +186,7 @@ describe('Kollavarsham', function () {
 
   describe('toGregorianDateFromSaka 02', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       hinduDate = new SakaDate(1937, 4, 12, 'Suklapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
     });
@@ -237,7 +204,7 @@ describe('Kollavarsham', function () {
 
   describe('toGregorianDateFromSaka 03', function () {
     beforeEach(function () {
-      kollavarsham = new Kollavarsham();
+      kollavarsham = new Kollavarsham(DefaultSettings);
       hinduDate = new SakaDate(1437, 4, 12, 'Suklapaksa');
       date = kollavarsham.toGregorianDateFromSaka(hinduDate);
     });

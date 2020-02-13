@@ -24,6 +24,11 @@ gulp.task('clean:doc', function (done) {
   done();
 });
 
+gulp.task('clean:jsii', function (done) {
+  del.sync(['lib/**/*.js', 'lib/**/*.d.ts']);
+  done();
+});
+
 gulp.task('static', function () {
   return gulp.src('**/*.ts')
     .pipe(excludeGitignore())

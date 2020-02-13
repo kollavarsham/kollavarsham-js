@@ -8,3 +8,6 @@ es6/
 .idea/workspace.xml
 .nyc_output/
 tsconfig.json
+.jsii
+lib/**/*.js
+lib/**/*.d.ts

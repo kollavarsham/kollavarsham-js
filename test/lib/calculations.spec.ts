@@ -1,19 +1,19 @@
-import {expect} from 'chai';
+import { expect } from 'chai';
 
-import { Kollavarsham } from '../../lib';
+import { DefaultSettings, Settings } from '../../lib';
 import { Calculations } from '../../lib/calculations';
 import { SakaDate } from '../../lib/dates/sakaDate';
 import { KollavarshamDate } from '../../lib/dates/kollavarshamDate';
 
 describe('Calculations', function () {
 
-  let settings;
+  let settings: Settings;
   let calculations;
   let date;
   let sakaDate;
 
   beforeEach(function () {
-    settings = new Kollavarsham().getSettings();
+    settings = DefaultSettings;
     calculations = new Calculations(settings);
   });
 

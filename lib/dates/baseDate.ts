@@ -17,16 +17,16 @@ const pad = function (num: number, size: number): string {
 };
 
 export interface Naksatra {
-  saka: string;
-  enMalayalam: string;
-  mlMalayalam: string;
+  readonly saka: string;
+  readonly enMalayalam: string;
+  readonly mlMalayalam: string;
 }
 
 export interface MasaName {
-  saka: string;
-  saura: string;
-  enMalayalam: string;
-  mlMalayalam: string;
+  readonly saka: string;
+  readonly saura: string;
+  readonly enMalayalam: string;
+  readonly mlMalayalam: string;
 }
 
 interface MasaNameList {
@@ -60,7 +60,7 @@ const masaNames: MasaNameList = {
  * @param month {Number}
  * @param day {Number}
  */
-export class BaseDate {
+export abstract class BaseDate {
 
   /**
    * The year corresponding to this instance of the date.

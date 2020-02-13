@@ -10,14 +10,15 @@
  * @module kollavarsham
  */
 import { Calculations } from './calculations';
-import { KollavarshamDate } from './dates/kollavarshamDate';
-import { SakaDate } from './dates/sakaDate';
+import { KollavarshamDate, SakaDate } from './dates/index';
 
 export interface Settings {
   readonly system: string;
   readonly latitude: number;
   readonly longitude: number;
 }
+
+export const DefaultSettings: Settings = { system : 'SuryaSiddhanta', latitude : 23.2, longitude : 75.8 };
 
 /**
  * The Kollavarsham class implements all the public APIs of the library.
@@ -48,128 +49,16 @@ export interface Settings {
 export class Kollavarsham {
   settings: Settings;
 
-  /**
-   * Exports the {@link KollavarshamDate} class for referencing via `require`. This is the class
-   * that is returned when converting {@link Kollavarsham#fromGregorianDate} and is passed in
-   * to {@ink Kollavarsham#toGregorianDate}. See example below.
-   * @property KollavarshamDate
-   * @type {KollavarshamDate}
-   * @static
-   * @example
-   * const Kollavarsham = require('kollavarsham');
-   * const KollavarshamDate = Kollavarsham.KollavarshamDate;
-   *
-   * let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
-   * let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
-   */
-  static KollavarshamDate: typeof KollavarshamDate;
-
-  /**
-   * Exports the {@link SakaDate} class for referencing via `require`. This class's instance needs to be passed in
-   * to {@ink Kollavarsham#toGregorianDateFromSaka}. See example below.
-   * @property SakaDate
-   * @type {SakaDate}
-   * @static
-   * @example
-   * const Kollavarsham = require('kollavarsham');
-   * const SakaDate = Kollavarsham.SakaDate;
-   *
-   * let sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation
-   * let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
-   */
-  static SakaDate: typeof SakaDate;
-
-  constructor({ system = 'SuryaSiddhanta', latitude = 23.2, longitude = 75.8 } = {}) {
+  constructor(options: Settings = DefaultSettings) {
     /**
      * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {@link Kollavarsham#getSettings} method
      * @property settings
      * @type {{system, latitude, longitude}}
      */
     this.settings = {
-      system,
-      latitude,
-      longitude
-    };
-  }
-
-  /**
-   * Gets a snapshot of the current settings
-   * @method getSettings
-   * @for Kollavarsham
-   * @returns {{system, latitude, longitude}}
-   * @example
-   *const Kollavarsham = require('kollavarsham');
-   *
-   *const options = {
-   *  system: 'InPancasiddhantika',
-   *  latitude: 10,
-   *  longitude: 76.2
-   *};
-   *
-   *const kollavarsham = new Kollavarsham(options);
-   *
-   *let currentSettings = kollavarsham.getSettings();
-   */
-  getSettings(): Settings {
-    return this.settings;
-  }
-
-  /**
-   * Sets the system to be either 'InPancasiddhantika' or 'SuryaSiddhanta'
-   *
-   * @method setSystem
-   * @for Kollavarsham
-   * @param system {String}
-   * @example
-   *const Kollavarsham = require('Kollavarsham');
-   *const kollavarsham = new Kollavarsham();
-   *kollavarsham.setSystem('InPancasiddhantika');
-   *kollavarsham.setInputDate(new Date(2014, 2, 14));
-   *kollavarsham.convert();
-   */
-  setSystem(system: string): void {
-    this.settings = {
-      system,
-      latitude  : this.settings.latitude,
-      longitude : this.settings.longitude,
-    };
-  }
-
-  /**
-   * Sets the latitude for the location that will be used as the basis for the conversion.
-   * The value of the latitude parameter should be within -90 to +90
-   * @method setLatitude
-   * @for Kollavarsham
-   * @param latitude {Number}
-   * @example
-   *const Kollavarsham = require('Kollavarsham');
-   *const kollavarsham = new Kollavarsham();
-   *kollavarsham.setLatitude(8.5);
-   */
-  setLatitude(latitude: number): void {
-    this.settings = {
-      system    : this.settings.system,
-      latitude,
-      longitude : this.settings.longitude,
-    };
-  }
-
-  /**
-   * Sets the longitude for the location that will be used as the basis of the conversion
-   * The value of the latitude parameter should be within -180 to +180
-   * @method setLongitude
-   * @for Kollavarsham
-   * @param longitude {Number}
-   * @example
-   *const Kollavarsham = require('Kollavarsham');
-   *const kollavarsham = new Kollavarsham();
-   *kollavarsham.setLongitude(77.0);
-   */
-  setLongitude(longitude: number): void {
-    this.settings = {
-      system   : this.settings.system,
-      latitude : this.settings.latitude,
-      longitude,
+      system    : options.system,
+      latitude  : options.latitude,
+      longitude : options.longitude
     };
   }
 
@@ -179,7 +68,7 @@ export class Kollavarsham {
    * @method fromGregorianDate
    * @for Kollavarsham
    * @param date {Date} The Gregorian date to be converted to Kollavarsham
-   * @returns {KollavarshamDate} Converted date
+   * @returns {kollavarshamDate} Converted date
    * @example
    *const Kollavarsham = require('Kollavarsham');
    *const kollavarsham = new Kollavarsham();
@@ -191,7 +80,7 @@ export class Kollavarsham {
   }
 
   /**
-   * Converts a Kollavarsham date (an instance of {@link KollavarshamDate}) to its equivalent Gregorian date, respecting the current configuration.
+   * Converts a Kollavarsham date (an instance of {@link kollavarshamDate}) to its equivalent Gregorian date, respecting the current configuration.
    * This method Will return {@link JulianDate} object for any date before 1st January 1583 AD and
    * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
    *
@@ -199,7 +88,7 @@ export class Kollavarsham {
    *
    * @method toGregorianDate
    * @for Kollavarsham
-   * @param date {KollavarshamDate} The Kollavarsham date to be converted to Gregorian
+   * @param date {kollavarshamDate} The Kollavarsham date to be converted to Gregorian
    * @returns {Date|JulianDate} Converted date
    * @throws **"When the API is implemented, will convert &lt;date&gt;"**
    */
@@ -209,13 +98,13 @@ export class Kollavarsham {
   }
 
   /**
-   * Converts a Saka date (an instance of {@link SakaDate}) to its equivalent Gregorian date, respecting the current configuration.
+   * Converts a Saka date (an instance of {@link sakaDate}) to its equivalent Gregorian date, respecting the current configuration.
    * This method Will return {@link JulianDate} object for any date before 1st January 1583 AD and
    * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
    *
    * @method toGregorianDateFromSaka
    * @for Kollavarsham
-   * @param sakaDate {SakaDate} The Saka date to be converted to Gregorian
+   * @param sakaDate {sakaDate} The Saka date to be converted to Gregorian
    * @returns {Date|JulianDate} Converted date
    */
   toGregorianDateFromSaka(sakaDate: SakaDate): KollavarshamDate {
@@ -231,5 +120,4 @@ export class Kollavarsham {
   }
 }
 
-Kollavarsham.KollavarshamDate = KollavarshamDate;
-Kollavarsham.SakaDate = SakaDate;
+export * from './dates/index';
