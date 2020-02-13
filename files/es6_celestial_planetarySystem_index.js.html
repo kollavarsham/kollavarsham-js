@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/calculations.js - kollavarsham</title>
+    <title>es6/celestial/planetarySystem/index.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/calculations.js</h1>
+                    <div class="content"><h1 class="file-heading">File: es6/celestial/planetarySystem/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -115,169 +115,143 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
-
 /**
- * @module calculations
+ * @module planetarySystem
  */
-import Calendar from &#x27;./calendar.js&#x27;;
-import Celestial from &#x27;./celestial/index.js&#x27;;
-import JulianDate from &#x27;./dates/julianDate.js&#x27;;
-import KollavarshamDate from &#x27;./dates/kollavarshamDate.js&#x27;;
-import MathHelper from &#x27;./mathHelper.js&#x27;;
-import SakaDate from &#x27;./dates/sakaDate.js&#x27;;
-
-const Ujjain = {
-  latitude  : 23.2,
-  longitude : 75.8
-};
-
+import { Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu } from &#x27;./planets/index&#x27;;
+import { Yuga } from &#x27;./yuga&#x27;;
+let star;
+let sun;
+let moon;
+let mercury;
+let venus;
+let mars;
+let jupiter;
+let saturn;
+let candrocca; // Moon Apogee
+let rahu; // Moon Node
+let _yuga; // eslint-disable-line no-underscore-dangle
+let planetsList;
 /**
  *
  *  **INTERNAL/PRIVATE**
  *
- * @class Calculations
+ * @class PlanetarySystem
  */
-class Calculations {
-
-  constructor(settings) {
-    this.longitude = settings.longitude;
-    this.latitude = settings.latitude;
-    this.celestial = new Celestial(settings.system);
-    this.calendar = new Calendar(this.celestial);
-  }
-
-  static getPaksa(tithi) {
-    return tithi &gt;= 15 ? &#x27;Krsnapaksa&#x27; : &#x27;Suklapaksa&#x27;;
-  }
-
-  fromGregorianToSaka(gregorianDate) {
-    const year = gregorianDate.getFullYear();
-
-    let julianDay = Calendar.gregorianDateToJulianDay(gregorianDate);
-    let ahargana = Calendar.julianDayToAhargana(julianDay);
-
-    // Calculate the SakaDate at 6 AM
-    const timeAsFractionalDayAt6AM = 0.25; // time at 6 o&#x27;clock
-    const sakaDate = this.celestialCalculations(ahargana, year, julianDay, timeAsFractionalDayAt6AM);
-
-    // Calculate the SakaDate at the given time
-    // (this is done only for the resulting the naksatra, which now has better precision)
-    const timeFromGregorianDate = Calendar.timeIntoFractionalDay(gregorianDate);
-    const sakaDateAtGivenTime = this.celestialCalculations(ahargana, year, julianDay, timeFromGregorianDate);
-    sakaDate.naksatra = sakaDateAtGivenTime.naksatra;
-
-    sakaDate.gregorianDate = gregorianDate; // set the input gregorian date
-    return sakaDate;
-  }
-
-  celestialCalculations(ahargana, year, julianDay, timeAsFractionalDay) {
-    ahargana += timeAsFractionalDay;
-
-    // Definition of desantara
-    //      http://books.google.com/books?id=kt9DIY1g9HYC&amp;pg=PA683&amp;lpg=PA683&amp;dq=desantara&amp;source=bl&amp;ots=NLd1wFKFfN&amp;sig=jCfG95R-6eiSff3L73DCodijo1I&amp;hl=en&amp;sa=X&amp;ei=uKgHU__uKOr7yAGm0YGoBQ&amp;ved=0CF8Q6AEwCDgK#v=onepage&amp;q=desantara&amp;f=false
-    const desantara = (this.longitude - Ujjain.longitude) / 360;
-
-    // desantara
-    ahargana -= desantara;
-
-    // time of sunrise at local latitude
-    const equationOfTime = this.celestial.getDaylightEquation(year, this.latitude, ahargana);
-    ahargana -= equationOfTime;
-    const {sunriseHour, sunriseMinute} = Celestial.getSunriseTime(timeAsFractionalDay, equationOfTime);
-
-    const {trueSolarLongitude, trueLunarLongitude} = this.celestial.setPlanetaryPositions(ahargana);
-
-    // finding tithi and longitude of conjunction
-    const tithi = Celestial.getTithi(trueSolarLongitude, trueLunarLongitude);
-
-    // last conjunction &amp; next conjunction
-    const lastConjunctionLongitude = this.celestial.getLastConjunctionLongitude(ahargana, tithi);
-    const nextConjunctionLongitude = this.celestial.getNextConjunctionLongitude(ahargana, tithi);
-
-    const masaNum = Calendar.getMasaNum(trueSolarLongitude, lastConjunctionLongitude);
-
-    // kali and Saka era
-    const kaliYear = this.calendar.aharganaToKali(ahargana + ( 4 - masaNum ) * 30);
-    const sakaYear = Calendar.kaliToSaka(kaliYear);
-
-    let tithiDay = MathHelper.truncate(tithi) + 1;
-
-    const paksa = Calculations.getPaksa(tithiDay);
-    tithiDay = tithiDay &gt;= 15 ? tithiDay -= 15 : tithiDay;
-
-    const {sauraMasa, sauraDivasa} = this.calendar.getSauraMasaAndSauraDivasa(ahargana, desantara);
-
-    const sakaDate = new SakaDate(sakaYear, masaNum, tithiDay, paksa);
-
-    sakaDate.julianDay = MathHelper.truncate(julianDay + 0.5);
-    sakaDate.ahargana = MathHelper.truncate(ahargana + 0.5); // Remove the decimals
-    sakaDate.originalAhargana = ahargana;
-    sakaDate.sauraMasa = sauraMasa;
-    sakaDate.sauraDivasa = sauraDivasa;
-    sakaDate.naksatra = Calendar.getNaksatra(trueLunarLongitude);
-    sakaDate.kaliYear = kaliYear;
-    sakaDate.adhimasa = Calendar.getAdhimasa(lastConjunctionLongitude, nextConjunctionLongitude);
-    sakaDate.fractionalTithi = MathHelper.fractional(tithi);
-    sakaDate.sunriseHour = sunriseHour;
-    sakaDate.sunriseMinute = sunriseMinute;
-    return sakaDate;
-  }
-
-  fromGregorian(gregorianDate) {
-
-    const sakaDate = this.fromGregorianToSaka(gregorianDate);
-
-    return sakaDate.generateKollavarshamDate();
-
-  }
-
-  toGregorian(kollavarshamDate) {
-    // TODO: Implement this to convert a Kollavarsham date to Gregorian
-    console.log(&#x27;kollavarshamDate: &#x27; + JSON.stringify(kollavarshamDate)); // eslint-disable-line no-console
-    throw new Error(&#x27;Not implemented&#x27;);
-  }
-
-  toGregorianFromSaka(sakaDate) {
-    // TODO: Remove this method??
-    // This is implemented specifically for the pancanga-nodejs cli (https://github.com/kollavarsham/pancanga-nodejs)
-    // Could be removed when toGregorian has been implemented based on this
-
-    const sakaYear = sakaDate.year;
-    const masaNum = sakaDate.month;
-    let tithiDay = sakaDate.tithi;
-    const paksa = sakaDate.paksa;
-
-    if (paksa === &#x27;Krsnapaksa&#x27;) {
-      tithiDay += 15;
+export class PlanetarySystem {
+    constructor(system = &#x27;SuryaSiddhanta&#x27;) {
+        this.system = system === &#x27;InPancasiddhantika&#x27; ? system : &#x27;SuryaSiddhanta&#x27;;
+        star = new Star();
+        sun = new Sun();
+        moon = new Moon();
+        mercury = new Mercury();
+        venus = new Venus();
+        mars = new Mars();
+        jupiter = new Jupiter();
+        saturn = new Saturn();
+        candrocca = new Candrocca(); // Moon Apogee
+        rahu = new Rahu(); // Moon Node
+        _yuga = new Yuga();
+        this.initializeYugaRotations();
+        this.initializeYuga();
+        PlanetarySystem.initializePlanetaryConstants();
+        planetsList = [star, sun, moon, mercury, venus, mars, jupiter, saturn, candrocca, rahu]
+            .reduce((list, planet) =&gt; (Object.assign(Object.assign({}, list), { [planet.name]: planet })), {});
     }
-    const kaliYear = Calendar.sakaToKali(sakaYear);
-    const ahargana = this.calendar.kaliToAhargana(kaliYear, masaNum, tithiDay);
-
-    let julianDay = Calendar.aharganaToJulianDay(ahargana);
-    julianDay += 0.5;
-
-    const modernDate = Calendar.julianDayToModernDate(julianDay);
-    if (JulianDate.prototype.isPrototypeOf(modernDate)) { // eslint-disable-line no-prototype-builtins
-      console.log(&#x27;\nkollavarsham::toGregorianDate: *** Returning an instance of JulianDate class ***&#x27;); // eslint-disable-line no-console
+    get yuga() {
+        return _yuga;
     }
-
-    // TODO: Not happy that the empty constructor will make this with MalayalamYear =&gt; 1, MalayalamMonth =&gt; 1, and MalayalamDate =&gt; 1
-    // TODO: Think this through before implementing toGregorian above
-    const kollavarshamDate = new KollavarshamDate();
-    kollavarshamDate.gregorianDate = modernDate;
-    kollavarshamDate.julianDay = julianDay;
-    kollavarshamDate.ahargana = ahargana;
-    kollavarshamDate.sakaDate = sakaDate;
-
-    return kollavarshamDate;
-  }
-
+    get planets() {
+        return planetsList;
+    }
+    initializeYugaRotations() {
+        // common values across the systems
+        sun.YugaRotation = 4320000;
+        moon.YugaRotation = 57753336;
+        jupiter.YugaRotation = 364220;
+        const isSuryaSiddhantaSystem = this.system === &#x27;SuryaSiddhanta&#x27;;
+        // # Saura, HIL, p.15 &amp;&amp; # Latadeva/Ardharatrika, HIL, p.15
+        star.YugaRotation = isSuryaSiddhantaSystem ? 1582237800 : 1582237828;
+        mercury.YugaRotation = isSuryaSiddhantaSystem ? 17937000 : 17937060;
+        venus.YugaRotation = isSuryaSiddhantaSystem ? 7022388 : 7022376;
+        mars.YugaRotation = isSuryaSiddhantaSystem ? 2296824 : 2296832;
+        saturn.YugaRotation = isSuryaSiddhantaSystem ? 146564 : 146568;
+        candrocca.YugaRotation = isSuryaSiddhantaSystem ? 488219 : 488203;
+        rahu.YugaRotation = isSuryaSiddhantaSystem ? -232226 : -232238;
+    }
+    initializeYuga() {
+        this.yuga.CivilDays = star.YugaRotation - sun.YugaRotation;
+        this.yuga.SynodicMonth = moon.YugaRotation - sun.YugaRotation;
+        this.yuga.Adhimasa = this.yuga.SynodicMonth - 12 * sun.YugaRotation;
+        this.yuga.Tithi = 30 * this.yuga.SynodicMonth;
+        this.yuga.Ksayadina = this.yuga.Tithi - this.yuga.CivilDays;
+    }
+    static initializePlanetaryConstants() {
+        // star
+        star.Rotation = 0;
+        star.Sighra = 0;
+        star.Apogee = 0;
+        star.MandaCircumference = 0;
+        star.SighraCircumference = 0;
+        // sun
+        sun.Rotation = sun.YugaRotation;
+        sun.Sighra = sun.YugaRotation;
+        sun.Apogee = 77 + 17 / 60;
+        sun.MandaCircumference = 13 + 50 / 60;
+        sun.SighraCircumference = 0;
+        // moon
+        moon.Rotation = moon.YugaRotation;
+        moon.Sighra = 0;
+        moon.Apogee = 0;
+        moon.MandaCircumference = 31 + 50 / 60;
+        moon.SighraCircumference = 0;
+        // mercury
+        mercury.Rotation = sun.YugaRotation;
+        mercury.Sighra = mercury.YugaRotation;
+        mercury.Apogee = 220 + 27 / 60;
+        mercury.MandaCircumference = 29;
+        mercury.SighraCircumference = 131.5;
+        // venus
+        venus.Rotation = sun.YugaRotation;
+        venus.Sighra = venus.YugaRotation;
+        venus.Apogee = 79 + 50 / 60;
+        venus.MandaCircumference = 11.5;
+        venus.SighraCircumference = 261;
+        // mars
+        mars.Rotation = mars.YugaRotation;
+        mars.Sighra = sun.YugaRotation;
+        mars.Apogee = 130 + 2 / 60;
+        mars.MandaCircumference = 73.5;
+        mars.SighraCircumference = 233.5;
+        // jupiter
+        jupiter.Rotation = jupiter.YugaRotation;
+        jupiter.Sighra = sun.YugaRotation;
+        jupiter.Apogee = 171 + 18 / 60;
+        jupiter.MandaCircumference = 32.5;
+        jupiter.SighraCircumference = 71;
+        // saturn
+        saturn.Rotation = saturn.YugaRotation;
+        saturn.Sighra = sun.YugaRotation;
+        saturn.Apogee = 236 + 37 / 60;
+        saturn.MandaCircumference = 48.5;
+        saturn.SighraCircumference = 39.5;
+        // Candrocca
+        candrocca.Rotation = candrocca.YugaRotation;
+        candrocca.Sighra = 0;
+        candrocca.Apogee = 0;
+        candrocca.MandaCircumference = 0;
+        candrocca.SighraCircumference = 0;
+        // Rahu
+        rahu.Rotation = rahu.YugaRotation;
+        rahu.Sighra = 0;
+        rahu.Apogee = 0;
+        rahu.MandaCircumference = 0;
+        rahu.SighraCircumference = 0;
+    }
 }
-
-export default Calculations;
 
     </pre>
 </div>
@@ -290,7 +264,7 @@ export default Calculations;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

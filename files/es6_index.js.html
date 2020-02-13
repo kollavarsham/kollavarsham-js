@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/dates/baseDate.js - kollavarsham</title>
+    <title>es6/index.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/dates/baseDate.js</h1>
+                    <div class="content"><h1 class="file-heading">File: es6/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -115,196 +115,188 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
-
 /**
- * @module baseDate
+ * @module kollavarsham
  */
-import Calendar from &#x27;../calendar.js&#x27;;
-
-const pad = function (num, size) {
-  const s = &#x60;000000000${ num }&#x60;;
-  return s.substr(s.length - size);
-};
-
-const masaNames = {
-  0  : {saka : &#x27;Caitra    &#x27;, saura : &#x27;Mesa      &#x27;, enMalayalam : &#x27;Chingam   &#x27;, mlMalayalam : &#x27;ചിങ്ങം&#x27;},
-  1  : {saka : &#x27;Vaisakha  &#x27;, saura : &#x27;Vrsa      &#x27;, enMalayalam : &#x27;Kanni     &#x27;, mlMalayalam : &#x27;കന്നി&#x27;},
-  2  : {saka : &#x27;Jyaistha  &#x27;, saura : &#x27;Mithuna   &#x27;, enMalayalam : &#x27;Thulam    &#x27;, mlMalayalam : &#x27;തുലാം&#x27;},
-  3  : {saka : &#x27;Asadha    &#x27;, saura : &#x27;Karkata   &#x27;, enMalayalam : &#x27;Vrischikam&#x27;, mlMalayalam : &#x27;വൃശ്ചികം&#x27;},
-  4  : {saka : &#x27;Sravana   &#x27;, saura : &#x27;Simha     &#x27;, enMalayalam : &#x27;Dhanu     &#x27;, mlMalayalam : &#x27;ധനു&#x27;},
-  5  : {saka : &#x27;Bhadrapada&#x27;, saura : &#x27;Kanya     &#x27;, enMalayalam : &#x27;Makaram   &#x27;, mlMalayalam : &#x27;മകരം&#x27;},
-  6  : {saka : &#x27;Asvina    &#x27;, saura : &#x27;Tula      &#x27;, enMalayalam : &#x27;Kumbham   &#x27;, mlMalayalam : &#x27;കുംഭം&#x27;},
-  7  : {saka : &#x27;Karttika  &#x27;, saura : &#x27;Vrscika   &#x27;, enMalayalam : &#x27;Meenam    &#x27;, mlMalayalam : &#x27;മീനം&#x27;},
-  8  : {saka : &#x27;Margasirsa&#x27;, saura : &#x27;Dhanus    &#x27;, enMalayalam : &#x27;Medam     &#x27;, mlMalayalam : &#x27;മേടം&#x27;},
-  9  : {saka : &#x27;Pausa     &#x27;, saura : &#x27;Makara    &#x27;, enMalayalam : &#x27;Idavam    &#x27;, mlMalayalam : &#x27;ഇടവം&#x27;},
-  10 : {saka : &#x27;Magha     &#x27;, saura : &#x27;Kumbha    &#x27;, enMalayalam : &#x27;Mithunam  &#x27;, mlMalayalam : &#x27;മിഥുനം&#x27;},
-  11 : {saka : &#x27;Phalguna  &#x27;, saura : &#x27;Mina      &#x27;, enMalayalam : &#x27;Karkitakam&#x27;, mlMalayalam : &#x27;കർക്കടകം&#x27;}
-};
-
+import { Calculations } from &#x27;./calculations&#x27;;
+import { KollavarshamDate } from &#x27;./dates/kollavarshamDate&#x27;;
+import { SakaDate } from &#x27;./dates/sakaDate&#x27;;
 /**
- * Serves as the base class for both the {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} and
- * {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}} classes.
+ * The Kollavarsham class implements all the public APIs of the library.
  *
- *  **INTERNAL/PRIVATE**
+ * Create a new instance of this class, passing in the relevant options and call methods on the instance.
  *
- * @class BaseDate
+ * @class Kollavarsham
+ * @param {Object} [options] A set of key value pairs to configure the Kollavarsham instance. All settings are optional.
+ *  @param {String} [options.system=&#x27;SuryaSiddhanta&#x27;] Set to &#x27;InPancasiddhantika&#x27; or &#x27;SuryaSiddhanta&#x27; to use the corresponding system
+ *  @param {Number} [options.latitude=23.2] Sets the latitude for the location for the conversions. Defaults to Ujjain, Madhya Pradesh
+ *  @param {Number} [options.longitude=75.8] Sets the longitude for the location for the conversions. Default to Ujjain, Madhya Pradesh
  * @constructor
- * @param year {Number}
- * @param month {Number}
- * @param day {Number}
+ * @example
+ * &#x60;&#x60;&#x60;
+ *const Kollavarsham = require(&#x27;kollavarsham&#x27;);
+ *
+ *const options = {
+ *  system: &#x27;SuryaSiddhanta&#x27;,
+ *  latitude: 10,
+ *  longitude: 76.2
+ *};
+ *
+ *const kollavarsham = new Kollavarsham(options);
+ *
+ *let todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
+ *
+ *let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implemented yet
+ *&#x60;&#x60;&#x60;
  */
-class BaseDate {
-
-  constructor(year = 0, month = 0, date = 0) {
-
+class Kollavarsham {
+    constructor({ system = &#x27;SuryaSiddhanta&#x27;, latitude = 23.2, longitude = 75.8 } = {}) {
+        /**
+         * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink &quot;Kollavarsham/getSettings:method&quot;}}{{/crossLink}} method
+         * @property settings
+         * @type {{system, latitude, longitude}}
+         */
+        this.settings = {
+            system,
+            latitude,
+            longitude
+        };
+    }
     /**
-     * The year corresponding to this instance of the date.
+     * Gets a snapshot of the current settings
+     * @method getSettings
+     * @for Kollavarsham
+     * @returns {{system, latitude, longitude}}
+     * @example
+     * &#x60;&#x60;&#x60;
+     *const Kollavarsham = require(&#x27;kollavarsham&#x27;);
      *
-     * @property year
-     * @type {Number}
+     *const options = {
+     *  system: &#x27;InPancasiddhantika&#x27;,
+     *  latitude: 10,
+     *  longitude: 76.2
+     *};
+     *
+     *const kollavarsham = new Kollavarsham(options);
+     *
+     *let currentSettings = kollavarsham.getSettings();
+     *&#x60;&#x60;&#x60;
      */
-    this.year = year;
-
+    getSettings() {
+        return this.settings;
+    }
     /**
-     * The month corresponding to this instance of the date.
+     * Sets the system to be either &#x27;InPancasiddhantika&#x27; or &#x27;SuryaSiddhanta&#x27;
      *
-     * @property month
-     * @type {Number}
+     * @method setSystem
+     * @for Kollavarsham
+     * @param system {String}
+     * @example
+     * &#x60;&#x60;&#x60;
+     *const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
+     *const kollavarsham = new Kollavarsham();
+     *kollavarsham.setSystem(&#x27;InPancasiddhantika&#x27;);
+     *kollavarsham.setInputDate(new Date(2014, 2, 14));
+     *kollavarsham.convert();
+     * &#x60;&#x60;&#x60;
      */
-    this.month = month;
-
+    setSystem(system) {
+        this.settings.system = system;
+    }
     /**
-     * The date corresponding to this instance of the date.
-     *
-     * @property date
-     * @type {Number}
+     * Sets the latitude for the location that will be used as the basis for the conversion.
+     * The value of the latitude parameter should be within -90 to +90
+     * @method setLatitude
+     * @for Kollavarsham
+     * @param latitude {Number}
+     * @example
+     * &#x60;&#x60;&#x60;
+     *const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
+     *const kollavarsham = new Kollavarsham();
+     *kollavarsham.setLatitude(8.5);
+     * &#x60;&#x60;&#x60;
      */
-    this.date = date;
-
+    setLatitude(latitude) {
+        this.settings.latitude = latitude;
+    }
     /**
-     * The gregorian date corresponding to this instance of the date. **Set separately after an instance is created**
-     *
-     * @property gregorianDate
-     * @type {Date}
+     * Sets the longitude for the location that will be used as the basis of the conversion
+     * The value of the latitude parameter should be within -180 to +180
+     * @method setLongitude
+     * @for Kollavarsham
+     * @param longitude {Number}
+     * @example
+     * &#x60;&#x60;&#x60;
+     *const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
+     *const kollavarsham = new Kollavarsham();
+     *kollavarsham.setLongitude(77.0);
+     *&#x60;&#x60;&#x60;
      */
-    this.gregorianDate = null;
-
+    setLongitude(longitude) {
+        this.settings.longitude = longitude;
+    }
     /**
-     * The &#x60;Julian Day&#x60; corresponding to this instance of the date. **Set separately after an instance is created**
-     * Julian day is the continuous count of days since the beginning of the Julian Period used primarily by astronomers.
+     * Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration
      *
-     * _Source_: https://en.wikipedia.org/wiki/Julian_day
-     *
-     * @property julianDay
-     * @type {Number}
+     * @method fromGregorianDate
+     * @for Kollavarsham
+     * @param date {Date} The Gregorian date to be converted to Kollavarsham
+     * @returns {KollavarshamDate} Converted date
+     * @example
+     * &#x60;&#x60;&#x60;
+     *const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
+     *const kollavarsham = new Kollavarsham();
+     *let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));
+     *&#x60;&#x60;&#x60;
      */
-    this.julianDay = null;
-
+    fromGregorianDate(date) {
+        const calculations = new Calculations(this.settings);
+        return calculations.fromGregorian(date);
+    }
     /**
-     * The &#x60;Ahargana&#x60; corresponding to this instance of the date. **Set separately after an instance is created**
+     * Converts a Kollavarsham date (an instance of {{#crossLink &quot;KollavarshamDate&quot;}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
+     * This method Will return {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} object for any date before 1st January 1583 AD and
+     * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
      *
-     * In Sanskrit &#x60;ahoratra&#x60; means one full day and &#x60;gana&#x60; means count.
-     * Hence, the Ahargana on any given day stands for the number of lunar days that have elapsed starting from an epoch.
+     *  **This API has not been implemented yet**
      *
-     * _Source_: http://cs.annauniv.edu/insight/Reading%20Materials/astro/sharptime/ahargana.htm
-     *
-     * @property ahargana
-     * @type {Number}
+     * @method toGregorianDate
+     * @for Kollavarsham
+     * @param date {KollavarshamDate} The Kollavarsham date to be converted to Gregorian
+     * @returns {Date|JulianDate} Converted date
+     * @throws **&quot;When the API is implemented, will convert &amp;lt;date&amp;gt;&quot;**
      */
-    this.ahargana = null;
-
+    toGregorianDate(date) {
+        //TODO: Implement this method
+        throw new Error(&#x60;When the API is implemented, will convert ${date}&#x60;);
+    }
     /**
-     * The &#x60;Saura Masa&#x60; (Solar Calendar Month) for this instance of the date. **Set separately after an instance is created**
+     * Converts a Saka date (an instance of {{#crossLink &quot;SakaDate&quot;}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
+     * This method Will return {{#crossLink &quot;JulianDate&quot;}}{{/crossLink}} object for any date before 1st January 1583 AD and
+     * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
      *
-     * @property sauraMasa
-     * @type {Number}
+     * @method toGregorianDateFromSaka
+     * @for Kollavarsham
+     * @param sakaDate {SakaDate} The Saka date to be converted to Gregorian
+     * @returns {Date|JulianDate} Converted date
      */
-    this.sauraMasa = null;
-
-    /**
-     * The &#x60;Saura Divasa&#x60; (Solar Calendar Day) for this instance of the date. **Set separately after an instance is created**
-     *
-     * @property sauraDivasa
-     * @type {Number}
-     */
-    this.sauraDivasa = null;
-
-    /**
-     * The &#x60;Naksatra&#x60; (Star) for this instance of the date. **Set separately after an instance is created**
-     *
-     * @property naksatra
-     * @type { { saka: String, enMalayalam: string, mlMalayalam: string } }
-     */
-    this._naksatra = null; // eslint-disable-line no-underscore-dangle
-  }
-
-  get naksatra() {
-    return this._naksatra || {}; // eslint-disable-line no-underscore-dangle
-  }
-
-  set naksatra(val) {
-    this._naksatra = val; // eslint-disable-line no-underscore-dangle
-  }
-
-  /**
-   * Returns the Saura Masa name for the current instance of date.
-   *
-   * @property sauraMasaName
-   * @type {string}
-   */
-  get sauraMasaName() {
-    return BaseDate.getMasaName(this.sauraMasa).saura;
-  }
-
-  /**
-   * Returns the weekday (in English) for the current instance of date.
-   *
-   * @property weekdayName
-   * @type {string}
-   */
-  get weekdayName() {
-    return Calendar.julianDayToWeekday(this.julianDay).en;
-  }
-
-  /**
-   * Returns the weekday (in Malayalam) for the current instance of date.
-   *
-   * @property mlWeekdayName
-   * @type {string}
-   */
-  get mlWeekdayName() {
-    return Calendar.julianDayToWeekday(this.julianDay).ml;
-  }
-
-  /**
-   * Converts the Date to a nicely formatted string with year, month and date
-   *
-   * @method toString
-   * @for BaseDate
-   * @type {string}
-   */
-  toString() {
-    return &#x60;${ pad(this.year, 4) } ${ pad(this.month, 2) } ${ pad(this.date, 2) }&#x60;;
-  }
-
-  /**
-   * Returns the month names object that has Saka, Saura and Kollavarsham (English &amp; Malayalam) month names for the specified index &#x60;masaNumber&#x60;
-   *
-   * @method getMasaName
-   * @for BaseDate
-   * @param masaNumber {Number}
-   * @returns { {saka : {string}, saura : {string}, enMalayalam : {string}, mlMalayalam : {string} } }
-   */
-  static getMasaName(masaNumber) {
-    return masaNames[masaNumber];
-  }
-
+    toGregorianDateFromSaka(sakaDate) {
+        // TODO: Remove this method??
+        // This is implemented specifically for the pancanga-nodejs cli (https://github.com/kollavarsham/pancanga-nodejs)
+        // Could be removed when toGregorian has been implemented based on this
+        if (!(sakaDate instanceof SakaDate)) {
+            throw new Error(&#x27;Parameter sakaDate should be an instance of the \&#x27;SakaDate\&#x27; class&#x27;);
+        }
+        const calculations = new Calculations(this.settings);
+        return calculations.toGregorianFromSaka(sakaDate);
+    }
 }
-
-export default BaseDate;
+Kollavarsham.KollavarshamDate = KollavarshamDate;
+Kollavarsham.SakaDate = SakaDate;
+export default Kollavarsham;
 
     </pre>
 </div>
@@ -317,7 +309,7 @@ export default BaseDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

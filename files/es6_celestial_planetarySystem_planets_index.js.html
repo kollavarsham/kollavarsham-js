@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/celestial/planetarySystem/index.js - kollavarsham</title>
+    <title>es6/celestial/planetarySystem/planets/index.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/celestial/planetarySystem/index.js</h1>
+                    <div class="content"><h1 class="file-heading">File: es6/celestial/planetarySystem/planets/index.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -115,178 +115,210 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
-
 /**
- * @module planetarySystem
+ * @module planets
  */
-import planets from &#x27;./planets/index.js&#x27;;
-import Yuga from &#x27;./yuga.js&#x27;;
-
-let star;
-let sun;
-let moon;
-let mercury;
-let venus;
-let mars;
-let jupiter;
-let saturn;
-let candrocca; // Moon Apogee
-let rahu; // Moon Node
-
-let _yuga; // eslint-disable-line no-underscore-dangle
-
-let planetsList;
-
 /**
  *
  *  **INTERNAL/PRIVATE**
  *
- * @class PlanetarySystem
+ * @class Planet
+ * @constructor
  */
-class PlanetarySystem {
-
-  constructor(system = &#x27;SuryaSiddhanta&#x27;) {
-
-    this.system = system === &#x27;InPancasiddhantika&#x27; ? system : &#x27;SuryaSiddhanta&#x27;;
-
-    star = new planets.Star();
-    sun = new planets.Sun();
-    moon = new planets.Moon();
-    mercury = new planets.Mercury();
-    venus = new planets.Venus();
-    mars = new planets.Mars();
-    jupiter = new planets.Jupiter();
-    saturn = new planets.Saturn();
-    candrocca = new planets.Candrocca(); // Moon Apogee
-    rahu = new planets.Rahu(); // Moon Node
-
-    _yuga = new Yuga();
-
-    this.initializeYugaRotations();
-
-    this.initializeYuga();
-
-    PlanetarySystem.initializePlanetaryConstants();
-
-    planetsList = [star, sun, moon, mercury, venus, mars, jupiter, saturn, candrocca, rahu]
-      .reduce((list, planet) =&gt; ({...list, [planet.name] : planet}), {});
-
-  }
-
-  get yuga() {
-    return _yuga;
-  }
-
-  get planets() {
-    return planetsList;
-  }
-
-  initializeYugaRotations() {
-    // common values across the systems
-    sun.YugaRotation = 4320000;
-    moon.YugaRotation = 57753336;
-    jupiter.YugaRotation = 364220;
-
-    const isSuryaSiddhantaSystem = this.system === &#x27;SuryaSiddhanta&#x27;;
-
-    // # Saura, HIL, p.15 &amp;&amp; # Latadeva/Ardharatrika, HIL, p.15
-    star.YugaRotation = isSuryaSiddhantaSystem ? 1582237800 : 1582237828;
-    mercury.YugaRotation = isSuryaSiddhantaSystem ? 17937000 : 17937060;
-    venus.YugaRotation = isSuryaSiddhantaSystem ? 7022388 : 7022376;
-    mars.YugaRotation = isSuryaSiddhantaSystem ? 2296824 : 2296832;
-    saturn.YugaRotation = isSuryaSiddhantaSystem ? 146564 : 146568;
-    candrocca.YugaRotation = isSuryaSiddhantaSystem ? 488219 : 488203;
-    rahu.YugaRotation = isSuryaSiddhantaSystem ? -232226 : -232238;
-  }
-
-  initializeYuga() {
-    this.yuga.CivilDays = star.YugaRotation - sun.YugaRotation;
-    this.yuga.SynodicMonth = moon.YugaRotation - sun.YugaRotation;
-
-    this.yuga.Adhimasa = this.yuga.SynodicMonth - 12 * sun.YugaRotation;
-
-    this.yuga.Tithi = 30 * this.yuga.SynodicMonth;
-    this.yuga.Ksayadina = this.yuga.Tithi - this.yuga.CivilDays;
-  }
-
-  static initializePlanetaryConstants() {
-    // star
-    star.Rotation = 0;
-    star.Sighra = 0;
-    star.Apogee = 0;
-    star.MandaCircumference = 0;
-    star.SighraCircumference = 0;
-
-    // sun
-    sun.Rotation = sun.YugaRotation;
-    sun.Sighra = sun.YugaRotation;
-    sun.Apogee = 77 + 17 / 60;
-    sun.MandaCircumference = 13 + 50 / 60;
-    sun.SighraCircumference = 0;
-
-    // moon
-    moon.Rotation = moon.YugaRotation;
-    moon.Sighra = 0;
-    moon.Apogee = 0;
-    moon.MandaCircumference = 31 + 50 / 60;
-    moon.SighraCircumference = 0;
-
-    // mercury
-    mercury.Rotation = sun.YugaRotation;
-    mercury.Sighra = mercury.YugaRotation;
-    mercury.Apogee = 220 + 27 / 60;
-    mercury.MandaCircumference = 29;
-    mercury.SighraCircumference = 131.5;
-
-    // venus
-    venus.Rotation = sun.YugaRotation;
-    venus.Sighra = venus.YugaRotation;
-    venus.Apogee = 79 + 50 / 60;
-    venus.MandaCircumference = 11.5;
-    venus.SighraCircumference = 261;
-
-    // mars
-    mars.Rotation = mars.YugaRotation;
-    mars.Sighra = sun.YugaRotation;
-    mars.Apogee = 130 + 2 / 60;
-    mars.MandaCircumference = 73.5;
-    mars.SighraCircumference = 233.5;
-
-    // jupiter
-    jupiter.Rotation = jupiter.YugaRotation;
-    jupiter.Sighra = sun.YugaRotation;
-    jupiter.Apogee = 171 + 18 / 60;
-    jupiter.MandaCircumference = 32.5;
-    jupiter.SighraCircumference = 71;
-
-    // saturn
-    saturn.Rotation = saturn.YugaRotation;
-    saturn.Sighra = sun.YugaRotation;
-    saturn.Apogee = 236 + 37 / 60;
-    saturn.MandaCircumference = 48.5;
-    saturn.SighraCircumference = 39.5;
-
-    // Candrocca
-    candrocca.Rotation = candrocca.YugaRotation;
-    candrocca.Sighra = 0;
-    candrocca.Apogee = 0;
-    candrocca.MandaCircumference = 0;
-    candrocca.SighraCircumference = 0;
-
-    // Rahu
-    rahu.Rotation = rahu.YugaRotation;
-    rahu.Sighra = 0;
-    rahu.Apogee = 0;
-    rahu.MandaCircumference = 0;
-    rahu.SighraCircumference = 0;
-  }
-
+class Planet {
+    constructor() {
+        /**
+         * Name of the planet subclass
+         *
+         * @property name
+         * @type {string}
+         */
+        this.name = &#x27;&#x27;;
+        /**
+         * **TODO: Description**
+         *
+         * @property YugaRotation
+         * @type {Number}
+         */
+        this.YugaRotation = 0; // sidereal rotations
+        /**
+         * **TODO: Description**
+         *
+         * @property Rotation
+         * @type {Number}
+         */
+        this.Rotation = 0;
+        /**
+         * **TODO: Description**
+         *
+         * @property Sighra
+         * @type {Number}
+         */
+        this.Sighra = 0;
+        /**
+         * **TODO: Description**
+         *
+         * @property MeanPosition
+         * @type {Number}
+         */
+        this.MeanPosition = 0;
+        /**
+         * **TODO: Description**
+         *
+         * @property Apogee
+         * @type {Number}
+         */
+        this.Apogee = 0;
+        /**
+         * **TODO: Description**
+         *
+         * @property MandaCircumference
+         * @type {Number}
+         */
+        this.MandaCircumference = 0;
+        /**
+         * **TODO: Description**
+         *
+         * @property SighraCircumference
+         * @type {Number}
+         */
+        this.SighraCircumference = 0;
+    }
 }
-
-export default PlanetarySystem;
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Star
+ * @extends Planet
+ */
+class Star extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;star&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Sun
+ * @extends Planet
+ */
+class Sun extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;sun&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Moon
+ * @extends Planet
+ */
+class Moon extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;moon&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Mercury
+ * @extends Planet
+ */
+class Mercury extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;mercury&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Venus
+ * @extends Planet
+ */
+class Venus extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;venus&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Mars
+ * @extends Planet
+ */
+class Mars extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;mars&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Jupiter
+ * @extends Planet
+ */
+class Jupiter extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;jupiter&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Saturn
+ * @extends Planet
+ */
+class Saturn extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;saturn&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Candrocca
+ * @extends Planet
+ */
+class Candrocca extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;candrocca&#x27;;
+    }
+}
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Rahu
+ * @extends Planet
+ */
+class Rahu extends Planet {
+    constructor() {
+        super();
+        this.name = &#x27;rahu&#x27;;
+    }
+}
+export { Planet, Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu };
 
     </pre>
 </div>
@@ -299,7 +331,7 @@ export default PlanetarySystem;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

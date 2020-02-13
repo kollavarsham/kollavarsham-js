@@ -6,8 +6,8 @@
         "url": "http://kollavarsham.org"
     },
     "files": {
-        "lib/celestial/planetarySystem/planets/index.js": {
-            "name": "lib/celestial/planetarySystem/planets/index.js",
+        "es6/celestial/planetarySystem/planets/index.js": {
+            "name": "es6/celestial/planetarySystem/planets/index.js",
             "modules": {
                 "planets": 1
             },
@@ -27,8 +27,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/celestial/planetarySystem/index.js": {
-            "name": "lib/celestial/planetarySystem/index.js",
+        "es6/celestial/planetarySystem/index.js": {
+            "name": "es6/celestial/planetarySystem/index.js",
             "modules": {
                 "planetarySystem": 1
             },
@@ -38,8 +38,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/celestial/planetarySystem/yuga.js": {
-            "name": "lib/celestial/planetarySystem/yuga.js",
+        "es6/celestial/planetarySystem/yuga.js": {
+            "name": "es6/celestial/planetarySystem/yuga.js",
             "modules": {
                 "yuga": 1
             },
@@ -49,8 +49,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/celestial/index.js": {
-            "name": "lib/celestial/index.js",
+        "es6/celestial/index.js": {
+            "name": "es6/celestial/index.js",
             "modules": {
                 "celestial": 1
             },
@@ -60,8 +60,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/dates/baseDate.js": {
-            "name": "lib/dates/baseDate.js",
+        "es6/dates/baseDate.js": {
+            "name": "es6/dates/baseDate.js",
             "modules": {
                 "baseDate": 1
             },
@@ -73,8 +73,8 @@
             },
             "namespaces": {}
         },
-        "lib/dates/julianDate.js": {
-            "name": "lib/dates/julianDate.js",
+        "es6/dates/julianDate.js": {
+            "name": "es6/dates/julianDate.js",
             "modules": {
                 "julianDate": 1
             },
@@ -84,8 +84,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/dates/kollavarshamDate.js": {
-            "name": "lib/dates/kollavarshamDate.js",
+        "es6/dates/kollavarshamDate.js": {
+            "name": "es6/dates/kollavarshamDate.js",
             "modules": {
                 "kollavarshamDate": 1
             },
@@ -95,8 +95,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/dates/sakaDate.js": {
-            "name": "lib/dates/sakaDate.js",
+        "es6/dates/sakaDate.js": {
+            "name": "es6/dates/sakaDate.js",
             "modules": {
                 "sakaDate": 1
             },
@@ -108,8 +108,8 @@
             },
             "namespaces": {}
         },
-        "lib/calculations.js": {
-            "name": "lib/calculations.js",
+        "es6/calculations.js": {
+            "name": "es6/calculations.js",
             "modules": {
                 "calculations": 1
             },
@@ -119,8 +119,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/calendar.js": {
-            "name": "lib/calendar.js",
+        "es6/calendar.js": {
+            "name": "es6/calendar.js",
             "modules": {
                 "calendar": 1
             },
@@ -130,8 +130,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "lib/index.js": {
-            "name": "lib/index.js",
+        "es6/index.js": {
+            "name": "es6/index.js",
             "modules": {
                 "kollavarsham": 1
             },
@@ -143,8 +143,8 @@
             },
             "namespaces": {}
         },
-        "lib/mathHelper.js": {
-            "name": "lib/mathHelper.js",
+        "es6/mathHelper.js": {
+            "name": "es6/mathHelper.js",
             "modules": {
                 "mathHelper": 1
             },
@@ -176,8 +176,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 207
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 195
         },
         "planetarySystem": {
             "name": "planetarySystem",
@@ -189,8 +189,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/celestial/planetarySystem/index.js",
-            "line": 30
+            "file": "es6/celestial/planetarySystem/index.js",
+            "line": 25
         },
         "yuga": {
             "name": "yuga",
@@ -202,8 +202,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/celestial/planetarySystem/yuga.js",
-            "line": 13
+            "file": "es6/celestial/planetarySystem/yuga.js",
+            "line": 11
         },
         "celestial": {
             "name": "celestial",
@@ -215,8 +215,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/celestial/index.js",
-            "line": 15
+            "file": "es6/celestial/index.js",
+            "line": 13
         },
         "baseDate": {
             "name": "baseDate",
@@ -230,8 +230,8 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/dates/baseDate.js",
-            "line": 34
+            "file": "es6/dates/baseDate.js",
+            "line": 30
         },
         "julianDate": {
             "name": "julianDate",
@@ -243,8 +243,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/dates/julianDate.js",
-            "line": 14
+            "file": "es6/dates/julianDate.js",
+            "line": 12
         },
         "kollavarshamDate": {
             "name": "kollavarshamDate",
@@ -256,8 +256,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 14
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 13
         },
         "sakaDate": {
             "name": "sakaDate",
@@ -271,8 +271,8 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/dates/sakaDate.js",
-            "line": 16
+            "file": "es6/dates/sakaDate.js",
+            "line": 14
         },
         "calculations": {
             "name": "calculations",
@@ -284,8 +284,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/calculations.js",
-            "line": 24
+            "file": "es6/calculations.js",
+            "line": 22
         },
         "calendar": {
             "name": "calendar",
@@ -297,8 +297,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/calendar.js",
-            "line": 25
+            "file": "es6/calendar.js",
+            "line": 22
         },
         "kollavarsham": {
             "name": "kollavarsham",
@@ -312,8 +312,8 @@
             },
             "namespaces": {},
             "tag": "module",
-            "file": "lib/index.js",
-            "line": 16
+            "file": "es6/index.js",
+            "line": 14
         },
         "mathHelper": {
             "name": "mathHelper",
@@ -325,8 +325,8 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "lib/mathHelper.js",
-            "line": 15
+            "file": "es6/mathHelper.js",
+            "line": 13
         }
     },
     "classes": {
@@ -340,8 +340,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 13,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 11,
             "description": "**INTERNAL/PRIVATE**",
             "is_constructor": 1
         },
@@ -355,8 +355,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 81,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 78,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -370,8 +370,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 95,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 91,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -385,8 +385,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 109,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 104,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -400,8 +400,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 123,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 117,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -415,8 +415,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 137,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 130,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -430,8 +430,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 151,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 143,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -445,8 +445,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 165,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 156,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -460,8 +460,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 179,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 169,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -475,8 +475,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 193,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 182,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -490,8 +490,8 @@
             "extension_for": [],
             "module": "planets",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 207,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 195,
             "description": "**INTERNAL/PRIVATE**",
             "extends": "Planet"
         },
@@ -505,8 +505,8 @@
             "extension_for": [],
             "module": "planetarySystem",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/index.js",
-            "line": 30,
+            "file": "es6/celestial/planetarySystem/index.js",
+            "line": 25,
             "description": "**INTERNAL/PRIVATE**"
         },
         "Yuga": {
@@ -519,8 +519,8 @@
             "extension_for": [],
             "module": "yuga",
             "namespace": "",
-            "file": "lib/celestial/planetarySystem/yuga.js",
-            "line": 13,
+            "file": "es6/celestial/planetarySystem/yuga.js",
+            "line": 11,
             "description": "**INTERNAL/PRIVATE**"
         },
         "Celestial": {
@@ -533,8 +533,8 @@
             "extension_for": [],
             "module": "celestial",
             "namespace": "",
-            "file": "lib/celestial/index.js",
-            "line": 15,
+            "file": "es6/celestial/index.js",
+            "line": 13,
             "description": "**INTERNAL/PRIVATE**"
         },
         "BaseDate": {
@@ -547,8 +547,8 @@
             "extension_for": [],
             "module": "baseDate",
             "namespace": "",
-            "file": "lib/dates/baseDate.js",
-            "line": 34,
+            "file": "es6/dates/baseDate.js",
+            "line": 30,
             "description": "Serves as the base class for both the {{#crossLink \"JulianDate\"}}{{/crossLink}} and\n{{#crossLink \"KollavarshamDate\"}}{{/crossLink}} classes.\n\n **INTERNAL/PRIVATE**",
             "is_constructor": 1,
             "params": [
@@ -579,8 +579,8 @@
             "extension_for": [],
             "module": "julianDate",
             "namespace": "",
-            "file": "lib/dates/julianDate.js",
-            "line": 14,
+            "file": "es6/dates/julianDate.js",
+            "line": 12,
             "description": "Represents a Julian date's year, month and day\n`toGregorianDateFromSaka` method of the {{#crossLink \"Kollavarsham\"}}{{/crossLink}} class returns an instance of this type for dates\nolder than `1st January 1583 AD`\n\n **INTERNAL/PRIVATE**",
             "is_constructor": 1,
             "params": [
@@ -618,8 +618,8 @@
             "extension_for": [],
             "module": "kollavarshamDate",
             "namespace": "",
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 14,
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 13,
             "description": "Represents a Kollavarsham date's year, month and date",
             "is_constructor": 1,
             "params": [
@@ -657,8 +657,8 @@
             "extension_for": [],
             "module": "sakaDate",
             "namespace": "",
-            "file": "lib/dates/sakaDate.js",
-            "line": 16,
+            "file": "es6/dates/sakaDate.js",
+            "line": 14,
             "description": "Represents an Saka date's year, month and paksa and tithi",
             "is_constructor": 1,
             "params": [
@@ -703,8 +703,8 @@
             "extension_for": [],
             "module": "calculations",
             "namespace": "",
-            "file": "lib/calculations.js",
-            "line": 24,
+            "file": "es6/calculations.js",
+            "line": 22,
             "description": "**INTERNAL/PRIVATE**"
         },
         "Calendar": {
@@ -717,8 +717,8 @@
             "extension_for": [],
             "module": "calendar",
             "namespace": "",
-            "file": "lib/calendar.js",
-            "line": 25,
+            "file": "es6/calendar.js",
+            "line": 22,
             "description": "**INTERNAL/PRIVATE**"
         },
         "Kollavarsham": {
@@ -731,8 +731,8 @@
             "extension_for": [],
             "module": "kollavarsham",
             "namespace": "",
-            "file": "lib/index.js",
-            "line": 16,
+            "file": "es6/index.js",
+            "line": 14,
             "description": "The Kollavarsham class implements all the public APIs of the library.\n\nCreate a new instance of this class, passing in the relevant options and call methods on the instance.",
             "params": [
                 {
@@ -780,16 +780,16 @@
             "extension_for": [],
             "module": "mathHelper",
             "namespace": "",
-            "file": "lib/mathHelper.js",
-            "line": 15,
+            "file": "es6/mathHelper.js",
+            "line": 13,
             "description": "**INTERNAL/PRIVATE**"
         }
     },
     "elements": {},
     "classitems": [
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 22,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 20,
             "description": "Name of the planet subclass",
             "itemtype": "property",
             "name": "name",
@@ -798,8 +798,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 29,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 27,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "YugaRotation",
@@ -808,8 +808,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 36,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 34,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "Rotation",
@@ -818,8 +818,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 43,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 41,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "Sighra",
@@ -828,8 +828,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 50,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 48,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "MeanPosition",
@@ -838,8 +838,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 57,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 55,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "Apogee",
@@ -848,8 +848,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 64,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 62,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "MandaCircumference",
@@ -858,8 +858,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/celestial/planetarySystem/planets/index.js",
-            "line": 71,
+            "file": "es6/celestial/planetarySystem/planets/index.js",
+            "line": 69,
             "description": "**TODO: Description**",
             "itemtype": "property",
             "name": "SighraCircumference",
@@ -868,88 +868,8 @@
             "module": "planets"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 50,
-            "description": "The year corresponding to this instance of the date.",
-            "itemtype": "property",
-            "name": "year",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 58,
-            "description": "The month corresponding to this instance of the date.",
-            "itemtype": "property",
-            "name": "month",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 66,
-            "description": "The date corresponding to this instance of the date.",
-            "itemtype": "property",
-            "name": "date",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 74,
-            "description": "The gregorian date corresponding to this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "gregorianDate",
-            "type": "{Date}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 82,
-            "description": "The `Julian Day` corresponding to this instance of the date. **Set separately after an instance is created**\nJulian day is the continuous count of days since the beginning of the Julian Period used primarily by astronomers.\n\n_Source_: https://en.wikipedia.org/wiki/Julian_day",
-            "itemtype": "property",
-            "name": "julianDay",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 93,
-            "description": "The `Ahargana` corresponding to this instance of the date. **Set separately after an instance is created**\n\nIn Sanskrit `ahoratra` means one full day and `gana` means count.\nHence, the Ahargana on any given day stands for the number of lunar days that have elapsed starting from an epoch.\n\n_Source_: http://cs.annauniv.edu/insight/Reading%20Materials/astro/sharptime/ahargana.htm",
-            "itemtype": "property",
-            "name": "ahargana",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 106,
-            "description": "The `Saura Masa` (Solar Calendar Month) for this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "sauraMasa",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 114,
-            "description": "The `Saura Divasa` (Solar Calendar Day) for this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "sauraDivasa",
-            "type": "{Number}",
-            "class": "BaseDate",
-            "module": "baseDate"
-        },
-        {
-            "file": "lib/dates/baseDate.js",
-            "line": 122,
+            "file": "es6/dates/baseDate.js",
+            "line": 44,
             "description": "The `Naksatra` (Star) for this instance of the date. **Set separately after an instance is created**",
             "itemtype": "property",
             "name": "naksatra",
@@ -958,8 +878,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 139,
+            "file": "es6/dates/baseDate.js",
+            "line": 66,
             "description": "Returns the Saura Masa name for the current instance of date.",
             "itemtype": "property",
             "name": "sauraMasaName",
@@ -968,8 +888,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 149,
+            "file": "es6/dates/baseDate.js",
+            "line": 75,
             "description": "Returns the weekday (in English) for the current instance of date.",
             "itemtype": "property",
             "name": "weekdayName",
@@ -978,8 +898,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 159,
+            "file": "es6/dates/baseDate.js",
+            "line": 84,
             "description": "Returns the weekday (in Malayalam) for the current instance of date.",
             "itemtype": "property",
             "name": "mlWeekdayName",
@@ -988,8 +908,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 169,
+            "file": "es6/dates/baseDate.js",
+            "line": 93,
             "description": "Converts the Date to a nicely formatted string with year, month and date",
             "itemtype": "method",
             "name": "toString",
@@ -998,8 +918,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/baseDate.js",
-            "line": 180,
+            "file": "es6/dates/baseDate.js",
+            "line": 103,
             "description": "Returns the month names object that has Saka, Saura and Kollavarsham (English & Malayalam) month names for the specified index `masaNumber`",
             "itemtype": "method",
             "name": "getMasaName",
@@ -1018,8 +938,8 @@
             "module": "baseDate"
         },
         {
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 29,
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 27,
             "description": "Returns the Kollavarsham Naksatra name (in English) for this instance date",
             "itemtype": "property",
             "name": "naksatraName",
@@ -1028,8 +948,8 @@
             "module": "kollavarshamDate"
         },
         {
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 39,
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 36,
             "description": "Returns the Kollavarsham Naksatra name (in Malayalam) for this instance of date",
             "itemtype": "property",
             "name": "mlNaksatraName",
@@ -1038,8 +958,8 @@
             "module": "kollavarshamDate"
         },
         {
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 49,
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 45,
             "description": "Returns the Kollavarsham month name (in English) for this instance of date",
             "itemtype": "property",
             "name": "masaName",
@@ -1048,8 +968,8 @@
             "module": "kollavarshamDate"
         },
         {
-            "file": "lib/dates/kollavarshamDate.js",
-            "line": 59,
+            "file": "es6/dates/kollavarshamDate.js",
+            "line": 54,
             "description": "Returns the Kollavarsham month name (in Malayalam) for this instance of date",
             "itemtype": "property",
             "name": "mlMasaName",
@@ -1058,68 +978,8 @@
             "module": "kollavarshamDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 32,
-            "description": "The Paksha/Paksa corresponding to this instance of the date.\n\nPaksha (or pakṣa: Sanskrit: पक्ष), refers to a fortnight or a lunar phase in a month of the Hindu lunar calendar.\n\n_Source_: https://en.wikipedia.org/wiki/Paksha",
-            "itemtype": "property",
-            "name": "paksa",
-            "type": "{string}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 44,
-            "description": "The Kali year corresponding to this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "kaliYear",
-            "type": "{Number}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 52,
-            "description": "The Adhimasa (`Adhika Masa`) prefix corresponding to this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "adhimasa",
-            "type": "{string}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 60,
-            "description": "The fractional `Tithi`corresponding to this instance of the date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "fractionalTithi",
-            "type": "{Number}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 68,
-            "description": "The hour part from the sunrise time for this date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "sunriseHour",
-            "type": "{Number}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 76,
-            "description": "The minute part from the sunrise time for this date. **Set separately after an instance is created**",
-            "itemtype": "property",
-            "name": "sunriseMinute",
-            "type": "{Number}",
-            "class": "SakaDate",
-            "module": "sakaDate"
-        },
-        {
-            "file": "lib/dates/sakaDate.js",
-            "line": 85,
+            "file": "es6/dates/sakaDate.js",
+            "line": 35,
             "description": "Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)",
             "itemtype": "property",
             "name": "sakaYear",
@@ -1128,8 +988,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 95,
+            "file": "es6/dates/sakaDate.js",
+            "line": 44,
             "description": "Returns the Tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink \"BaseDate\"}}{{/crossLink}} class)\n\nIn Vedic timekeeping, a tithi (also spelled thithi) is a lunar day, or the time it takes for the longitudinal angle between the Moon and the Sun to increase by 12°.\nTithis begin at varying times of day and vary in duration from approximately 19 to approximately 26 hours.\n\n_Source_: https://en.wikipedia.org/wiki/Tithi",
             "itemtype": "property",
             "name": "tithi",
@@ -1138,8 +998,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 110,
+            "file": "es6/dates/sakaDate.js",
+            "line": 58,
             "description": "Returns the Vikrama year corresponding to the Saka year of this instance.",
             "itemtype": "property",
             "name": "vikramaYear",
@@ -1148,8 +1008,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 120,
+            "file": "es6/dates/sakaDate.js",
+            "line": 67,
             "description": "Returns the Saka Naksatra name for this instance of SakaDate",
             "itemtype": "property",
             "name": "naksatraName",
@@ -1158,8 +1018,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 130,
+            "file": "es6/dates/sakaDate.js",
+            "line": 76,
             "description": "Returns the month name for this instance of SakaDate",
             "itemtype": "property",
             "name": "masaName",
@@ -1168,8 +1028,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/dates/sakaDate.js",
-            "line": 140,
+            "file": "es6/dates/sakaDate.js",
+            "line": 85,
             "description": "Generates an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} from this instance of SakaDate",
             "itemtype": "method",
             "name": "generateKollavarshamDate",
@@ -1181,8 +1041,8 @@
             "module": "sakaDate"
         },
         {
-            "file": "lib/index.js",
-            "line": 47,
+            "file": "es6/index.js",
+            "line": 44,
             "description": "Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink \"Kollavarsham/getSettings:method\"}}{{/crossLink}} method",
             "itemtype": "property",
             "name": "settings",
@@ -1191,8 +1051,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 59,
+            "file": "es6/index.js",
+            "line": 55,
             "description": "Gets a snapshot of the current settings",
             "itemtype": "method",
             "name": "getSettings",
@@ -1207,8 +1067,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 83,
+            "file": "es6/index.js",
+            "line": 78,
             "description": "Sets the system to be either 'InPancasiddhantika' or 'SuryaSiddhanta'",
             "itemtype": "method",
             "name": "setSystem",
@@ -1226,8 +1086,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 102,
+            "file": "es6/index.js",
+            "line": 96,
             "description": "Sets the latitude for the location that will be used as the basis for the conversion.\nThe value of the latitude parameter should be within -90 to +90",
             "itemtype": "method",
             "name": "setLatitude",
@@ -1245,8 +1105,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 119,
+            "file": "es6/index.js",
+            "line": 112,
             "description": "Sets the longitude for the location that will be used as the basis of the conversion\nThe value of the latitude parameter should be within -180 to +180",
             "itemtype": "method",
             "name": "setLongitude",
@@ -1264,8 +1124,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 136,
+            "file": "es6/index.js",
+            "line": 128,
             "description": "Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration",
             "itemtype": "method",
             "name": "fromGregorianDate",
@@ -1287,8 +1147,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 155,
+            "file": "es6/index.js",
+            "line": 146,
             "description": "Converts a Kollavarsham date (an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.\n\n **This API has not been implemented yet**",
             "itemtype": "method",
             "name": "toGregorianDate",
@@ -1310,8 +1170,8 @@
             "module": "kollavarsham"
         },
         {
-            "file": "lib/index.js",
-            "line": 173,
+            "file": "es6/index.js",
+            "line": 163,
             "description": "Converts a Saka date (an instance of {{#crossLink \"SakaDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.",
             "itemtype": "method",
             "name": "toGregorianDateFromSaka",
@@ -1328,60 +1188,32 @@
             },
             "class": "Kollavarsham",
             "module": "kollavarsham"
-        },
-        {
-            "file": "lib/index.js",
-            "line": 196,
-            "description": "Exports the {{#crossLink \"KollavarshamDate\"}}{{/crossLink}} class for referencing via `require`. This is the class\nthat is returned when converting {{#crossLink \"Kollavarsham/fromGregorianDate:method\"}}{{/crossLink}} and is passed in\nto {{#crossLink \"Kollavarsham/toGregorianDate:method\"}}{{/crossLink}}. See example below.",
-            "itemtype": "property",
-            "name": "KollavarshamDate",
-            "type": "{KollavarshamDate}",
-            "static": 1,
-            "example": [
-                "\n```\nconst Kollavarsham = require('kollavarsham');\nconst KollavarshamDate = Kollavarsham.KollavarshamDate;\n\nlet myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation\nlet myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);\n```"
-            ],
-            "class": "Kollavarsham",
-            "module": "kollavarsham"
-        },
-        {
-            "file": "lib/index.js",
-            "line": 214,
-            "description": "Exports the {{#crossLink \"SakaDate\"}}{{/crossLink}} class for referencing via `require`. This class's instance needs to be passed in\nto {{#crossLink \"Kollavarsham/toGregorianDateFromSaka:method\"}}{{/crossLink}}. See example below.",
-            "itemtype": "property",
-            "name": "SakaDate",
-            "type": "{SakaDate}",
-            "static": 1,
-            "example": [
-                "\n```\nconst Kollavarsham = require('kollavarsham');\nconst SakaDate = Kollavarsham.SakaDate;\n\nlet sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation\nlet sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);\n```"
-            ],
-            "class": "Kollavarsham",
-            "module": "kollavarsham"
         }
     ],
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/baseDate.js:180"
+            "line": " es6/dates/baseDate.js:103"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/dates/sakaDate.js:140"
+            "line": " es6/dates/sakaDate.js:85"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:59"
+            "line": " es6/index.js:55"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:136"
+            "line": " es6/index.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:155"
+            "line": " es6/index.js:146"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " lib/index.js:173"
+            "line": " es6/index.js:163"
         }
     ]
 }

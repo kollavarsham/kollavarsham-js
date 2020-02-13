@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/dates/kollavarshamDate.js - kollavarsham</title>
+    <title>es6/celestial/planetarySystem/yuga.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/dates/kollavarshamDate.js</h1>
+                    <div class="content"><h1 class="file-heading">File: es6/celestial/planetarySystem/yuga.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -115,73 +115,27 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
-
 /**
- * @module kollavarshamDate
+ * @module yuga
  */
-import BaseDate from &#x27;./baseDate.js&#x27;;
-
 /**
- * Represents a Kollavarsham date&#x27;s year, month and date
- * @class KollavarshamDate
- * @constructor
- * @param [year=1] {Number} The Kollavarsham year
- * @param [month=1] {Number} The Kollavarsham month
- * @param [day=1] {Number} The Kollavarsham day
- * @extends BaseDate
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Yuga
  */
-class KollavarshamDate extends BaseDate {
-
-  constructor(year = 1, month = 1, day = 1) {
-    super(year, month, day);
-  }
-
-  /**
-   * Returns the Kollavarsham Naksatra name (in English) for this instance date
-   *
-   * @property naksatraName
-   * @type {string}
-   */
-  get naksatraName() {
-    return this.naksatra.enMalayalam;
-  }
-
-  /**
-   * Returns the Kollavarsham Naksatra name (in Malayalam) for this instance of date
-   *
-   * @property mlNaksatraName
-   * @type {string}
-   */
-  get mlNaksatraName() {
-    return this.naksatra.mlMalayalam;
-  }
-
-  /**
-   * Returns the Kollavarsham month name (in English) for this instance of date
-   *
-   * @property masaName
-   * @type {string}
-   */
-  get masaName() {
-    return KollavarshamDate.getMasaName(this.month - 1).enMalayalam;
-  }
-
-  /**
-   * Returns the Kollavarsham month name (in Malayalam) for this instance of date
-   *
-   * @property mlMasaName
-   * @type {string}
-   */
-  get mlMasaName() {
-    return KollavarshamDate.getMasaName(this.month - 1).mlMalayalam;
-  }
-
+export class Yuga {
+    constructor() {
+        this.CivilDays = 0;
+        this.SynodicMonth = 0;
+        this.Adhimasa = 0;
+        this.Tithi = 0;
+        this.Ksayadina = 0;
+    }
 }
-
-export default KollavarshamDate;
 
     </pre>
 </div>
@@ -194,7 +148,7 @@ export default KollavarshamDate;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

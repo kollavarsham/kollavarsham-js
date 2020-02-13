@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/celestial/planetarySystem/yuga.js - kollavarsham</title>
+    <title>es6/mathHelper.js - kollavarsham</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/yui/3.9.1/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -107,7 +107,7 @@
             
             <div class="apidocs">
                 <div id="docs-main">
-                    <div class="content"><h1 class="file-heading">File: lib/celestial/planetarySystem/yuga.js</h1>
+                    <div class="content"><h1 class="file-heading">File: es6/mathHelper.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -115,33 +115,65 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2018 The Kollavarsham Team
+ * Copyright (c) 2014-2020 The Kollavarsham Team
  * Licensed under the MIT license.
  */
-
 /**
- * @module yuga
+ * @module mathHelper
  */
-
+const _epsilon = 1e-8; // eslint-disable-line no-underscore-dangle
+const _radianInDegrees = 180 / Math.PI; // eslint-disable-line no-underscore-dangle
 /**
  *
  *  **INTERNAL/PRIVATE**
  *
- * @class Yuga
+ * @class MathHelper
  */
-class Yuga {
-
-  constructor() {
-    this.CivilDays = 0;
-    this.SynodicMonth = 0;
-    this.Adhimasa = 0;
-    this.Tithi = 0;
-    this.Ksayadina = 0;
-  }
-
+export class MathHelper {
+    static get epsilon() {
+        return _epsilon;
+    }
+    static get radianInDegrees() {
+        return _radianInDegrees;
+    }
+    static isNumber(n) {
+        return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);
+    }
+    static isInt(n) {
+        return MathHelper.isNumber(n) &amp;&amp; n % 1 === 0;
+    }
+    static truncateDecimals(num, digits) {
+        // Thanks Nick Knowlson! - http://stackoverflow.com/a/9232092/218882
+        //     (The original from that answer has a bug though, where an integer was getting rounded to &quot;&quot;.
+        //      Caught it while getting calendar.gregorianDateToJulianDay to work. 2 hours... Phew!)
+        const numS = num.toString();
+        const decPos = numS.indexOf(&#x27;.&#x27;);
+        const result = decPos === -1 ? num.toString() : numS.substr(0, 1 + decPos + digits);
+        const resultAsNumber = parseFloat(result);
+        return isNaN(resultAsNumber) ? 0 : resultAsNumber;
+    }
+    static truncate(n) {
+        return MathHelper.truncateDecimals(n, 0);
+    }
+    static floor(n) {
+        const result = Math.floor(n);
+        return isNaN(result) ? 0 : result;
+    }
+    static fractional(n) {
+        const result = n % 1;
+        return isNaN(result) ? 0 : result;
+    }
+    static round(n) {
+        return MathHelper.isNumber(n) ? MathHelper.floor(parseFloat(n) + 0.5) : 0;
+    }
+    static square(n) {
+        return MathHelper.isNumber(n) ? Math.pow(parseFloat(n), 2) : 0;
+    }
+    static zero360(angleInDegrees) {
+        const result = angleInDegrees - MathHelper.truncate(angleInDegrees / 360) * 360;
+        return result &lt; 0 ? 360 + result : result;
+    }
 }
-
-export default Yuga;
 
     </pre>
 </div>
@@ -154,7 +186,7 @@ export default Yuga;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

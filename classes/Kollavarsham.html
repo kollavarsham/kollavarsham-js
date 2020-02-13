@@ -112,7 +112,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/lib_index.js.html#l16"><code>lib&#x2F;index.js:16</code></a>
+            Defined in: <a href="../files/es6_index.js.html#l14"><code>es6&#x2F;index.js:14</code></a>
         </div>
 
             Module: <a href="../modules/kollavarsham.html">kollavarsham</a>
@@ -149,7 +149,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l16"><code>lib&#x2F;index.js:16</code></a>
+        <a href="../files/es6_index.js.html#l14"><code>es6&#x2F;index.js:14</code></a>
         </p>
 
 
@@ -292,16 +292,6 @@ let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implement
 
                     <ul class="index-list properties">
                             <li class="index-item property">
-                                <a href="#property_KollavarshamDate">KollavarshamDate</a>
-
-                                    <span class="flag static">static</span>
-                            </li>
-                            <li class="index-item property">
-                                <a href="#property_SakaDate">SakaDate</a>
-
-                                    <span class="flag static">static</span>
-                            </li>
-                            <li class="index-item property">
                                 <a href="#property_settings">settings</a>
 
                             </li>
@@ -338,7 +328,7 @@ let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implement
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l136"><code>lib&#x2F;index.js:136</code></a>
+        <a href="../files/es6_index.js.html#l128"><code>es6&#x2F;index.js:128</code></a>
         </p>
 
 
@@ -409,7 +399,7 @@ let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l59"><code>lib&#x2F;index.js:59</code></a>
+        <a href="../files/es6_index.js.html#l55"><code>es6&#x2F;index.js:55</code></a>
         </p>
 
 
@@ -474,7 +464,7 @@ let currentSettings = kollavarsham.getSettings();
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l102"><code>lib&#x2F;index.js:102</code></a>
+        <a href="../files/es6_index.js.html#l96"><code>es6&#x2F;index.js:96</code></a>
         </p>
 
 
@@ -539,7 +529,7 @@ kollavarsham.setLatitude(8.5);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l119"><code>lib&#x2F;index.js:119</code></a>
+        <a href="../files/es6_index.js.html#l112"><code>es6&#x2F;index.js:112</code></a>
         </p>
 
 
@@ -604,7 +594,7 @@ kollavarsham.setLongitude(77.0);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l83"><code>lib&#x2F;index.js:83</code></a>
+        <a href="../files/es6_index.js.html#l78"><code>es6&#x2F;index.js:78</code></a>
         </p>
 
 
@@ -673,7 +663,7 @@ kollavarsham.convert();
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l155"><code>lib&#x2F;index.js:155</code></a>
+        <a href="../files/es6_index.js.html#l146"><code>es6&#x2F;index.js:146</code></a>
         </p>
 
 
@@ -750,7 +740,7 @@ This method Will return <a href="../classes/JulianDate.html" class="crosslink">J
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l173"><code>lib&#x2F;index.js:173</code></a>
+        <a href="../files/es6_index.js.html#l163"><code>es6&#x2F;index.js:163</code></a>
         </p>
 
 
@@ -799,87 +789,6 @@ This method Will return <a href="../classes/JulianDate.html" class="crosslink">J
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
-<div id="property_KollavarshamDate" class="property item">
-    <h3 class="name"><code>KollavarshamDate</code></h3>
-    <span class="type"><a href="../classes/KollavarshamDate.html" class="crosslink">KollavarshamDate</a></span>
-
-
-
-
-        <span class="flag static">static</span>
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/lib_index.js.html#l196"><code>lib&#x2F;index.js:196</code></a>
-        </p>
-
-
-    </div>
-
-    <div class="description">
-        <p>Exports the <a href="../classes/KollavarshamDate.html" class="crosslink">KollavarshamDate</a> class for referencing via <code>require</code>. This is the class
-that is returned when converting <a href="../classes/Kollavarsham.html#method_fromGregorianDate" class="crosslink">fromGregorianDate</a> and is passed in
-to <a href="../classes/Kollavarsham.html#method_toGregorianDate" class="crosslink">toGregorianDate</a>. See example below.</p>
-
-    </div>
-
-
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>const Kollavarsham = require('kollavarsham');
-const KollavarshamDate = Kollavarsham.KollavarshamDate;
-
-let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
-let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
-</code></pre>
-
-            </div>
-        </div>
-
-</div>
-<div id="property_SakaDate" class="property item">
-    <h3 class="name"><code>SakaDate</code></h3>
-    <span class="type"><a href="../classes/SakaDate.html" class="crosslink">SakaDate</a></span>
-
-
-
-
-        <span class="flag static">static</span>
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/lib_index.js.html#l214"><code>lib&#x2F;index.js:214</code></a>
-        </p>
-
-
-    </div>
-
-    <div class="description">
-        <p>Exports the <a href="../classes/SakaDate.html" class="crosslink">SakaDate</a> class for referencing via <code>require</code>. This class's instance needs to be passed in
-to <a href="../classes/Kollavarsham.html#method_toGregorianDateFromSaka" class="crosslink">toGregorianDateFromSaka</a>. See example below.</p>
-
-    </div>
-
-
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>const Kollavarsham = require('kollavarsham');
-const SakaDate = Kollavarsham.SakaDate;
-
-let sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation
-let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
-</code></pre>
-
-            </div>
-        </div>
-
-</div>
 <div id="property_settings" class="property item">
     <h3 class="name"><code>settings</code></h3>
     <span class="type">System, latitude, longitude</span>
@@ -891,7 +800,7 @@ let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/lib_index.js.html#l47"><code>lib&#x2F;index.js:47</code></a>
+        <a href="../files/es6_index.js.html#l44"><code>es6&#x2F;index.js:44</code></a>
         </p>
 
 
@@ -919,7 +828,7 @@ let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 17:35:12 GMT</span>
+  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:19:58 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
