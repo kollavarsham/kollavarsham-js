@@ -116,7 +116,5 @@
     "test": "nyc --require @babel/register _mocha --recursive test"
   },
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.15"
-  }
+  "dependencies": {}
 }
