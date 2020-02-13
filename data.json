@@ -190,7 +190,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "lib/celestial/planetarySystem/index.js",
-            "line": 32
+            "line": 30
         },
         "yuga": {
             "name": "yuga",
@@ -506,7 +506,7 @@
             "module": "planetarySystem",
             "namespace": "",
             "file": "lib/celestial/planetarySystem/index.js",
-            "line": 32,
+            "line": 30,
             "description": "**INTERNAL/PRIVATE**"
         },
         "Yuga": {
