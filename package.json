@@ -108,5 +108,5 @@
   },
   "license": "MIT",
   "dependencies": {},
-  "stability": "stable"
+  "stability": "experimental"
 }

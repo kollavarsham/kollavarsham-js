@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 
-import Kollavarsham from '../../lib';
+import { Kollavarsham } from '../../lib';
 import { JulianDate } from '../../lib/dates/julianDate';
 import { SakaDate } from '../../lib/dates/sakaDate';
 import { KollavarshamDate } from '../../lib/dates/kollavarshamDate';

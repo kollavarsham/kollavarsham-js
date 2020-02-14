@@ -15,20 +15,19 @@ $ npm install --save kollavarsham
 ## Usage
 
 ```js
-var Kollavarsham = require('kollavarsham');
+import { Kollavarsham } from 'kollavarsham';
 
-var options = {
+const options = {
   system: 'SuryaSiddhanta',
   latitude: 10,
-  longitude: 76.2,
-  outputFormat: 'verbose'
+  longitude: 76.2
 };
 
-var kollavarsham = new Kollavarsham(options);
+const kollavarsham = new Kollavarsham(options);
 
-var todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
+const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
 
-var today = kollavarsham.toGregorianDate(todayInMalayalamEra);
+const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
 ```
 
 

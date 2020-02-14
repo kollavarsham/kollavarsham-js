@@ -14,9 +14,9 @@ import { KollavarshamDate } from './dates/kollavarshamDate';
 import { SakaDate } from './dates/sakaDate';
 
 export interface Settings {
-  system: string;
-  latitude: number;
-  longitude: number;
+  readonly system: string;
+  readonly latitude: number;
+  readonly longitude: number;
 }
 
 /**
@@ -47,7 +47,7 @@ export interface Settings {
  *let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implemented yet
  *```
  */
-class Kollavarsham {
+export class Kollavarsham {
   settings: Settings;
 
   /**
@@ -138,7 +138,11 @@ class Kollavarsham {
    * ```
    */
   setSystem(system: string): void {
-    this.settings.system = system;
+    this.settings = {
+      system,
+      latitude  : this.settings.latitude,
+      longitude : this.settings.longitude,
+    };
   }
 
   /**
@@ -155,7 +159,11 @@ class Kollavarsham {
    * ```
    */
   setLatitude(latitude: number): void {
-    this.settings.latitude = latitude;
+    this.settings = {
+      system    : this.settings.system,
+      latitude,
+      longitude : this.settings.longitude,
+    };
   }
 
   /**
@@ -172,7 +180,11 @@ class Kollavarsham {
    *```
    */
   setLongitude(longitude: number): void {
-    this.settings.longitude = longitude;
+    this.settings = {
+      system   : this.settings.system,
+      latitude : this.settings.latitude,
+      longitude,
+    };
   }
 
   /**
@@ -237,5 +249,3 @@ class Kollavarsham {
 
 Kollavarsham.KollavarshamDate = KollavarshamDate;
 Kollavarsham.SakaDate = SakaDate;
-
-export default Kollavarsham;
