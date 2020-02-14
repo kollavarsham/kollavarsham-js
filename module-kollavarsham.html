@@ -270,7 +270,7 @@
 		<ul class="dummy">
 			<li>
 				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-133">line 133</a>
+				 <a href="index.js.html#sunlight-1-line-53">line 53</a>
 			</li>
 		</ul>
 	</dd>
@@ -310,7 +310,7 @@
     </dt>
     <dd>
         
-<span class="param-type">KollavarshamDate</span>
+<span class="param-type">kollavarshamDate</span>
 
 
 
@@ -335,572 +335,6 @@ let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));</pre>
             
 <hr>
 <dt>
-    <h4 class="name" id="~getSettings"><span class="type-signature">&lt;inner> </span>getSettings()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Gets a snapshot of the current settings</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-56">line 56</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">const Kollavarsham = require(&#x27;kollavarsham&#x27;);
-
-const options = {
- system: &#x27;InPancasiddhantika&#x27;,
- latitude: 10,
- longitude: 76.2
-};
-
-const kollavarsham = new Kollavarsham(options);
-
-let currentSettings = kollavarsham.getSettings();</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="~setLatitude"><span class="type-signature">&lt;inner> </span>setLatitude(latitude)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Sets the latitude for the location that will be used as the basis for the conversion.
-The value of the latitude parameter should be within -90 to +90</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>latitude</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-97">line 97</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
-const kollavarsham = new Kollavarsham();
-kollavarsham.setLatitude(8.5);</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="~setLongitude"><span class="type-signature">&lt;inner> </span>setLongitude(longitude)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Sets the longitude for the location that will be used as the basis of the conversion
-The value of the latitude parameter should be within -180 to +180</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>longitude</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-115">line 115</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
-const kollavarsham = new Kollavarsham();
-kollavarsham.setLongitude(77.0);</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="~setSystem"><span class="type-signature">&lt;inner> </span>setSystem(system)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Sets the system to be either 'InPancasiddhantika' or 'SuryaSiddhanta'</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>system</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-	<dt class="tag-source method-doc-label method-doc-details-label">Source:</dt>
-	<dd class="tag-source">
-		<ul class="dummy">
-			<li>
-				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-77">line 77</a>
-			</li>
-		</ul>
-	</dd>
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">const Kollavarsham = require(&#x27;Kollavarsham&#x27;);
-const kollavarsham = new Kollavarsham();
-kollavarsham.setSystem(&#x27;InPancasiddhantika&#x27;);
-kollavarsham.setInputDate(new Date(2014, 2, 14));
-kollavarsham.convert();</pre>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
     <h4 class="name" id="~toGregorianDate"><span class="type-signature">&lt;inner> </span>toGregorianDate(date)</h4>
     
     
@@ -909,7 +343,7 @@ kollavarsham.convert();</pre>
 
     
     <div class="description">
-        <p>Converts a Kollavarsham date (an instance of <code>KollavarshamDate</code>) to its equivalent Gregorian date, respecting the current configuration.
+        <p>Converts a Kollavarsham date (an instance of <code>kollavarshamDate</code>) to its equivalent Gregorian date, respecting the current configuration.
 This method Will return <code>JulianDate</code> object for any date before 1st January 1583 AD and
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a> objects for later dates.</p>
 <p><strong>This API has not been implemented yet</strong></p>
@@ -953,7 +387,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
             <td class="type">
             
                 
-<span class="param-type">KollavarshamDate</span>
+<span class="param-type">kollavarshamDate</span>
 
 
 
@@ -1009,7 +443,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
 		<ul class="dummy">
 			<li>
 				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-149">line 149</a>
+				 <a href="index.js.html#sunlight-1-line-69">line 69</a>
 			</li>
 		</ul>
 	</dd>
@@ -1089,7 +523,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
 
     
     <div class="description">
-        <p>Converts a Saka date (an instance of <code>SakaDate</code>) to its equivalent Gregorian date, respecting the current configuration.
+        <p>Converts a Saka date (an instance of <code>sakaDate</code>) to its equivalent Gregorian date, respecting the current configuration.
 This method Will return <code>JulianDate</code> object for any date before 1st January 1583 AD and
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a> objects for later dates.</p>
     </div>
@@ -1132,7 +566,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
             <td class="type">
             
                 
-<span class="param-type">SakaDate</span>
+<span class="param-type">sakaDate</span>
 
 
 
@@ -1188,7 +622,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
 		<ul class="dummy">
 			<li>
 				<a href="index.js.html">index.js</a>,
-				 <a href="index.js.html#sunlight-1-line-166">line 166</a>
+				 <a href="index.js.html#sunlight-1-line-86">line 86</a>
 			</li>
 		</ul>
 	</dd>
@@ -1294,7 +728,7 @@ This method Will return <code>JulianDate</code> object for any date before 1st J
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on February 14th 2020, 5:13:36 am
+		on February 14th 2020, 9:36:32 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
