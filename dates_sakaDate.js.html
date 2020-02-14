@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>kollavarsham-js Index</title>
+	<title>kollavarsham-js Source: dates/sakaDate.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,70 +67,130 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><h1><a href="http://kollavarsham.org/">kollavarsham</a></h1>
-<p><a href="https://npmjs.org/package/kollavarsham"><img src="https://img.shields.io/npm/v/kollavarsham.svg" alt="NPM version"></a> <a href="https://travis-ci.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg" alt="Build Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/david/kollavarsham/kollavarsham-js.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js#info=devDependencies&amp;view=table"><img src="https://img.shields.io/david/dev/kollavarsham/kollavarsham-js.svg" alt="Dev-Dependency Status"></a> <a href="https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master"><img src="https://coveralls.io/repos/github/kollavarsham/kollavarsham-js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<blockquote>
-<p>Convert Gregorian date to Kollavarsham date and vice versa</p>
-</blockquote>
-<h2>Install</h2>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save kollavarsham
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>import { Kollavarsham } from 'kollavarsham';
-
-const options = {
-  system: 'SuryaSiddhanta',
-  latitude: 10,
-  longitude: 76.2
-};
-
-const kollavarsham = new Kollavarsham(options);
-
-const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
-
-const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
-</code></pre>
-<h2>Documentation</h2>
-<p>Check out the <a href="http://kollavarsham.org/kollavarsham-js/doc/module-kollavarsham.Kollavarsham.html">Kollavarsham class</a> within the API documentation as this is the entry point into the library.</p>
-<h2>CLI app</h2>
-<p>Check out the <a href="https://www.npmjs.com/package/kollavarsham-cli">cli</a> module (<a href="https://github.com/kollavarsham/cli">GitHub repo</a>) for the <code>kollavarsham</code> cross-platform CLI app</p>
-<pre class="source"><code>npm install -g kollavarsham-cli
-
-kollavarsham --help
-</code></pre>
-<h2>Release History</h2>
-<p>Check out the history at <a href="https://github.com/kollavarsham/kollavarsham-js/releases">GitHub Releases</a></p>
-<h2>License</h2>
-<p>Copyright (c) 2014-2018 The Kollavarsham Team. Licensed under the <a href="http://kollavarsham.org/LICENSE.txt">MIT license</a>.</p></article>
-    </section>
-
-
+		<h1 class="page-title">Source: dates/sakaDate.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2020 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+/**
+ * @module sakaDate
+ */
+import { BaseDate } from './baseDate';
+import { KollavarshamDate } from './kollavarshamDate';
+import { MathHelper } from '../mathHelper';
+/**
+ * Represents an Saka date's year, month and paksa and tithi
+ * @class SakaDate
+ * @constructor
+ * @param [year=1] {Number} Saka Year
+ * @param [month=1] {Number} Saka Month
+ * @param [tithi=1] {Number} Lunar Day
+ * @param [paksa='Suklapaksa'] {string} Lunar Phase - Valid values are `Suklapaksa` (default) or 'Krsnapaksa`
+ * @extends BaseDate
+ */
+export class SakaDate extends BaseDate {
+    constructor(year = 1, month = 1, tithi = 1, paksa = 'Suklapaksa') {
+        super(year, month, tithi);
+        this.paksa = paksa === 'Krsnapaksa' ? paksa : 'Suklapaksa';
+        this.kaliYear = -1;
+        this.adhimasa = '';
+        this.fractionalTithi = -1;
+        this.sunriseHour = -1;
+        this.sunriseMinute = -1;
+        this.originalAhargana = -1;
+    }
+    /**
+     * Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {@link BaseDate} class)
+     *
+     * @property sakaYear
+     * @type {Number}
+     */
+    get sakaYear() {
+        return this.year;
+    }
+    /**
+     * Returns the Tithi on this instance of SakaDate (same as the underlyiung `date` property from the {@link BaseDate} class)
+     *
+     * In Vedic timekeeping, a tithi (also spelled thithi) is a lunar day, or the time it takes for the longitudinal angle between the Moon and the Sun to increase by 12°.
+     * Tithis begin at varying times of day and vary in duration from approximately 19 to approximately 26 hours.
+     *
+     * _Source_: https://en.wikipedia.org/wiki/Tithi
+     *
+     * @property tithi
+     * @type {Number}
+     */
+    get tithi() {
+        return this.date;
+    }
+    /**
+     * Returns the Vikrama year corresponding to the Saka year of this instance.
+     *
+     * @property vikramaYear
+     * @type {Number}
+     */
+    get vikramaYear() {
+        return this.year + 135;
+    }
+    /**
+     * Returns the Saka Naksatra name for this instance of SakaDate
+     *
+     * @property naksatraName
+     * @type {string}
+     */
+    get naksatraName() {
+        return this.naksatra.saka;
+    }
+    /**
+     * Returns the month name for this instance of SakaDate
+     *
+     * @property masaName
+     * @type {string}
+     */
+    get masaName() {
+        return SakaDate.getMasaName(this.month).saka;
+    }
+    /**
+     * Generates an instance of {@link KollavarshamDate} from this instance of SakaDate
+     *
+     * @method generateKollavarshamDate
+     * @for SakaDate
+     * @returns {KollavarshamDate}
+     */
+    generateKollavarshamDate() {
+        // TODO: Add unit tests
+        const malayalaMasa = (this.sauraMasa - 4 + 12) % 12;
+        // Sewell p.45 - https://archive.org/stream/indiancalendarwi00sewerich#page/45/mode/1up
+        const malayalamYear = this.year - 747 + MathHelper.truncate((this.month - malayalaMasa + 12) / 12);
+        const kollavarshamDate = new KollavarshamDate(malayalamYear, malayalaMasa + 1, this.sauraDivasa);
+        kollavarshamDate.gregorianDate = this.gregorianDate;
+        kollavarshamDate.julianDay = this.julianDay;
+        kollavarshamDate.ahargana = this.ahargana;
+        kollavarshamDate.sauraMasa = this.sauraMasa;
+        kollavarshamDate.sauraDivasa = this.sauraDivasa;
+        kollavarshamDate.naksatra = this.naksatra;
+        // TODO: As fail-Safe for getting any other properties from the SakaDate, store a copy here directly
+        kollavarshamDate.sakaDate = this;
+        return kollavarshamDate;
+    }
+    toString() {
+        return `${super.toString()} ${this.paksa}`;
+    }
+}
+</pre>
+    </article>
+</section>
 
 
 
@@ -141,10 +201,6 @@ kollavarsham --help
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

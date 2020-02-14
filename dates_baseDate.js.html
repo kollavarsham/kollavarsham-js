@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>kollavarsham-js Index</title>
+	<title>kollavarsham-js Source: dates/baseDate.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,70 +67,133 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><h1><a href="http://kollavarsham.org/">kollavarsham</a></h1>
-<p><a href="https://npmjs.org/package/kollavarsham"><img src="https://img.shields.io/npm/v/kollavarsham.svg" alt="NPM version"></a> <a href="https://travis-ci.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg" alt="Build Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/david/kollavarsham/kollavarsham-js.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js#info=devDependencies&amp;view=table"><img src="https://img.shields.io/david/dev/kollavarsham/kollavarsham-js.svg" alt="Dev-Dependency Status"></a> <a href="https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master"><img src="https://coveralls.io/repos/github/kollavarsham/kollavarsham-js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<blockquote>
-<p>Convert Gregorian date to Kollavarsham date and vice versa</p>
-</blockquote>
-<h2>Install</h2>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save kollavarsham
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>import { Kollavarsham } from 'kollavarsham';
-
-const options = {
-  system: 'SuryaSiddhanta',
-  latitude: 10,
-  longitude: 76.2
+		<h1 class="page-title">Source: dates/baseDate.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2020 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+/**
+ * @module baseDate
+ */
+import { Calendar } from '../calendar';
+const pad = function (num, size) {
+    const s = `000000000${num}`;
+    return s.substr(s.length - size);
 };
-
-const kollavarsham = new Kollavarsham(options);
-
-const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
-
-const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
-</code></pre>
-<h2>Documentation</h2>
-<p>Check out the <a href="http://kollavarsham.org/kollavarsham-js/doc/module-kollavarsham.Kollavarsham.html">Kollavarsham class</a> within the API documentation as this is the entry point into the library.</p>
-<h2>CLI app</h2>
-<p>Check out the <a href="https://www.npmjs.com/package/kollavarsham-cli">cli</a> module (<a href="https://github.com/kollavarsham/cli">GitHub repo</a>) for the <code>kollavarsham</code> cross-platform CLI app</p>
-<pre class="source"><code>npm install -g kollavarsham-cli
-
-kollavarsham --help
-</code></pre>
-<h2>Release History</h2>
-<p>Check out the history at <a href="https://github.com/kollavarsham/kollavarsham-js/releases">GitHub Releases</a></p>
-<h2>License</h2>
-<p>Copyright (c) 2014-2018 The Kollavarsham Team. Licensed under the <a href="http://kollavarsham.org/LICENSE.txt">MIT license</a>.</p></article>
-    </section>
-
-
+const masaNames = {
+    [0]: { saka: 'Caitra    ', saura: 'Mesa      ', enMalayalam: 'Chingam   ', mlMalayalam: 'ചിങ്ങം' },
+    [1]: { saka: 'Vaisakha  ', saura: 'Vrsa      ', enMalayalam: 'Kanni     ', mlMalayalam: 'കന്നി' },
+    [2]: { saka: 'Jyaistha  ', saura: 'Mithuna   ', enMalayalam: 'Thulam    ', mlMalayalam: 'തുലാം' },
+    [3]: { saka: 'Asadha    ', saura: 'Karkata   ', enMalayalam: 'Vrischikam', mlMalayalam: 'വൃശ്ചികം' },
+    [4]: { saka: 'Sravana   ', saura: 'Simha     ', enMalayalam: 'Dhanu     ', mlMalayalam: 'ധനു' },
+    [5]: { saka: 'Bhadrapada', saura: 'Kanya     ', enMalayalam: 'Makaram   ', mlMalayalam: 'മകരം' },
+    [6]: { saka: 'Asvina    ', saura: 'Tula      ', enMalayalam: 'Kumbham   ', mlMalayalam: 'കുംഭം' },
+    [7]: { saka: 'Karttika  ', saura: 'Vrscika   ', enMalayalam: 'Meenam    ', mlMalayalam: 'മീനം' },
+    [8]: { saka: 'Margasirsa', saura: 'Dhanus    ', enMalayalam: 'Medam     ', mlMalayalam: 'മേടം' },
+    [9]: { saka: 'Pausa     ', saura: 'Makara    ', enMalayalam: 'Idavam    ', mlMalayalam: 'ഇടവം' },
+    [10]: { saka: 'Magha     ', saura: 'Kumbha    ', enMalayalam: 'Mithunam  ', mlMalayalam: 'മിഥുനം' },
+    [11]: { saka: 'Phalguna  ', saura: 'Mina      ', enMalayalam: 'Karkitakam', mlMalayalam: 'കർക്കടകം' }
+};
+/**
+ * Serves as the base class for both the {@link JulianDate} and
+ * {@link KollavarshamDate} classes.
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class BaseDate
+ * @constructor
+ * @param year {Number}
+ * @param month {Number}
+ * @param day {Number}
+ */
+export class BaseDate {
+    constructor(year = 0, month = 0, date = 0) {
+        /**
+         * The `Naksatra` (Star) for this instance of the date. **Set separately after an instance is created**
+         *
+         * @property naksatra
+         * @type { { saka: String, enMalayalam: string, mlMalayalam: string } }
+         */
+        this._naksatra = Calendar.naksatras[-1];
+        this.year = year;
+        this.month = month;
+        this.date = date;
+        this.gregorianDate = new Date();
+        this.julianDay = -1;
+        this.ahargana = -1;
+        this.sauraMasa = -1;
+        this.sauraDivasa = -1;
+    }
+    get naksatra() {
+        return this._naksatra; // eslint-disable-line no-underscore-dangle
+    }
+    set naksatra(val) {
+        this._naksatra = val; // eslint-disable-line no-underscore-dangle
+    }
+    /**
+     * Returns the Saura Masa name for the current instance of date.
+     *
+     * @property sauraMasaName
+     * @type {string}
+     */
+    get sauraMasaName() {
+        return BaseDate.getMasaName(this.sauraMasa).saura;
+    }
+    /**
+     * Returns the weekday (in English) for the current instance of date.
+     *
+     * @property weekdayName
+     * @type {string}
+     */
+    get weekdayName() {
+        return Calendar.julianDayToWeekday(this.julianDay).en;
+    }
+    /**
+     * Returns the weekday (in Malayalam) for the current instance of date.
+     *
+     * @property mlWeekdayName
+     * @type {string}
+     */
+    get mlWeekdayName() {
+        return Calendar.julianDayToWeekday(this.julianDay).ml;
+    }
+    /**
+     * Converts the Date to a nicely formatted string with year, month and date
+     *
+     * @method toString
+     * @for BaseDate
+     * @type {string}
+     */
+    toString() {
+        return `${pad(this.year, 4)} ${pad(this.month, 2)} ${pad(this.date, 2)}`;
+    }
+    /**
+     * Returns the month names object that has Saka, Saura and Kollavarsham (English &amp; Malayalam) month names for the specified index `masaNumber`
+     *
+     * @method getMasaName
+     * @for BaseDate
+     * @param masaNumber {Number}
+     * @returns { {saka : {string}, saura : {string}, enMalayalam : {string}, mlMalayalam : {string} } }
+     */
+    static getMasaName(masaNumber) {
+        return masaNames[masaNumber];
+    }
+}
+</pre>
+    </article>
+</section>
 
 
 
@@ -141,10 +204,6 @@ kollavarsham --help
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

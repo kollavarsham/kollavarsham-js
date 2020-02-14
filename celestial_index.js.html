@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>kollavarsham-js Source: celestial/index.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">kollavarsham-js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-baseDate.html">baseDate</a></li><li><a href="module-calculations.html">calculations</a></li><li><a href="module-calendar.html">calendar</a></li><li><a href="module-celestial.html">celestial</a></li><li><a href="module-julianDate.html">julianDate</a></li><li><a href="module-kollavarsham.html">kollavarsham</a></li><li><a href="module-kollavarshamDate.html">kollavarshamDate</a></li><li><a href="module-mathHelper.html">mathHelper</a></li><li><a href="module-planetarySystem.html">planetarySystem</a></li><li><a href="module-planets.html">planets</a></li><li><a href="module-sakaDate.html">sakaDate</a></li><li><a href="module-yuga.html">yuga</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-baseDate.BaseDate.html">baseDate.BaseDate</a></li><li><a href="module-calculations-Calculations.html">calculations~Calculations</a></li><li><a href="module-calendar-Calendar.html">calendar~Calendar</a></li><li><a href="module-celestial-Celestial.html">celestial~Celestial</a></li><li><a href="module-julianDate.JulianDate.html">julianDate.JulianDate</a></li><li><a href="module-kollavarsham.Kollavarsham.html">kollavarsham.Kollavarsham</a></li><li><a href="module-kollavarshamDate.KollavarshamDate.html">kollavarshamDate.KollavarshamDate</a></li><li><a href="module-mathHelper-MathHelper.html">mathHelper~MathHelper</a></li><li><a href="module-planetarySystem-PlanetarySystem.html">planetarySystem~PlanetarySystem</a></li><li><a href="module-planets-Candrocca.html">planets~Candrocca</a></li><li><a href="module-planets-Jupiter.html">planets~Jupiter</a></li><li><a href="module-planets-Mars.html">planets~Mars</a></li><li><a href="module-planets-Mercury.html">planets~Mercury</a></li><li><a href="module-planets-Moon.html">planets~Moon</a></li><li><a href="module-planets-Planet.html">planets~Planet</a></li><li><a href="module-planets-Rahu.html">planets~Rahu</a></li><li><a href="module-planets-Saturn.html">planets~Saturn</a></li><li><a href="module-planets-Star.html">planets~Star</a></li><li><a href="module-planets-Sun.html">planets~Sun</a></li><li><a href="module-planets-Venus.html">planets~Venus</a></li><li><a href="module-sakaDate.SakaDate.html">sakaDate.SakaDate</a></li><li><a href="module-yuga-Yuga.html">yuga~Yuga</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: celestial/index.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2020 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+/**
+ * @module celestial
+ */
+import { MathHelper } from '../mathHelper';
+import { PlanetarySystem } from './planetarySystem/index';
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Celestial
+ */
+export class Celestial {
+    constructor(system = 'SuryaSiddhanta') {
+        const planetarySystem = new PlanetarySystem(system);
+        this.planets = planetarySystem.planets;
+        this.yuga = planetarySystem.yuga;
+        this.backLastConjunctionAhargana = -1;
+        this.backNextConjunctionAhargana = -1;
+        this.backLastConjunctionLongitude = -1;
+        this.backNextConjunctionLongitude = -1;
+    }
+    static threeRelation(left, center, right) {
+        if (left &lt; center &amp;&amp; center &lt; right) {
+            return 1;
+        }
+        else if (right &lt; center &amp;&amp; center &lt; left) {
+            return -1;
+        }
+        return 0;
+    }
+    static declination(longitude) {
+        // https://en.wikipedia.org/wiki/Declination
+        return Math.asin(Math.sin(longitude / MathHelper.radianInDegrees) * Math.sin(24 / MathHelper.radianInDegrees)) *
+            MathHelper.radianInDegrees;
+    }
+    static getSunriseTime(time, equationOfTime) {
+        // TODO: Add Tests if/when feasible
+        const sunriseTime = (time - equationOfTime) * 24;
+        const sunriseHour = MathHelper.truncate(sunriseTime);
+        const sunriseMinute = MathHelper.truncate(60 * MathHelper.fractional(sunriseTime));
+        return { sunriseHour, sunriseMinute };
+    }
+    static getTithi(trueSolarLongitude, trueLunarLongitude) {
+        let eclipticLongitude = trueLunarLongitude - trueSolarLongitude;
+        eclipticLongitude = MathHelper.zero360(eclipticLongitude);
+        return eclipticLongitude / 12;
+    }
+    setPlanetaryPositions(ahargana) {
+        const $planets = this.planets;
+        // Lunar apogee and node at sunrise
+        $planets.candrocca.MeanPosition = MathHelper.zero360(this.getMeanLongitude(ahargana, $planets.candrocca.YugaRotation) + 90);
+        $planets.rahu.MeanPosition = MathHelper.zero360(this.getMeanLongitude(ahargana, $planets.rahu.YugaRotation) + 180);
+        // mean and true sun at sunrise
+        const meanSolarLongitude = this.getMeanLongitude(ahargana, $planets.sun.YugaRotation);
+        $planets.sun.MeanPosition = meanSolarLongitude;
+        const trueSolarLongitude = MathHelper.zero360(meanSolarLongitude - this.getMandaEquation(meanSolarLongitude - $planets.sun.Apogee, 'sun'));
+        // mean and true moon at sunrise
+        const meanLunarLongitude = this.getMeanLongitude(ahargana, $planets.moon.YugaRotation);
+        $planets.moon.MeanPosition = meanLunarLongitude;
+        $planets.moon.Apogee = $planets.candrocca.MeanPosition;
+        const trueLunarLongitude = MathHelper.zero360(meanLunarLongitude - this.getMandaEquation(meanLunarLongitude - $planets.moon.Apogee, 'moon'));
+        // The below was a separate method named calculations.planetary (ported from planetary_calculations in perl)
+        const planetNames = ['mercury', 'venus', 'mars', 'jupiter', 'saturn'];
+        for (let i = 0; i &lt; planetNames.length; i++) {
+            $planets[planetNames[i]].MeanPosition = this.getMeanLongitude(ahargana, $planets[planetNames[i]].Rotation);
+        }
+        return { trueSolarLongitude, trueLunarLongitude };
+    }
+    getMeanLongitude(ahargana, rotation) {
+        // https://en.wikipedia.org/wiki/Mean_longitude
+        // https://en.wikipedia.org/wiki/Ecliptic_coordinate_system#Spherical_coordinates
+        return 360 * MathHelper.fractional(rotation * ahargana / this.yuga.CivilDays);
+    }
+    getDaylightEquation(year, latitude, ahargana) {
+        // Good read - http://en.wikipedia.org/wiki/Equation_of_time#Calculating_the_equation_of_time
+        const meanSolarLongitude = this.getMeanLongitude(ahargana, this.planets.sun.YugaRotation);
+        // Sayana Solar Longitude and Declination
+        const sayanaMeanSolarLongitude = meanSolarLongitude + 54 / 3600 * (year - 499);
+        const sayanaDeclination = Celestial.declination(sayanaMeanSolarLongitude); // See Sewell, p.10
+        // Equation of day light by Analemma (https://en.wikipedia.org/wiki/Analemma)
+        const x = Math.tan(latitude / MathHelper.radianInDegrees) * Math.tan(sayanaDeclination / MathHelper.radianInDegrees);
+        return 0.5 * Math.asin(x) / Math.PI;
+    }
+    getMandaEquation(argument, planet) {
+        return Math.asin(this.planets[planet].MandaCircumference / 360 * Math.sin(argument / MathHelper.radianInDegrees)) * MathHelper.radianInDegrees;
+    }
+    getTrueLunarLongitude(ahargana) {
+        const meanLunarLongitude = this.getMeanLongitude(ahargana, this.planets.moon.YugaRotation);
+        const apogee = this.getMeanLongitude(ahargana, this.planets.candrocca.YugaRotation) + 90;
+        return MathHelper.zero360(meanLunarLongitude - this.getMandaEquation(meanLunarLongitude - apogee, 'moon'));
+    }
+    getTrueSolarLongitude(ahargana) {
+        const meanSolarLongitude = this.getMeanLongitude(ahargana, this.planets.sun.YugaRotation);
+        return MathHelper.zero360(meanSolarLongitude - this.getMandaEquation(meanSolarLongitude - this.planets.sun.Apogee, 'sun'));
+    }
+    getEclipticLongitude(ahargana) {
+        let eclipticLongitude = Math.abs(this.getTrueLunarLongitude(ahargana) - this.getTrueSolarLongitude(ahargana));
+        if (eclipticLongitude >= 180) {
+            eclipticLongitude = 360 - eclipticLongitude;
+        }
+        return eclipticLongitude;
+    }
+    findConjunction(leftX, leftY, rightX, rightY) {
+        const width = (rightX - leftX) / 2;
+        const centreX = (rightX + leftX) / 2;
+        if (width &lt; MathHelper.epsilon) {
+            return this.getTrueSolarLongitude(centreX);
+        }
+        else {
+            const centreY = this.getEclipticLongitude(centreX);
+            const relation = Celestial.threeRelation(leftY, centreY, rightY);
+            if (relation &lt; 0) {
+                rightX += width;
+                rightY = this.getEclipticLongitude(rightX);
+                return this.findConjunction(centreX, centreY, rightX, rightY);
+            }
+            else if (relation > 0) {
+                leftX -= width;
+                leftY = this.getEclipticLongitude(leftX);
+                return this.findConjunction(leftX, leftY, centreX, centreY);
+            }
+            else {
+                leftX += width / 2;
+                leftY = this.getEclipticLongitude(leftX);
+                rightX -= width / 2;
+                rightY = this.getEclipticLongitude(rightX);
+                return this.findConjunction(leftX, leftY, rightX, rightY);
+            }
+        }
+    }
+    getConjunction(ahargana) {
+        const leftX = ahargana - 2;
+        const leftY = this.getEclipticLongitude(leftX);
+        const rightX = ahargana + 2;
+        const rightY = this.getEclipticLongitude(rightX);
+        return this.findConjunction(leftX, leftY, rightX, rightY);
+    }
+    getLastConjunctionLongitude(ahargana, tithi) {
+        const newNew = this.yuga.CivilDays / (this.planets.moon.YugaRotation - this.planets.sun.YugaRotation);
+        ahargana -= tithi * (newNew / 30);
+        if (Math.abs(ahargana - this.backLastConjunctionAhargana) &lt; 1) {
+            return this.backLastConjunctionLongitude;
+        }
+        else if (Math.abs(ahargana - this.backNextConjunctionAhargana) &lt; 1) {
+            this.backLastConjunctionAhargana = this.backNextConjunctionAhargana;
+            this.backLastConjunctionLongitude = this.backNextConjunctionLongitude;
+            return this.backNextConjunctionLongitude;
+        }
+        else {
+            this.backLastConjunctionAhargana = ahargana;
+            this.backLastConjunctionLongitude = this.getConjunction(ahargana);
+            return this.backLastConjunctionLongitude;
+        }
+    }
+    getNextConjunctionLongitude(ahargana, tithi) {
+        const newNew = this.yuga.CivilDays / (this.planets.moon.YugaRotation - this.planets.sun.YugaRotation);
+        ahargana += (30 - tithi) * (newNew / 30);
+        if (Math.abs(ahargana - this.backNextConjunctionAhargana) &lt; 1) {
+            return this.backNextConjunctionLongitude;
+        }
+        else {
+            this.backNextConjunctionAhargana = ahargana;
+            this.backNextConjunctionLongitude = this.getConjunction(ahargana);
+            return this.backNextConjunctionLongitude;
+        }
+    }
+}
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+	
+		on February 13th 2020, 11:30:46 pm
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+<script>
+	(function ( i, s, o, g, r, a, m ) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push( arguments )
+		}, i[r].l = 1 * new Date();
+		a = s.createElement( o ),
+			m = s.getElementsByTagName( o )[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore( a, m )
+	})( window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga' );
+
+	ga( 'create', 'UA-4869398-6', 'kollavarsham.org' );
+	ga( 'send', 'pageview' );
+</script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

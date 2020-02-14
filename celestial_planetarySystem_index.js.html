@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>kollavarsham-js Index</title>
+	<title>kollavarsham-js Source: celestial/planetarySystem/index.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,70 +67,160 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><h1><a href="http://kollavarsham.org/">kollavarsham</a></h1>
-<p><a href="https://npmjs.org/package/kollavarsham"><img src="https://img.shields.io/npm/v/kollavarsham.svg" alt="NPM version"></a> <a href="https://travis-ci.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg" alt="Build Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/david/kollavarsham/kollavarsham-js.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js#info=devDependencies&amp;view=table"><img src="https://img.shields.io/david/dev/kollavarsham/kollavarsham-js.svg" alt="Dev-Dependency Status"></a> <a href="https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master"><img src="https://coveralls.io/repos/github/kollavarsham/kollavarsham-js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<blockquote>
-<p>Convert Gregorian date to Kollavarsham date and vice versa</p>
-</blockquote>
-<h2>Install</h2>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save kollavarsham
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>import { Kollavarsham } from 'kollavarsham';
-
-const options = {
-  system: 'SuryaSiddhanta',
-  latitude: 10,
-  longitude: 76.2
-};
-
-const kollavarsham = new Kollavarsham(options);
-
-const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
-
-const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
-</code></pre>
-<h2>Documentation</h2>
-<p>Check out the <a href="http://kollavarsham.org/kollavarsham-js/doc/module-kollavarsham.Kollavarsham.html">Kollavarsham class</a> within the API documentation as this is the entry point into the library.</p>
-<h2>CLI app</h2>
-<p>Check out the <a href="https://www.npmjs.com/package/kollavarsham-cli">cli</a> module (<a href="https://github.com/kollavarsham/cli">GitHub repo</a>) for the <code>kollavarsham</code> cross-platform CLI app</p>
-<pre class="source"><code>npm install -g kollavarsham-cli
-
-kollavarsham --help
-</code></pre>
-<h2>Release History</h2>
-<p>Check out the history at <a href="https://github.com/kollavarsham/kollavarsham-js/releases">GitHub Releases</a></p>
-<h2>License</h2>
-<p>Copyright (c) 2014-2018 The Kollavarsham Team. Licensed under the <a href="http://kollavarsham.org/LICENSE.txt">MIT license</a>.</p></article>
-    </section>
-
-
+		<h1 class="page-title">Source: celestial/planetarySystem/index.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2020 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+/**
+ * @module planetarySystem
+ */
+import { Star, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Candrocca, Rahu } from './planets/index';
+import { Yuga } from './yuga';
+let star;
+let sun;
+let moon;
+let mercury;
+let venus;
+let mars;
+let jupiter;
+let saturn;
+let candrocca; // Moon Apogee
+let rahu; // Moon Node
+let _yuga; // eslint-disable-line no-underscore-dangle
+let planetsList;
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class PlanetarySystem
+ */
+export class PlanetarySystem {
+    constructor(system = 'SuryaSiddhanta') {
+        this.system = system === 'InPancasiddhantika' ? system : 'SuryaSiddhanta';
+        star = new Star();
+        sun = new Sun();
+        moon = new Moon();
+        mercury = new Mercury();
+        venus = new Venus();
+        mars = new Mars();
+        jupiter = new Jupiter();
+        saturn = new Saturn();
+        candrocca = new Candrocca(); // Moon Apogee
+        rahu = new Rahu(); // Moon Node
+        _yuga = new Yuga();
+        this.initializeYugaRotations();
+        this.initializeYuga();
+        PlanetarySystem.initializePlanetaryConstants();
+        planetsList = [star, sun, moon, mercury, venus, mars, jupiter, saturn, candrocca, rahu]
+            .reduce((list, planet) => (Object.assign(Object.assign({}, list), { [planet.name]: planet })), {});
+    }
+    get yuga() {
+        return _yuga;
+    }
+    get planets() {
+        return planetsList;
+    }
+    initializeYugaRotations() {
+        // common values across the systems
+        sun.YugaRotation = 4320000;
+        moon.YugaRotation = 57753336;
+        jupiter.YugaRotation = 364220;
+        const isSuryaSiddhantaSystem = this.system === 'SuryaSiddhanta';
+        // # Saura, HIL, p.15 &amp;&amp; # Latadeva/Ardharatrika, HIL, p.15
+        star.YugaRotation = isSuryaSiddhantaSystem ? 1582237800 : 1582237828;
+        mercury.YugaRotation = isSuryaSiddhantaSystem ? 17937000 : 17937060;
+        venus.YugaRotation = isSuryaSiddhantaSystem ? 7022388 : 7022376;
+        mars.YugaRotation = isSuryaSiddhantaSystem ? 2296824 : 2296832;
+        saturn.YugaRotation = isSuryaSiddhantaSystem ? 146564 : 146568;
+        candrocca.YugaRotation = isSuryaSiddhantaSystem ? 488219 : 488203;
+        rahu.YugaRotation = isSuryaSiddhantaSystem ? -232226 : -232238;
+    }
+    initializeYuga() {
+        this.yuga.CivilDays = star.YugaRotation - sun.YugaRotation;
+        this.yuga.SynodicMonth = moon.YugaRotation - sun.YugaRotation;
+        this.yuga.Adhimasa = this.yuga.SynodicMonth - 12 * sun.YugaRotation;
+        this.yuga.Tithi = 30 * this.yuga.SynodicMonth;
+        this.yuga.Ksayadina = this.yuga.Tithi - this.yuga.CivilDays;
+    }
+    static initializePlanetaryConstants() {
+        // star
+        star.Rotation = 0;
+        star.Sighra = 0;
+        star.Apogee = 0;
+        star.MandaCircumference = 0;
+        star.SighraCircumference = 0;
+        // sun
+        sun.Rotation = sun.YugaRotation;
+        sun.Sighra = sun.YugaRotation;
+        sun.Apogee = 77 + 17 / 60;
+        sun.MandaCircumference = 13 + 50 / 60;
+        sun.SighraCircumference = 0;
+        // moon
+        moon.Rotation = moon.YugaRotation;
+        moon.Sighra = 0;
+        moon.Apogee = 0;
+        moon.MandaCircumference = 31 + 50 / 60;
+        moon.SighraCircumference = 0;
+        // mercury
+        mercury.Rotation = sun.YugaRotation;
+        mercury.Sighra = mercury.YugaRotation;
+        mercury.Apogee = 220 + 27 / 60;
+        mercury.MandaCircumference = 29;
+        mercury.SighraCircumference = 131.5;
+        // venus
+        venus.Rotation = sun.YugaRotation;
+        venus.Sighra = venus.YugaRotation;
+        venus.Apogee = 79 + 50 / 60;
+        venus.MandaCircumference = 11.5;
+        venus.SighraCircumference = 261;
+        // mars
+        mars.Rotation = mars.YugaRotation;
+        mars.Sighra = sun.YugaRotation;
+        mars.Apogee = 130 + 2 / 60;
+        mars.MandaCircumference = 73.5;
+        mars.SighraCircumference = 233.5;
+        // jupiter
+        jupiter.Rotation = jupiter.YugaRotation;
+        jupiter.Sighra = sun.YugaRotation;
+        jupiter.Apogee = 171 + 18 / 60;
+        jupiter.MandaCircumference = 32.5;
+        jupiter.SighraCircumference = 71;
+        // saturn
+        saturn.Rotation = saturn.YugaRotation;
+        saturn.Sighra = sun.YugaRotation;
+        saturn.Apogee = 236 + 37 / 60;
+        saturn.MandaCircumference = 48.5;
+        saturn.SighraCircumference = 39.5;
+        // Candrocca
+        candrocca.Rotation = candrocca.YugaRotation;
+        candrocca.Sighra = 0;
+        candrocca.Apogee = 0;
+        candrocca.MandaCircumference = 0;
+        candrocca.SighraCircumference = 0;
+        // Rahu
+        rahu.Rotation = rahu.YugaRotation;
+        rahu.Sighra = 0;
+        rahu.Apogee = 0;
+        rahu.MandaCircumference = 0;
+        rahu.SighraCircumference = 0;
+    }
+}
+</pre>
+    </article>
+</section>
 
 
 
@@ -141,10 +231,6 @@ kollavarsham --help
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>kollavarsham-js Index</title>
+	<title>kollavarsham-js Source: celestial/planetarySystem/yuga.js</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -67,70 +67,44 @@
 <div class="row">
 
 	
-	<div class="col-md-8">
+	<div class="col-md-12">
 	
 		<div id="main">
 			
 
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
-    <section class="readme-section">
-        <article><h1><a href="http://kollavarsham.org/">kollavarsham</a></h1>
-<p><a href="https://npmjs.org/package/kollavarsham"><img src="https://img.shields.io/npm/v/kollavarsham.svg" alt="NPM version"></a> <a href="https://travis-ci.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg" alt="Build Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js"><img src="https://img.shields.io/david/kollavarsham/kollavarsham-js.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/kollavarsham/kollavarsham-js#info=devDependencies&amp;view=table"><img src="https://img.shields.io/david/dev/kollavarsham/kollavarsham-js.svg" alt="Dev-Dependency Status"></a> <a href="https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master"><img src="https://coveralls.io/repos/github/kollavarsham/kollavarsham-js/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<blockquote>
-<p>Convert Gregorian date to Kollavarsham date and vice versa</p>
-</blockquote>
-<h2>Install</h2>
-<pre class="prettyprint source lang-sh"><code>$ npm install --save kollavarsham
-</code></pre>
-<h2>Usage</h2>
-<pre class="prettyprint source lang-js"><code>import { Kollavarsham } from 'kollavarsham';
-
-const options = {
-  system: 'SuryaSiddhanta',
-  latitude: 10,
-  longitude: 76.2
-};
-
-const kollavarsham = new Kollavarsham(options);
-
-const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
-
-const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
-</code></pre>
-<h2>Documentation</h2>
-<p>Check out the <a href="http://kollavarsham.org/kollavarsham-js/doc/module-kollavarsham.Kollavarsham.html">Kollavarsham class</a> within the API documentation as this is the entry point into the library.</p>
-<h2>CLI app</h2>
-<p>Check out the <a href="https://www.npmjs.com/package/kollavarsham-cli">cli</a> module (<a href="https://github.com/kollavarsham/cli">GitHub repo</a>) for the <code>kollavarsham</code> cross-platform CLI app</p>
-<pre class="source"><code>npm install -g kollavarsham-cli
-
-kollavarsham --help
-</code></pre>
-<h2>Release History</h2>
-<p>Check out the history at <a href="https://github.com/kollavarsham/kollavarsham-js/releases">GitHub Releases</a></p>
-<h2>License</h2>
-<p>Copyright (c) 2014-2018 The Kollavarsham Team. Licensed under the <a href="http://kollavarsham.org/LICENSE.txt">MIT license</a>.</p></article>
-    </section>
-
-
+		<h1 class="page-title">Source: celestial/planetarySystem/yuga.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/*
+ * kollavarsham
+ * http://kollavarsham.org
+ *
+ * Copyright (c) 2014-2020 The Kollavarsham Team
+ * Licensed under the MIT license.
+ */
+/**
+ * @module yuga
+ */
+/**
+ *
+ *  **INTERNAL/PRIVATE**
+ *
+ * @class Yuga
+ */
+export class Yuga {
+    constructor() {
+        this.CivilDays = 0;
+        this.SynodicMonth = 0;
+        this.Adhimasa = 0;
+        this.Tithi = 0;
+        this.Ksayadina = 0;
+    }
+}
+</pre>
+    </article>
+</section>
 
 
 
@@ -141,10 +115,6 @@ kollavarsham --help
 
 	<div class="clearfix"></div>
 
-	
-		<div class="col-md-3">
-			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
-		</div>
 	
 
 </div>
