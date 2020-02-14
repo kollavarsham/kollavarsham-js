@@ -33,7 +33,7 @@ const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
 
 ## Documentation
 
-Check out the [Kollavarsham class](http://kollavarsham.org/kollavarsham-js/doc/module-kollavarsham.Kollavarsham.html) within the API documentation as this is the entry point into the library.
+Check out the [Kollavarsham class](https://kollavarsham.org/kollavarsham-js/module-kollavarsham.Kollavarsham.html) within the API documentation as this is the entry point into the library.
 
 
 ## CLI app
