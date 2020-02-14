@@ -13,7 +13,7 @@ import { BaseDate } from './baseDate';
 
 /**
  * Represents a Julian date's year, month and day
- * `toGregorianDateFromSaka` method of the {{#crossLink "Kollavarsham"}}{{/crossLink}} class returns an instance of this type for dates
+ * `toGregorianDateFromSaka` method of the {@link Kollavarsham} class returns an instance of this type for dates
  * older than `1st January 1583 AD`
  *
  *  **INTERNAL/PRIVATE**

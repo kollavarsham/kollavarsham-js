@@ -8,11 +8,7 @@ const ts = require('gulp-typescript');
 const del = require('del');
 const isparta = require('isparta');
 const ghPages = require('gulp-gh-pages');
-
-// Grunt is used for yuidoc doc generation and for deployment to GH pages
-const gulpGrunt = require('gulp-grunt');
-gulpGrunt(gulp); // add all the gruntfile tasks to gulp
-const gulpGruntTasks = gulpGrunt.tasks(); // the gruntfile tasks dictionary
+const jsdoc = require('gulp-jsdoc3');
 
 const tsProject = ts.createProject('tsconfig.main.json');
 const tsDocsProject = ts.createProject('tsconfig.docs.json');
@@ -63,15 +59,15 @@ gulp.task('compile:docs', function () {
 
 gulp.task('prepublish', gulp.series('clean:dist', 'static', 'compile'));
 
-gulp.task('yuidoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
-  gulpGruntTasks['grunt-yuidoc'](function () {
-    done();
-  });
+gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
+  const config = require('./jsdoc.json');
+  return gulp.src(['README.md', './es6/**/*.js'], {read: false})
+    .pipe(jsdoc(config, done));
 }));
 
-gulp.task('deployDoc', gulp.series('yuidoc', function () {
+gulp.task('deployDoc', gulp.series('jsdoc', function () {
   return gulp.src('./doc/**/*')
     .pipe(ghPages({
-      remoteUrl : 'git@github.com:kollavarsham/kollavarsham-js.git'
+      remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
 }));

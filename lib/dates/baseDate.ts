@@ -49,8 +49,8 @@ const masaNames: MasaNameList = {
 };
 
 /**
- * Serves as the base class for both the {{#crossLink "JulianDate"}}{{/crossLink}} and
- * {{#crossLink "KollavarshamDate"}}{{/crossLink}} classes.
+ * Serves as the base class for both the {@link JulianDate} and
+ * {@link KollavarshamDate} classes.
  *
  *  **INTERNAL/PRIVATE**
  *

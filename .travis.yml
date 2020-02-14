@@ -7,7 +7,7 @@ node_js:
   - v10
   - v9
 before_install:
-  - npm install -g grunt-cli codeclimate-test-reporter
+  - npm install -g codeclimate-test-reporter
 before_script:
   # Extract the deploy key from secure variables for pushing the YUI documentation
   - echo -n $id_rsa_{00..50} >> ~/.ssh/id_rsa_base64

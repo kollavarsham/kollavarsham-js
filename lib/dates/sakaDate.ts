@@ -96,7 +96,7 @@ export class SakaDate extends BaseDate {
   }
 
   /**
-   * Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {{#crossLink "BaseDate"}}{{/crossLink}} class)
+   * Returns the Saka year on this instance of SakaDate (same as the underlyiung `year` property from the {@link BaseDate} class)
    *
    * @property sakaYear
    * @type {Number}
@@ -106,7 +106,7 @@ export class SakaDate extends BaseDate {
   }
 
   /**
-   * Returns the Tithi on this instance of SakaDate (same as the underlyiung `date` property from the {{#crossLink "BaseDate"}}{{/crossLink}} class)
+   * Returns the Tithi on this instance of SakaDate (same as the underlyiung `date` property from the {@link BaseDate} class)
    *
    * In Vedic timekeeping, a tithi (also spelled thithi) is a lunar day, or the time it takes for the longitudinal angle between the Moon and the Sun to increase by 12°.
    * Tithis begin at varying times of day and vary in duration from approximately 19 to approximately 26 hours.
@@ -151,7 +151,7 @@ export class SakaDate extends BaseDate {
   }
 
   /**
-   * Generates an instance of {{#crossLink "KollavarshamDate"}}{{/crossLink}} from this instance of SakaDate
+   * Generates an instance of {@link KollavarshamDate} from this instance of SakaDate
    *
    * @method generateKollavarshamDate
    * @for SakaDate

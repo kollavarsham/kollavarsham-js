@@ -1,0 +1,26 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "opts": {
+    "destination": "./doc"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "analytics": {
+      "ua":"UA-4869398-6",
+      "domain": "kollavarsham.org"
+    },
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "outputSourceFiles": true,
+    "path": "ink-docstrap",
+    "systemName": "kollavarsham-js",
+    "theme": "cosmo",
+    "navType": "vertical",
+    "linenums": true,
+    "dateFormat": "MMMM Do YYYY, h:mm:ss a"
+  }
+}

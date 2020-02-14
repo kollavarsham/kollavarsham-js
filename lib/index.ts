@@ -31,7 +31,6 @@ export interface Settings {
  *  @param {Number} [options.longitude=75.8] Sets the longitude for the location for the conversions. Default to Ujjain, Madhya Pradesh
  * @constructor
  * @example
- * ```
  *const Kollavarsham = require('kollavarsham');
  *
  *const options = {
@@ -45,49 +44,44 @@ export interface Settings {
  *let todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
  *
  *let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implemented yet
- *```
  */
 export class Kollavarsham {
   settings: Settings;
 
   /**
-   * Exports the {{#crossLink "KollavarshamDate"}}{{/crossLink}} class for referencing via `require`. This is the class
-   * that is returned when converting {{#crossLink "Kollavarsham/fromGregorianDate:method"}}{{/crossLink}} and is passed in
-   * to {{#crossLink "Kollavarsham/toGregorianDate:method"}}{{/crossLink}}. See example below.
+   * Exports the {@link KollavarshamDate} class for referencing via `require`. This is the class
+   * that is returned when converting {@link Kollavarsham#fromGregorianDate} and is passed in
+   * to {@ink Kollavarsham#toGregorianDate}. See example below.
    * @property KollavarshamDate
    * @type {KollavarshamDate}
    * @static
    * @example
-   * ```
    * const Kollavarsham = require('kollavarsham');
    * const KollavarshamDate = Kollavarsham.KollavarshamDate;
    *
    * let myKollavarshamDate = new KollavarshamDate(1189, 7, 13); // Create a new Malayalam Date representation
    * let myDateInGregorian = (new Kollavarsham({'system': 'InPancasiddhantika'})).toGregorianDate(myKollavarshamDate);
-   * ```
    */
   static KollavarshamDate: typeof KollavarshamDate;
 
   /**
-   * Exports the {{#crossLink "SakaDate"}}{{/crossLink}} class for referencing via `require`. This class's instance needs to be passed in
-   * to {{#crossLink "Kollavarsham/toGregorianDateFromSaka:method"}}{{/crossLink}}. See example below.
+   * Exports the {@link SakaDate} class for referencing via `require`. This class's instance needs to be passed in
+   * to {@ink Kollavarsham#toGregorianDateFromSaka}. See example below.
    * @property SakaDate
    * @type {SakaDate}
    * @static
    * @example
-   * ```
    * const Kollavarsham = require('kollavarsham');
    * const SakaDate = Kollavarsham.SakaDate;
    *
    * let sakaDate = new SakaDate(1905, 5, 14, 'Suklapaksa'); // Create a new Saka Date representation
    * let sakaDateInGregorian = new Kollavarsham().toGregorianDateFromSaka(sakaDate);
-   * ```
    */
   static SakaDate: typeof SakaDate;
 
   constructor({ system = 'SuryaSiddhanta', latitude = 23.2, longitude = 75.8 } = {}) {
     /**
-     * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink "Kollavarsham/getSettings:method"}}{{/crossLink}} method
+     * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {@link Kollavarsham#getSettings} method
      * @property settings
      * @type {{system, latitude, longitude}}
      */
@@ -104,7 +98,6 @@ export class Kollavarsham {
    * @for Kollavarsham
    * @returns {{system, latitude, longitude}}
    * @example
-   * ```
    *const Kollavarsham = require('kollavarsham');
    *
    *const options = {
@@ -116,7 +109,6 @@ export class Kollavarsham {
    *const kollavarsham = new Kollavarsham(options);
    *
    *let currentSettings = kollavarsham.getSettings();
-   *```
    */
   getSettings(): Settings {
     return this.settings;
@@ -129,13 +121,11 @@ export class Kollavarsham {
    * @for Kollavarsham
    * @param system {String}
    * @example
-   * ```
    *const Kollavarsham = require('Kollavarsham');
    *const kollavarsham = new Kollavarsham();
    *kollavarsham.setSystem('InPancasiddhantika');
    *kollavarsham.setInputDate(new Date(2014, 2, 14));
    *kollavarsham.convert();
-   * ```
    */
   setSystem(system: string): void {
     this.settings = {
@@ -152,11 +142,9 @@ export class Kollavarsham {
    * @for Kollavarsham
    * @param latitude {Number}
    * @example
-   * ```
    *const Kollavarsham = require('Kollavarsham');
    *const kollavarsham = new Kollavarsham();
    *kollavarsham.setLatitude(8.5);
-   * ```
    */
   setLatitude(latitude: number): void {
     this.settings = {
@@ -173,11 +161,9 @@ export class Kollavarsham {
    * @for Kollavarsham
    * @param longitude {Number}
    * @example
-   * ```
    *const Kollavarsham = require('Kollavarsham');
    *const kollavarsham = new Kollavarsham();
    *kollavarsham.setLongitude(77.0);
-   *```
    */
   setLongitude(longitude: number): void {
     this.settings = {
@@ -195,11 +181,9 @@ export class Kollavarsham {
    * @param date {Date} The Gregorian date to be converted to Kollavarsham
    * @returns {KollavarshamDate} Converted date
    * @example
-   * ```
    *const Kollavarsham = require('Kollavarsham');
    *const kollavarsham = new Kollavarsham();
    *let today = kollavarsham.fromGregorianDate(new Date(1979, 4, 22));
-   *```
    */
   fromGregorianDate(date: Date): KollavarshamDate {
     const calculations = new Calculations(this.settings);
@@ -207,8 +191,8 @@ export class Kollavarsham {
   }
 
   /**
-   * Converts a Kollavarsham date (an instance of {{#crossLink "KollavarshamDate"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
-   * This method Will return {{#crossLink "JulianDate"}}{{/crossLink}} object for any date before 1st January 1583 AD and
+   * Converts a Kollavarsham date (an instance of {@link KollavarshamDate}) to its equivalent Gregorian date, respecting the current configuration.
+   * This method Will return {@link JulianDate} object for any date before 1st January 1583 AD and
    * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
    *
    *  **This API has not been implemented yet**
@@ -225,8 +209,8 @@ export class Kollavarsham {
   }
 
   /**
-   * Converts a Saka date (an instance of {{#crossLink "SakaDate"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.
-   * This method Will return {{#crossLink "JulianDate"}}{{/crossLink}} object for any date before 1st January 1583 AD and
+   * Converts a Saka date (an instance of {@link SakaDate}) to its equivalent Gregorian date, respecting the current configuration.
+   * This method Will return {@link JulianDate} object for any date before 1st January 1583 AD and
    * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.
    *
    * @method toGregorianDateFromSaka
