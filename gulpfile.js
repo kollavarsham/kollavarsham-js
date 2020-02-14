@@ -61,13 +61,15 @@ gulp.task('prepublish', gulp.series('clean:dist', 'static', 'compile'));
 
 gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
   const config = require('./jsdoc.json');
-  return gulp.src(['README.md', './es6/**/*.js'], {read: false})
+  gulp.src(['README.md', './es6/**/*.js'], {read: false})
     .pipe(jsdoc(config, done));
 }));
 
-gulp.task('deployDoc', gulp.series('jsdoc', function () {
+gulp.task('ghPages', function() {
   return gulp.src('./doc/**/*')
     .pipe(ghPages({
       remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
-}));
+});
+
+gulp.task('deployDoc', gulp.series('jsdoc', 'ghPages'));
