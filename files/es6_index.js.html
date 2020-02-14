@@ -17,7 +17,7 @@
             <h1><a href="/kollavarsham-js/"><img src="../assets/img/logo.png" title="kollavarsham"></a></h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>കൊല്ലവർഷം - JavaScript API (v1.5.0)</em>
+            <em>കൊല്ലവർഷം - JavaScript API (v1.4.0)</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -152,7 +152,7 @@ import { SakaDate } from &#x27;./dates/sakaDate&#x27;;
  *let today = kollavarsham.toGregorianDate(todayInMalayalamEra);  // Not implemented yet
  *&#x60;&#x60;&#x60;
  */
-class Kollavarsham {
+export class Kollavarsham {
     constructor({ system = &#x27;SuryaSiddhanta&#x27;, latitude = 23.2, longitude = 75.8 } = {}) {
         /**
          * Holds the settings state of the Kollavarsham instance. To access a snapshot use the {{#crossLink &quot;Kollavarsham/getSettings:method&quot;}}{{/crossLink}} method
@@ -204,7 +204,11 @@ class Kollavarsham {
      * &#x60;&#x60;&#x60;
      */
     setSystem(system) {
-        this.settings.system = system;
+        this.settings = {
+            system,
+            latitude: this.settings.latitude,
+            longitude: this.settings.longitude,
+        };
     }
     /**
      * Sets the latitude for the location that will be used as the basis for the conversion.
@@ -220,7 +224,11 @@ class Kollavarsham {
      * &#x60;&#x60;&#x60;
      */
     setLatitude(latitude) {
-        this.settings.latitude = latitude;
+        this.settings = {
+            system: this.settings.system,
+            latitude,
+            longitude: this.settings.longitude,
+        };
     }
     /**
      * Sets the longitude for the location that will be used as the basis of the conversion
@@ -236,7 +244,11 @@ class Kollavarsham {
      *&#x60;&#x60;&#x60;
      */
     setLongitude(longitude) {
-        this.settings.longitude = longitude;
+        this.settings = {
+            system: this.settings.system,
+            latitude: this.settings.latitude,
+            longitude,
+        };
     }
     /**
      * Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration
@@ -296,7 +308,6 @@ class Kollavarsham {
 }
 Kollavarsham.KollavarshamDate = KollavarshamDate;
 Kollavarsham.SakaDate = SakaDate;
-export default Kollavarsham;
 
     </pre>
 </div>
@@ -309,7 +320,7 @@ export default Kollavarsham;
 <footer id="footer">
   <span class="copyright"><a href="/LICENSE.txt">&copy; 2014-2020 The Kollavarsham Team</a></span>
   <a href="/" id="footer-back"><span>Back to kollavarsham.org</span></a>
-  <span class="last-modified">Last Updated: Thu, 13 Feb 2020 22:36:25 GMT</span>
+  <span class="last-modified">Last Updated: Fri, 14 Feb 2020 02:17:53 GMT</span>
 </footer>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>

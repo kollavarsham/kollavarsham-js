@@ -2,7 +2,7 @@
     "project": {
         "name": "kollavarsham",
         "description": "Convert Gregorian date to Kollavarsham date and vice versa",
-        "version": "1.5.0",
+        "version": "1.4.0",
         "url": "http://kollavarsham.org"
     },
     "files": {
@@ -1087,7 +1087,7 @@
         },
         {
             "file": "es6/index.js",
-            "line": 96,
+            "line": 100,
             "description": "Sets the latitude for the location that will be used as the basis for the conversion.\nThe value of the latitude parameter should be within -90 to +90",
             "itemtype": "method",
             "name": "setLatitude",
@@ -1106,7 +1106,7 @@
         },
         {
             "file": "es6/index.js",
-            "line": 112,
+            "line": 120,
             "description": "Sets the longitude for the location that will be used as the basis of the conversion\nThe value of the latitude parameter should be within -180 to +180",
             "itemtype": "method",
             "name": "setLongitude",
@@ -1125,7 +1125,7 @@
         },
         {
             "file": "es6/index.js",
-            "line": 128,
+            "line": 140,
             "description": "Converts a Gregorian date to the equivalent Kollavarsham date, respecting the current configuration",
             "itemtype": "method",
             "name": "fromGregorianDate",
@@ -1148,7 +1148,7 @@
         },
         {
             "file": "es6/index.js",
-            "line": 146,
+            "line": 158,
             "description": "Converts a Kollavarsham date (an instance of {{#crossLink \"KollavarshamDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.\n\n **This API has not been implemented yet**",
             "itemtype": "method",
             "name": "toGregorianDate",
@@ -1171,7 +1171,7 @@
         },
         {
             "file": "es6/index.js",
-            "line": 163,
+            "line": 175,
             "description": "Converts a Saka date (an instance of {{#crossLink \"SakaDate\"}}{{/crossLink}}) to its equivalent Gregorian date, respecting the current configuration.\nThis method Will return {{#crossLink \"JulianDate\"}}{{/crossLink}} object for any date before 1st January 1583 AD and\n[Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects for later dates.",
             "itemtype": "method",
             "name": "toGregorianDateFromSaka",
@@ -1205,15 +1205,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " es6/index.js:128"
+            "line": " es6/index.js:140"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " es6/index.js:146"
+            "line": " es6/index.js:158"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " es6/index.js:163"
+            "line": " es6/index.js:175"
         }
     ]
 }
