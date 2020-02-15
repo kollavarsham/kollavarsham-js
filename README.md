@@ -1,6 +1,6 @@
 # [kollavarsham](http://kollavarsham.org/)
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url] [![Coverage Status][coveralls-image]][coveralls-url]
+[![NPM version][npm-image]][npm-url] [![PyPI version][pypi-image]][pypi-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url] [![Coverage Status][coveralls-image]][coveralls-url]
 
 > Convert Gregorian date to Kollavarsham date and vice versa
 
@@ -52,8 +52,10 @@ Check out the history at [GitHub Releases](https://github.com/kollavarsham/kolla
 ## License
 Copyright (c) 2014-2018 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
 
-[npm-image]: https://img.shields.io/npm/v/kollavarsham.svg
-[npm-url]: https://npmjs.org/package/kollavarsham
+[npm-image]: https://badge.fury.io/js/kollavarsham.svg
+[npm-url]: https://badge.fury.io/js/kollavarsham
+[pypi-image]: https://badge.fury.io/py/kollavarsham.svg
+[pypi-url]: https://badge.fury.io/py/kollavarsham
 [travis-image]: https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg
 [travis-url]: https://travis-ci.org/kollavarsham/kollavarsham-js
 [daviddm-image]: https://img.shields.io/david/kollavarsham/kollavarsham-js.svg

@@ -4,8 +4,7 @@
   "description": "Convert Gregorian date to Kollavarsham date and vice versa",
   "homepage": "http://kollavarsham.org",
   "repository": {
-    "type": "git",
-    "url": "kollavarsham/kollavarsham-js"
+    "url": "https://github.com/acme/hello-jsii.git"
   },
   "author": {
     "name": "The Kollavarsham Team",
@@ -126,9 +125,9 @@
     "temp-directory": "./coverage/.nyc_output"
   },
   "scripts": {
-    "build": "jsii -vv",
+    "build": "gulp clean:jsii && jsii -vv",
     "build:watch": "jsii -w",
-    "package": "jsii-pacmak -vv",
+    "package": "gulp clean:dist && jsii-pacmak -vv",
     "prepublishOnly": "gulp prepublish",
     "test": "gulp clean:jsii && TS_NODE_PROJECT=tsconfig.spec.json nyc mocha"
   },
