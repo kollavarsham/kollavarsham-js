@@ -20,12 +20,11 @@ dist
 coverage/
 doc/
 scripts/
+test/
 .codeclimate.yml
 .editorconfig
 .eslintignore
 .eslintrc
-.gitattributes
-.gitignore
 .travis.yml
 gulpfile.js
 jsdoc.json
