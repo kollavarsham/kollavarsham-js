@@ -4,7 +4,7 @@
   "description": "Convert Gregorian date to Kollavarsham date and vice versa",
   "homepage": "http://kollavarsham.org",
   "repository": {
-    "url": "https://github.com/acme/hello-jsii.git"
+    "url": "https://github.com/kollavarsham/kollavarsham-js.git"
   },
   "author": {
     "name": "The Kollavarsham Team",
