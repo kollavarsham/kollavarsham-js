@@ -12,3 +12,21 @@ dist
 
 # Include .jsii
 !.jsii
+
+# Custom
+.circleci/
+.publish/
+.idea/
+coverage/
+doc/
+scripts/
+.codeclimate.yml
+.editorconfig
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.travis.yml
+gulpfile.js
+jsdoc.json
+tsconfig.*.json

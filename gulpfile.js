@@ -53,7 +53,7 @@ gulp.task('coveralls', function (done) {
 gulp.task('compile', function () {
   return tsProject.src()
     .pipe(tsProject())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('lib'));
 });
 
 gulp.task('compile:docs', function () {
@@ -62,7 +62,7 @@ gulp.task('compile:docs', function () {
     .pipe(gulp.dest('es6'));
 });
 
-gulp.task('prepublish', gulp.series('clean:dist', 'static', 'compile'));
+gulp.task('prepublish', gulp.series('clean:dist', 'clean:jsii', 'static', 'compile'));
 
 gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
   const config = require('./jsdoc.json');

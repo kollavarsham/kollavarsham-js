@@ -11,9 +11,6 @@
     "email": "info@kollavarsham.org",
     "url": "https://kollavarsham.org"
   },
-  "files": [
-    "dist"
-  ],
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
   "engineStrict": true,
