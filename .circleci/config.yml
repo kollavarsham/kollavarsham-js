@@ -21,10 +21,6 @@ jobs:
           name: package
           command: yarn package
       - run:
-          name: publish to npm
-          command: |
-            scripts/publish-npm.sh dist/js
-      - run:
           name: publish to pypi
           command: |
             scripts/publish-pypi.sh dist/python
@@ -36,3 +32,12 @@ jobs:
           name: publish to nuget
           command: |
             scripts/publish-nuget.sh dist/dotnet
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v.*/
