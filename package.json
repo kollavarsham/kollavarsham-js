@@ -39,8 +39,8 @@
         "module": "kollavarsham"
       },
       "dotnet": {
-        "namespace": "Kollavarsham.Org",
-        "packageId": "Kollavarsham.Org.Converter",
+        "namespace": "KollavarshamOrg",
+        "packageId": "KollavarshamOrg.Converter",
         "iconUrl": "https://kollavarsham.org/static/images/logo.png"
       }
     }
