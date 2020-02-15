@@ -6,6 +6,7 @@ node_js:
   - v11
   - v10
   - v9
+  - v8
 before_install:
   - npm install -g codeclimate-test-reporter
 before_script:
