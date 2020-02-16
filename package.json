@@ -114,9 +114,9 @@
     "temp-directory": "./coverage/.nyc_output"
   },
   "scripts": {
-    "build": "gulp clean:jsii && jsii -vv",
+    "build": "gulp clean:jsii && jsii -vvv",
     "build:watch": "jsii -w",
-    "package": "gulp clean:dist && jsii-pacmak -vv",
+    "package": "gulp clean:dist && jsii-pacmak -vvv",
     "prepublishOnly": "gulp prepublish",
     "test": "gulp clean:jsii && TS_NODE_PROJECT=tsconfig.spec.json nyc mocha"
   },
