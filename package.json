@@ -96,7 +96,6 @@
       "mocha": true
     }
   },
-  "mocha": {},
   "nyc": {
     "include": [
       "lib/**/*.ts",
