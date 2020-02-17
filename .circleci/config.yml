@@ -20,15 +20,15 @@ jobs:
       - run:
           name: publish to pypi
           command: |
-            scripts/publish-pypi.sh dist/python
+            jsii-release-pypi dist/python
       - run:
           name: publish to nuget
           command: |
-            scripts/publish-nuget.sh dist/dotnet
+            jsii-release-nuget dist/dotnet
       - run:
           name: publish to maven
           command: |
-            scripts/publish-maven.sh dist/java
+            jsii-release-maven dist/java
 
 workflows:
   version: 2
