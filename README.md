@@ -26,7 +26,7 @@ $ pip install kollavarsham
 <dependency>
   <groupId>org.kollavarsham.converter</groupId>
   <artifactId>kollavarsham-converter</artifactId>
-  <version>1.9.2</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
