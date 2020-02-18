@@ -41,9 +41,9 @@ const options = {
 
 const kollavarsham = new Kollavarsham(options);
 
-const todayInMalayalamEra = kollavarsham.fromGregorianDate(new Date());
+const today = kollavarsham.fromGregorianDate(new Date());
 
-const today = kollavarsham.toGregorianDate(todayInMalayalamEra);
+console.log(today.year, today.mlMasaName, today.date, `(${today.mlNaksatraName})`);
 ```
 
 ### Python
@@ -87,18 +87,9 @@ namespace Test
 
 ## Documentation
 
+### TypeScript/JavaScript/Node.js
+
 Check out the [Kollavarsham class](https://kollavarsham.org/kollavarsham-js/module-kollavarsham.Kollavarsham.html) within the API documentation as this is the entry point into the library.
-
-
-## CLI app
-
-Check out the [cli](https://www.npmjs.com/package/kollavarsham-cli) module ([GitHub repo](https://github.com/kollavarsham/cli)) for the `kollavarsham` cross-platform CLI app 
-
-```plain
-npm install -g kollavarsham-cli
-
-kollavarsham --help
-```
 
 ## Release History
 Check out the history at [GitHub Releases](https://github.com/kollavarsham/kollavarsham-js/releases)

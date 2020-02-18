@@ -142,8 +142,7 @@ export abstract class BaseDate {
    */
   private _naksatra: Naksatra = Calendar.naksatras[-1];
 
-  constructor(year = 0, month = 0, date = 0) {
-
+  protected constructor(year = 0, month = 0, date = 0) {
     this.year = year;
     this.month = month;
     this.date = date;

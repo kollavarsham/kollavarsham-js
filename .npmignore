@@ -19,7 +19,6 @@ dist
 .idea/
 coverage/
 doc/
-scripts/
 test/
 .codeclimate.yml
 .editorconfig

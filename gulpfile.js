@@ -3,10 +3,8 @@ const gulp = require('gulp');
 const coveralls = require('@kollavarsham/gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
-const plumber = require('gulp-plumber');
 const ts = require('gulp-typescript');
 const del = require('del');
-const isparta = require('isparta');
 const ghPages = require('gulp-gh-pages');
 const jsdoc = require('gulp-jsdoc3');
 
