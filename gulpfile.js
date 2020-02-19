@@ -71,11 +71,11 @@ gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', functio
 
 gulp.task('copy-circleci-config', function() {
   return gulp.src('./.circleci/config.yml')
-    .pipe(gulp.dest('./doc/.circleci/config.yml'));
+    .pipe(gulp.dest('./doc/.circleci'));
 });
 
 gulp.task('ghPages', function() {
-  return gulp.src('./doc/**/*')
+  return gulp.src(['./doc/**/*', './doc/.*/*'])
     .pipe(ghPages({
       remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
