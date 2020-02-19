@@ -69,7 +69,7 @@ gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', functio
 }));
 
 gulp.task('ghPages', function() {
-  return gulp.src('./doc/**/*')
+  return gulp.src(['./doc/**/*', './.circleci/'])
     .pipe(ghPages({
       remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
