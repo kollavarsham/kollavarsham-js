@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+     - image: alpine
+    steps:
+      - checkout
+      - run:
+          name: dummy
+          command: "echo 'not building gh-pages'""
+
+workflows:
+  version: 2
+  dummy_build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: gh-pages
