@@ -68,11 +68,16 @@ gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', functio
     .pipe(jsdoc(config, done));
 }));
 
+gulp.task('copy-circleci-config', function() {
+  return gulp.src('./.circleci/config.yml')
+    .pipe(gulp.dest('./doc/.circleci'));
+});
+
 gulp.task('ghPages', function() {
-  return gulp.src(['./doc/**/*', './.circleci/'])
+  return gulp.src('./doc/**/*')
     .pipe(ghPages({
       remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
     }));
 });
 
-gulp.task('deployDoc', gulp.series('jsdoc', 'ghPages'));
+gulp.task('deployDoc', gulp.series('jsdoc', 'copy-circleci-config', 'ghPages'));
