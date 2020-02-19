@@ -17,6 +17,7 @@ gulp.task('clean:dist', function (done) {
 });
 
 gulp.task('clean:doc', function (done) {
+  del.sync(['doc/.circleci']);
   del.sync(['doc/**']);
   del.sync(['es6/**']);
   done();
@@ -70,7 +71,7 @@ gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', functio
 
 gulp.task('copy-circleci-config', function() {
   return gulp.src('./.circleci/config.yml')
-    .pipe(gulp.dest('./doc/.circleci'));
+    .pipe(gulp.dest('./doc/.circleci/config.yml'));
 });
 
 gulp.task('ghPages', function() {
