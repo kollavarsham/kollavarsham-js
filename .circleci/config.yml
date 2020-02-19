@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: dummy
-          command: "echo 'not building gh-pages'""
+          command: "echo 'not building gh-pages'"
 
 workflows:
   version: 2
