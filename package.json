@@ -79,7 +79,7 @@
     "gulp-gh-pages": "^0.6.0-6",
     "gulp-jsdoc3": "^2.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "jsii": "^0.22.0",
+    "jsii": "^1.0.0",
     "jsii-pacmak": "^1.0.0",
     "jsii-release": "^0.1.1",
     "mocha": "^7.0.0",
