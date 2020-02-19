@@ -1,5 +1,14 @@
 version: 2.1
 jobs:
+  dummy:
+    docker:
+     - image: alpine
+    steps:
+      - checkout
+      - run:
+          name: dummy
+          command: "echo 'not building gh-pages'"
+
   build:
     docker:
      - image: jsii/superchain
@@ -50,6 +59,14 @@ jobs:
 
 workflows:
   version: 2
+  dummy_build:
+    jobs:
+      - dummy:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: gh-pages
   validate_build:
     jobs:
       - build:
