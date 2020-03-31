@@ -1,6 +1,7 @@
 # [kollavarsham](http://kollavarsham.org/)
 
 [![Circle CI Status][circleci-image]][circleci-url] [![Travis CI Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js?ref=badge_shield)
 
 
 > Convert Gregorian date to Kollavarsham date and vice versa
@@ -146,3 +147,6 @@ Copyright (c) 2014-2020 The Kollavarsham Team. Licensed under the [MIT license](
 [daviddm-dev-url]: https://david-dm.org/kollavarsham/kollavarsham-js?type=dev
 [coveralls-image]: https://img.shields.io/coveralls/github/kollavarsham/kollavarsham-js?label=Coveralls
 [coveralls-url]: https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js?ref=badge_large)
