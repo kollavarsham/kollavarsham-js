@@ -8,6 +8,7 @@ node_js:
   - v9
   - v8
 before_install:
+  - if [ "$TRAVIS_NODE_VERSION" == "v12" ]; then npm cache clean --force; fi
   - npm install -g codeclimate-test-reporter
 before_script:
   # Extract the deploy key from secure variables for pushing the YUI documentation
