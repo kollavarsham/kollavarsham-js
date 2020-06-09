@@ -1,12 +1,11 @@
 sudo: false
 language: node_js
 node_js:
+  - v14
   - v13
   - v12
   - v11
   - v10
-  - v9
-  - v8
 before_install:
   - if [ "$TRAVIS_NODE_VERSION" == "v12" ]; then npm cache clean --force; fi
   - npm install -g codeclimate-test-reporter
@@ -23,7 +22,7 @@ after_success:
   # If build is successful, push the documentation from this build to the gh-pages (run only on one job)
   # and generate test coverage and push it to code climate
   - echo "TRAVIS_NODE_VERSION - $TRAVIS_NODE_VERSION"
-  - if [ "$TRAVIS_NODE_VERSION" == "v13" ]; then ./deploy.sh; fi
+  - if [ "$TRAVIS_NODE_VERSION" == "v14" ]; then ./deploy.sh; fi
 notifications:
   email:
   - info@kollavarsham.org
