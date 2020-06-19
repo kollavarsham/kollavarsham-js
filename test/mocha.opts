@@ -1,7 +1,0 @@
---require source-map-support/register
---require ts-node/register
---full-trace
---bail
---colors
---recursive
-./test/**/*.spec.ts

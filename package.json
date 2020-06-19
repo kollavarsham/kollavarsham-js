@@ -90,6 +90,17 @@
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
+  "mocha": {
+    "bail": true,
+    "colors": true,
+    "full-trace": true,
+    "recursive": true,
+    "require": [
+      "source-map-support/register",
+      "ts-node/register"
+    ],
+    "spec": "./test/**/*.spec.ts"
+  },
   "nyc": {
     "include": [
       "lib/**/*.ts",
