@@ -6,6 +6,7 @@ es6/
 .publish/
 !.idea
 .idea/workspace.xml
+.idea/aws.xml
 .nyc_output/
 tsconfig.json
 .jsii
