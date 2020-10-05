@@ -67,7 +67,7 @@
     "karkitakam"
   ],
   "devDependencies": {
-    "@kollavarsham/gulp-coveralls": "^0.3.2",
+    "@kollavarsham/gulp-coveralls": "^0.3.3",
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.11.2",
