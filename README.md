@@ -127,7 +127,7 @@ Check out the [Kollavarsham class](https://kollavarsham.org/kollavarsham-js/modu
 Check out the history at [GitHub Releases](https://github.com/kollavarsham/kollavarsham-js/releases)
 
 ## License
-Copyright (c) 2014-2020 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
+Copyright (c) 2014-2021 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
 
 [npm-image]: https://img.shields.io/npm/v/kollavarsham
 [npm-url]: https://www.npmjs.com/package/kollavarsham
