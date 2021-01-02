@@ -74,7 +74,7 @@ workflows:
             tags:
               ignore: /.*/
             branches:
-              only: master
+              only: main
   build_and_deploy:
     jobs:
       - deploy:
