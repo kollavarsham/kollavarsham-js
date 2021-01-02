@@ -146,7 +146,7 @@ Copyright (c) 2014-2021 The Kollavarsham Team. Licensed under the [MIT license](
 [daviddm-dev-image]: https://img.shields.io/david/dev/kollavarsham/kollavarsham-js
 [daviddm-dev-url]: https://david-dm.org/kollavarsham/kollavarsham-js?type=dev
 [coveralls-image]: https://img.shields.io/coveralls/github/kollavarsham/kollavarsham-js?label=Coveralls
-[coveralls-url]: https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=master
+[coveralls-url]: https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=main
 
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js?ref=badge_large)
