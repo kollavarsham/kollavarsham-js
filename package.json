@@ -85,7 +85,7 @@
     "jsii": "^1.24.0",
     "jsii-pacmak": "^1.24.0",
     "jsii-release": "^0.2.18",
-    "mocha": "^8.3.1",
+    "mocha": "^8.3.2",
     "nyc": "^15.1.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^9.1.1",
