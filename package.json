@@ -73,7 +73,7 @@
     "@types/node": "^14.14.34",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
-    "chai": "^4.3.3",
+    "chai": "^4.3.4",
     "del": "^6.0.0",
     "eslint": "^7.22.0",
     "gulp": "^4.0.2",
