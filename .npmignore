@@ -14,6 +14,7 @@ dist
 !.jsii
 
 # Custom
+.github/
 .circleci/
 .publish/
 .idea/
@@ -25,6 +26,8 @@ test/
 .eslintignore
 .eslintrc
 .travis.yml
+deploy.sh
 gulpfile.js
 jsdoc.json
 tsconfig.*.json
+tsconfig.tsbuildinfo
