@@ -6,6 +6,9 @@ node_js:
   - v13
   - v12
   - v10
+branches:
+  only:
+  - main
 before_install:
   - if [ "$TRAVIS_NODE_VERSION" == "v12" ]; then npm cache clean --force; fi
   - npm install -g codeclimate-test-reporter
