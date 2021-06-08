@@ -6,14 +6,8 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
   versioning-strategy: increase
-  ignore:
-  - dependency-name: jsii-release
-    versions:
-    - 0.2.12
-    - 0.2.13
-    - 0.2.16
-    - 0.2.17
-    - 0.2.24
-  - dependency-name: "@types/node"
-    versions:
-    - 15.0.0
+  # ignore:
+  # - dependency-name: "@types/node"
+  #   versions:
+  #   - 17.0.0
+  #   - 18.0.0
