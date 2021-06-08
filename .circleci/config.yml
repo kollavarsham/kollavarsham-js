@@ -56,10 +56,6 @@ jobs:
           name: publish to maven
           command: |
             npx jsii-release-maven dist/java
-      - run:
-          name: publish to maven
-          command: |
-            npx jsii-release-golang dist/go
 
 workflows:
   version: 2
