@@ -10,8 +10,6 @@ jobs:
   ci_cd:
     runs-on: ubuntu-18.04
     name: Continuous Integration/Continuous Deployment
-    container:
-      image: jsii/superchain
     steps:
       - uses: actions/checkout@v2
 
