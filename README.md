@@ -138,7 +138,7 @@ Copyright (c) 2014-2021 The Kollavarsham Team. Licensed under the [MIT license](
 [nuget-image]: https://img.shields.io/nuget/v/KollavarshamOrg.Converter
 [nuget-url]: https://www.nuget.org/packages/KollavarshamOrg.Converter
 [circleci-image]: https://img.shields.io/circleci/build/github/kollavarsham/kollavarsham-js?label=CircleCI
-[circleci-url]: https://app.circleci.com/github/kollavarsham/kollavarsham-js/pipelines
+[circleci-url]: https://app.circleci.com/pipelines/github/kollavarsham/kollavarsham-js
 [travis-image]: https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg?label=TravisCI
 [travis-url]: https://travis-ci.org/kollavarsham/kollavarsham-js
 [daviddm-image]: https://img.shields.io/david/kollavarsham/kollavarsham-js
