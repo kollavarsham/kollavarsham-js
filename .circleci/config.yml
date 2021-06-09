@@ -11,7 +11,7 @@ jobs:
 
   build:
     docker:
-     - image: jsii/superchain
+     - image: jsii/superchain:node14
     steps:
       - run:
           name: fix ssh permissions
