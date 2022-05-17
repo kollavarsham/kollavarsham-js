@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: fix ssh permissions
-          command: chmod 600 /root/.ssh/config
+          command: sudo chmod 600 /root/.ssh/config
       - checkout
       - run:
           name: install
@@ -33,7 +33,7 @@ jobs:
     steps:
       - run:
           name: fix ssh permissions
-          command: chmod 600 /root/.ssh/config
+          command: sudo chmod 600 /root/.ssh/config
       - checkout
       - run:
           name: install
