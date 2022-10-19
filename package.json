@@ -84,7 +84,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "jsii": "^1.66.0",
     "jsii-pacmak": "^1.69.0",
-    "jsii-release": "^0.2.500",
+    "jsii-release": "^0.2.501",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",
     "source-map-support": "^0.5.21",
