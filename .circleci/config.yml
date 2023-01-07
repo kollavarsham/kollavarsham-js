@@ -29,7 +29,7 @@ jobs:
 
   deploy:
     docker:
-     - image: jsii/superchain:1-buster-slim-node16
+     - image: jsii/superchain:sha256:e141efae388816c76743008eb95bc661e3dd12e4f142e5a859e4f067c484ae49
     steps:
       - run:
           name: fix ssh permissions
@@ -83,3 +83,5 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+
+# VS Code Extension Version: 1.5.1
