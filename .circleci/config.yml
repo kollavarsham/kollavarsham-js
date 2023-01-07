@@ -11,7 +11,7 @@ jobs:
 
   build:
     docker:
-     - image: jsii/superchain:1-buster-slim-node16
+     - image: jsii/superchain:1-buster-slim-node18
     steps:
       - run:
           name: fix ssh permissions
