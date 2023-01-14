@@ -29,7 +29,7 @@ jobs:
 
   deploy:
     docker:
-     - image: jsii/superchain:sha256:e141efae388816c76743008eb95bc661e3dd12e4f142e5a859e4f067c484ae49
+     - image: jsii/superchain:1-buster-slim-node16
     steps:
       - run:
           name: fix ssh permissions
@@ -47,15 +47,15 @@ jobs:
       - run:
           name: publish to pypi
           command: |
-            npx jsii-release-pypi dist/python
+            npx publib-pypi dist/python
       - run:
           name: publish to nuget
           command: |
-            npx jsii-release-nuget dist/dotnet
+            npx publib-nuget dist/dotnet
       - run:
           name: publish to maven
           command: |
-            npx jsii-release-maven dist/java
+            npx publib-maven dist/java
 
 workflows:
   version: 2
