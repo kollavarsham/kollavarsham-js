@@ -1,7 +1,6 @@
 # [kollavarsham](http://kollavarsham.org/)
 
-[![Circle CI Status][circleci-image]][circleci-url] [![Travis CI Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Dev-Dependency Status][daviddm-dev-image]][daviddm-dev-url]
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js?ref=badge_shield)
+[![Circle CI Status][circleci-image]][circleci-url] [![Coverage Status][coveralls-image]][coveralls-url] [![GitHub Actions Status][gh-actions-image]][gh-actions-url] [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkollavarsham%2Fkollavarsham-js?ref=badge_shield)
 
 
 > Convert Gregorian date to Kollavarsham date and vice versa
@@ -139,12 +138,8 @@ Copyright (c) 2014-2023 The Kollavarsham Team. Licensed under the [MIT license](
 [nuget-url]: https://www.nuget.org/packages/KollavarshamOrg.Converter
 [circleci-image]: https://img.shields.io/circleci/build/github/kollavarsham/kollavarsham-js?label=CircleCI
 [circleci-url]: https://app.circleci.com/pipelines/github/kollavarsham/kollavarsham-js
-[travis-image]: https://img.shields.io/travis/kollavarsham/kollavarsham-js.svg?label=TravisCI
-[travis-url]: https://travis-ci.org/kollavarsham/kollavarsham-js
-[daviddm-image]: https://img.shields.io/david/kollavarsham/kollavarsham-js
-[daviddm-url]: https://david-dm.org/kollavarsham/kollavarsham-js
-[daviddm-dev-image]: https://img.shields.io/david/dev/kollavarsham/kollavarsham-js
-[daviddm-dev-url]: https://david-dm.org/kollavarsham/kollavarsham-js?type=dev
+[gh-actions-image]: https://github.com/kollavarsham/kollavarsham-js/actions/workflows/ci.yml/badge.svg
+[gh-actions-url]: https://github.com/kollavarsham/kollavarsham-js/actions/workflows/ci.yml?query=branch%3Amain
 [coveralls-image]: https://img.shields.io/coveralls/github/kollavarsham/kollavarsham-js?label=Coveralls
 [coveralls-url]: https://coveralls.io/github/kollavarsham/kollavarsham-js?branch=main
 

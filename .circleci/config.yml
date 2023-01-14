@@ -60,6 +60,10 @@ jobs:
           name: publish to github go repo
           command: |
             npx publib-golang dist/go
+      - run:
+          name: publish documentation to github
+          command: |
+            gulp deployDoc
 
 workflows:
   version: 2
