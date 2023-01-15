@@ -40,6 +40,10 @@
         "namespace": "KollavarshamOrg",
         "packageId": "KollavarshamOrg.Converter",
         "iconUrl": "https://kollavarsham.org/static/images/logo.png"
+      },
+      "go": {
+        "moduleName": "github.com/kollavarsham/kollavarsham-go",
+        "packageName": "converter"
       }
     }
   },
