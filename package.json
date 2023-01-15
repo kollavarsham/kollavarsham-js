@@ -133,6 +133,7 @@
   "scripts": {
     "build": "gulp clean:jsii && jsii -vvv",
     "build:watch": "jsii -w",
+    "deploy-doc": "gulp deployDoc",
     "package": "gulp clean:dist && jsii-pacmak -vvv",
     "prepublishOnly": "gulp prepublish",
     "test": "gulp clean:jsii && TS_NODE_PROJECT=tsconfig.spec.json nyc mocha"

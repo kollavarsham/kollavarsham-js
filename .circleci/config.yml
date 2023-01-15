@@ -39,9 +39,6 @@ jobs:
           name: install
           command: npm install
       - run:
-          name: install gulp
-          command: sudo npm install -g gulp
-      - run:
           name: test
           command: npm run build && npm test
       - run:
@@ -66,7 +63,7 @@ jobs:
       - run:
           name: publish documentation to github
           command: |
-            gulp deployDoc
+            npm run deploy-doc
 
 workflows:
   version: 2
