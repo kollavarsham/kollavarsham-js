@@ -39,6 +39,9 @@ jobs:
           name: install
           command: npm install
       - run:
+          name: install gulp
+          command: npm install -g gulp
+      - run:
           name: test
           command: npm run build && npm test
       - run:
