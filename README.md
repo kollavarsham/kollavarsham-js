@@ -23,7 +23,7 @@ $ pip install kollavarsham
 ### Go [![GitHub go.mod Go version][go-mod-image]][go-mod-url]
 
 ```sh
-go get github.com/kollavarsham/kollavarsham-go/kollavarsham
+go get github.com/kollavarsham/kollavarsham-go/converter
 ```
 
 ### Java [![Maven version][maven-image]][maven-url]
