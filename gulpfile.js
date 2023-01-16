@@ -63,7 +63,7 @@ gulp.task('compile:docs', function () {
 
 gulp.task('prepublish', gulp.series('clean:dist', 'clean:jsii', 'static', 'compile'));
 
-gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', 'coveralls', function (done) {
+gulp.task('jsdoc', gulp.series('clean:doc', 'compile:docs', function (done) {
   const config = require('./jsdoc.json');
   gulp.src(['README.md', './es6/**/*.js'], {read: false})
     .pipe(jsdoc(config, done));
