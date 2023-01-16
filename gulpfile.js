@@ -67,7 +67,7 @@ gulp.task('copy-circleci-config', function() {
 gulp.task('ghPages', function() {
   return gulp.src(['./doc/**/*', './doc/.*/*'])
     .pipe(ghPages({
-      remoteUrl: 'git@github.com:kollavarsham/kollavarsham-js.git'
+      remoteUrl: 'https://${DOCS_GITHUB_TOKEN}@github.com/kollavarsham/kollavarsham-js.git'
     }));
 });
 
