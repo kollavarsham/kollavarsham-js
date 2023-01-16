@@ -1,6 +1,5 @@
 const path = require('path');
 const gulp = require('gulp');
-const coveralls = require('@kollavarsham/gulp-coveralls');
 const eslint = require('gulp-eslint');
 const excludeGitignore = require('gulp-exclude-gitignore');
 const ts = require('gulp-typescript');
@@ -38,15 +37,6 @@ gulp.task('static', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['lib/**/*.js', 'test/**'], ['test']);
-});
-
-gulp.task('coveralls', function (done) {
-  if (!process.env.CI) {
-    done();
-  } else {
-    return gulp.src(path.join(__dirname, 'coverage/lcov.info'))
-      .pipe(coveralls());
-  }
 });
 
 gulp.task('compile', function () {
