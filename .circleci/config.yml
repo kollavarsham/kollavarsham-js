@@ -61,6 +61,11 @@ jobs:
           command: |
             npx publib-golang dist/go
       - run:
+          name: set git config
+          command: |
+            git config --global user.email "info@kollavarsham.org"
+            git config --global user.name "The Kollavarsham Team"
+      - run:
           name: publish documentation to github
           command: |
             npm run deploy-doc
