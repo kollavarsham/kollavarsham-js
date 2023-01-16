@@ -138,7 +138,7 @@ Copyright (c) 2014-2023 The Kollavarsham Team. Licensed under the [MIT license](
 [npm-url]: https://www.npmjs.com/package/kollavarsham
 [pypi-image]: https://img.shields.io/pypi/v/kollavarsham
 [pypi-url]: https://pypi.org/project/kollavarsham/
-[go-mod-image]: https://img.shields.io/github/go-mod/go-version/kollavarsham/kollavarsham-go
+[go-mod-image]: https://img.shields.io/github/go-mod/go-version/kollavarsham/kollavarsham-go?filename=converter%2Fgo.mod
 [go-mod-url]: https://github.com/kollavarsham/kollavarsham-go
 [maven-image]: https://img.shields.io/maven-central/v/org.kollavarsham.converter/kollavarsham-converter
 [maven-url]: https://search.maven.org/artifact/org.kollavarsham.converter/kollavarsham-converter
