@@ -20,7 +20,8 @@ $ npm install kollavarsham
 $ pip install kollavarsham
 ```
 
-### Go [![GitHub go.mod Go version][go-mod-image]][go-mod-url] [![Go Reference][go-pkg-image]][go-pkg-url]
+### Go [![Go project version][go-pkg-image]][go-pkg-url]
+
 
 ```sh
 go get github.com/kollavarsham/kollavarsham-go/converter
@@ -166,18 +167,16 @@ Check out the history at [GitHub Releases](https://github.com/kollavarsham/kolla
 ## License
 Copyright (c) 2014-2023 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
 
-[npm-image]: https://img.shields.io/npm/v/kollavarsham
-[npm-url]: https://www.npmjs.com/package/kollavarsham
-[pypi-image]: https://img.shields.io/pypi/v/kollavarsham
-[pypi-url]: https://pypi.org/project/kollavarsham/
-[go-mod-image]: https://img.shields.io/github/go-mod/go-version/kollavarsham/kollavarsham-go?filename=converter%2Fgo.mod
-[go-mod-url]: https://github.com/kollavarsham/kollavarsham-go
-[go-pkg-image]: https://pkg.go.dev/badge/github.com/kollavarsham/kollavarsham-go/converter/v2.svg
+[nuget-image]: https://badge.fury.io/nu/KollavarshamOrg.Converter.svg
+[nuget-url]: https://www.nuget.org/packages/KollavarshamOrg.Converter
+[go-pkg-image]: https://badge.fury.io/go/github.com%2Fkollavarsham%2Fkollavarsham-go%2Fconverter%2Fv2.svg
 [go-pkg-url]: https://pkg.go.dev/github.com/kollavarsham/kollavarsham-go/converter/v2
 [maven-image]: https://img.shields.io/maven-central/v/org.kollavarsham.converter/kollavarsham-converter
 [maven-url]: https://search.maven.org/artifact/org.kollavarsham.converter/kollavarsham-converter
-[nuget-image]: https://img.shields.io/nuget/v/KollavarshamOrg.Converter
-[nuget-url]: https://www.nuget.org/packages/KollavarshamOrg.Converter
+[npm-image]: https://badge.fury.io/js/kollavarsham.svg
+[npm-url]: https://www.npmjs.com/package/kollavarsham
+[pypi-image]: https://img.shields.io/pypi/v/kollavarsham
+[pypi-url]: https://pypi.org/project/kollavarsham/
 [circleci-image]: https://img.shields.io/circleci/build/github/kollavarsham/kollavarsham-js?label=CircleCI
 [circleci-url]: https://app.circleci.com/pipelines/github/kollavarsham/kollavarsham-js
 [gh-actions-image]: https://github.com/kollavarsham/kollavarsham-js/actions/workflows/ci.yml/badge.svg
