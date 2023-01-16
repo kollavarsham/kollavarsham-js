@@ -20,7 +20,7 @@ $ npm install kollavarsham
 $ pip install kollavarsham
 ```
 
-### Go [![GitHub go.mod Go version][go-mod-image]][go-mod-url]
+### Go [![GitHub go.mod Go version][go-mod-image]][go-mod-url] [![Go Reference][go-pkg-image]][go-pkg-url]
 
 ```sh
 go get github.com/kollavarsham/kollavarsham-go/converter
@@ -140,6 +140,8 @@ Copyright (c) 2014-2023 The Kollavarsham Team. Licensed under the [MIT license](
 [pypi-url]: https://pypi.org/project/kollavarsham/
 [go-mod-image]: https://img.shields.io/github/go-mod/go-version/kollavarsham/kollavarsham-go?filename=converter%2Fgo.mod
 [go-mod-url]: https://github.com/kollavarsham/kollavarsham-go
+[go-pkg-image]: https://pkg.go.dev/badge/github.com/kollavarsham/kollavarsham-go/converter/v2.svg
+[go-pkg-url]: https://pkg.go.dev/github.com/kollavarsham/kollavarsham-go/converter/v2
 [maven-image]: https://img.shields.io/maven-central/v/org.kollavarsham.converter/kollavarsham-converter
 [maven-url]: https://search.maven.org/artifact/org.kollavarsham.converter/kollavarsham-converter
 [nuget-image]: https://img.shields.io/nuget/v/KollavarshamOrg.Converter
