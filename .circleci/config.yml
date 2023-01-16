@@ -34,7 +34,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "27:c4:6d:07:7f:9d:88:28:a1:14:4c:cb:4a:d4:72:65"
-            - "34:8f:a0:d6:21:8b:3e:a0:13:d0:68:a8:36:62:8e:13"
       - run:
           name: fix ssh permissions
           command: sudo chmod 600 /root/.ssh/config
