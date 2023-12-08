@@ -92,7 +92,7 @@
     "publib": "^0.2.758",
     "source-map": "^0.7.4",
     "source-map-support": "^0.5.21",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.5"
   },
   "mocha": {
