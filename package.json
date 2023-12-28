@@ -76,7 +76,7 @@
     "@types/node": "^18.11.19",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "chai": "^4.3.10",
+    "chai": "^5.0.0",
     "del": "^6.1.1",
     "eslint": "^8.56.0",
     "gulp": "^4.0.2",
