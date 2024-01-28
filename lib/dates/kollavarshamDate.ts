@@ -2,7 +2,7 @@
  * kollavarsham
  * http://kollavarsham.org
  *
- * Copyright (c) 2014-2023 The Kollavarsham Team
+ * Copyright (c) 2014-2024 The Kollavarsham Team
  * Licensed under the MIT license.
  */
 

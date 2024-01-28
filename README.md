@@ -165,7 +165,7 @@ Check out the [Kollavarsham class](https://kollavarsham.org/kollavarsham-js/modu
 Check out the history at [GitHub Releases](https://github.com/kollavarsham/kollavarsham-js/releases)
 
 ## License
-Copyright (c) 2014-2023 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
+Copyright (c) 2014-2024 The Kollavarsham Team. Licensed under the [MIT license](http://kollavarsham.org/LICENSE.txt).
 
 [nuget-image]: https://badge.fury.io/nu/KollavarshamOrg.Converter.svg
 [nuget-url]: https://www.nuget.org/packages/KollavarshamOrg.Converter
