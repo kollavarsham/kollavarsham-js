@@ -78,7 +78,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
     "del": "^6.1.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-exclude-gitignore": "^1.2.0",
