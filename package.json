@@ -88,7 +88,7 @@
     "jsii": "^1.73.0",
     "jsii-pacmak": "^1.104.0",
     "mocha": "^10.7.3",
-    "nyc": "^15.1.0",
+    "nyc": "^17.1.0",
     "publib": "^0.2.900",
     "source-map": "^0.7.4",
     "source-map-support": "^0.5.21",
